@@ -1,4 +1,4 @@
-# _print_seq.pl
+# _print_motif.pl
 
 use yabby_sys;
 use yabby_seq;

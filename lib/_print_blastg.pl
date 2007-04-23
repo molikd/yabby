@@ -1,4 +1,4 @@
-# _print_blast_genom.pl
+# _print_blastg.pl
 
 use yabby_sys;
 use yabby_blast;
