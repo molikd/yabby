@@ -25,6 +25,10 @@ $USAGE = "
  -n N -- print N residues per line (both when printing one- and
  three-letter codes)
  -t N -- truncate each sequence at N letters when writing
+
+ Notes:
+ 1. Currently supported objects for printing are 'seq', 'motif',
+ and 'blastg'
 ";
 
 # options
