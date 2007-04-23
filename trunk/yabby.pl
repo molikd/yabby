@@ -2,7 +2,7 @@
 
 #######################################################
 #                                                     #
-# INSTALLATION INSTRUCTIONS                           #
+# INSTALLATION                                        #
 #                                                     #
 # (1) Set the two statements below to the full path   #
 #     to Yabby library.                               #
