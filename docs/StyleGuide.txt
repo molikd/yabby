@@ -1,0 +1,18 @@
+
+ Yabby coding style guide
+ ========================
+
+ Introduction
+ ------------
+
+ This document gives rules, conventions, and style to achieve consistent
+ coding of Yabby components.
+  
+ Code lay-out
+ ------------
+
+ 1. Indentation
+
+ Use 2 spaces indent the blocks of code.
+
+ 
