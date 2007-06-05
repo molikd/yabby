@@ -24,16 +24,16 @@ $USAGE = "
 getopts('r');
 
 if ( defined($opt_r) ) {
-  $reverse_flag = 1;
+  $opt_r_flag = 1;
 } else {
-  $reverse_flag = 0;
+  $opt_r_flag = 0;
 }
 
 # initialization
 @argl = sys_init( @ARGV );
 check_call( @argl, [ 2 ] );
 $obj_name  = $argl[0];
-$obj_name_new  = $argl[1];
+$obj_name2  = $argl[1];
 
 # requirements
 requirements( $obj_name, $SEQUENCE );
@@ -45,7 +45,7 @@ $keys = get_seq_keys( $seq_hash );
 
 printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
 
-$seq_hash_new = {};
+$seq_hash2 = {};
 
 for $key ( @$keys ) {
 
@@ -62,19 +62,19 @@ for $key ( @$keys ) {
 
   $seq_string = join "", @seq_compl;
 
-  if ( $reverse_flag ) {
+  if ( $opt_r_flag ) {
     $seq_string = reverse($seq_string);
   }
 
-  $seq_item_new = {};
-  $seq_item_new->{$DBA_SEQID} = $seq_item->{$DBA_SEQID};
-  $seq_item_new->{$DBA_COMMENT} = $seq_item->{$DBA_COMMENT};
-  $seq_item_new->{$DBA_SEQUENCE} = $seq_string;
-  $seq_hash_new->{$key} = $seq_item_new;
+  $seq_item2 = {};
+  $seq_item2->{$DBA_SEQID} = $seq_item->{$DBA_SEQID};
+  $seq_item2->{$DBA_COMMENT} = $seq_item->{$DBA_COMMENT};
+  $seq_item2->{$DBA_SEQUENCE} = $seq_string;
+  $seq_hash2->{$key} = $seq_item2;
 }
 
-$xmldoc = seq2xml( $seq_hash_new );
-save_ip_xml( $xmldoc, $obj_name_new, $SEQUENCE, $WARN_OVERW );
+$xmldoc = seq2xml( $seq_hash2 );
+save_ip_xml( $xmldoc, $obj_name2, $SEQUENCE, $WARN_OVERW );
 
 # subroutines
 sub dna_compl {
@@ -92,7 +92,7 @@ sub dna_compl {
   } elsif ( $c eq "c" ) {
     $r = "g";
   } else {
-     error( "character '$c' found, the sequence must be DNA" )
+     error( "character '$c' found, must be a DNA sequence" )
   }
 
   return $r;
