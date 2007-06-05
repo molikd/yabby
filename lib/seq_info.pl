@@ -29,15 +29,15 @@ $USAGE = "
 getopts('ln');
 
 if ( defined( $opt_l ) ) {
-  $long_output = 1;
+  $opt_l_flag = 1;
 } else {
-  $long_output = 0;
+  $opt_l_flag = 0;
 }
 
 if ( defined( $opt_n ) ) {
-  $seqlen_only = 1;
+  $opt_n_flag = 1;
 } else {
-  $seqlen_only = 0;
+  $opt_n_flag = 0;
 }
 
 # initialization
@@ -55,14 +55,14 @@ $keys = get_seq_keys( $seq_hash );
 printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
 
 # if a single sequence, do long output by default 
-if ( ($#{$keys} == 0) || $long_output ) {
+if ( ($#{$keys} == 0) || $opt_l_flag ) {
   for $key ( @$keys ) {
     $seq_item = $seq_hash->{$key};
     $seq_id = $seq_item->{$DBA_SEQID};
     @seq_char = split //, $seq_item->{$DBA_SEQUENCE};
     printf " %2d -> %s, %d residues\n", $key, $seq_id, $#seq_char+1;
   }
-} elsif ( $seqlen_only ) {
+} elsif ( $opt_n_flag ) {
   for $key ( @$keys ) {
     $seq_item = $seq_hash->{$key};
     $seq_id = $seq_item->{$DBA_SEQID};
