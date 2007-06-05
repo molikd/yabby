@@ -41,7 +41,7 @@ for $key ( @$keys ) {
 }
 
 $xmldoc = seq2xml( $seq_hash );
-save_ip_xml($xmldoc, $obj_name, $SEQUENCE, $NOWARN_OVERW);
+save_ip_xml( $xmldoc, $obj_name, $SEQUENCE, $NOWARN_OVERW );
 
 printf " Comments modified in %d sequence(s).\n", $#{$keys}+1;
 
