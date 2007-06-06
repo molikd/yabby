@@ -36,15 +36,15 @@ $USAGE = "
 getopts('uidc');
 
 if ( defined($opt_i) ) {
-  $ISECT = 1;
+  $opt_i_flat = 1;
 } else {
-  $ISECT = 0;
+  $opt_i_flat = 0;
 }
 
 if ( defined($opt_d) ) {
-  $DIFF = 1;
+  $opt_d_flag = 1;
 } else {
-  $DIFF = 0;
+  $opt_d_flag = 0;
 }
 
 # initialization
@@ -80,14 +80,14 @@ $diff = $setop->[2];
 printf " Found %d sequence(s) in '%s'\n", $#{$keys1}+1, $seq1;
 printf " Found %d sequence(s) in '%s'\n", $#{$keys2}+1, $seq2;
 printf "  INTERSECTION contains %d sequence(s)\n", $#{$isect}+1;
-printf "  DIFFERENCE contains %d sequence(s)\n", $#{$diff}+1;
+printf "  opt_d_flagERENCE contains %d sequence(s)\n", $#{$diff}+1;
 printf "  UNION contains %d sequence(s)\n", $#{$union}+1;
 
-if ( $ISECT ) {
+if ( $opt_i_flat ) {
   printf " [ Saving INTERSECTION as '%s' ]\n", $obj_name;
   @op_array = @$isect;
 
-} elsif ( $DIFF ) {
+} elsif ( $opt_d_flag ) {
   printf " [ Saving DIFFERENCE as '%s' ]\n", $obj_name;
   @op_array = @$diff;
 

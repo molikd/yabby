@@ -9,10 +9,10 @@ use Getopt::Std;
 getopt('f');
 
 if ( defined($opt_f) ) {
-  $print_to_file = 1;
+  $opt_f_flag = 1;
   $file_name = $opt_f;
 } else {
-  $print_to_file = 0;
+  $opt_f_flag = 0;
 }
 
 # initialization
@@ -24,7 +24,7 @@ requirements( $obj_name, $BLASTG );
 $top_hits = load_ip( $obj_name, $BLASTG );
 
 # body
-if ( $print_to_file ) {
+if ( $opt_f_flag ) {
   $fp = open_for_writing( $file_name );
 } else {
   $fp = *STDOUT;
@@ -34,7 +34,7 @@ for $item (@$top_hits) {
   print $fp "$item->[0] $item->[1] $item->[2]\n";
 }
 
-if ( $print_to_file ) {
+if ( $opt_f_flag ) {
   close_file( $fp );
   print " '$obj_name.$BLASTG' written to the file '$file_name'\n";
 }

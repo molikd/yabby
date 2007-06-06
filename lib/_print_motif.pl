@@ -9,10 +9,10 @@ use Getopt::Std;
 getopt('f');
 
 if ( defined($opt_f) ) {
-  $print_to_file = 1;
+  $opt_f_flag = 1;
   $file_name = $opt_f;
 } else {
-  $print_to_file = 0;
+  $opt_f_flag = 0;
 }
 
 # initialization
@@ -24,7 +24,7 @@ $xmldoc = load_ip_xml( $obj_name, $MOTIF );
 $seq_hash = xml2seq( $xmldoc );
 
 # body
-if ( $print_to_file ) {
+if ( $opt_f_flag ) {
   $fp = open_for_writing( $file_name );
 } else {
   $fp = *STDOUT;
@@ -38,7 +38,7 @@ for $key ( @$keys ) {
   print_seq_fasta( $fp, $seq_item, $PRINT_WIDTH );
 }
 
-if ( $print_to_file ) {
+if ( $opt_f_flag ) {
   close_file( $fp );
   print " '$obj_name.$MOTIF' written to the file '$file_name'\n";
 }

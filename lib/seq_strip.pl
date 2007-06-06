@@ -23,7 +23,6 @@ $USAGE = "
 ";
 
 # options
-
 # initialization
 @argl = sys_init( @ARGV );
 check_call( @argl, [ 3 ] );
