@@ -1,24 +1,27 @@
-# blast.pl
+# blastg.pl
 
 use yabby_sys;
 use yabby_seq;
 use yabby_blast;
 
 $USAGE = "
- Runs NCBI BLAST against a database.
+ Runs NCBI BLAST against a database and saves the best
+ hit for each sequence. 
 
  Usage:
- 	blast DBA_FILE OBJ_NAME
+ 	blastg DBA_FILE OBJ_NAME
 
- Where DBA_FILE is the sequence database and OBJ_NAME is the
- name of the sequence object which contains the query sequence.
- If OBJ_NAME contains more than one sequence, all will be used
- in turn as a query sequence.
+ Where DBA_FILE is the sequence database and OBJ_NAME
+ is the name of the sequence object which contains
+ sequences to be blasted. Each sequence is in turnx
+ blasted against the database, and the top hit is stored
+ as BLASG object. This object contains the list of:
 
- Notes:
+ SEQ_ID DBA_SEQ_ID E-VALUE
 
- 1. This command runs NCBI program 'blastall'
- 2. The full PATH to 'blastall' is defined in yabby_blast.pm
+ Where SEQ_ID is the sequence ID, DBA_SEQ_ID is the
+ best hits database sequence ID, and E-VALUE is the
+ E-value of the match.
 ";
 
 # options
@@ -27,7 +30,6 @@ $USAGE = "
 
 # arguments
 check_call( @argl, [ 2 ] );
-
 $dba_name = $argl[0];
 $obj_name = $argl[1];
 
@@ -38,6 +40,7 @@ $xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
 $seq_hash = xml2seq( $xmldoc );
 
 # body
+
 $keys = get_seq_keys( $seq_hash );
 $nseq = $#{$keys}+1;
 
@@ -48,34 +51,19 @@ print " Now running BLAST ..\n";
 push @cmd, $BLASTALL;
 push @cmd, "-p blastp";
 push @cmd, "-d $dba_name";
-push @cmd, "-e $BLAST_THRESH"; # set the E-value threshold
+push @cmd, "-e 0.1"; # set the E-value threshold
 push @cmd, "-m 7"; # set XML output
+
+$top_hits = [];
 
 for $key ( @$keys ) {
 
   $seq_item = $seq_hash->{$key};
-
   $seqid = $seq_item->{$DBA_SEQID};
   $seque = $seq_item->{$DBA_SEQUENCE};
 
-  if ( $nseq == 1 ) {
-
-    $item_name = $obj_name;
-    $multi_seq = 0;
-
-  } else {
-
-    $item_name = $obj_name . "_" . "$key";
-    $multi_seq = 1;
-  }
-
-  if ( $multi_seq ) {
-
-    printf " BLASTing sequence %d of %d (%s)\n",
-      $key, $#{$keys}+1, $seqid;
-  }
-
-  $blast_out = "";
+  printf " BLASTing sequence %d of %d (%s)\n",
+    $key, $#{$keys}+1, $seqid;
 
   if ( $pid = open(CHILD, "-|") ) {
 
@@ -90,11 +78,15 @@ for $key ( @$keys ) {
       $xmldoc = $xmldoc . $line;
     }
 
-    print_blast_info( $xmldoc );
+    $top_hit = fetch_top_hit( $xmldoc );
 
-    if ( $multi_seq ) { print "\n"; }
-     
-    save_ip_xml( $xmldoc, $item_name, $BLAST, $NOWARN_OVERW );
+    unshift @$top_hit, $seqid; 
+    push @$top_hits, $top_hit;
+
+    printf "  top hit %s, E-score = %.2e\n", $top_hit->[1], $top_hit->[2];
+
+    undef $xmldoc;
+    undef @blast_out;
 
   } else {
 
@@ -111,4 +103,6 @@ for $key ( @$keys ) {
     exit(0);
   }
 }
+
+save_ip( $top_hits, $obj_name, $BLASTG, $WARN_OVERW );
 
