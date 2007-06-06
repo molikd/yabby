@@ -29,9 +29,9 @@ $USAGE = "
 getopts('afb');
 
 if ( defined($opt_a) ) {
-  $append_flag = 1;
+  $opt_a_flag = 1;
 } else {
-  $append_flag = 0;
+  $opt_a_flag = 0;
 }
 
 if ( defined($opt_f) ) {
@@ -63,7 +63,7 @@ if ( $file_format eq "fasta" ) {
 $keys = get_seq_keys( $seq_hash );
 printf " %d sequence(s) found.\n", $#{$keys}+1;
 
-if ( $append_flag ) {
+if ( $opt_a_flag ) {
   if ( exists_ip( $obj_name, $SEQUENCE ) ) {
     $xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
     $seq_hash2 = xml2seq( $xmldoc );

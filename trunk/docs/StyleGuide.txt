@@ -48,6 +48,17 @@
    $opt_s_flag = 0;
  }
 
+ In rare cases exceptions can be justified:
+
+ if ( defined($opt_f) ) {
+   $file_format = "fasta";
+ } elsif ( defined($opt_b) ) {
+   $file_format = "blocks";
+ } else {
+   $file_format = "fasta";
+ }
+
+
  3. Sequence objects.
 
  Use variables $xmldoc, $seq_hash, $seq_item. For example
