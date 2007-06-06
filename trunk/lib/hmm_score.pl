@@ -15,9 +15,9 @@ $USAGE = "
 
  Options:
 
- -E cutoff -- Define cutoff for acceptable E values (default=0.01)
+ -E CUTOFF -- Define cutoff for acceptable E values (default: CUTOFF=0.01)
 
- -s hmm_item -- Save the scores under the name 'hmm_item'
+ -s HMM_ITEM -- Save the scores under the name HMM_ITEM
 
  -d -- Turn debuggin on. This will create the file hmm_scores.opt_d_flag
   with raw scores.
