@@ -1,0 +1,12 @@
+
+This directory contains example data files used in examples 
+given in User Guide.
+
+cox1.seq -- Pfam COX1 family of protein sequences (23 sequences) 
+
+cad.seq -- Pfam CAD family of protein sequences (6 sequences)
+
+cad3.seq -- A subset of 3 sequences from cad.seq 
+
+dna.seq -- An arbitrary DNA sequence
+
