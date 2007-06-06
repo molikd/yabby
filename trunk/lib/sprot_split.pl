@@ -12,8 +12,9 @@ $USAGE = "
  Usage:
  	sprot_split [ options ] DBA_FILE
 
- Where DBA_FILE is the name of the database file. The output
- files are named DBA_FILE.1, DBA_FILE.2, etc.
+ Where DBA_FILE is the name of the sequence database file in
+ the SWISS-PROT format. The output files are named DBA_FILE.1,
+ DBA_FILE.2, etc.
 
  Options:
 
