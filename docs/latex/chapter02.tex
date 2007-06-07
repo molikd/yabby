@@ -594,7 +594,39 @@ the 'seq' type object.
 
 \section{Working with the HMMER output}
 
-HMMER is a powerful software for the hidden Markov model search
-of sequence databases \cite{hmmer,wwwhmmer}. 
+\index{hmm\_score}
+\index{hmm\_score2seq}
+
+HMMER is a powerful software for the profile hidden Markov model
+search of sequence databases \cite{hmmer,wwwhmmer}. The 'search 
+step' in HMMER search pipeline is performed by the program
+HMMPFAM from the HMMER software suite. Yabby's commands 'hmm\_score'
+and 'hmm\_score2seq' can aid in extraction of the search results
+from the HMMPFAM output files.
+
+\begin{verbatim}
+yabby>  hmm_score -E 0.01 -s hits hmmpfam.out
+
+ Processing HMMPFAM search output file
+
+  No     Sequence                            E-score
+ -----------------------------------------------------
+ (   1)  LmjF05.1190@All                     2.70e-03
+ (   2)  LmjF05.1190@GlycogenStarch          4.20e-03
+ (   3)  LmjF05.0920@All                     7.50e-03
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    hits           hmm_score     
+\end{verbatim}
+
+\begin{verbatim}
+yabby> hmm_score2seq LmjFwholegenome_20050601_V5.2.pep hits.seq hits
+
+ found 3 sequences to extract
+ Processing the database 'LmjFwholegenome_20050601_V5.2.pep'
+ Sequences written to 'hits.seq'
+\end{verbatim}
 
 
