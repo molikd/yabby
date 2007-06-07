@@ -12,5 +12,11 @@ dna.seq -- An example DNA sequence.
 
 m2.blocks -- An example sequence motif in BLOCKS format.
 
-meme.out -- An example output of the motif detetion program MEME
+meme.out -- An example output of the motif detection program MEME.
+
+LmjFmockup.pep -- A mockup genome sequence file.
+
+hmmpfam.out -- An example output file of the program HMMPFAM (a part
+  of HMMER software)
+
 

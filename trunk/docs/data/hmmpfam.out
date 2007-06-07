@@ -1,0 +1,962 @@
+Query sequence: LmjF05.0890
+Accession:      [none]
+Description:    LmjF05.0890 hypothetical protein, conserved 1807317:1813259 forward MW:208497
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0900
+Accession:      [none]
+Description:    LmjF05.0900 surface antigen-like protein 1814387:1815247 forward MW:30402
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0910
+Accession:      [none]
+Description:    LmjF05.0910 hypothetical protein, conserved 1816958:1820194 forward MW:117188
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0920
+Accession:      [none]
+Description:    LmjF05.0920 paraflagellar rod protein, putative 1820779:1824123 forward MW:120993
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+All                                                    -290.2     0.0075   1
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+All        1/1      35   672 ..     1   947 []  -290.2   0.0075
+
+Alignments of top-scoring domains:
+All: domain 1 of 1, from 35 to 672: score -290.2, E = 0.0075
+                   *->ndveslkksilyGGvhLLPffpPhleytlgkspevatprdaffAtay
+                      + + s++++ l             ley +     +a p da      
+  LmjF05.092    35    STALSTAHAQLV-----------LLEYAIRAAADSAVPSDA------ 64   
+
+                   tVrDrllgrWndTqelALklLsekyykkdpKrvYYLSmEFLlGRaLlNal
+                                q+        + ++ ++ r+             +Na 
+  LmjF05.092    65 -----------SAQS--------HRKASEVTRT-------------TNA- 81   
+
+                   iNLgLqdayaeALyeLGldLEelleiEeDAGLGNGGLGRLAACFLDSmAT
+                                                                     
+  LmjF05.092     - -------------------------------------------------- -    
+
+                   LglPAiGYGlRYeyGlFkQkItdGwQvEvpDdWLeyGnPWEivRpevsyp
+                                                                     
+  LmjF05.092     - -------------------------------------------------- -    
+
+                   VrFyGrVehtgdgeGkkrgkWvdgevVlAvaYDvPiPGYktdtvntlRLW
+                                                             + n+    
+  LmjF05.092    82 ---------------------------------------TVGSQNS---- 88   
+
+                   sakF.PapeQIdFDldsFNvGdylsAvldrnraenIsrVLYPnDstyeGK
+                        P+p+            +  ++++  ++a  +s+V           
+  LmjF05.092    89 ---LlPGPV----------PAES-GSLMSIMAATRLSSV----------- 113  
+
+                   eLRLKQqYFlvsAsLqDIirrfkkskfg...vhknwdeFpdkvAvqlNDT
+                                           + + +++++ ++++++d+        
+  LmjF05.092   114 ------------------------TATApsgASERLSALHDN-------- 131  
+
+                   HPtLaipELmRiLvDeegLdWdeAWeitrkTfaYTNHTvLpEALEkWPve
+                           L R                                      +
+  LmjF05.092   132 --------LRRVR------------------------------------H 137  
+
+                   LfeklLPRHlEIIyEINerfldqVrakypgDvdklrrmsiieEgde....
+                   L++++                                    eE +++  +
+  LmjF05.092   138 LMQQY------------------------------------EEASQhvik 151  
+
+                   ..................................................
+                    +  +++++++++ ++ ++++   ++++++ ++++ + +      +++  
+  LmjF05.092   152 vhllpspetgeetlgsvttptayagqrtkevspqqlsvsvaaaavdrpfl 201  
+
+                   ..................................................
+                   +++++++ +  +++++   +++ +++ ++++   ++   ++  + + +++
+  LmjF05.092   202 eqhssnsanvasngkpaaapqnippslhqrralasdavftrfcglrvtpd 251  
+
+                   ..................................................
+                   +   + +++ +++++++++   +++++++++  +++ +++ +++++++++
+  LmjF05.092   252 qlllplpppatpttsptppalaqqhtsprkpvaprgidndaeekkngsgd 301  
+
+                   ..................................................
+                   +  ++ +++ ++++++++++++++ ++++ ++++++ ++++++++ + + 
+  LmjF05.092   302 slvshysepmkrhgsnsktrssqtagspnaktqessasssprhspvscta 351  
+
+                   ..................................................
+                   +++++++++   ++  +   +++ +  +++ +++++  + ++++++    
+  LmjF05.092   352 qqrertsteavleeyaklfyrpsatavsrpapprstaigmqssqspvvaa 401  
+
+                   ..................................................
+                    + ++++ ++ ++ +++++ ++++  ++ ++++++    ++ +    + +
+  LmjF05.092   402 apahntsatkagslssstpaddsevarqlqetqqrfaalqrchlfayeah 451  
+
+                   ....................KrVVrMAnLavVGShaVNGVAelHSeivKa
+                    ++   + ++++++++ ++ Kr                            
+  LmjF05.092   452 lrsaaapadsqgngsdvstiKR---------------------------- 473  
+
+                   tlFadFyelwPeKFqNKTNGiTPRRWlalcNPgLsalitewiGtDdWvtd
+                                                   g   l + + G       
+  LmjF05.092   474 --------------------------------GITTLGAVTTGAN----- 486  
+
+                   lekLkkLrkfaddeefaQaqeewaevKreNKqrL..............lk
+                             +dd ++               q+ +   ++ +++ +  + 
+  LmjF05.092   487 ----------VDDISW---------------QHIpvavqhmqdsltalQA 511  
+
+                   qkaaayilketgvfvdPdslFDvQvKRiHEYKRQlLkvsPmNiLhviDTH
+                   ++  ++++ ++g                    RQ +              
+  LmjF05.092   512 RFTRDSHYARCG--------------------RQPI-------------- 527  
+
+                   DGIGVvDvkdiLtdqeIdyseelykvganvrysAynNLDiYQiNstrYnr
+                                                                ++  +
+  LmjF05.092   528 ---------------------------------------------ALVHQ 532  
+
+                   lKedpnaerrkkfvPRvvIfGGKAaPgYymAKlIIKLInsvadvVNnDpe
+                   l    +                              LI + ++++ n++ 
+  LmjF05.092   533 LQTWTQ-----------------------------PLIQNLNELLSNSTL 553  
+
+                   vgdlLKVvFvpNYnVSlAeliiPAsDLSeqISTAGtEASGTSNMKFalNG
+                   +         +N +++l ++ +                            
+  LmjF05.092   554 EEK------SENTREKLRRMKFD--------------------------- 570  
+
+                   aLtIGTlDGANVEirEevGedNffiFGaraeevealrke.gYnpqeyynp
+                                                aee ++++++ ++n++   ++
+  LmjF05.092   571 -----------------------------AEELQQAQAQaIANGD--MQR 589  
+
+                   dprleqvvdqilsGfFspedpdlfkdlvdsllhGfgrgDyflVlaDFp..
+                    ++l++   ++ ++ ++p  +d++  +++ +     +     V  D p +
+  LmjF05.092   590 SEELYYEQGSLAEAMAGP--YDELEAIMRKYG----E-----VCVDAPlt 628  
+
+                   sYvdaQerVdeaykdqkkWtkmsilNiagsgvvGVlvdGkFSSDRTIkEY
+                    +++ +++                    +               R+I EY
+  LmjF05.092   629 RVLEQRDLLT-----------------TRLT-------------RVIEEY 648  
+
+                   AkeIWndGGdaGPlvtfriepvelplsasrekeegslllqpvtln<-*
+                     +           vt  +e v+++   +r           v+++   
+  LmjF05.092   649 TSKLSE--------VTLDVERVKEK---RRA----------VAQA    672  
+
+//
+
+Query sequence: LmjF05.0930
+Accession:      [none]
+Description:    LmjF05.0930 ubiquitin-conjugating enzyme, putative 1826156:1827550 forward MW:49123
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0940
+Accession:      [none]
+Description:    LmjF05.0940 hypothetical protein, conserved 1828606:1832502 forward MW:136100
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0950
+Accession:      [none]
+Description:    LmjF05.0950 glutaminyl cyclase, putative 1834830:1837553 forward MW:101792
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0960
+Accession:      [none]
+Description:    LmjF05.0960 dipeptidyl-peptidase III, putative 1838746:1840785 forward MW:75968
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0970
+Accession:      [none]
+Description:    MST mercaptopyruvate sulfurtransferase 1850172:1851284 reverse MW:40155
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0980
+Accession:      [none]
+Description:    LmjF05.0980 NADH-ubiquinone oxidoreductase, mitochondrial, putative 1852675:1854120 reverse MW:54517
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.0990
+Accession:      [none]
+Description:    LmjF05.0990 hypothetical protein, conserved 1854853:1855125 reverse MW:10244
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1000
+Accession:      [none]
+Description:    LmjF05.1000 hypothetical protein, conserved 1856770:1857081 reverse MW:11070
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1010
+Accession:      [none]
+Description:    LmjF05.1010 methyltransferase-like protein 1857976:1859823 reverse MW:67244
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1020
+Accession:      [none]
+Description:    LmjF05.1020 hypothetical protein, conserved 1860761:1863520 reverse MW:104620
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1030
+Accession:      [none]
+Description:    LmjF05.1030 hypothetical protein, conserved 1864035:1864472 reverse MW:16239
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1040
+Accession:      [none]
+Description:    LmjF05.1040 stomatin-like protein 1864967:1866040 reverse MW:39749
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1050
+Accession:      [none]
+Description:    LmjF05.1050 hypothetical protein, unknown function 1867493:1868824 forward MW:50707
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1060
+Accession:      [none]
+Description:    LmjF05.1060 ATPase, putative 1869757:1871193 forward MW:55257
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1070
+Accession:      [none]
+Description:    LmjF05.1070 hypothetical protein, conserved 1872034:1873563 forward MW:57988
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1080
+Accession:      [none]
+Description:    LmjF05.1080 hypothetical protein, conserved 1875022:1877202 forward MW:80140
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1090
+Accession:      [none]
+Description:    LmjF05.1090 double-strand-break repair protein rad21 homolog, putative 1879819:1881543 forward MW:61013
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1100
+Accession:      [none]
+Description:    LmjF05.1100 hypothetical protein, conserved 1883963:1884700 forward MW:28172
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1110
+Accession:      [none]
+Description:    LmjF05.1110 hypothetical protein, conserved 1888783:1892457 forward MW:130808
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1120
+Accession:      [none]
+Description:    LmjF05.1120 hypothetical protein, unknown function 1895336:1895671 forward MW:12079
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1130
+Accession:      [none]
+Description:    LmjF05.1130 hypothetical protein, conserved 1898422:1900116 reverse MW:62324
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1140
+Accession:      [none]
+Description:    LmjF05.1140 vacuolar ATPase subunit-like protein 1900779:1901852 reverse MW:41539
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1150
+Accession:      [none]
+Description:    LmjF05.1150 hypothetical protein, unknown function 1902595:1903674 reverse MW:37377
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1160
+Accession:      [none]
+Description:    LmjF05.1160 hypothetical protein, unknown function 1904106:1905107 reverse MW:35434
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1170
+Accession:      [none]
+Description:    LmjF05.1170 elongation of very long chain fatty acids protein, putative 1907728:1908477 reverse MW:28897
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1180
+Accession:      [none]
+Description:    LmjF05.1180 hypothetical protein, conserved 1909063:1910439 reverse MW:53965
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1190
+Accession:      [none]
+Description:    LmjF05.1190 hypothetical protein, conserved 1912350:1918232 reverse MW:212991
+
+Scores for sequence family classification (score includes all domains):
+Model          Description                              Score    E-value  N 
+--------       -----------                              -----    ------- ---
+All                                                    -466.4     0.0027   1
+GlycogenStarch                                         -656.6     0.0042   1
+
+Parsed for domains:
+Model          Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+--------       ------- ----- -----    ----- -----      -----  -------
+GlycogenStarch   1/1     185   851 ..     1   865 []  -656.6   0.0042
+All              1/1     197   845 ..     1   837 []  -466.4   0.0027
+
+Alignments of top-scoring domains:
+GlycogenStarch: domain 1 of 1, from 185 to 851: score -656.6, E = 0.0042
+                   *->rklisvraspeledveslkksivyhleftlgkspkkfatprdyytAt
+                      +k++ + a ++l+++ + k++ +  l+ ++  +   + + + y tA+
+  LmjF05.119   185    EKNADLSAPVLLPEARRTKANVSQLLHTSC--DV-LSQLAKEYTTAK 228  
+
+                   aysVRDvrLierWnrTqqhyykkdpKrvYYLSmEFLlGRaLlNallNLgl
+                   a +       er+ ++ q ++++                +L+ al+ L+ 
+  LmjF05.119   229 AAVMKK---MERTVAASQSFRQL----------------TLSTALSELEA 259  
+
+                   qdayae.ALkeLGldLEelleiEeDAgLGNGGLGRLAACFLDSmATLglP
+                   q++ +++A +++G +                         +D   T g +
+  LmjF05.119   260 QQELKGsAAEDGGASA------------------------MDGSHTVGSA 285  
+
+                   AyGYGLRYeYGlFkQkItdGgQvEvPDdWLeyGNPWEieRpevsypVrFy
+                   +             Q++ d                      + s+ ++F 
+  LmjF05.119   286 L-------------QSLIDVI--------------------PASLQIHFN 302  
+
+                   GkVehtedgegkkkfkWvdgevVlAvAYDvPIPGYktntVntLRLWsAkv
+                    +V + +                              ++ n+L    ++ 
+  LmjF05.119   303 LQVPEAPV----------------------------LTRCNSL----TE- 319  
+
+                   aaedFdLadFNvGdYiqAvedrnraenItrVLYPnDntfeGKeLRLKQQY
+                       F L+   + +++    + +r + + +V Y                 
+  LmjF05.119   320 LIR-FLLSEYLSMERYMEMVEVERQR-LAEVFY----------------- 350  
+
+                   FlvSASLQDIIrrfkksklgsdgvrtnwdeFpdkVAiQLNDTHPtLaIpE
+                    l S          k++ +g                              
+  LmjF05.119   351 -LPSS---------KADANG------------------------------ 360  
+
+                   LMRiLvDeegLsWdeAW........eITtkTfaYTNHTvLPEALEkWPve
+                            +L+ deA++++ ++ +e +t+++a+             P +
+  LmjF05.119   361 ---------DLQLDEALsrslrslqETVTSVVAF-------------PHH 388  
+
+                   Lf.ekLLPRH..leIIyeINerfLetVrakyPdgDedklrrmSiieEgge
+                   + +e+++ RH++ + ++e  +    +V a ++        ++S    g++
+  LmjF05.119   389 ISkEEMVLRHssAQAVEELAQ---LLVDARRG-------GSVS----GSC 424  
+
+                   krs...............................................
+                   ++ +    + ++++++  +  +  +++  +   ++++++  + +++ +  
+  LmjF05.119   425 APHsvaavrvepptrnllemvelvksrfatvmaqqqrkelagaqgrvgla 474  
+
+                   ..................................................
+                   + +++ ++++++  +  ++    +++   +++ +++   +  ++ + +++
+  LmjF05.119   475 hmeesmtrhgkqvvqllqdlcvaqedaaadsevseqllvevmgnvdlern 524  
+
+                   ..................................................
+                    ++ + ++  ++  ++ +  +++ ++  +    ++ + +  ++++++ ++
+  LmjF05.119   525 ltpakldhflsdvverlrmvktkyqralnaaaagkaraeaasqkstglqk 574  
+
+                   ..............................................vVrM
+                   + ++     ++ ++++ + + ++++  ++ ++ ++ ++ ++++++     
+  LmjF05.119   575 rlqkvaaaverigrdglgltfpstpaasgigsageaddagkgrddaE--- 621  
+
+                   AnLavVGShaVNGVAelHSeivKetvFaDFyelwP...eKFqNdyKTNGv
+                         G+ + NGV++l       + ++   +l+P +  K          
+  LmjF05.119   622 ------GGRRGNGVSAL-------RRLNLRPALEPataTKASS------- 651  
+
+                   TPRRWLalcNPgLSelItewiGdTd...dWltdldlLkkLrkfaddeefq
+                               L    +++ ++Td+++  +t+   L++L+ +a   +  
+  LmjF05.119   652 ------------LTTTKDGTANETDtpgAAVTEHNVLEALQLVASRIGTS 689  
+
+                   eewakvKreNKqkLAeyieketGvvvnaelmaPdslFDvQVKRIHEYKRQ
+                    e +     +  +LA++++ +   + +       s F       HE+  +
+  LmjF05.119   690 GEMRDW-AVVQEELAQLRAGKARWKAD------TSAF-------HEAMAM 725  
+
+                   LLNiLhviyrYnriKemppkdErkkfvPRvtvIFGGKAAPgYymAKlIIK
+                   L+            ++ ++       v + t +  G    ++  AK    
+  LmjF05.119   726 LM-----------QRLAKNGQ----MVKQ-TLFLMG----TDESAK---- 751  
+
+                   LIndVAdvVNnDPeVgdlLKVVFvPNYnVSlAEliIPAsDLSeQISTAGt
+                              D                                      
+  LmjF05.119   752 -----------D-------------------------------------- 752  
+
+                   EASGTSNMKFaLNGaLtIGTLDGANVEirEevGeENfFiFGataeEVeaL
+                                             E +Eev      +  + +eE ++L
+  LmjF05.119   753 --------------------------ELVEEV------LQRDSEEELDRL 770  
+
+                   RkegynpreyyeadprleeVldqIrsGfFspedpdlFkdlldsllgygra
+                    +e         a +  e+ l ++ ++ +++        + ++ll +   
+  LmjF05.119   771 SAE---------AMEYVERSLAELLQK-YNR--------WAQRLLQTT-- 800  
+
+                   gDyflVlaDFesYidaQdkVdelYkdaqkkWtkmSIlNiAgsGkFSSD.R
+                             e+ + +Q+k+ ++++                +++FSS +R
+  LmjF05.119   801 ----------EDHLYTQRKIVKYFAA--------------VCRFFSSQsR 826  
+
+                   TIaEYAkeIWnIedvdtGpvrlplegsret<-*
+                   + a  A++I +         ++   + r     
+  LmjF05.119   827 AAAAPAEDIPEDN-----LYDIDSCLMRAA    851  
+
+All: domain 1 of 1, from 197 to 845: score -466.4, E = 0.0027
+                   *->edveslkksivyhleftlgkspkfatprdyytAtaysvrDkrLlirW
+                      +++ + k++ +  l+ ++  +  + + + y tA+a  ++   + ++ 
+  LmjF05.119   197    PEARRTKANVSQLLHTSC--DVLSQLAKEYTTAKAAVMKK--MERTV 239  
+
+                   ndTlqkyykkdpkrvyYLSlEfLlGRaLqNalgnlglldafaeAlkelGl
+                   ++++++      ++            +L+ al+ l+ +++ + +  e G 
+  LmjF05.119   240 AASQSF------RQL-----------TLSTALSELEAQQELKGSAAEDG- 271  
+
+                   dLeeideiEvDAgLGNGGLGRLAaCFLDSmATLglPaiGYGlRYeyGlFk
+                                 G        a ++D ++T+g ++             
+  LmjF05.119   272 --------------G--------ASAMDGSHTVGSAL------------- 286  
+
+                   QkItkGgQvEvpDdWLeyGnPWEieRpevaypvrFyGkvepkpdgeGkkk
+                   Q++ +                      + +++++F ++v + p       
+  LmjF05.119   287 QSLIDVI--------------------PASLQIHFNLQVPEAPVL----- 311  
+
+                   fkWvdgevVlAvAYDvPipGyktntvntlRLWsAkvpaqedFdlddFNgG
+                                          +  n+l      + + + F l+   ++
+  LmjF05.119   312 -----------------------TRCNSL------T-ELIRFLLSEYLSM 331  
+
+                   dYieAvedrnaaenItrVLYPnDntfeGKeLRLKQQYFlvSASLQDIIrr
+                   + ++   + ++ + +  V Y + +                          
+  LmjF05.119   332 ERYMEMVEVERQR-LAEVFYLPSS-------------------------- 354  
+
+                   fkksklgsdgvrtnwdeFpdKvAiQlNDTHPtLaIPElmRiLvDeeglsW
+                       k +                   N++           + +De+    
+  LmjF05.119   355 ----KAD------------------ANGD-----------LQLDEA---L 368  
+
+                   deAWeIttktfaYTNHTvLpEALEkWpvdlf.eklLPRHleIIyeInarf
+                    + +  +++t+          + + +p +  +e++++RH+    ++ +++
+  LmjF05.119   369 SRSLRSLQETVT---------SVVAFPHHISkEEMVLRHSSA-QAVEELA 408  
+
+                   lwlvrskypdgDedklrrmSiieEggekrs....................
+                     lv + ++        ++S    g++++ +    + ++++++  +  + 
+  LmjF05.119   409 QLLVDARRG-------GSVS----GSCAPHsvaavrvepptrnllemvel 447  
+
+                   ..................................................
+                    +++  +   ++++++  + +++ +  + +++ ++++++  +  ++    
+  LmjF05.119   448 vksrfatvmaqqqrkelagaqgrvglahmeesmtrhgkqvvqllqdlcva 497  
+
+                   ..................................................
+                   +++   +++ +++   +  ++ + +++ ++ + ++  ++  ++ +  +++
+  LmjF05.119   498 qedaaadsevseqllvevmgnvdlernltpakldhflsdvverlrmvktk 547  
+
+                   ..................................................
+                    ++  +    ++ + +  ++++++ +++ ++     ++ ++++ + + ++
+  LmjF05.119   548 yqralnaaaagkaraeaasqkstglqkrlqkvaaaverigrdglgltfps 597  
+
+                   .......................vVrMAnLavvgsHaVNGVaeiHSeivK
+                   ++  ++ ++ ++ ++ ++++++           g+ ++NGV++++     
+  LmjF05.119   598 tpaasgigsageaddagkgrddaE---------GGRRGNGVSALR----- 633  
+
+                   etvFkDfyelwPeKFqNKTNGvTPRRWLalcNPgLSelItewiGddWltd
+                       +  +++                                        
+  LmjF05.119   634 ----RLNLRPA--------------------------------------- 640  
+
+                   ldlLkkLrkfaddeelqeewakvKrnnKqk...lAeaiekelglvqVn..
+                         L++    ++ + +  k   +n+ +++++A   +++l+  q   +
+  LmjF05.119   641 ------LEPATATKASSLTTTKDGTANETDtpgAAVTEHNVLEALQLVas 684  
+
+                   elmaPsslFDvqVKRIHEYKRQLLNiLhviyrYnriKemppkdErkkfvP
+                   + +    + D  V     +               +++             
+  LmjF05.119   685 RIGTSGEMRDWAVVQEELA---------------QLR------------- 706  
+
+                   RtvIfgGKA.....aPgYymAKlIIKLIndVAdvVNnDpevgdlLKVvFv
+                        +GKA+ + + +++++A +   L  ++A+   n  +v++ L     
+  LmjF05.119   707 -----AGKArwkadTSAFHEAMAM--LMQRLAK---NGQMVKQTL----- 741  
+
+                   pNYnVSlAEeiiPAsDlSeqISTAGlEASGTsNMKFaLNGaLtIGTlDGA
+                                                            +  GT+  A
+  LmjF05.119   742 -----------------------------------------FLMGTDESA 750  
+
+                   NvEireevGeeNffiFGataeevealRkegynpreyyeadprleevldqI
+                     E+ eev      +  + +ee ++l +e              e v+  +
+  LmjF05.119   751 KDELVEEV------LQRDSEEELDRLSAEA------------MEYVERSL 782  
+
+                   rsGfFspddpdlfkdivdsllgygragDyflVgaDFesYidaQdkVdelY
+                   ++          + ++ ++ll +             e+ + +Q+k+ +++
+  LmjF05.119   783 AEL------LQKYNRWAQRLLQTT------------EDHLYTQRKIVKYF 814  
+
+                   kdaqkkWtkmSIlNiAgsGkFSSD.RTIaEYAkeIWnIepvrlpl<-*
+                   +                +++FSS +R+ a  A++I +    ++     
+  LmjF05.119   815 AA--------------VCRFFSSQsRAAAAPAEDIPEDNLYDIDS    845  
+
+//
+
+Query sequence: LmjF05.1200
+Accession:      [none]
+Description:    LmjF05.1200 prefoldin subunit, putative 1918624:1919022 reverse MW:15300
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1210
+Accession:      [none]
+Description:    LmjF05.1210 protein phosphatase type 1 regulator-like protein 1920029:1921219 reverse MW:44748
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1220
+Accession:      [none]
+Description:    LmjF05.1220 adenylate cyclase regulatory protein-like protein 1937456:1939174 forward MW:61877
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF05.1230
+Accession:      [none]
+Description:    LPG1G GIPL galf transferase, putative 1944147:1945946 forward MW:67512
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF06.0010
+Accession:      [none]
+Description:    LmjF06.0010 histone h4 1949735:1950037 reverse MW:11366
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF06.0020
+Accession:      [none]
+Description:    LmjF06.0020 hypothetical protein, conserved 1952232:1953839 reverse MW:58403
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
+
+Query sequence: LmjF06.0030
+Accession:      [none]
+Description:    LmjF06.0030 hypothetical protein, conserved 1959610:1961637 reverse MW:75595
+
+Scores for sequence family classification (score includes all domains):
+Model    Description                                    Score    E-value  N 
+-------- -----------                                    -----    ------- ---
+	[no hits above thresholds]
+
+Parsed for domains:
+Model    Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
+-------- ------- ----- -----    ----- -----      -----  -------
+	[no hits above thresholds]
+
+Alignments of top-scoring domains:
+	[no hits above thresholds]
+//
