@@ -20,3 +20,7 @@ hmmpfam.out -- An example output file of the program HMMPFAM (a part
   of HMMER software)
 
 needle.out -- An example output of the EMBOSS program needle.
+
+1BT0.pdb -- Example of Protein Data Bank file, structure of
+  ubiquitin-like protein 'rub1'
+
