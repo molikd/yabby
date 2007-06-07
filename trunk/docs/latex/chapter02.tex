@@ -825,4 +825,23 @@ yabby> emboss_needle needle.out 3
 The second arument is the number of top-scoring sequences
 to be printed out.
 
+\index{pdb\_model.pl}
+
+Another example of a stand-alone command is 'pdb\_model', which 
+splits the Protein Data Bank (PDB) file with multiple models.
+The output is a serier of PDB file, one per model:
+
+\begin{verbatim}
+yabby> pdb_model 2C7H.pdb RBP_
+
+ working on model  1 (creating 'RBP_1.pdb')
+ working on model  2 (creating 'RBP_2.pdb')
+ working on model  3 (creating 'RBP_3.pdb')
+ working on model  4 (creating 'RBP_4.pdb')
+ working on model  5 (creating 'RBP_5.pdb')
+.... extra output deleted ....
+\end{verbatim}
+
+where '2C7H.pdb' is the original PDB file with multiple models,
+and 'RBP\_' is the prefix used for individual model files.
 
