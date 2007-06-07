@@ -12,9 +12,9 @@ $USAGE = "
  Usage:
  	motif_cmp MOTIF1_OBJ MOTIF2_OBJ
 
- Compares two motifs.  Two motifs are equal if they have the
- same number of sequences, the sequences have the same ID,
- and the sequences themselves are identical as strings.
+ Compares two motifs.  Two motifs are identical if they have
+ the same number of sequences, the sequences have the same
+ ID, and the sequences themselves are identical as strings.
 ";
 
 # options
