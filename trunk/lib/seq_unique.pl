@@ -85,7 +85,7 @@ for $key1 ( @$keys1 ) {
 if ( $cntr > 0 ) {
 
   print " $cntr unique sequences found.\n";
-
+  printf " Saving sequences as '%s'\n", $obj_name;
   $xmldoc = seq2xml( $seq_hash );
   save_ip_xml( $xmldoc, $obj_name, $SEQUENCE, $WARN_OVERW );
 
