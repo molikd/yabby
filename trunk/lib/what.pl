@@ -19,7 +19,7 @@ check_call( @argl, [ 0 ] );
 $ip_hash = load_ip_hash();
 @item_sorted = sort keys %$ip_hash;
 
-printf "    objects        properties\n";
+printf "    object(s)      type\n";
 printf "  ------------------------------\n";
 
 if ( @item_sorted ) {

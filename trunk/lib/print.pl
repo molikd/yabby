@@ -11,7 +11,7 @@ $USAGE = "
 
  Usage:
 
-    print [ options ] OBJ_NAME.PROPERTY
+    print [ options ] OBJ_NAME.TYPE
 
  Options:
 
