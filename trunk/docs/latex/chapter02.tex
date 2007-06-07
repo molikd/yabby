@@ -22,7 +22,7 @@ execute all examples given in the tutorial.
 
 \section{Working with sequences}
 
-\index{sequence files}
+\index{sequences}
 
 In Yabby sequences are represented as sequence objects. A sequence
 object may contain one or more sequences. 
@@ -503,4 +503,17 @@ This command requires the module Bio::DB::GenBank from
 BioPerl \cite{bioperl}, and is an example of how easy is
 to leverage the capabilities of other bioinformatics packages
 within Yabby.
+
+
+\section{Working with sequence motifs}
+
+\index{sequence motifs}
+
+Sequence motifs are handled as 'motif' objects.  Motifs could
+be loaded from FASTA files, or from BLOCKS files:
+
+
+
+In the internal representation this type object is identical to
+the sequence type object.
 
