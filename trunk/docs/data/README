@@ -19,4 +19,4 @@ LmjFmockup.pep -- A mockup genome sequence file.
 hmmpfam.out -- An example output file of the program HMMPFAM (a part
   of HMMER software)
 
-
+needle.out -- An example output of the EMBOSS program needle.
