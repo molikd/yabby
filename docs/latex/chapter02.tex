@@ -16,5 +16,136 @@
 
 \chapter{Tutorial}
 
+The data files used in this tutorial can be found in docs/data/ 
+directory. Starting Yabby in this directory should allow one to
+execute all examples given in the tutorial.
+
 \section{Working with sequences}
+
+\index{sequence files}
+
+In Yabby sequences are represented as sequence objects. One way
+to create a sequence object is to load sequences from a file.
+Consider the file 'cad3.seq' which contains three sequences
+from the Pfam CAD family in the FASTA format:
+
+\begin{verbatim}
+>Q53650_STAAU
+YVATGIDYLVILILLFSQVKKGQVKHIWIGQYIGTAIVIGASLLVAQGVVNLIPQQWVIG
+LLGLLPLYLGVKIWIKGEEDEDESSILSLFSSGKFNQLFLTMIFIVLASSADDFSIYIPY
+FTTLSMSEIFIVTIVFLIMVGVLCYVSYRLASFDFISETIEKYERWIVPIVFIGLGIYIL
+FENGTSNALISF
+>Q97PJ0_STRPN
+YISTSIDYLIILIILFAQLSQNKQKWHIYAGQYLGTGLLVGASLVAAYVVNFVPEEWMVG
+LLGLIPIYLGIRFAIVGEDAEEEEEEIIERLEQSKANQLFWTVTLLTIASGGDNLGIYIP
+YFASLDWSQTLVALLVFVIGIIIFCEISRVLSSIPLIFETIEKYERIIVPLVFILLGLYI
+MYENGTIETFLIV
+>P95773_STALU
+YIAQALDLLVILLMFFARAKTRKEYRDIYIGQYVGSVALIVISLFFAFVLNYVPEKWILG
+LLGLIPIYLGIKVAIYGDSDGEERAKKELNEKGLSKLVGTIAIVTIASCGADNIGLFVPY
+FVTLSVTNLLITLFVFLILIFFLVFAAQKLANIPEVGEIVEKFGRWIMAVIYIALGLFII
+IENDTIQTILGF
+\end{verbatim}
+
+\index{seq\_load}
+
+To load this file in the workspace use the command 'seq\_load':
+
+\begin{verbatim}
+yabby> seq_load cad3.seq cad3
+
+ Reading the file 'cad3.seq' ..
+ 3 sequence(s) found.
+
+\end{verbatim}
+
+Most Yabby commands which create a new object in the workspace
+conform to the same pattern:
+
+\begin{verbatim}
+COMMAND [ options ] ARGS OBJ_NAME
+\end{verbatim}
+
+Where '[ options ]' is where flags and options are passed (if
+any), ARGS are the arguments to the command, and OBJ\_NAME is
+the name of the object to be created. In the example given
+above, there were no options to the 'seq\_load' command; there
+was one argument, the name of the file; and the object to be
+created was named 'cad3'.
+
+It is possible to inspect objects currently available in the
+workspace:
+
+\index{what}
+
+\begin{verbatim}
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    cad3           seq           
+
+\end{verbatim}
+
+This listing shows that one object is currently in the workspace,
+of the 'seq' type. It is possible to load the same sequences
+under a different name: 
+
+\begin{verbatim}
+yabby> seq_load cad3.seq cad3_second
+
+ Reading the file 'cad3.seq' ..
+ 3 sequence(s) found.
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    cad3           seq           
+    cad3_second    seq           
+
+\end{verbatim}
+
+The two objects 'cad3.seq' and 'cad3\_second.seq' are identical.
+
+\index{print}
+
+The command 'print' allows one to print the sequence object:
+
+\begin{verbatim}
+yabby> print cad3.seq
+
+>Q53650_STAAU [ Q53650_STAAU ]
+YVATGIDYLVILILLFSQVKKGQVKHIWIGQYIGTAIVIGASLLVAQGVVNLIPQQWVIG
+LLGLLPLYLGVKIWIKGEEDEDESSILSLFSSGKFNQLFLTMIFIVLASSADDFSIYIPY
+FTTLSMSEIFIVTIVFLIMVGVLCYVSYRLASFDFISETIEKYERWIVPIVFIGLGIYIL
+FENGTSNALISF
+>Q97PJ0_STRPN [ Q97PJ0_STRPN ]
+YISTSIDYLIILIILFAQLSQNKQKWHIYAGQYLGTGLLVGASLVAAYVVNFVPEEWMVG
+LLGLIPIYLGIRFAIVGEDAEEEEEEIIERLEQSKANQLFWTVTLLTIASGGDNLGIYIP
+YFASLDWSQTLVALLVFVIGIIIFCEISRVLSSIPLIFETIEKYERIIVPLVFILLGLYI
+MYENGTIETFLIV
+>P95773_STALU [ P95773_STALU ]
+YIAQALDLLVILLMFFARAKTRKEYRDIYIGQYVGSVALIVISLFFAFVLNYVPEKWILG
+LLGLIPIYLGIKVAIYGDSDGEERAKKELNEKGLSKLVGTIAIVTIASCGADNIGLFVPY
+FVTLSVTNLLITLFVFLILIFFLVFAAQKLANIPEVGEIVEKFGRWIMAVIYIALGLFII
+IENDTIQTILGF
+\end{verbatim}
+
+Upon reading the sequences Yabby has taken the first string
+in the FASTA comment to be the sequence ID, and the full
+comment is re-inserted within the square brackets. In this
+case the only comment was the ID string, and this is merely
+repeated within the square brackets. 
+
+The command 'print' can send sequences to a file, instead
+of printing them in the terminal window:
+
+\begin{verbatim}
+yabby> print -f tmp.fasta cad3.seq
+
+ 'cad3.seq' written to the file 'tmp.fasta'
+
+\end{verbatim}
+
 
