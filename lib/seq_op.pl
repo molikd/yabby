@@ -80,7 +80,7 @@ $diff = $setop->[2];
 printf " Found %d sequence(s) in '%s'\n", $#{$keys1}+1, $seq1;
 printf " Found %d sequence(s) in '%s'\n", $#{$keys2}+1, $seq2;
 printf "  INTERSECTION contains %d sequence(s)\n", $#{$isect}+1;
-printf "  opt_d_flagERENCE contains %d sequence(s)\n", $#{$diff}+1;
+printf "  DIFFERENCE contains %d sequence(s)\n", $#{$diff}+1;
 printf "  UNION contains %d sequence(s)\n", $#{$union}+1;
 
 if ( $opt_i_flat ) {
