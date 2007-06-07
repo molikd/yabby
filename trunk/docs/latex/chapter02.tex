@@ -24,9 +24,11 @@ execute all examples given in the tutorial.
 
 \index{sequence files}
 
-In Yabby sequences are represented as sequence objects. One way
-to create a sequence object is to load sequences from a file.
-Consider the file 'cad3.seq' which contains three sequences
+In Yabby sequences are represented as sequence objects. A sequence
+object may contain one or more sequences. 
+
+One way to create a sequence object is to load sequences from a
+file.  Consider the file 'cad3.seq' which contains three sequences
 from the Pfam CAD family in the FASTA format:
 
 \begin{verbatim}
@@ -56,7 +58,6 @@ yabby> seq_load cad3.seq cad3
 
  Reading the file 'cad3.seq' ..
  3 sequence(s) found.
-
 \end{verbatim}
 
 Most Yabby commands which create a new object in the workspace
@@ -84,7 +85,6 @@ yabby> what
     object(s)      type
   ------------------------------
     cad3           seq           
-
 \end{verbatim}
 
 This listing shows that one object is currently in the workspace,
@@ -103,14 +103,13 @@ yabby> what
   ------------------------------
     cad3           seq           
     cad3_second    seq           
-
 \end{verbatim}
 
 The two objects 'cad3.seq' and 'cad3\_second.seq' are identical.
 
 \index{print}
 
-The command 'print' allows one to print the sequence object:
+The command 'print' allows one to output the sequence object:
 
 \begin{verbatim}
 yabby> print cad3.seq
@@ -145,7 +144,155 @@ of printing them in the terminal window:
 yabby> print -f tmp.fasta cad3.seq
 
  'cad3.seq' written to the file 'tmp.fasta'
-
 \end{verbatim}
 
+Currently there are several useful options of the 'print'
+command. The option '-l' causes protein sequences to be
+printed in a three-letter format:
+
+\begin{verbatim}
+yabby> print -l cad3.seq
+
+>Q53650_STAAU
+TYR VAL ALA THR GLY ILE ASP TYR LEU VAL ILE LEU 
+ILE LEU LEU PHE SER GLN VAL LYS LYS GLY GLN VAL 
+....further output deleted....
+\end{verbatim}
+
+The option '-t N' truncates all sequences at N residues: 
+
+\begin{verbatim}
+yabby> print -t 10 cad3.seq
+
+>Q53650_STAAU [ Q53650_STAAU ]
+YVATGIDYLV
+>Q97PJ0_STRPN [ Q97PJ0_STRPN ]
+YISTSIDYLI
+>P95773_STALU [ P95773_STALU ]
+YIAQALDLLV
+\end{verbatim}
+
+The command 'seq\_info' prints additional information about
+sequence objects:
+
+\begin{verbatim}
+yabby> seq_info cad3
+
+ 'cad3' contains 3 sequence(s)
+   min number of residues: 192 (sequence 'Q53650_STAAU')
+   max number of residues: 193 (sequence 'Q97PJ0_STRPN')
+\end{verbatim}
+
+The option '-l' causes the number of residues to be printed
+for each sequence: 
+
+\begin{verbatim}
+yabby> seq_info -l cad3
+
+ 'cad3' contains 3 sequence(s)
+  1 -> Q53650_STAAU, 192 residues
+  2 -> Q97PJ0_STRPN, 193 residues
+  3 -> P95773_STALU, 192 residues
+\end{verbatim}
+
+It is often required to select one or more sequences from the sequence
+object. The command 'seq\_pick' allows one to select sequences from
+their order number or sequence ID. For example:
+
+\begin{verbatim}
+yabby> seq_pick -n 2 cad3 s2       
+
+ Fetching the sequence 2 ('Q97PJ0_STRPN')
+ Saving the extracted sequence as 's2'
+\end{verbatim}
+
+The above command has picked the sequence number 2 from the 'cad3'
+object, and saved this sequence under the name 's2': 
+
+\begin{verbatim}
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    cad3           seq           
+    s2             seq           
+
+yabby> print s2.seq
+
+>Q97PJ0_STRPN [ Q97PJ0_STRPN ]
+YISTSIDYLIILIILFAQLSQNKQKWHIYAGQYLGTGLLVGASLVAAYVVNFVPEEWMVG
+LLGLIPIYLGIRFAIVGEDAEEEEEEIIERLEQSKANQLFWTVTLLTIASGGDNLGIYIP
+YFASLDWSQTLVALLVFVIGIIIFCEISRVLSSIPLIFETIEKYERIIVPLVFILLGLYI
+MYENGTIETFLIV
+\end{verbatim}
+
+Another useful option is to select a sequence by its ID string:
+
+\begin{verbatim}
+yabby> seq_pick -q Q53650_STAAU cad3 s1
+
+ Fetching the sequence 'Q53650_STAAU'
+ Saving the extracted sequence as 's1'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    cad3           seq           
+    s1             seq           
+    s2             seq           
+\end{verbatim}
+
+Suppose that we wanted to take the sequence Q53650\_STAAU, and
+extract residues 21-40. The above command would take care of the
+first part, while the command 'seq\_strip' could be used to
+select a residue range:
+
+\begin{verbatim}
+yabby> seq_strip 21:40 s1 s1_portion
+
+ 's1' contains 1 sequence(s)
+ stripping 'Q53650_STAAU'
+
+yabby> print s1_portion.seq
+
+>Q53650_STAAU_21:40 [ Q53650_STAAU ]
+KGQVKHIWIGQYIGTAIVIG
+\end{verbatim}
+
+The command 'seq\_pattern' allows one to search for a pattern
+in a sequence. For example, to search for a pattern 'IDY' use: 
+
+\begin{verbatim}
+yabby> seq_pattern IDY cad3
+
+ 'IDY' matches in 'Q53650_STAAU'
+ 'IDY' matches in 'Q97PJ0_STRPN'
+ 3 sequences examined, 2 match(es) found
+\end{verbatim} 
+
+The option '-s NAME' allows one to save the matching sequences
+under a the new name:
+
+\begin{verbatim}
+yabby> seq_pattern -s IDY_matches IDY cad3
+
+ 'IDY' matches in 'Q53650_STAAU'
+ 'IDY' matches in 'Q97PJ0_STRPN'
+ 3 sequences examined, 2 match(es) found
+ Saving matches as 'IDY_matches'
+ [ seq_pattern: 'IDY_matches.seq' exists, overwritten ]
+\end{verbatim}
+
+The option '-c' allows one to search the sequence comment for a
+pattern, rather than the sequence residues:
+
+\begin{verbatim}
+yabby> seq_pattern -c STAA cad3
+
+ 'STAA' matches in 'Q53650_STAAU'
+ 3 sequences examined, 1 match(es) found
+\end{verbatim}
+
+The command 'seq\_op' allows one  
 
