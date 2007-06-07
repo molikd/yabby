@@ -429,6 +429,8 @@ yabby> seq_unique cad3 cad tmp
  No unique sequences found.
 \end{verbatim}
 
+\index{seq\_compl}
+
 The command 'seq\_compl' calculates the reverse complement of
 a DNA sequence:
 
@@ -479,4 +481,26 @@ tgcgtgttcttctgctgaagaactgtggcatgcgtgcaagaggcgggtacactaataaaa
 aggataactgagtacgggtgtccaagtatactgggggtacgggtgcttgtacgtgtacgc
 gtgtactggttagggttagggttagggttagggttagggtcagggttagggttagggtta
 \end{verbatim}
+
+\index{seq\_fetch}
+
+The command 'seq\_fetch' fetches a sequence from GenBank
+by the sequence accession number:
+
+\begin{verbatim}
+yabby> seq_fetch J00522 mig
+
+ Saving 'J00522' as 'mig'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    mig            seq           
+\end{verbatim}
+
+This command requires the module Bio::DB::GenBank from
+BioPerl \cite{bioperl}, and is an example of how easy is
+to leverage the capabilities of other bioinformatics packages
+within Yabby.
 
