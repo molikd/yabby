@@ -17,7 +17,8 @@ $USAGE = "
  OBJ_NAME_NEW. The sequence OBJ_NAME must be a DNA sequence.
 
  Options:
- -r -- Calculate reverse complement.
+
+ -r -- Calculate the reverse complement.
 ";
 
 # options

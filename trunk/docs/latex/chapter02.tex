@@ -382,6 +382,33 @@ FVTLSVTNLLITLFVFLILIFFLVFAAQKLANIPEVGEIVEKFGRWIMAVIYIALGLFII
 IENDTIQTILGF
 \end{verbatim}
 
+Since this command will change the sequence IDs, the output
+of the command 'seq\_op' would be different. Specifically,
+the intersection of the two sets of sequences would contain
+no sequences:
+
+\begin{verbatim}
+yabby> seq_op -i cad cad3 cad_u
+
+ Found 6 sequence(s) in 'cad'
+ Found 3 sequence(s) in 'cad3'
+  INTERSECTION contains 0 sequence(s)
+  DIFFERENCE contains 9 sequence(s)
+  UNION contains 9 sequence(s)
+ [ No sequences to save ]
+
+yabby> seq_op -u cad cad3 cad_u
+
+ Found 6 sequence(s) in 'cad'
+ Found 3 sequence(s) in 'cad3'
+  INTERSECTION contains 0 sequence(s)
+  DIFFERENCE contains 9 sequence(s)
+  UNION contains 9 sequence(s)
+ [ Saving UNION as 'cad_u' ]
+\end{verbatim}
+
+\index{seq\_unique}
+
 The command 'seq\_unique' finds sequences present in one set
 not present in the other, by {\em comparing sequence strings}.
 
@@ -402,4 +429,54 @@ yabby> seq_unique cad3 cad tmp
  No unique sequences found.
 \end{verbatim}
 
+The command 'seq\_compl' calculates the reverse complement of
+a DNA sequence:
+
+\begin{verbatim}
+yabby> seq_load dna.seq dna
+
+ Reading the file 'dna.seq' ..
+ 1 sequence(s) found.
+
+yabby> print dna.seq
+
+>chr01 [ chr01 ]
+taaccctaaccctaaccctgaccctaaccctaaccctaaccctaaccctaaccagtacac
+gcgtacacgtacaagcacccgtacccccagtatacttggacacccgtactcagttatcct
+ttttattagtgtacccgcctcttgcacgcatgccacagttcttcagcagaagaacacgca
+caatgctctttgataaacgtgcggacatgaaaaaaagggaaaaacgcagctacgtgtgct
+gtcgttggtttcacagcgtcaagccgcgtcggtgtaccaaagaggaggtgacccatcgag
+
+yabby> seq_compl dna dna_c
+
+ 'dna' contains 1 sequence(s)
+ Working on 'chr01'
+
+yabby> print dna_c.seq
+
+>chr01 [ chr01 ]
+attgggattgggattgggactgggattgggattgggattgggattgggattggtcatgtg
+cgcatgtgcatgttcgtgggcatgggggtcatatgaacctgtgggcatgagtcaatagga
+aaaataatcacatgggcggagaacgtgcgtacggtgtcaagaagtcgtcttcttgtgcgt
+gttacgagaaactatttgcacgcctgtactttttttccctttttgcgtcgatgcacacga
+cagcaaccaaagtgtcgcagttcggcgcagccacatggtttctcctccactgggtagctc
+\end{verbatim}
+
+The option '-r' calculates the reverse complement: 
+
+\begin{verbatim}
+yabby> seq_compl -r dna dna_cr
+
+ 'dna' contains 1 sequence(s)
+ Working on 'chr01'
+
+yabby> print dna_cr.seq
+
+>chr01 [ chr01 ]
+ctcgatgggtcacctcctctttggtacaccgacgcggcttgacgctgtgaaaccaacgac
+agcacacgtagctgcgtttttccctttttttcatgtccgcacgtttatcaaagagcattg
+tgcgtgttcttctgctgaagaactgtggcatgcgtgcaagaggcgggtacactaataaaa
+aggataactgagtacgggtgtccaagtatactgggggtacgggtgcttgtacgtgtacgc
+gtgtactggttagggttagggttagggttagggttagggtcagggttagggttagggtta
+\end{verbatim}
 
