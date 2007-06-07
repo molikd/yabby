@@ -305,6 +305,8 @@ yabby> seq_pattern -c STAA cad3
 The command 'seq\_op' allows one to combine two sequence objects
 based on their IDs. This command has the following form:
 
+\index{seq\_op}
+
 \begin{verbatim}
 seq_op [ options ] SEQ1_OBJ SEQ2_OBJ RES_OBJ
 \end{verbatim}
@@ -335,8 +337,40 @@ yabby> seq_op -i cad cad3 cad_i
  Found 6 sequence(s) in 'cad'
  Found 3 sequence(s) in 'cad3'
   INTERSECTION contains 3 sequence(s)
-  opt_d_flagERENCE contains 3 sequence(s)
+  DIFFERENCE contains 3 sequence(s)
   UNION contains 6 sequence(s)
  [ Saving INTERSECTION as 'cad_i' ]
+ [ seq_op: 'cad_i.seq' exists, overwritten ]
 \end{verbatim}
+
+The last command has saved the intersection of objects 'cad.seq' and
+'cad3.seq' as a new sequence object, named 'cad\_i'. Since 'cad3.seq'
+is simply a subset of 'cad.seq' this intersection identical to
+'cad3.seq'. Options '-u' and '-d' save the union and difference.
+It should be noted that the command 'seq\_op' compares only
+sequence IDs, {\em it does not compare the sequences themselves}.
+Furthermore, unpredictable results may occur if the sequence IDs
+are not unique within each set of sequences. 
+
+The command 'seq\_unique' compares sequence strings, and more
+specifically it finds sequences present in one set not present
+in the other:
+
+\begin{verbatim}
+yabby> seq_unique cad cad3 cadu
+
+ 3 unique sequences found.
+ Saving sequences as 'cadu'
+\end{verbatim}
+
+Note that in this case the order of sequence objects is important.
+This command find the sequences present in the first sequence
+object and not present in the second, i.e.:
+
+\begin{verbatim}
+yabby> seq_unique cad3 cad tmp
+
+ No unique sequences found.
+\end{verbatim}
+
 
