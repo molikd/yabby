@@ -84,17 +84,19 @@ printf "  DIFFERENCE contains %d sequence(s)\n", $#{$diff}+1;
 printf "  UNION contains %d sequence(s)\n", $#{$union}+1;
 
 if ( $opt_i_flat ) {
-  printf " [ Saving INTERSECTION as '%s' ]\n", $obj_name;
+
   @op_array = @$isect;
+  $msg_string = "INTERSECTION";
 
 } elsif ( $opt_d_flag ) {
-  printf " [ Saving DIFFERENCE as '%s' ]\n", $obj_name;
+
   @op_array = @$diff;
+  $msg_string = "DIFFERENCE";
 
 } else {
 
-  printf " [ Saving UNION as '%s' ]\n", $obj_name;
   @op_array = @$union;
+  $msg_string = "UNION";
 }
 
 $seq_id_hash = {};
@@ -120,7 +122,15 @@ for $id ( @op_array ) {
   $seq_hash->{$cntr} = $seq_item;
 }
 
-$xmldoc = seq2xml( $seq_hash );
+$keys = get_seq_keys( $seq_hash );
 
-save_ip_xml( $xmldoc, $obj_name, $SEQUENCE, $WARN_OVERW );
+if ( $#{$keys} > -1 ) {
+
+  printf " [ Saving %s as '%s' ]\n", $msg_string, $obj_name;
+  $xmldoc = seq2xml( $seq_hash );
+  save_ip_xml( $xmldoc, $obj_name, $SEQUENCE, $WARN_OVERW );
+
+} else {
+  print " [ No sequences to save ]\n";
+}
 
