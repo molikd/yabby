@@ -105,6 +105,7 @@ printf " %d sequences examined, %d match(es) found\n", $#{$keys}+1,
     $#{$hits_keys}+1; 
 
 if ( $opt_s_flag ) {
+  printf " Saving matches as '%s'\n", $opt_s_value;
   $xmldoc = seq2xml( $seq_hash2 );
   save_ip_xml( $xmldoc, $opt_s_value, $SEQUENCE, $WARN_OVERW );
 }
