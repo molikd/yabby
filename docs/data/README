@@ -10,4 +10,7 @@ cox1.seq -- Pfam COX1 family of protein sequences (23 sequences).
 
 dna.seq -- An example DNA sequence.
 
-m.blocks -- An examplel sequence motif in BLOCKS format.
+m2.blocks -- An example sequence motif in BLOCKS format.
+
+meme.out -- An example output of the motif detetion program MEME
+
