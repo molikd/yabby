@@ -22,7 +22,7 @@ $USAGE = "
  Notes:
 
  1. A 'motif' object is internally identical to the 'sequence' object.
- 2. Only BLOCKS format as given by MEME output was tested
+ 2. Only BLOCKS format as given by MEME output was tested.
 ";
 
 # options
