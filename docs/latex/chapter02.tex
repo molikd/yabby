@@ -352,9 +352,38 @@ sequence IDs, {\em it does not compare the sequences themselves}.
 Furthermore, unpredictable results may occur if the sequence IDs
 are not unique within each set of sequences. 
 
-The command 'seq\_unique' compares sequence strings, and more
-specifically it finds sequences present in one set not present
-in the other:
+\index{seq\_comment}
+
+The command 'seq\_comment' modifies the comment of each sequence
+to apped the sequence number to its ID. To modify the IDs of the
+sequences in 'cad3':
+
+\begin{verbatim}
+yabby> seq_comment cad3
+
+ Comments modified in 3 sequence(s).
+
+yabby> print cad3.seq
+
+>1-Q53650_STAAU [ Q53650_STAAU ]
+YVATGIDYLVILILLFSQVKKGQVKHIWIGQYIGTAIVIGASLLVAQGVVNLIPQQWVIG
+LLGLLPLYLGVKIWIKGEEDEDESSILSLFSSGKFNQLFLTMIFIVLASSADDFSIYIPY
+FTTLSMSEIFIVTIVFLIMVGVLCYVSYRLASFDFISETIEKYERWIVPIVFIGLGIYIL
+FENGTSNALISF
+>2-Q97PJ0_STRPN [ Q97PJ0_STRPN ]
+YISTSIDYLIILIILFAQLSQNKQKWHIYAGQYLGTGLLVGASLVAAYVVNFVPEEWMVG
+LLGLIPIYLGIRFAIVGEDAEEEEEEIIERLEQSKANQLFWTVTLLTIASGGDNLGIYIP
+YFASLDWSQTLVALLVFVIGIIIFCEISRVLSSIPLIFETIEKYERIIVPLVFILLGLYI
+MYENGTIETFLIV
+>3-P95773_STALU [ P95773_STALU ]
+YIAQALDLLVILLMFFARAKTRKEYRDIYIGQYVGSVALIVISLFFAFVLNYVPEKWILG
+LLGLIPIYLGIKVAIYGDSDGEERAKKELNEKGLSKLVGTIAIVTIASCGADNIGLFVPY
+FVTLSVTNLLITLFVFLILIFFLVFAAQKLANIPEVGEIVEKFGRWIMAVIYIALGLFII
+IENDTIQTILGF
+\end{verbatim}
+
+The command 'seq\_unique' finds sequences present in one set
+not present in the other, by {\em comparing sequence strings}.
 
 \begin{verbatim}
 yabby> seq_unique cad cad3 cadu
