@@ -20,15 +20,17 @@ $USAGE = "
  screen
 
  Specific for sequence object:
- -l -- print the sequence as the three-letter code
+ -l -- print the sequences as the three-letter code
  -c -- print the sequences as the CSV table
  -n N -- print N residues per line (both when printing one- and
  three-letter codes)
- -t N -- truncate each sequence at N letters when writing
+ -t N -- truncate each sequence at N letters when writing (works
+ only when printing one-letter code)
 
  Notes:
- 1. Currently supported objects for printing are 'seq', 'motif',
- and 'blastg'
+
+ 1. Currently print supports the following objects: 'seq', 'motif',
+ and 'blastg'.
 ";
 
 # options
