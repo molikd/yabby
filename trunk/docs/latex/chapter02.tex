@@ -172,6 +172,8 @@ YISTSIDYLI
 YIAQALDLLV
 \end{verbatim}
 
+\index{seq\_info}
+
 The command 'seq\_info' prints additional information about
 sequence objects:
 
@@ -198,6 +200,8 @@ yabby> seq_info -l cad3
 It is often required to select one or more sequences from the sequence
 object. The command 'seq\_pick' allows one to select sequences from
 their order number or sequence ID. For example:
+
+\index{seq\_pick}
 
 \begin{verbatim}
 yabby> seq_pick -n 2 cad3 s2       
@@ -248,6 +252,8 @@ extract residues 21-40. The above command would take care of the
 first part, while the command 'seq\_strip' could be used to
 select a residue range:
 
+\index{seq\_strip}
+
 \begin{verbatim}
 yabby> seq_strip 21:40 s1 s1_portion
 
@@ -262,6 +268,8 @@ KGQVKHIWIGQYIGTAIVIG
 
 The command 'seq\_pattern' allows one to search for a pattern
 in a sequence. For example, to search for a pattern 'IDY' use: 
+
+\index{seq\_pattern}
 
 \begin{verbatim}
 yabby> seq_pattern IDY cad3
@@ -294,5 +302,41 @@ yabby> seq_pattern -c STAA cad3
  3 sequences examined, 1 match(es) found
 \end{verbatim}
 
-The command 'seq\_op' allows one  
+The command 'seq\_op' allows one to combine two sequence objects
+based on their IDs. This command has the following form:
+
+\begin{verbatim}
+seq_op [ options ] SEQ1_OBJ SEQ2_OBJ RES_OBJ
+\end{verbatim}
+
+where SEQ1\_OBJ SEQ2\_OBJ are two sequence objects to be combined 
+and RES\_OBJ is the name under which the result will be stored.
+This command can calculate the union, intersection, symmetric
+difference.
+
+For example, consider the sets of sequences stored in files
+'cad.seq' and 'cad3.seq', where the first file contains six 
+CAD sequences, and cad3.seq contains three out of six sequences
+present in 'cad.seq'.
+
+\begin{verbatim}
+yabby> seq_load cad.seq cad
+
+ Reading the file 'cad.seq' ..
+ 6 sequence(s) found.
+
+yabby> seq_load cad3.seq cad3
+
+ Reading the file 'cad3.seq' ..
+ 3 sequence(s) found.
+
+yabby> seq_op -i cad cad3 cad_i
+
+ Found 6 sequence(s) in 'cad'
+ Found 3 sequence(s) in 'cad3'
+  INTERSECTION contains 3 sequence(s)
+  opt_d_flagERENCE contains 3 sequence(s)
+  UNION contains 6 sequence(s)
+ [ Saving INTERSECTION as 'cad_i' ]
+\end{verbatim}
 
