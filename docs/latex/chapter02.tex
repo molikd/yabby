@@ -787,27 +787,42 @@ ASQSFRQLTLSTALSELEAQQELKGSAAEDGGASAMDGSHTVGSALQSLIDVIPASLQIH
 .... extra output deleted ....
 \end{verbatim}
 
-\section{Miscellaneous commands}
+\section{Stand-alone commands}
 
 A stand-alone commands do not interact with other commands. They
 are in effect independent program scripts.  Nevertheless it is
 often useful to collect such independent scripts under Yabby
 to simplify their maintenance and ensure long-term retention.
+An example of such command is 'emboss\_needle'.
 
 \index{emboss}
 \index{emboss\_needle}
 
-The command emboss\_needle shows the sequences from the output
+The command 'emboss\_needle' shows the sequences from the output
 of the program 'needle' from the EMBOSS suite of programs
 \cite{emboss}. The input to the program 'needle' are two
 sequences, and the program calculates the global sequence
 alignment (Needleman-Wunsch algorithm). Typically two files
 are given on the input, each containing one sequence in FASTA  
 format. If the second file contains multiple sequences,
-than the global sequence alignment is calculate between
+the global sequence alignment will be calculate between
 the first sequence and each sequence in turn from the
-second set.  If the second set contains many sequences, the
-output file will be large, and it will be difficult to see
-the highest matches.
+second set. If the second set contains many sequences, the
+output file will be large, and it may be difficult to see
+the best matches. These can be extracted with the command
+'emboss\_needle':
+
+\begin{verbatim}
+yabby> emboss_needle needle.out 3
+
+ Processing the file 'needle.out' ..
+
+ (1) Q45153_BACFI:LmjF05.1170, Similarity: 26.6
+ (2) Q45153_BACFI:LmjF05.1120, Similarity: 16.4
+ (3) Q45153_BACFI:LmjF05.1040, Similarity: 15.0
+\end{verbatim}
+
+The second arument is the number of top-scoring sequences
+to be printed out.
 
 
