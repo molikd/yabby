@@ -504,6 +504,112 @@ BioPerl \cite{bioperl}, and is an example of how easy is
 to leverage the capabilities of other bioinformatics packages
 within Yabby.
 
+\section{Housekeeping commands}
+
+\index{help}
+
+Several commands are dedicated to the general manipulation of
+Yabby objects. Those include 'what' and 'print', and also
+'help, 'dump', 'restore', 'delete', 'flush', 'license', 'exit'
+and 'quit'.
+
+The 'help' command is probably the most useful. By itself it
+prints the list of currently available commands: 
+
+\begin{verbatim}
+yabby> help
+
+ 31 commands ready.
+
+ blast          blast_info     blastg         delete        
+ dump           emboss_needle  exit           flush         
+ help           hmm_score      hmm_score2seq  license       
+ motif_cmp      motif_load     motif_meme     pfam_fetch    
+ print          quit           restore        seq_comment   
+ seq_compl      seq_fetch      seq_info       seq_load      
+ seq_op         seq_pattern    seq_pick       seq_strip     
+ seq_unique     sprot_split    what          
+
+ For info about a particular command try: 'help COMMAND'
+\end{verbatim}
+
+If followed by a command name, it prints the information
+about the command:
+
+\begin{verbatim}
+yabby> help seq_load
+
+
+ Loads sequence(s) from the database file.
+
+ Usage:
+        seq_load [ options ] DBA_FILE OBJ_NAME
+
+ Where DBA_FILE is the name of the database file. OBJ_NAME is
+ the internal Yabby name for the sequence(s).
+
+ Options:
+
+ -a -- append sequences to an already existing sequence
+  object OBJ_NAME
+ -f -- the file format is FASTA (default)
+ -b -- the file format is BLOCKS
+
+ Notes:
+ 1. Only BLOCKS format as given by MEME output was tested.
+\end{verbatim}
+
+\index{delete}
+\index{flush}
+
+The command 'delete' deletes an object, and the command 'flush'
+deletes all objects from the workspace:
+
+\begin{verbatim}
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    hits           seq           
+                   hmm_score     
+
+yabby> delete hits.seq
+
+ [ 'hits.seq' deleted ]
+
+yabby> flush
+
+ [ workspace flushed ]
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+   [ none ]
+\end{verbatim}
+
+\index{dump}
+\index{restore}
+
+The command 'dump' stores the session onto a file:
+
+\begin{verbatim}
+yabby> dump mysession
+
+ Yabby session archived as 'mysession.tar.gz'
+\end{verbatim}
+
+The session can be restored with the command 'restore':
+
+\begin{verbatim}
+yabby> restore mysession
+
+ Yabby session 'mysession' restored
+\end{verbatim}
+
+Note that the commands 'dump'/'restore' depend on unix commands
+'tar' and 'gzip' being available for execution by Perl.
+
 \section{Working with sequence motifs}
 
 \index{sequence motifs}
@@ -571,6 +677,7 @@ yabby> motif_cmp m2 m2_second
 \end{verbatim}
 
 \index{motif\_meme}
+\index{MEME}
 
 The command 'motif\_meme' extracts the motifs from the plain
 text output of the motif detection program MEME \cite{meme}.
@@ -594,18 +701,26 @@ the 'seq' type object.
 
 \section{Working with the HMMER output}
 
+\index{HMMER}
+\index{HMMPFAM}
 \index{hmm\_score}
 \index{hmm\_score2seq}
 
 HMMER is a powerful software for the profile hidden Markov model
 search of sequence databases \cite{hmmer,wwwhmmer}. The 'search 
 step' in HMMER search pipeline is performed by the program
-HMMPFAM from the HMMER software suite. Yabby's commands 'hmm\_score'
-and 'hmm\_score2seq' can aid in extraction of the search results
-from the HMMPFAM output files.
+HMMPFAM which is a part of the HMMER software suite. Yabby's
+commands 'hmm\_score' and 'hmm\_score2seq' can aid in extraction
+of the search results from the HMMPFAM output files.
+
+Consider a mock-up example of some the HMMPFAM search performed
+on the genome sequence 'LmjFmockup.pep'. The output of this search
+was redirected to the file 'hmmpfam.out'. To extract all the hits
+with the E-value above 0.01, and store these hits under the name
+'hits':
 
 \begin{verbatim}
-yabby>  hmm_score -E 0.01 -s hits hmmpfam.out
+yabby> hmm_score -E 0.01 -s hits hmmpfam.out
 
  Processing HMMPFAM search output file
 
@@ -621,12 +736,78 @@ yabby> what
     hits           hmm_score     
 \end{verbatim}
 
+The command 'hmm\_score' with the '-s hits' flag has created
+the object of the type 'hmm\_score' in the workspace. This is
+merely a list containing the sequence name, the model the
+hit was recorded to, and the E-value:
+
 \begin{verbatim}
-yabby> hmm_score2seq LmjFwholegenome_20050601_V5.2.pep hits.seq hits
+LmjF05.1190@All 0.0027
+LmjF05.1190@GlycogenStarch 0.0042
+LmjF05.0920@All 0.0075
+\end{verbatim}
+
+To get to the actual sequences, one needs to go to the
+original sequence database on which the HMMPFAM search
+was executed, match the sequence IDs, and extract the
+sequences. This can be achieved with the command
+'hmm\_score2seq'
+
+\begin{verbatim}
+yabby> hmm_score2seq LmjFmockup.pep hits.seq hits
 
  found 3 sequences to extract
- Processing the database 'LmjFwholegenome_20050601_V5.2.pep'
+ Processing the database 'LmjFmockup.pep'
  Sequences written to 'hits.seq'
 \end{verbatim}
+
+This command takes the name of the sequence database on
+which the search was executed (LmjFmockup.pep), the name
+of the output file where sequence are to be saved (hits.seq),
+and the name of the Yabby 'hmm\_score' object where the
+hits were extracted.
+
+The output file contains sequence hits in the FASTA format,
+which can be loaded and manipulated with sequence commands: 
+
+\begin{verbatim}
+yabby> seq_load hits.seq  hits
+
+ Reading the file 'hits.seq' ..
+ 3 sequence(s) found.
+
+yabby> print hits.seq
+
+>LmjF05.1190@All [ LmjF05.1190@All [ (score: 2.70e-03, model: All) LmjF05.1190 LmjF05.1190 hypothetical protein, conserved 1912350:1918232 reverse MW:212991 ] ]
+MSNKKQTWANAHSQLWTSSVARSAGSRTQSEVSSIASTNRDRSLLDDGDGYHQPPSHVCA
+QELRHQAYQPNDKTLAQVSDILESYGAIACDADIPAVLLEVVKELERTKRDNNFKDLLLR
+EYSDTVQRRFGLYGEESPPSIAEVSARLRDGAPARPVAAPNPAWLEQPLNELWRTVCDGM
+QACFEKNADLSAPVLLPEARRTKANVSQLLHTSCDVLSQLAKEYTTAKAAVMKKMERTVA
+ASQSFRQLTLSTALSELEAQQELKGSAAEDGGASAMDGSHTVGSALQSLIDVIPASLQIH
+.... extra output deleted ....
+\end{verbatim}
+
+\section{Miscellaneous commands}
+
+A stand-alone commands do not interact with other commands. They
+are in effect independent program scripts.  Nevertheless it is
+often useful to collect such independent scripts under Yabby
+to simplify their maintenance and ensure long-term retention.
+
+\index{emboss}
+\index{emboss\_needle}
+
+The command emboss\_needle shows the sequences from the output
+of the program 'needle' from the EMBOSS suite of programs
+\cite{emboss}. The input to the program 'needle' are two
+sequences, and the program calculates the global sequence
+alignment (Needleman-Wunsch algorithm). Typically two files
+are given on the input, each containing one sequence in FASTA  
+format. If the second file contains multiple sequences,
+than the global sequence alignment is calculate between
+the first sequence and each sequence in turn from the
+second set.  If the second set contains many sequences, the
+output file will be large, and it will be difficult to see
+the highest matches.
 
 

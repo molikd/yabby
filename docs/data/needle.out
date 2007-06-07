@@ -1,0 +1,2441 @@
+########################################
+# Program: needle
+# Rundate: Thu Jun 07 2007 17:39:58
+# Align_format: srspair
+# Report_file: needle.out
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0910
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1109
+# Identity:      39/1109 ( 3.5%)
+# Similarity:    70/1109 ( 6.3%)
+# Gaps:         957/1109 (86.3%)
+# Score: 7.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0910        1 MTLRGGGGSGPAASSLPPMDFPLHVASPSPTASSPLPAPTAAAAASTALL     50
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVV-----SLLGTFGVML     45
+                     .:|:.|:..:|.:.::....... :||...||:::     :|.|.:. :|
+LmjF05.0910       51 SSSDALELMRTYHMYVRVHKTRC-RYLLLLLLMLLYYFQCTLCGRYD-LL     98
+
+Q45153_BACFI      46 IPEKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSG---KYNSVFLS     92
+                     :.....|..|      |:...:.|......|.|:...:|   |...:.|.
+LmjF05.0910       99 MSAAGEGSYG------GLSSGVAGSGAVGGAGLAGTGAGGPSKDGGLRLG    142
+
+Q45153_BACFI      93 VAFITFANGGDNIGI----------YV-PFFSTLTMNQLAVTVITFFIMV    131
+                     :|.......||:.|:          |. |.|.|..::.:..||....:..
+LmjF05.0910      143 LAAPERQAAGDDSGLAGSSEGRRRRYARPPFITRALSGIGATVGRMDLWE    192
+
+Q45153_BACFI     132 AIWCFIGYRL-----AAFKHVSETLENYGRWIIPIVFIGLGIYIMVENET    176
+                     ..|.....|.     |.::|                  ||.:....    
+LmjF05.0910      193 IEWWPPSNRTPDATDAHYEH------------------GLNVATPT----    220
+
+Q45153_BACFI     177 FSALLSL-------------------------------------------    183
+                      :|.|||                                           
+LmjF05.0910      221 -AASLSLARSEPPWSVDTQRGLVAAIARSATRLSGPLFGQDPPPYERALS    269
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      270 AFFRTRQATSGGSCNRCQARAIDKDVQKELINYNAFARDFKLRVPLLLYY    319
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      320 NRMPVYAMMQHLRLMRARSYQFLDYMSRGHASQNRPETATGDVADNPHLH    369
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      370 ARQLTFELTRLSLVFYLQRLHLRALRHADAMRLETFHFLRYLSSTIPVLR    419
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      420 SVWVGQDHCSWPGVSCVVVRVPLNSLIDSEHPALQAFVEDIFSVCRGPQC    469
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      470 RQRRCAAPSCSAYTRRLTRRLFTSAAPAYWLKWDRMDDTAAMDEMIWEKT    519
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      520 PTSSRGAAGVDGMAAAPPPSPSAASTGTDGDAGRSGSTKAAARSRRGTPA    569
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      570 RSKRSVWTEQLFAYEHPHLVLTEPTVLVDIDVQNIIQEMVEPVVASAPCN    619
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      620 DGDDEWAPSSPSPSATLSGPPSDLATPEYAERPLTGDLFGMQRRLLRTMA    669
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      670 EAAPRGLQYGKQRNDSSTVTIPYTFVKLNLANMGLRGYLPDFYDIASAYD    719
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      720 EQRDAAAARGRRESTNTGGSSGSGSGTQSGFTDACEAANLPSATAAAARQ    769
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      770 CGSKSAPEVSVLTPRSDLYWGRRSRMRMLEARNLSSASLATAAARQPLAS    819
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      820 VAAIGSELQWVLRRLEKIGQRNHHEDLAAYFSEVASLARFQNERWSPYRW    869
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      870 PEAMITVTSDVSQSATRRLYSVLEDSAFTPNFADPVQSIDHSVNAFGELN    919
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      920 PRLIGLLSLDVSANPLLTHLFPRTWLSIPHLQSVQTTGTSILTPPLRLRP    969
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910      970 RLYNHAAYCPASSMRFDSDMKADADEAMGERCRRDTKVAAAMETAREKVE   1019
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0910     1020 VSSATGSSLHDKDFIGAVLMPPFSKIDTLFSASSPSETIFQHQDPLTGRC   1069
+
+Q45153_BACFI     184 ---------    183
+                              
+LmjF05.0910     1070 LLDYPTSSP   1078
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0920
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1292
+# Identity:       3/1292 ( 0.2%)
+# Similarity:     3/1292 ( 0.2%)
+# Gaps:        1287/1292 (99.6%)
+# Score: 9.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.0920        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.0920        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.0920        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                                                 .|||.                 
+LmjF05.0920        1 ----------------------------MLLSSPSAAAPNASGSGSGGAA     22
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920       23 AGDEVVPPTRETSTALSTAHAQLVLLEYAIRAAADSAVPSDASAQSHRKA     72
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920       73 SEVTRTTNATVGSQNSLLPGPVPAESGSLMSIMAATRLSSVTATAPSGAS    122
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      123 ERLSALHDNLRRVRHLMQQYEEASQHVIKVHLLPSPETGEETLGSVTTPT    172
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      173 AYAGQRTKEVSPQQLSVSVAAAAVDRPFLEQHSSNSANVASNGKPAAAPQ    222
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      223 NIPPSLHQRRALASDAVFTRFCGLRVTPDQLLLPLPPPATPTTSPTPPAL    272
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      273 AQQHTSPRKPVAPRGIDNDAEEKKNGSGDSLVSHYSEPMKRHGSNSKTRS    322
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      323 SQTAGSPNAKTQESSASSSPRHSPVSCTAQQRERTSTEAVLEEYAKLFYR    372
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      373 PSATAVSRPAPPRSTAIGMQSSQSPVVAAAPAHNTSATKAGSLSSSTPAD    422
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      423 DSEVARQLQETQQRFAALQRCHLFAYEAHLRSAAAPADSQGNGSDVSTIK    472
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      473 RGITTLGAVTTGANVDDISWQHIPVAVQHMQDSLTALQARFTRDSHYARC    522
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      523 GRQPIALVHQLQTWTQPLIQNLNELLSNSTLEEKSENTREKLRRMKFDAE    572
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      573 ELQQAQAQAIANGDMQRSEELYYEQGSLAEAMAGPYDELEAIMRKYGEVC    622
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      623 VDAPLTRVLEQRDLLTTRLTRVIEEYTSKLSEVTLDVERVKEKRRAVAQA    672
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      673 RHRQRNNMSAYNHTWKKAWQTNSDQQMACYRAMEQLEKQLNDLQQTQSFL    722
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      723 VDDWISHVTQERQREEDAASFACFADARAAALAETQHNLQTVVEGVRQYT    772
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      773 GAVQFSCRHVEAFAREVLRGHLSHSQVALRKDRLEQFRALYLTLGDLRFK    822
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      823 KARNAEEIEKKIEYYTLQQEVAMDALNPKAKEFSKTKQRYEAAKAEVQKQ    872
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      873 IDQLDQRSRLQLERFRPTEQLLREAGVNFVSPEEELARRTQQRSQKLLEY    922
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      923 QQLIEDCIGVRPTATTSSITSRSPATLTTVAASQPAASSARAEGAKGLTG    972
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920      973 TNAPSPPRLQAVESLHSCPLPPTAGEAANPTATASGALCGKNGRQLPPLR   1022
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0920     1023 RMNRTYPPSQRTDHSDNSDEPTATTTEPSPQGANQTSTAATVAAAPTAAS   1072
+
+Q45153_BACFI     184 ------------------------------------------    183
+                                                               
+LmjF05.0920     1073 LSSLHATEERIMQGISKMAVTDRGRTRTSSVTASIRCKRSKR   1114
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0930
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 500
+# Identity:      28/500 ( 5.6%)
+# Similarity:    51/500 (10.2%)
+# Gaps:         353/500 (70.6%)
+# Score: 17.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                               :.:....:..|...:..:..||..
+LmjF05.0930        1 --------------------------MSYASSAIKRLSNEYRRLQKPENR     24
+
+Q45153_BACFI      51 VGLLGLIPIYLGIM---LFIKGEDEDENAILSSLNSGKYNSVF-------     90
+                     |....:.|:...|.   ..::|...|:|::  ....|.|:...       
+LmjF05.0930       25 VREYYVAPLADNIFEWHFTLRGPGGDDNSL--PYKKGIYHGALIFSRSYP     72
+
+Q45153_BACFI      91 LSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYR    140
+                     |....|.|........:.....||::.....:...|:.|.:.        
+LmjF05.0930       73 LEPPDILFFTRSGRFAVREKICSTISSYHKELWQPTYDIALT--------    114
+
+Q45153_BACFI     141 LAAFKHVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL-------    183
+                     |.|.:|.....:.:|....|...|..........||:|...|.       
+LmjF05.0930      115 LTALRHFMAQEDEFGVGAFPKNMIARETKEAWATETWSFTCSTCGMATKD    164
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      165 VWETQMKMHPEISPEKEAQVPKLPPPPPPPATPAASAMAKPEDAEATQDA    214
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      215 PDTASSPAPPPSATPSSTLLPPPTAADASETAAKAPDAPQSHNAPKDTPS    264
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      265 SPALASTVVDANALQSPTPGVHGTPQTPSPAAHEHTSKSGAAINEEGAMS    314
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      315 EDDDALACFTDVSPARVVRAPVAAAPPPPAAAEPDRLYDMRPESLVCDTP    364
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      365 QSEAGLAAAAAAAAADATPPVTSAVVDGVVAADVAGTSASPLSPAAAVVA    414
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0930      415 PPQFAQRVVFGVSIMEVSIPLRLLDRAIIVSFLFVVLILLRRGLCSLLMS    464
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0940
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1372
+# Identity:      27/1372 ( 2.0%)
+# Similarity:    45/1372 ( 3.3%)
+# Gaps:        1263/1372 (92.1%)
+# Score: 20.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940        1 MITVEAAGSSSTRAPSLPKHTYVETRMLGQLPSQMASSSIAAWCDGVQHL     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940       51 MEEYFSRLGEVVVAHLGLRAPSMQDQRSSSGSGTAEKREIMSKLRKEHKE    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      101 NLELDVQATDIEVTEMVLFQQLWAHHQLQQKRQRPVAADDGTEKEDRLSG    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      151 ASRGGASTPDAVAEAALTTRDEASYIRPPSSSAAAAAPEDAAPGAPCDME    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      201 GNPFLKTQHHPASELAARIPADLLELFRTAQALHSAASRSTGPPPPATPS    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      251 KEAAAAIENPFDTTADRPSQAPVVLSEEESAQAAAMALLCFRYFYSSNSM    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      301 PASPVEAAAPLLSATEPPEQPPQPAHVPEKLPAATIVPKQKRQRHLAPLS    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      351 HATPTSPALSAHASHGADASSHISLSSPAAWRKLITPPGSLDPAEYQQQP    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      401 SSTPAHATDRLRAELASLFPQQAQQVQGDFSCGLPPQRALLTGSDTTVNA    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      451 DAAVEKSRPESKGRNNHVAFLNADRTADGARGACGRRPPLTHPTVGNPPT    500
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      501 EDAHNSGAPRSKGGVKLPLLTSHAPPASAGERPPSAAASSSPPIPSTPTT    550
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      551 AAAAAGTPHVMSNQSPVLPALAPGATAAPSIVTATTAAPGTETAASAQKH    600
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      601 GSGTTKAKKRGGSGQRRRALRLLPKSVVLPPNYSGVHGEQLTMAQLEQLV    650
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      651 ASVSEDCTVAQVDVKRQYDAADAAAAELYRLQQAVARVLLENIQLEKDIY    700
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      701 TLTATSHAYAAGDEDGDADEAGRATDAAAGVRGRHYSDGVDPSGGRYSDA    750
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      751 NKSRVRTGAMSCFAASTLSPASAAHPSAGKRKRQLILPPAPMPLPHCQRA    800
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      801 LTVASLLLHAAGEKKAAPPVSAAAAAVVQPWPWQQRSAPVEKAKVSPKSS    850
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      851 CQHKARAVASAIATAAEGVTAVDGQQEPRTILQELRSAIASREAEKAQTL    900
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      901 AEVDALSSRVTRHDTLLHAVAEYWRRNAAVMKRQHFAVQSQPKQSTSSET    950
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940      951 ITRLGDGWGSENAVGTITPPHLFDAADGTHGVVTQANSRNSGHSTSSRKC   1000
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940     1001 SHSTVITAAMSLSGQMTNLGGSPSQVQRALAQMEALSPTPLSSTPSFDLR   1050
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940     1051 ITSPVPSALSPTLQMQTLARRQIVPPRQRAQKSESAPNKPDTITATLSAA   1100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0940     1101 TGAAVEDELGGRPHQKVVAPPREGPTAAAAAAAPSSTRTDTDTTATTFIR   1150
+
+Q45153_BACFI       1 ---------------------KTSEGLKGNQTENKHISPKDIIIGQYLGF     29
+                                          .....||....:|:|            |.
+LmjF05.0940     1151 SPDSVFDAMGRPPSASAALTVGAPAVLKQEWRKNEH------------GL   1188
+
+Q45153_BACFI      30 TL-LVVVSLLGTFGVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDENAIL     78
+                     .: .|.|:|...     .|.:..|.|...|:.. ...:.:...||:|.  
+LmjF05.0940     1189 AVSAVAVNLFND-----SPRRCPGELLASPVGF-TQAYDRAAKEDDNV--   1230
+
+Q45153_BACFI      79 SSLNSGKYNSVFLSVAFITFANGGDNIGI-----------------YVPF    111
+                       ..||.|.:..|..:..|.||...|..|                 .:|.
+LmjF05.0940     1231 --CGSGSYPTAPLHPSRSTTANNSHNYAIGGMRRGDEDVLDRGSWRTIPA   1278
+
+Q45153_BACFI     112 FSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPI    161
+                     .....::::|..:.:.|...                              
+LmjF05.0940     1279 LQLENVDEIAEFIYSVFERP------------------------------   1298
+
+Q45153_BACFI     162 VFIGLGIYIMVENETFSALLSL    183
+                                           
+LmjF05.0940     1299 ----------------------   1298
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0950
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1088
+# Identity:       1/1088 ( 0.1%)
+# Similarity:     1/1088 ( 0.1%)
+# Gaps:        1086/1088 (99.8%)
+# Score: 4.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950        1 MQHQSLAARRRGRRLARRGESAFWCSLLKRCLPCLPLRWKSVHATSRTRR     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950       51 ILMGILLCLITTLIFLIGLLVCLTWKSNRSNTPLEPAAVQSTHAPRVPPE    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      101 VGVHDPWAEDPVDVAVIRQREEAVVRKWKENGFRPTYWEVERRTLPRLTK    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      151 RALESWFEHGRRAAASATAVDVAEDVLTAHAWDAVDGGDADADLFDSLAF    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      201 LYPPAQQRQHYRAAMDAILRHGPRVGGTKRDALLHHLVDEGLGRRRYDAA    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      251 RHAYHPAPPHLSPRGKELLEKAAASWPDAPHLAAAPQDDVAGREPGWRWS    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      301 LSWDNFTADIPIRIDGSSRVEMQNLVFQFPGGLQFRRKQAAAASAAATGA    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      351 KDALDEFVGGVPNRRRTRADDRKDVLEAEYHPADMTGETVYTQENFLQWA    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      401 QDGVPFNPRPALVRGVPGTRVVLSPDAKGARVPLKPSLSAPAAEPATQQP    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      451 VKHAVLAAHWDSKYFADIPFLAACDSAMPVVFLLRTIKNIAVLTDVAEAL    500
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      501 TESYKAERSGVVGGDASAAVPGLTSTFRNATTEAEVRERLASLLSPAHHA    550
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      551 LLYQYFFARPYSIGGEQQNFVAAGIRNHPTKVEVDVRTWLDWVQHLPIIS    600
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      601 VILFDGEEAYKHWSGDDNTYGSRHLAQRWRSTPSVMRSRHTDGPQSLYDS    650
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      651 VDLFALYDLMGPAGTTFRNMYPTQSGIFYAGLSQREWELRHRAMQHSSAI    700
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      701 SAELLWRYDEATALPPAEAREKADPFLRLLGPSPHEAVASLNAAYTRRLL    750
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      751 ANNASRPSVASLPRSWLMYGSPHEMLTLHSVARTTHDVRFVENFDQLRVY    800
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      801 DRLDREIAAESSFDAERYLNTINHNIFFSPSQQEDLRRNRDVFVADDDHK    850
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0950      851 HWLDTQRVLHLIPIPFPKSWHTANDNGSNVHDGTSTDLAGLLWSTVLELG    900
+
+Q45153_BACFI       1 -----KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVML     45
+                          |.                                           
+LmjF05.0950      901 DYWTRKE-------------------------------------------    907
+
+Q45153_BACFI      46 IPEKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAF     95
+                                                                       
+LmjF05.0950      908 --------------------------------------------------    907
+
+Q45153_BACFI      96 ITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFK    145
+                                                                       
+LmjF05.0950      908 --------------------------------------------------    907
+
+Q45153_BACFI     146 HVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                           
+LmjF05.0950      908 --------------------------------------    907
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0960
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 705
+# Identity:      44/705 ( 6.2%)
+# Similarity:    80/705 (11.3%)
+# Gaps:         548/705 (77.7%)
+# Score: 38.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0960        1 MSHNTLYITPRAVPYCILSIANAFKDLTPKQRHYAHHMMAAGWCGAPVVA     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0960       51 EQLSPESLPLLRLFFKVLSAQPLDTFKANSVNAGVDPDEVDQFLEYFAMV    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0960      101 YSNMGNYISFGDTKFVPSIPKERFAKIVASADGSPAVDAQLLDAIYNLDD    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0960      151 DKLTLDFPPKGLTRYYSPNVTREDAAVANDFLASKKMDGVNTRVFKEEDG    200
+
+Q45153_BACFI       1 ------------------------------------------KTSEGLKG      8
+                                                               :.::....
+LmjF05.0960      201 SLVIRVAAATERTVPAEKFNGRTIAIYYGDYKEEMARVVAELRKAQPYAE    250
+
+Q45153_BACFI       9 NQTE----NKHI-------------SPKDII--IGQYLGFTLLVVVSLLG     39
+                     |:||    |.:|             |.|:.:  :|..:...:..:.|...
+LmjF05.0960      251 NETEVRMLNHYIEHFQYGDVEAHKESQKEWVRDVGPTVETNIGFIESYRD    300
+
+Q45153_BACFI      40 TFGVMLIPEKWVGLLGLIPIYLGIM---LFIKGEDEDENAILSSLNSGK-     85
+                     ..||.   .:|.|.:.::......|   |..:||     ..::.|..|| 
+LmjF05.0960      301 PSGVR---AEWEGFVAVVNKEQSKMYGALVAQGE-----KFIAQLPWGKA    342
+
+Q45153_BACFI      86 -----YNSV-FLSVAFITFANGGDNIGIYVPFFSTLTMN--------QLA    121
+                          ::|. |.|:..:.||:.|...||.:|.:..:...        ...
+LmjF05.0960      343 FEKDVFSSPDFTSLDVLGFASSGIPAGINIPNYDDIRQTVGFKNVYLSNV    392
+
+Q45153_BACFI     122 VTVITF-----FIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPIVFIGL    166
+                     |:.:||     :|..|.|                 |.|...|:....:.:
+LmjF05.0960      393 VSAMTFKDKLNYITEADW-----------------ELYKASILAATSVNV    425
+
+Q45153_BACFI     167 GIYIMVENETFSALLSL---------------------------------    183
+                     ||:.::.:.| ..|||.                                 
+LmjF05.0960      426 GIHELLGHGT-GKLLSENSDGTFNFDEKTVDPLSGKPVATWYKPGDTYSS    474
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0960      475 VFGGLGSSYEECRAEAVSLYLCLLPELLEIFNIQTAKEQQDVIYVCWLNM    524
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0960      525 VRAGLVGLEFYTPEKQQWRQAHMRARFCILQALARAPNPIVQITENAKEG    574
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0960      575 VLITLDRERIATDGRQAIGDLLVNLNVNKATADAKRGSAYFENMTVVSDQ    624
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0960      625 YVHYRDIIMARRKPRKQYVQPHTFISGDTVEVLEFAGSVEGVVESFVTRH    674
+
+Q45153_BACFI     184 -----    183
+                          
+LmjF05.0960      675 REIPL    679
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0970
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 447
+# Identity:      24/447 ( 5.4%)
+# Similarity:    45/447 (10.1%)
+# Gaps:         341/447 (76.3%)
+# Score: 6.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0970        1 MSAPAAAPKHPGKVFLDPSEVKDHLAEYRIVDCRYSLKIKDHGSIQYAKE     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0970       51 HVKSAIRADVDTNLSKLVPTSTARHPLPPCAEFIDWCMANGMAGELPVLC    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0970      101 YDDECGAMGGCRLWWMLNSLGADAYVINGGFQACKAAGLEMESGEPSSLP    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0970      151 RPATHWPFKTAFQHHYLVDEIPPNAIITDARSADRFASTVRPYAADKMPG    200
+
+Q45153_BACFI       1 -----------------------KTSEGLKGN-----QTENKHISPKDII     22
+                                            ::.|.::.|     |...........:
+LmjF05.0970      201 HIEGARNLPYTSHLVTRGDGKVLRSEEEIRHNIMTVVQGAGDAADLSSFV    250
+
+Q45153_BACFI      23 IGQYLGFTLLVVVSLLGTFGV---MLIPEKWVGLLGLI--PIYLGIM---     64
+                     .....|.|..:.::|:...|:   .|....|....||.  ||...|:   
+LmjF05.0970      251 FSCGSGVTACINIALVHHLGLGHPYLYCGSWSEYSGLFRPPIMRSIIDDY    300
+
+Q45153_BACFI      65 -----------------------LFIKG-----EDEDENAILSSLNSGKY     86
+                                            |.:.|     .|.:..:..:.|::|:.
+LmjF05.0970      301 GMCMQMQTPSLGDNPKANLDTMTLKVDGAPCERPDAEVQSAATHLHAGEA    350
+
+Q45153_BACFI      87 NSVFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCF    136
+                     .:|:.        ..|..:.|.||....                      
+LmjF05.0970      351 ATVYF--------KSGRVVTIEVPAVPN----------------------    370
+
+Q45153_BACFI     137 IGYRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                                    
+LmjF05.0970      371 -----------------------------------------------    370
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0980
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 523
+# Identity:      40/523 ( 7.6%)
+# Similarity:    68/523 (13.0%)
+# Gaps:         382/523 (73.0%)
+# Score: 13.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0980        1 MRQGWLRSSAALLERVHGHLKDQDRIFTNLYNDFGTGIDAAERRGDWYRT     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0980       51 KDILLKGHDWVINEIKASGLRGRGGAGFPSGLKWSFMPKKKQDDRPSYIV    100
+
+Q45153_BACFI       1 ----KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLI     46
+                         ::..|...::...:| .|..::.|     .||...::...:|.:.|
+LmjF05.0980      101 VNCDESEPGTCKDREIMRH-EPHKVVEG-----ALLAGFAMRARYGYIYI    144
+
+Q45153_BACFI      47 P----EKW------------VGLLGL----------IPIYLGIMLFIKGE     70
+                     .    .:|            .|.||.          :..|.|...:|.||
+LmjF05.0980      145 RGEFYNEWRSVEKAIHEAYEKGYLGKNACGSGWDFDLYTYRGAGAYICGE    194
+
+Q45153_BACFI      71 DEDENAILSSLNSGKYNSVFLSVAFITFANGGDNIGIYVPFFSTLTMNQL    120
+                        |.|:::|:..|: ....|...|..      |:|:|....:......:
+LmjF05.0980      195 ---ETAMIASIEGGQ-GKPRLKPPFPA------NVGLYGCPTTVTNCETV    234
+
+Q45153_BACFI     121 AV--TVI----TFFIM--------VAIWCFIGYRLAAFKHVSETLENYGR    156
+                     ||  |:|    .:|..        ..::|..|       ||:..      
+LmjF05.0980      235 AVSPTIIRRGPQWFAQFGRKGNAGTKLFCISG-------HVNRP------    271
+
+Q45153_BACFI     157 WIIPIVFIGLGIYIMVENETFSALLSL-----------------------    183
+                                  ..||.|....|..|                       
+LmjF05.0980      272 -------------CTVEEEMSMPLRELLERHAGGVRGGWDNLLCVIPGGS    308
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0980      309 SCPLIPKHICDDILMDYDALKEAQTGLGTAAVIVMDKSTDVINAIERLSQ    358
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0980      359 FYMHESCGQCTPCREGSPWLDKMMKRFVNGNAKKEEIYTLWDVSKQMEGR    408
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.0980      409 SICALGTAAAWPVQGLIRHFKPLMEERIERFWEANPHWGQPGSPWRRWKT    458
+
+Q45153_BACFI     184 -----------------------    183
+                                            
+LmjF05.0980      459 HRYYTMQKGDRLNWDGKIVRNWN    481
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.0990
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 268
+# Identity:       2/268 ( 0.7%)
+# Similarity:     3/268 ( 1.1%)
+# Gaps:         263/268 (98.1%)
+# Score: 9.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.0990        1 MVVIKGGGQTYAVGNGRQMEWDEVPESFKKNLAEQKEMEKCMDLRAKAQR     50
+
+Q45153_BACFI       1 -----------------------------------KTSEGLKGNQTENKH     15
+                                                        |.:|.          
+LmjF05.0990       51 CISDQGFWAPDCVHLTEAFHLCQSHELTRTELTQRKGAES----------     90
+
+Q45153_BACFI      16 ISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKWVGLLGLIPIYLGIML     65
+                                                                       
+LmjF05.0990       91 --------------------------------------------------     90
+
+Q45153_BACFI      66 FIKGEDEDENAILSSLNSGKYNSVFLSVAFITFANGGDNIGIYVPFFSTL    115
+                                                                       
+LmjF05.0990       91 --------------------------------------------------     90
+
+Q45153_BACFI     116 TMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPIVFIG    165
+                                                                       
+LmjF05.0990       91 --------------------------------------------------     90
+
+Q45153_BACFI     166 LGIYIMVENETFSALLSL    183
+                                       
+LmjF05.0990       91 ------------------     90
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1000
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 274
+# Identity:       7/274 ( 2.6%)
+# Similarity:     8/274 ( 2.9%)
+# Gaps:         262/274 (95.6%)
+# Score: 10.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1000        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1000        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1000        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFS------------ALLSL-----    183
+                                          :|.|..|            ||||.     
+LmjF05.1000        1 ---------------------METEVASGRSGARDGFFGAALLSNPAVDA     29
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1000       30 EDEQNEETCQVLIPPNMSMGADDEEVCGVCLEQPPAGCFVELWCCGNILC     79
+
+Q45153_BACFI     184 ------------------------    183
+                                             
+LmjF05.1000       80 VADAQQLGKCPFCREEPLVWNITK    103
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1010
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 748
+# Identity:      17/748 ( 2.3%)
+# Similarity:    28/748 ( 3.7%)
+# Gaps:         698/748 (93.3%)
+# Score: 25.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1010        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1010        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWC----FIGYRLAAFKH    146
+                                                ...||::.    ...:||..|:.
+LmjF05.1010        1 ---------------------------MKYVAVFASSASLADFRLPEFQF     23
+
+Q45153_BACFI     147 VSETLENYGRWIIPIVFIGLGI-YIMVENETF-----------SALLSL-    183
+                     |:.||.      :||.|:...| ::....:||           |.|.:| 
+LmjF05.1010       24 VAATLG------VPITFLDDKIPWVAGGGDTFWFSVFESPASRSELKALA     67
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010       68 ERCALLRGVYTLFETAPTLEDLYVCLEERHGSAPGSAGPSLASSPTTAAT    117
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      118 AFVGEDETTHLTSSTYSYQVETIGKKYSADAKRAVAEAVLKRVPRAGEVE    167
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      168 WRQPGRAYYVFLQHAVENPPPGAQGWVSNGPLLRVFHCRLCVESSRSALL    217
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      218 ATYDLRKRPYIGTTSMPPEESLMMVNMSGVCRGHYVYDPFCGTGSLLIAA    267
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      268 AHYGARTFGSDADGRAMRAGTEKGKTSPQMQQQRRLALAAYTEEQLCVLT    317
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      318 EEERVLPSMITNFKLYRLPPPDRARMNFSAWPRTWHACAPHLGSGGIFDS    367
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      368 IITDPPYGLREPRKRMETTAATIPTAAAAAASTEAGSDNAAKQQAVTFSA    417
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      418 YPTHEVLLDLVMFAATYLVVGGHLTFWHPTTDHYTNDELPSHPSLSIVCD    467
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      468 IMQRVSLKVVRRLIVLRKVMPVPKPPPSRESCAAKKSPDDLRVLMDATEI    517
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1010      518 PDNADYMHYRAKRERKRQAAHKYKASAGASSSPSTPAAGVDVGSGSDGGN    567
+
+Q45153_BACFI     184 ------------------------------------------------    183
+                                                                     
+LmjF05.1010      568 RRGRKHSRLDGQEKIVANRQRNIELRAAKQAASHLANTAHKTVDHSRP    615
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1020
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 964
+# Identity:      41/964 ( 4.3%)
+# Similarity:    69/964 ( 7.2%)
+# Gaps:         826/964 (85.7%)
+# Score: 10.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1020        1 MASSSATASRADRLQAFLRSPDIPASFYTNNTRDDNLIAVTTQFDILYHK     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1020       51 YFPDRKPLFLLPNNECQRRKMICSFVRPTSLPYDELFDLEGTCQFVADYV    100
+
+Q45153_BACFI       1 ----------------KTSEGLKGNQTENKHISPKDII---IGQYLGFTL     31
+                                     .|.|     |...:.:||..::   :|.....:|
+LmjF05.1020      101 RYEPLYDPSMYDDEYDDTVE-----QLPQQIVSPATVLDWQVGNCFEMSL    145
+
+Q45153_BACFI      32 LVVVSLLG------------TFGVMLIPEK---WVGLL------------     54
+                     ::...|:|            |..|.|..:|   |.|.|            
+LmjF05.1020      146 VLTSFLIGAGFNAYVVIGSATKAVCLSDQKSTMWEGELPKEVNSDDEVED    195
+
+Q45153_BACFI      55 ---------GLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAF     95
+                              .|||..|.:.|   ..|.|..::      .|.||:      
+LmjF05.1020      196 DMPQNNPYVALIPEKLTLRL---TTDPDPASV------SKKNSI------    230
+
+Q45153_BACFI      96 ITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFK    145
+                       .|:..|    |.....|..:...||..|..:::|              
+LmjF05.1020      231 --MASASD----YPKDIDTPNVRGGAVKPIHSWVLV--------------    260
+
+Q45153_BACFI     146 HVSETLENYGRWIIPIVFI----GLGIYIMVENETFSALLSL--------    183
+                          |.:..|.:...||:    |..|.....:..::::.:|        
+LmjF05.1020      261 -----LPDGRRSVSKAVFVEPSTGQLIAFSSTDSRYTSVEALFNHQDYHV    305
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      306 NMRPEAPVSSLSPDLADRSQWESLFLHANLSDDEAESLAGTLSATQRAFT    355
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      356 NELAATTTAATVNTAEVFDSSRSRRMYIPNLWSTELTLNRHQYESRYPAG    405
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      406 YKEITYANAVVRRYAPYSQSDYRILEVVVPDAEYAELHETHVFYAHRADK    455
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      456 LRRATVSPSLVPQSSSKESLIFSSPSSVSLEKVPGRPRKIVEWYEKGRMH    505
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      506 NTSVEGLRELIYEPGKQRTMKFYWRARSDGLYCRTELLYDASTLRKVKEF    555
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      556 YKGRSDRLWYRSFSYGRPSTMRERDMHSLILQGPGNVSALHVYPRLDPVR    605
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      606 ISQKFLRDESVPARKDVAKTTFLRPASEGKSGGNSSAPTVGEIWVFFHYD    655
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      656 AGSILRPYHMFAKPSSSVEEYIAASAAGKPAEPPMRVVSLPGEEPPSELD    705
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      706 LYNERKWLNAVEAACLMEQRVTSDECMDILKSIEQGHNKPQHVLSAYDTL    755
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      756 RNRPKETEAERARKLAEAARREESRKDYLAPYIAKLEMPADFDGNYLNVL    805
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      806 LSKEQAKQVRDEALQELKDRLIQRGHIMQSRMDKEKAEFNKRQQLYRKNC    855
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1020      856 DASALEGDKETEAFALYCKEATWRMKVLDERLLQHIDHASDKYNQLAQRL    905
+
+Q45153_BACFI     184 --------------    183
+                                   
+LmjF05.1020      906 AEDPRLSALYNPTH    919
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1030
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 306
+# Identity:       6/306 ( 2.0%)
+# Similarity:     9/306 ( 2.9%)
+# Gaps:         284/306 (92.8%)
+# Score: 9.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1030        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1030        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1030        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                             :...|:.|.   ......|:|.|.|                 
+LmjF05.1030        1 --------MQCTFLKLS---SRRGSAFAASLLLLANSQNMRAADAVQRIE     39
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1030       40 AEEFAKSYQMKPMADHPRSLFEYKSSAKGAEVGARNEAAFMNYETFTPQT     89
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1030       90 LSGRLVMPGDINLLTVSPLYCALLCIAAAGWGVFYWDMYCRKNYETVLIA    139
+
+Q45153_BACFI     184 ------    183
+                           
+LmjF05.1030      140 RPKDMQ    145
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1040
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 414
+# Identity:      31/414 ( 7.5%)
+# Similarity:    62/414 (15.0%)
+# Gaps:         288/414 (69.6%)
+# Score: 11.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 -------KTSEGLKG-----NQTENKHISPKDIIIGQYLGFTLLVVVSLL     38
+                            ....|.:|     |....:|.|          |.:....:.:.
+LmjF05.1040        1 MLRRGIVLLQYGAQGASYPINSAPQEHPS----------GGSASSRMMMQ     40
+
+Q45153_BACFI      39 GTFGVMLIPEKWV------GLLGLIPIYLGIMLFIKGEDEDENAILSSLN     82
+                     .:..::|.|..::      .|..::|             :....::..| 
+LmjF05.1040       41 RSQKMLLDPASFIERPPRNTLFNIVP-------------QGHEYVVERL-     76
+
+Q45153_BACFI      83 SGKYNSV-----FLSVAFITFANGGDNI---GIYVPFFSTLTMNQLAVTV    124
+                      |:|:..     ::.|.||.......|:   ||.:|..|.:|.:.:.|.:
+LmjF05.1040       77 -GRYHRTLDSGWWVVVPFIDKIRYNYNVKEQGIEIPNQSAITSDNVMVEI    125
+
+Q45153_BACFI     125 I-TFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVE    173
+                     . ..|:.:...|...|.                               :|
+LmjF05.1040      126 DGVLFLKIVDSCKASYN-------------------------------IE    144
+
+Q45153_BACFI     174 NETFSALLSL----------------------------------------    183
+                     |..|: |::|                                        
+LmjF05.1040      145 NPVFN-LINLAQTTMRSEIGRMSLDSLFRERASLNQSTVEVLRREANEWG    193
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1040      194 IECKRYEIRDIVVSELVRRSMDLQAEAERKKRKLILESEGESTATINRAN    243
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1040      244 GMKIAQQCVADAEKYTAERQSEGAAAAIRVKAAAVSDNISIVSDAIEKAK    293
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1040      294 HSNEAISLRVAESYIEKFGELAKESNTVVMSQPVSDPAMFATQALSVFNT    343
+
+Q45153_BACFI     184 --------------    183
+                                   
+LmjF05.1040      344 VATSAAKRSPPTGK    357
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1050
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 565
+# Identity:      23/565 ( 4.1%)
+# Similarity:    30/565 ( 5.3%)
+# Gaps:         504/565 (89.2%)
+# Score: 9.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050        1 MFHTSRLAIPRLATKTSALLTRPGRVEKSVASPNPEARTESGAVSGVTER     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050       51 TTAPLQPPIIDSTKEGRTHILPQKVLKELLNSVSAGQQNFLFGSDKDAGD    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050      101 PTAGVLRATGSFFESINTAYEGRMLQEQQVEVENFVAKRRIHYMQRLNEE    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050      151 TEEFRREQKEIHDEIQRLEAEKYKNDLNNDVIQFTKARETEYEARLHADV    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050      201 EKYHNALLAYRARVKKSDQLGANGETPLKQLNMNVIEVMQEMEMDDTLRD    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050      251 FGDAAGIGNDLSDQDIRSYVVQRTCFYEKVVQDEVHDFTKRRKSFYEDLL    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1050      301 EARAARHAAKVRADTEKFHSKRQSYYDERLTADGSWMAKCFQEHYNRCFL    350
+
+Q45153_BACFI       1 ---------------KTSEGLKGNQTENKH-----ISPKDIIIGQYLGFT     30
+                                    .|.||:| ..|||..     .:|.||.|.     |
+LmjF05.1050      351 QSYARRAWIEHRRYQATLEGIK-LFTENGEKVPAISNPADISIS-----T    394
+
+Q45153_BACFI      31 LLVVVSLLGTFGVMLIPEKWVGLLGLIPIYLGIMLFIK------------     68
+                     |...:. |.|...|...|....:...:        |:|            
+LmjF05.1050      395 LNAEIP-LSTILDMYESENMAEVTRDV--------FLKAARRVAADYAPY    435
+
+Q45153_BACFI      69 GEDEDENAILSSLNSGKYNSVFLSVAFITFANGGDNIGIYVPFFSTLTMN    118
+                     |.||..:|                                          
+LmjF05.1050      436 GVDERPSA------------------------------------------    443
+
+Q45153_BACFI     119 QLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPIVFIGLGI    168
+                                                                       
+LmjF05.1050      444 --------------------------------------------------    443
+
+Q45153_BACFI     169 YIMVENETFSALLSL    183
+                                    
+LmjF05.1050      444 ---------------    443
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1060
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 653
+# Identity:       6/653 ( 0.9%)
+# Similarity:     6/653 ( 0.9%)
+# Gaps:         645/653 (98.8%)
+# Score: 14.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1060        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1060        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1060        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETF---SALLSL--------------    183
+                                              .|   |.||||              
+LmjF05.1060        1 -------------------------MFRRASVLLSLRPSEAYRQLVLRGD     25
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060       26 ISNDQNQISALPVFDRLYDDLMKYTKESKRIGVPKRQVELRPPNRLGIIP     75
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060       76 SLFLRREQEKKVEQALSDDNKAVYHPLSQVKGLYVWGGVGCGKTMLMDLL    125
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      126 YDNAPPEIRKRRLHFHQFMLDMQKTSNSIRYKSKEEMQDPANRTNMVRYN    175
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      176 TSDNRRRTPDAEINLFDEVAQRMISDVELLCFDEVAVSDVAHAMILKRLF    225
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      226 HSFYKIGLVVIFTSNRPLEDLYKDGLNRGGFIPFIDLVKKQCIIHHMKSN    275
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      276 VDHRLLGHQADTYLTPMNSENNSKLEKLFLEMCKAMPATERKLEVFGRDV    325
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      326 IVPRACGGVCYFDFYELCGGEKSAADYEVIAKTFHTIFINGVPQFPYENS    375
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      376 DVKSRFLLLIDTLYGHRCKVMIHAAVEPPQLQAPKEEAAGRIEGDAQRVD    425
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1060      426 QLSEFERESGNRLVDVDDSAFQMDRCVSRLFEMRTKEYLEIPHEPQEVDL    475
+
+Q45153_BACFI     184 ---    183
+                        
+LmjF05.1060      476 STR    478
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1070
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 667
+# Identity:       6/667 ( 0.9%)
+# Similarity:    12/667 ( 1.8%)
+# Gaps:         642/667 (96.3%)
+# Score: 19.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1070        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1070        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1070        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                             :|:...||.:.::|......|.:|.                 
+LmjF05.1070        1 --------MPMATTGLAVSLLVVFLCGCACVSTAAAAHVNDDLPPGVMRG     42
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070       43 PLLHEHSFQEPLVSDWWEEGVPHYMIGGSAVANERFLRLTTNDLDDHGFA     92
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070       93 FNTAPLDHDNWEARVRFSIRPPPLAADMNGSSVHYQGGDGMALWYLDQPI    142
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      143 GDDHQHVVKYSKSISPELRDEMLDAENPWRVADFLLNGDDDDDDDEDVDE    192
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      193 DDLTEQEKQERQEAKDRRAAKKRKRESLFKQLFKRGTSVDESDREPRIMG    242
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      243 VKFSDFNKGFGLILDSVGDEKEHLREHQQQGDAVQHHHHTASIYLLLNLP    292
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      293 NHTSSSGATVVNNFDPTRENFRSSPDVLRCTYDFRQKGTKPYDPQARMMD    342
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      343 KVTKAVTAAEEPLELIVRYYKRKLTVIIRREDVAKREVSSVVDETGKATD    392
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      393 EVEVVRTYTETMCGEVYPIHLPLRYHFGLSASTGHRPAKNRKRRPLRSVF    442
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1070      443 HEADKKTFTHVDVHDVLRFDLRELGLDAKAMGYSKTIPLEHFDFEADRRE    492
+
+Q45153_BACFI     184 -----------------    183
+                                      
+LmjF05.1070      493 RLHFSRQLPVNPDSDTA    509
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1080
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 785
+# Identity:      36/785 ( 4.6%)
+# Similarity:    58/785 ( 7.4%)
+# Gaps:         661/785 (84.2%)
+# Score: 23.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1080        1 MSDDASEVAVELPQMWQYIHPTHNSVDSSDEETDDEENADVANNDAARGG     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1080       51 RPADYVKLKKSAPRLGQLIRFLNDMEDEDVQGLLLENDPVTRQTLLQWAT    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1080      101 LNNHFMLVEYLVKRMKRAAFSFDAESVEVVVYDRWAEMSQELPTAAEVAE    150
+
+Q45153_BACFI       1 -----------------------KTSEGLKGNQTENKHISPKDII---IG     24
+                                            ...|..:..:.|.....|::::   :.
+LmjF05.1080      151 RQKQRENEKAKRLAERAMANSGDDAIEDEESEEEEEVEPMPEELVYDTLE    200
+
+Q45153_BACFI      25 QYLGFTLLVVVSLLGTFGVMLIPEKWVGLLGLIPIY------------LG     62
+                     .|.|        .||..||.::  |.:|.||   ||            ||
+LmjF05.1080      201 DYHG--------ELGDGGVGVV--KRIGELG---IYVGPRLPDGTKQGLG    237
+
+Q45153_BACFI      63 IMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFANGGDNIGIYVPFF    112
+                     ..||..|:          ..:|:|..           |..|..|:|    
+LmjF05.1080      238 QTLFPSGD----------CYTGEYKE-----------NQRDGRGVY----    262
+
+Q45153_BACFI     113 STLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIP--    160
+                                          |...|..|...:........|||.:.|  
+LmjF05.1080      263 ---------------------WWSKGGALYCGEWFRNMRHGYGRMVYPDG    291
+
+Q45153_BACFI     161 IVFI---------GLGIYIMVENETFSALLSL------------------    183
+                     ..::         |.|.|:..:..::......                  
+LmjF05.1080      292 SRYLGRWVHGKRSGKGRYVYADGSSYDGAWVKDEKHGSGTYHLLDGSSFI    341
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      342 GTFHHNRFVSGEWRLASGTVRYIGNFENDAPAGAGVYVHRCGLTPGAFQQ    391
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      392 AGTYSAEGTSWVPSMRKCTSRMVPHIELVVPPQPSGSTRVPMEFGAECTG    441
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      442 RTMADLIKVANYAPLLRWVASLASAAKDVVVGEVELKGVELRGVEVQSMR    491
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      492 YDATDPDAITEVTILPILVDNVGKRVRPPSESVTLKPSVTRLMILLEAPG    541
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      542 TEPVVLLEKSLQSASPDEHHQQSRLPAVRISEDSSVGGDVVDAVGPALRL    591
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      592 QLASTNSMALLLPPMRCNPMQGNAEESVWLYAQEVHRETVAQLEHKLQLL    641
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1080      642 SAELPEASTTYVAVPLSDVAAISTDAMTAMAAANAQQRRAAQTLPRATVA    691
+
+Q45153_BACFI     184 -----------------------------------    183
+                                                        
+LmjF05.1080      692 PQRPPTPPPPTLEPRPELQPLYEAKARRDEAELEE    726
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1090
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 690
+# Identity:      18/690 ( 2.6%)
+# Similarity:    35/690 ( 5.1%)
+# Gaps:         623/690 (90.3%)
+# Score: 27.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1090        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1090        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKH----    146
+                              .||||..:.:...       :..:|....:.....:|    
+LmjF05.1090        1 ---------MFFSTYVLTKKGP-------LAKVWLAAHWDKRLTRHEVKV     34
+
+Q45153_BACFI     147 --VSETLENYGRWIIPI-------VFIG-LGIYIM----VENETFSALLS    182
+                       :|:|:.:..|.::||       :.:| :.||.:    :..|...|.|.
+LmjF05.1090       35 VDLSQTILHIVRPVVPIALRTSGELLVGVVRIYALKVKHLLKEATEATLF     84
+
+Q45153_BACFI     183 L-------------------------------------------------    183
+                     |                                                 
+LmjF05.1090       85 LRVTTLATKGSKAGVAGQHRTVSIDGVVVPVKGSDVEAVTFDWNADVAAK    134
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      135 HGAVADAAEALGEGRFNAIADLLGNSHRIDVSDTDKEDALLASAWYTVQP    184
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      185 TSQAAGDGLHTTQQDYDEIAKMRADLMAFGERASGSASTSKSKSSLSSME    234
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      235 KGRGSVAVDVDGMAFPAVGDELDIGVPLPDELPPGFPALEGQVPAGMIPT    284
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      285 DPFLLPDMMNMDEEAAAAAQRSRPGRRMRPVNVCDLDSTTLSREAFEKCM    334
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      335 ADRSDILNSEPRRGPYDAQEEADRYTVTGSANAANALATNPALDAAPLSG    384
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      385 VLNPALRLTYAKALRQSAEEAVAMAAQAFRESMARRSEVPAGGGGALEAD    434
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      435 DAQVAAADLDGSAMLVPEAEVAQQRRKRGRDDGDGVDDSTMTAGVSASVQ    484
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1090      485 QTLERIRMELSLRAARDHKKSRTQSAASLVGASCALREVCRGLRRRDAAR    534
+
+Q45153_BACFI     184 ----------------------------------------    183
+                                                             
+LmjF05.1090      535 TFVDVLALASKQYVSAQQALGSDEVQVTLNESALRLLAAA    574
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1100
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 425
+# Identity:       1/425 ( 0.2%)
+# Similarity:     2/425 ( 0.5%)
+# Gaps:         422/425 (99.3%)
+# Score: 4.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1100        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1100        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1100        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                                                   :|.                 
+LmjF05.1100        1 ------------------------------MSKYANPEYWEDRYRSNDTT     20
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1100       21 FDWFVTYDNLQTILRPLLQPAEQIRVLVVGCGNSRLSANLYEHLNIKKIT     70
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1100       71 NVDVSPTVISQMQRRYSEMNEMQWICVDLLTAPIEKLMLELCPNDYLYDF    120
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1100      121 IVDKGLVDSILGGSNSFHNLYIFNKNMSRLLKRGGRFVVVSYGSPETRMD    170
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1100      171 HFRRKKLNFDVEHKLLEKPMLSSSTASPTGHYHVYIMVKVGTKQGAGVAL    220
+
+Q45153_BACFI     184 -------------------------    183
+                                              
+LmjF05.1100      221 AAGDAESEEDDDFYDRFMTHNSAAN    245
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1110
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1359
+# Identity:      15/1359 ( 1.1%)
+# Similarity:    26/1359 ( 1.9%)
+# Gaps:        1311/1359 (96.5%)
+# Score: 12.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110        1 MDTTTKRLPSFVVTSSNDATFTKPATPAKTGSSITLNPDAQEFRVTPAFA     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110       51 GTLFSMPSAAASAPPPQRWFQPTMDFSTRPTAGNNGTSQSSSSPPPASPS    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      101 ASAASDAMDNRQLVELTEAYMHQLYDRKCNDEKLHMVSVFHLHPRTTDKQ    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      151 LSRIFFPTGASAAEVLEPRMMPESLAKAFLAVRQRAGVVFFTRKDFAMVG    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      201 VEKVHDFVPHGQHQPLVVRYCGPDHEATPLSGSPLPPRSQSSDPLRGDAL    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      251 SSAKATSPRPSDRPTPPQSRHRDASNPSDVFPASIVAVPPLSAGLESIAS    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      301 AGTTTPALDAGASSTAAYDSIDHHFLQKYAGEQVYLVGVHNLAYGTTPKS    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      351 LFKMFYPMGALNSELLPRPVSVDGKLRCSGVAVFGSKGMAMEAAEKMNDF    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      401 VPHGQRRPIVARFLKRATSPAFASSAAPGNGSSTTSSAYTATAAMASTPR    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      451 GSTSSPSPASGISSAAALLDSVEKQLRSKSLNDSQLAADMAALVLCAESG    500
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      501 EAEARKLAAVLRDVLLSMRDHSTILASPLSGALRTLHSTLGIRVRTAPAT    550
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      551 PADASLSVRKGVLFLQQIGRTLMMLVADTEAARQTRIVAAVQCAYLYQYT    600
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      601 YLPKTPLCFAATLFRNCERELREAREFLCREPNVPSSLAEEQQHRPWITL    650
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      651 MDALHEMVSVWRSLDPRTYAQDAVREEYERFVCEFRGMDMRRSSPVTSTL    700
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      701 SVAAVASAGGGEHHSGACTPRNDALGVPAEAVNHTYSAKGHGSSSVNASA    750
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      751 KKSQFVTPSARPTPRRVVSKSYSTTSDWKVKQSTPLAGPNCAVPPQVMLT    800
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      801 SPASDYTQGASEFSADSNSAGTTISSALRSLGLTPQHPSMRFNWGSRLLS    850
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      851 AAPQPGMPPNPTVSAAAMLPATPTLSAPASTSATASAASGTPAAAATSAE    900
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      901 RSDATMTERTVYITKLPSCLSAGQVRRLLLHFGDFRKVRLCHDDKETTRI    950
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110      951 GSAEALAAHNLKFDQLCFGFVEFVESSSAKAMVEFFRNEVHTPSAFDFLR   1000
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110     1001 AEDVHGFDDTELNQLRNTRTSQARNPIHDQQPLDATRTQPCFFGIIQPHH   1050
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110     1051 TVDTYSDAITAEEVAEAVRQLHREEEGAQQQPLPMCASPFIRPAVFSTST   1100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1110     1101 PYSMTVSKDVSFGSPVAATASPTGDNNYDENDGGGSVVAALQPMDAVHFP   1150
+
+Q45153_BACFI       1 --------------KTSEGLKGNQTENK-----HISPKDIIIGQYLGFTL     31
+                                   :|.:|......:|.     |:...|           
+LmjF05.1110     1151 SGFPYHEVFTAAASQTGDGDGAGHHDNSAGSNGHLPSDD-----------   1189
+
+Q45153_BACFI      32 LVVVSLLGTFGVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDE-------     74
+                        :.|.|:...:::.|:                    |||.|       
+LmjF05.1110     1190 ---MDLYGSCAPVIVEEE--------------------EDEVEGLQEYQV   1216
+
+Q45153_BACFI      75 NAILSSLNSGKYNSVFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTV    124
+                     ..||..|:                                          
+LmjF05.1110     1217 QQILQLLS------------------------------------------   1224
+
+Q45153_BACFI     125 ITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVEN    174
+                                                                       
+LmjF05.1110     1225 --------------------------------------------------   1224
+
+Q45153_BACFI     175 ETFSALLSL    183
+                              
+LmjF05.1110     1225 ---------   1224
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1120
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 226
+# Identity:      23/226 (10.2%)
+# Similarity:    37/226 (16.4%)
+# Gaps:         158/226 (69.9%)
+# Score: 14.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 -------------------------KTSEGLKGNQTENKHISPKDIIIGQ     25
+                                              ..|:|:    .||..|.....|.|.
+LmjF05.1120        1 MRYHCGFTAPVLLPVFLAAGGAHARDGSDGV----MENFSIFLFLFIGGI     46
+
+Q45153_BACFI      26 YLGFTLLVVVSLLGTFGVMLIPEKWVGL-LGLIP----------------     58
+                     .||..:::.::.|          :|.|| |.|.|                
+LmjF05.1120       47 ALGAVIMLPIAYL----------RWQGLPLELQPRERCMWETAPSSKMSA     86
+
+Q45153_BACFI      59 IYLGIMLFIKGEDED-ENAILSSLNSGKYNSVFLSVAFITFANGGDNIGI    107
+                     ..|.:|..||.:..| :||:.:.:.                         
+LmjF05.1120       87 ANLVLMNKIKTDTLDAKNALRAGVL-------------------------    111
+
+Q45153_BACFI     108 YVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRW    157
+                                                                       
+LmjF05.1120      112 --------------------------------------------------    111
+
+Q45153_BACFI     158 IIPIVFIGLGIYIMVENETFSALLSL    183
+                                               
+LmjF05.1120      112 --------------------------    111
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1130
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 728
+# Identity:       5/728 ( 0.7%)
+# Similarity:     7/728 ( 1.0%)
+# Gaps:         709/728 (97.4%)
+# Score: 13.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130        1 MTTLTHSRPRPLHLPLSPPHTRKNDGAAPAPAHTHPSHFLSVAITVTHTD     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130       51 FVTGTIMKSFFSNITSKLKTRRKPLAPCDCSDFIEAAPAQPSLTHLRGVV    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      101 AARHFHGAPPPASDVENARRDFVVRSTVFDLQHRCGAGGRCTCAGAPACR    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      151 FPQCFTMRPVTKGAEVLAERQVYEVEDAPTPEIRALVALAAEEKLEEVVK    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      201 GIQHTVDAHLKAAARGRGLEARFIIDGSDGHEFTPATPKTGTGSIHAGAN    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      251 PLREDEDLREEITSLYLWRAALLVNLRRDEQAVSSLLNLAFAVEQKDRTR    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      301 LYGAAAAWAVLNDMEIIYYRSLVKSCKPFDQAVHFATERPLLLARVFEAT    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      351 RGDDYHTDYCTHVVFSKEVTATVTRAQTAQMHGDFTEDPMRSLCLPLTMP    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      401 YYRFRVDEEFWKRFYALLCMPPVPPPTQEEAKAQAIDPAAELGLTPNYIL    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1130      451 DAVGRSMMLHHLVTFADVRDKEIDTGVVVDRVKEMKLLDLQPHPSDYTPV    500
+
+Q45153_BACFI       1 --------------------------------------KTSEGLKGNQTE     12
+                                                           :......||...
+LmjF05.1130      501 LTTSEMHVAVTRMKELLVVVRSFEAKEQERLSGAAAAQRLQRAQSGNDAA    550
+
+Q45153_BACFI      13 NKHISP-------KDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKWVGLLG     55
+                     |...:|       |                                    
+LmjF05.1130      551 NPSAAPPAPSPIEK------------------------------------    564
+
+Q45153_BACFI      56 LIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFANGGDNI    105
+                                                                       
+LmjF05.1130      565 --------------------------------------------------    564
+
+Q45153_BACFI     106 GIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSETLENYG    155
+                                                                       
+LmjF05.1130      565 --------------------------------------------------    564
+
+Q45153_BACFI     156 RWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                 
+LmjF05.1130      565 ----------------------------    564
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1140
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 522
+# Identity:       4/522 ( 0.8%)
+# Similarity:     8/522 ( 1.5%)
+# Gaps:         504/522 (96.6%)
+# Score: 5.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1140        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1140        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1140        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                                    :|..:|..|.....|.::                 
+LmjF05.1140        1 ---------------MGRTMMDYNVHEGHLEAMVHGYRDVLLRADEYNNL     35
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140       36 CQCDNLGDMKSQLQITDYGNFLQQEGTLSSRIIVDRAQEVLLKQFKELRS     85
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140       86 WAEPPLCQFLDFISCEYMLSNVLKLIVAKRSGRANLELLTKCHPLGVFPE    135
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140      136 MPTLIAASDVQEMFEVVLIDSPVGRFFSAEGGFERDLDELSVEYIRGILM    185
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140      186 KNYYEQFYDFCYNLGGETREVMCPLLDAEADRMVLTFTLNTLGMREITPV    235
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140      236 DRRKVFPSIGSLVDIHDDIAESENEEQLRDRLRRFATYFELLDESSRAMD    285
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1140      286 SACKKSLERRFVEMSVVMYNDAMTRQFQYGVFYAYVKLKELEINNLQWIA    335
+
+Q45153_BACFI     184 ----------------------    183
+                                           
+LmjF05.1140      336 DCVVQQMRNRLHEYVSTVPYAQ    357
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1150
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 496
+# Identity:      12/496 ( 2.4%)
+# Similarity:    18/496 ( 3.6%)
+# Gaps:         450/496 (90.7%)
+# Score: 7.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150        1 MDTLLTSLADRWQCTAPSSSAPATATMFSPFSPADARAVVEKAPQPCTVH     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150       51 LRGGELTVLAAALQQRGARLGEMLEVPASAPGLYAKRAAASPTPNRAGSG    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150      101 HRPPPSGNSRNDGDTHTALAMAAGADASRAIFLTPPPRSTRDSSIGVDAS    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150      151 VLSGGGGPSPPAAQQPTTRMVPSSAPPTPPRAAAVETSQDALSISSSSCR    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150      201 AETSTVGYRLFQGRGHQRQPGPVADQSAGNSGAAVAHLDVTTGSGTEAVL    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1150      251 HAATASLSADAVELQLLRAEVVELHRRYRELQRPTHGQTCVLQRQETTIR    300
+
+Q45153_BACFI       1 --KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPE     48
+                       ||:  ....|.....:|...:.|.:     |...|.:|........|.
+LmjF05.1150      301 ELKTA--ALAQQEAQAELSKAQLEIRR-----LHEQVQMLNDLAAQAAPP    343
+
+Q45153_BACFI      49 K-----------WVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYN     87
+                     :           |.||                                  
+LmjF05.1150      344 QPTLTVPLQLPPWNGL----------------------------------    359
+
+Q45153_BACFI      88 SVFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFI    137
+                                                                       
+LmjF05.1150      360 --------------------------------------------------    359
+
+Q45153_BACFI     138 GYRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                                   
+LmjF05.1150      360 ----------------------------------------------    359
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1160
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 503
+# Identity:       6/503 ( 1.2%)
+# Similarity:     6/503 ( 1.2%)
+# Gaps:         490/503 (97.4%)
+# Score: 16.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                                                                       
+LmjF05.1160        1 --------------------------------------------------      0
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1160        1 --------------------------------------------------      0
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1160        1 --------------------------------------------------      0
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL-----------------    183
+                                         |...|..||||..                 
+LmjF05.1160        1 --------------------MSLEEESSALLLFTSLTHLLVNHNQLCSLV     30
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160       31 GLCGAADTLTVLIATRNALTSVDGMQACRRLAYVDLSYNSIESLQGLPLM     80
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160       81 LAAPSREAASLNSPTAYDILNKVASEKTAEPLHRGTSALEGAALTAQLMA    130
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160      131 DGTAAKEREEITLEHVDSDDNEGHTPISAASIPISLQSSVGAETHQHTHA    180
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160      181 PSGAGRPNHRYRTRRSRQQQQQPPSGRSLGGARSLATRPSRSVETSLQFD    230
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160      231 VGEMTISLSAGASAATGAHAYSQPVAAPAAADASPLSPGAKSRSGTIDND    280
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1160      281 KGGVVLILSHNRLRGRSLCRGSCRWSRQTLKSELHRVERPRQRTFFCTRG    330
+
+Q45153_BACFI     184 ---    183
+                        
+LmjF05.1160      331 ARL    333
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1170
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 282
+# Identity:      39/282 (13.8%)
+# Similarity:    75/282 (26.6%)
+# Gaps:         132/282 (46.8%)
+# Score: 35.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 -KTSEGLKGNQTENKHISPK-------DIIIGQYLGFTLLVVVSLLGTF-     41
+                      |.::.::....|:....|:       .::||.::|:  |||:.||..| 
+LmjF05.1170        1 MKFADAMQCIGKESLCFHPELNVFVNYPVLIGCHIGY--LVVIVLLYKFM     48
+
+Q45153_BACFI      42 ----------GVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSL     81
+                               .:||.....|.|..::.|.||..| :.|        :.:|
+LmjF05.1170       49 KGRTAYVLKYPMMLYNTAQVALSLVMAINLGQFL-VYG--------VFNL     89
+
+Q45153_BACFI      82 NSGKYNSVFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMV    131
+                     |.|...::...: |:.:|.  ..:.::..:|..|...:..::.:..:..|
+LmjF05.1170       90 NGGFTGTIEYWI-FVHYAT--KFLDMFDTYFIVLRKKEEQLSFLHIYHHV    136
+
+Q45153_BACFI     132 AIWCFIGYRLAAFKH--VSETLENYGRWIIPIVFIGLGIYIMVENETFSA    179
+                     .    ||:......|  |:.....:|.||               |....|
+LmjF05.1170      137 T----IGFIWGLLLHHGVANGTAFFGAWI---------------NSAVHA    167
+
+Q45153_BACFI     180 LLSL----------------------------------------------    183
+                     |:..                                              
+LmjF05.1170      168 LMYFHYLYTSLGYTNPLKTYLTQLQMIQFALCILHAVLAVVAHSPIPKKW    217
+
+Q45153_BACFI     184 --------------------------------    183
+                                                     
+LmjF05.1170      218 AVLQLCYHLTLLYLFMRFYRKGMRKLKRKAKV    249
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1180
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 633
+# Identity:       3/633 ( 0.5%)
+# Similarity:     4/633 ( 0.6%)
+# Gaps:         625/633 (98.7%)
+# Score: 13.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180        1 MHMSARHRLTNASILSNIKSMANEKDDLTSKLVYLRRRQEDAIAFAVKEK     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180       51 EMLAEKAKRQLAMEEEKLKVEARIEALISEAAQLGGPAAAQRMRDEIAKD    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      101 KTRYVRSVDAFGDKTVRLQHTFAGLADNRIIHWWEYAYWNYIRYFFTQEL    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      151 LIAKDRFGNKFTVTWQFLKGREEQRRMYRKDSNKKHQPYGALATDERLWE    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      201 RWMRGHRGDPPSVAEEEHLRDYKKQFFGAMVLEDEEVEDALMRLMAHMNR    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      251 ASQTFQELDEDQVYGDAHRVAKPLRETERKPGEEMSARQKQKGATWTLGF    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      301 ARGDLFYNEEETQVMRTEMGHLFRNMEWQELEYKRQVRMNKQQPPHGKPP    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      351 EGTTDPNTPDGDPMNHYWERTDLGIPYHDAVPDLTTPELERMRIESSQLE    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1180      401 DERLAIRKELGLTDLGDIREGREPIKRDHAPFQPPPVSQRWKPKCWEESW    450
+
+Q45153_BACFI       1 KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIPEKW     50
+                     .|..|:|.                                          
+LmjF05.1180      451 GTGSGMKY------------------------------------------    458
+
+Q45153_BACFI      51 VGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNSVFLSVAFITFAN    100
+                                                                       
+LmjF05.1180      459 --------------------------------------------------    458
+
+Q45153_BACFI     101 GGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIGYRLAAFKHVSET    150
+                                                                       
+LmjF05.1180      459 --------------------------------------------------    458
+
+Q45153_BACFI     151 LENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                      
+LmjF05.1180      459 ---------------------------------    458
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1190
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 2034
+# Identity:      37/2034 ( 1.8%)
+# Similarity:    58/2034 ( 2.9%)
+# Gaps:        1925/2034 (94.6%)
+# Score: 9.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190        1 MSNKKQTWANAHSQLWTSSVARSAGSRTQSEVSSIASTNRDRSLLDDGDG     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190       51 YHQPPSHVCAQELRHQAYQPNDKTLAQVSDILESYGAIACDADIPAVLLE    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      101 VVKELERTKRDNNFKDLLLREYSDTVQRRFGLYGEESPPSIAEVSARLRD    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      151 GAPARPVAAPNPAWLEQPLNELWRTVCDGMQACFEKNADLSAPVLLPEAR    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      201 RTKANVSQLLHTSCDVLSQLAKEYTTAKAAVMKKMERTVAASQSFRQLTL    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      251 STALSELEAQQELKGSAAEDGGASAMDGSHTVGSALQSLIDVIPASLQIH    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      301 FNLQVPEAPVLTRCNSLTELIRFLLSEYLSMERYMEMVEVERQRLAEVFY    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      351 LPSSKADANGDLQLDEALSRSLRSLQETVTSVVAFPHHISKEEMVLRHSS    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      401 AQAVEELAQLLVDARRGGSVSGSCAPHSVAAVRVEPPTRNLLEMVELVKS    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      451 RFATVMAQQQRKELAGAQGRVGLAHMEESMTRHGKQVVQLLQDLCVAQED    500
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      501 AAADSEVSEQLLVEVMGNVDLERNLTPAKLDHFLSDVVERLRMVKTKYQR    550
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      551 ALNAAAAGKARAEAASQKSTGLQKRLQKVAAAVERIGRDGLGLTFPSTPA    600
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1190      601 ASGIGSAGEADDAGKGRDDAEGGRRGNGVSALRRLNLRPALEPATATKAS    650
+
+Q45153_BACFI       1 ---KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLLGTFGVMLIP     47
+                        .|.:|     |.|:..:|...:....:...|.:|.|.:||.|.|   
+LmjF05.1190      651 SLTTTKDG-----TANETDTPGAAVTEHNVLEALQLVASRIGTSGEM---    692
+
+Q45153_BACFI      48 EKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKY-----NSVFLS     92
+                     ..|..:                  ::|   |:.|.:||.     .|.|..
+LmjF05.1190      693 RDWAVV------------------QEE---LAQLRAGKARWKADTSAFHE    721
+
+Q45153_BACFI      93 VAFITFANGGDNIGIYVPFFSTLTMNQLA----VTVITFFIMVAIWCFIG    138
+                     .                   ..:.|.:||    :...|.|:|       |
+LmjF05.1190      722 A-------------------MAMLMQRLAKNGQMVKQTLFLM-------G    745
+
+Q45153_BACFI     139 Y----------------------RLAA------FKHVSETLENYGRWIIP    160
+                     .                      ||:|      .:.::|.|:.|.||.  
+LmjF05.1190      746 TDESAKDELVEEVLQRDSEEELDRLSAEAMEYVERSLAELLQKYNRWA--    793
+
+Q45153_BACFI     161 IVFIGLGIYIMVENETFSALLSL---------------------------    183
+                                      ..||..                           
+LmjF05.1190      794 -----------------QRLLQTTEDHLYTQRKIVKYFAAVCRFFSSQSR    826
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190      827 AAAAPAEDIPEDNLYDIDSCLMRAADIILPSLDAAIQAAAQEQCPASATA    876
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190      877 TPDAPATLPPLAPSSGDTATSDATPRQETLVQLARDSTAAATGGVLPYDH    926
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190      927 RIARLYETVARLYTVVTSLLQVHYLCIPSASRRRSSGEMELMFDGDANDD    976
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190      977 GFVDIDLDRLIRVSQQRSAAASAPPAAARGDGVERERFSKEGHGGDSAGK   1026
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1027 TPTPSPPSTITANNDLILRVTYQNMEVLQDTLKRFSANHKMAAIVLQKDV   1076
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1077 DTMQQLLAGMLEKYSEVDMEGAFGQSRETLHELYVTLRDRGQRQKGCYFF   1126
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1127 NRVGGEGSCTWVTALEHLADGFRGVVDRLVQRTTLAAEYRRLVDEVVDVC   1176
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1177 AMYMNWAERRTLPASHALPPELLALCVRDSSEVTAKQTVATMVEGGQSSC   1226
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1227 PGGDVEASTKPASGGTATINATTATVAASAAQRPPKPSRMPPLTPRASTK   1276
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1277 EQQERQQQHQAGQERGVVVPTAASAAEPKISYFTNDGAVLKVMTHMFQLA   1326
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1327 QLTVESPPATGNKTGDAAAFDADAKVQQLTEEMQLLREAVAMAERHVDEL   1376
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1377 TNAKHVVELQRDQAQSEAAVARAELRRWKRRKRQQHEQQRSGRTPAIADG   1426
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1427 AQVRSPPRSPREAASTHQPDKTADGVDAVLDEATVKEVMEYMRVLSEELQ   1476
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1477 TAKRQVSGSSARARKLVRSPCQAASSLRASGAVPKDYADVVRKEDGAEGN   1526
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1527 AADGDEDAPYGAPHSHRDRRSYTELAEQLRHQYGSTAIAPMVVIDPKTHS   1576
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1577 YSNSQRRSGHARDGSSEASHAQNRYSPVKYRGPEYDACDRYYARELAQVL   1626
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1627 IEEGEHAAHPRRYRSIDARHPATTKPAFSGLASAPASQRHLSGESSRGAA   1676
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1677 APSTRDLDVCRRGGGGNSAAAPPRRRYPPRSLSRDEPLLSPGAAAASANL   1726
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1727 ASPHAYHAPQRATSVAAAAAPSYRLFPKPATPGACRHSSGNALFSTPMEA   1776
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1777 CAHHHRCHYDRGDNRPRCADTDEGEEVFYDAGTPRAQTGWRWSTPSWAAP   1826
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1827 QPRRRPSAARERLCSPHEQSTKASILSQQRCPKVHDGLCEPPEDVGEGLA   1876
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1190     1877 AAVRQIDAVTQRSTVTPTRRGSQAGSRQDTLHGSPVSVPPASIPATPASE   1926
+
+Q45153_BACFI     184 ----------------------------------    183
+                                                       
+LmjF05.1190     1927 QQMSRNANLRAAALRRLAEVVSKTAVPSTRRAQF   1960
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1200
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 295
+# Identity:       3/295 ( 1.0%)
+# Similarity:     6/295 ( 2.0%)
+# Gaps:         275/295 (93.2%)
+# Score: 6.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1200        1 MQQVHPDIKKLNDLLRPILKELQEMGDKKGKLIEARRQLGGQKNENELVR     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1200       51 DELNRLEPDATVYKLIGPALVPQDQSDAKTIIGNRLDYINGEIKRSDTSI    100
+
+Q45153_BACFI       1 ------------KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVVVSLL     38
+                                 |..|..:..|.....:..:.                  
+LmjF05.1200      101 AELDRKEAELQKKAQELYRKMQERQAQLIQQQ------------------    132
+
+Q45153_BACFI      39 GTFGVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSGKYNS     88
+                                                                       
+LmjF05.1200      133 --------------------------------------------------    132
+
+Q45153_BACFI      89 VFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIWCFIG    138
+                                                                       
+LmjF05.1200      133 --------------------------------------------------    132
+
+Q45153_BACFI     139 YRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                                  
+LmjF05.1200      133 ---------------------------------------------    132
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1210
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 447
+# Identity:      45/447 (10.1%)
+# Similarity:    66/447 (14.8%)
+# Gaps:         315/447 (70.5%)
+# Score: 15.5
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1210        1 MFANLDEEKKARLRERILQAAAAPPPAATPARSNSDSDGEQEVPPQHTES     50
+
+Q45153_BACFI       1 ------------------------KTSEGLKGNQ-TENKHISPKDIIIGQ     25
+                                             .|.:.|..|| ||.|.:|.:..:|.:
+LmjF05.1210       51 TKHASEQLAINAQSTDIDIANIRLFTLDELDLNQLTECKTLSLRKNLIHE    100
+
+Q45153_BACFI      26 YLGFTLLVVVSLLGTFGVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDEN     75
+                     ...|                 |:...|  .|:.:.|......|..|..::
+LmjF05.1210      101 LSAF-----------------PQHLAG--RLVELDLFDNKIRKVRDFFDS    131
+
+Q45153_BACFI      76 AILSSLNSGKYNSVFLSVAFITFA------------NGGDNIGIYVPFFS    113
+                     |::....||..:...:..||.:..            .|.|::|      |
+LmjF05.1210      132 AMVPDPESGSLSKKAVPHAFYSLTKLDLSYNQLRKITGLDSLG------S    175
+
+Q45153_BACFI     114 TLTMNQLA---VTVITFFIMVAIWCFIGYRLAAFKHVSETLENYGRWIIP    160
+                     ||....|.   :.||.             .|.:|.|: |.||..|..|..
+LmjF05.1210      176 TLKELYLVENKIKVIE-------------GLDSFVHL-ELLELGGNRIRE    211
+
+Q45153_BACFI     161 IVFIGLGIYIMVENETFSALLSL---------------------------    183
+                        ||.|:         |.|.||                           
+LmjF05.1210      212 ---IGSGL---------SNLRSLQSLWLGKNKIHSIGDSLHNLRELRKLS    249
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1210      250 LQANRLTSITAEAFKEGCNPYLAELYLSENGISTIENLPLHSLHLLDFSF    299
+
+Q45153_BACFI     184 --------------------------------------------------    183
+                                                                       
+LmjF05.1210      300 NPISTINEAVINPTNMPELEEFWLTDGSISDWGEVKKFCGFANTLRTIYV    349
+
+Q45153_BACFI     184 -----------------------------------------------    183
+                                                                    
+LmjF05.1210      350 ERNPIEQDKRYRDKVYMNLPFVTQIDSWPVVNKDNLEGDRLIQRRAS    396
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Q45153_BACFI
+# 2: LmjF05.1220
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 749
+# Identity:       2/749 ( 0.3%)
+# Similarity:     3/749 ( 0.4%)
+# Gaps:         743/749 (99.2%)
+# Score: 8.0
+# 
+#
+#=======================================
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220        1 MSVSGTATCPLCGWNGSWSTDAAYSECVRDAVEARLKESAVDLLRDAYPA     50
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220       51 LSSGCVGDVVDSCFDRSCLTVDLHQAQQYLAAVPPDGVGAVCTSLAAPDK    100
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      101 IPNKAAVFSLRVEGPWLTSCDLVRRFLQLQVLVLCDCADLVSLRGVECAP    150
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      151 LLERLTAERCGLVDTLGIDACPCLKSLQLRECPRLSHLGWNQILNSQSSL    200
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      201 QESSGQDGGCAALLSVSVFRCPAFQGIGLLSAAPHLREFRAQRVRISSLD    250
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      251 ALRECRHLELLDVGGCQQVCCIEALRGAKALRYLDLSNTAVSDIGALSQC    300
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      301 TALERVNLSGCLRLRSLDSLECCTELRELQASRTNIETLIGLRLCRALKK    350
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      351 VDVSGCAALRDAAALTHLSQLTHVDLSFTAVDDVSSLAYYSGLESVRLRG    400
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      401 CRYLRDYSPPHNLEDAPPLRSLDLSNTSVCSISEWGRCPPRLEKLRMNGC    450
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      451 TRLSDISVLQSSTGLRIVDLGNTSVHSISPLISCAPALEELRMHGCTELS    500
+
+Q45153_BACFI       1 --------------------------------------------------      0
+                                                                       
+LmjF05.1220      501 DISVLQSASRLRVVDLDNTSVRSVSPLRLAASELEELRINDVTYQGEVPI    550
+
+Q45153_BACFI       1 ----------------KTSEGLKGNQTENKHISPKDIIIGQYLGFTLLVV     34
+                                     .:|..|                            
+LmjF05.1220      551 FQSTGVQRRCNMINTGASSRSL----------------------------    572
+
+Q45153_BACFI      35 VSLLGTFGVMLIPEKWVGLLGLIPIYLGIMLFIKGEDEDENAILSSLNSG     84
+                                                                       
+LmjF05.1220      573 --------------------------------------------------    572
+
+Q45153_BACFI      85 KYNSVFLSVAFITFANGGDNIGIYVPFFSTLTMNQLAVTVITFFIMVAIW    134
+                                                                       
+LmjF05.1220      573 --------------------------------------------------    572
+
+Q45153_BACFI     135 CFIGYRLAAFKHVSETLENYGRWIIPIVFIGLGIYIMVENETFSALLSL    183
+                                                                      
+LmjF05.1220      573 -------------------------------------------------    572
+
+
+#---------------------------------------
+#---------------------------------------
