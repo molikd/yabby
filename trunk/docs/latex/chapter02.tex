@@ -787,6 +787,132 @@ ASQSFRQLTLSTALSELEAQQELKGSAAEDGGASAMDGSHTVGSALQSLIDVIPASLQIH
 .... extra output deleted ....
 \end{verbatim}
 
+
+\section{Running NCBI blast from Yabby}
+
+BLAST (Basic Local Alignment Search Tool) refers to a heuristic
+algorithm widely used to find regions of similarity between
+protein/DNA sequences. BLAST is often used to denote the computer
+program, an actual implementation of the BLAST algorithm. Two
+such implementations are in wide use: NCBI BLAST and WU-BLAST
+(from the Washington University). In addition, the term BLAST
+is often used to denote the Web interface for blast search,
+such as the one provided by NCBI \cite{wwwblast}.
+
+It is generally less known that NCBI blast executables can be
+downloaded \cite{ftpblast} and run locally, which has some
+distinct advantages. The Yabby command 'blast' allows one to
+run NCBI blast search locally, through the Yabby interface. 
+
+The command 'blast' depends on NCBI blast being installed locally.
+The location of the NCBI blast installation is set in the
+Yabby library 'yabby\_blast.pm':
+
+\begin{verbatim}
+$BLASTALL = "/usr/local/bin/blastall";
+\end{verbatim}
+
+For NCBI BLAST to work one also needs to set up the file
+'.ncbirc' in the user's home directory that will give the
+location of blast data files (such as substitution matrices): 
+
+\begin{verbatim}
+[NCBI]
+   Data=/usr/local/blast/2.2.9/data
+\end{verbatim}
+
+The database to be searched need first to be indexed for BLAST
+search with the program 'formatdb' which is provided in the
+NCBI BLAST package.  For example, to format the database
+'LmjFwholegenome.pep' (L.major genome in FASTA fomat),
+
+\begin{verbatim}
+$ /usr/local/bin/formatdb -i LmjFwholegenome.pep -p T -o T
+\end{verbatim}
+
+This would create several additional files in the same directory,
+such as 'LmjFwholegenome.pep.phr', 'LmjFwholegenome.pep.psq' etc.
+
+Yabby can execute BLAST search against multiple sequences. For
+example, to BLAST six sequences from the file 'cad.seq':
+
+\begin{verbatim}
+yabby> seq_load cad.seq cad
+
+ Reading the file 'cad.seq' ..
+ 6 sequence(s) found.
+
+yabby> blast -E 5.0 tmp/LmjFwholegenome_20050601_V5.2.pep cad
+
+ 6 sequence(s) found in the object 'cad'
+
+ Now running BLAST ..
+ BLASTing sequence 1 of 6 (Q45153_BACFI)
+ Query sequence 'Q45153_BACFI'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ Found 2 hits above the threshold (E=5.00)
+ The best hit: 'LmjF36.2210'
+ E-score = 1.93e+00
+
+ BLASTing sequence 2 of 6 (Q53650_STAAU)
+ Query sequence 'Q53650_STAAU'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ Found 1 hits above the threshold (E=5.00)
+ The best hit: 'LmjF04.0510'
+ E-score = 3.57e+00
+
+ BLASTing sequence 3 of 6 (Q97PJ0_STRPN)
+ Query sequence 'Q97PJ0_STRPN'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ Found 1 hits above the threshold (E=5.00)
+ The best hit: 'LmjF13.1210'
+ E-score = 2.11e+00
+
+ BLASTing sequence 4 of 6 (P95773_STALU)
+ Query sequence 'P95773_STALU'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ No BLAST hits above the threshold (E=5.00) found.
+
+ BLASTing sequence 5 of 6 (Q9JXN6_NEIMB)
+ Query sequence 'Q9JXN6_NEIMB'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ No BLAST hits above the threshold (E=5.00) found.
+
+ BLASTing sequence 6 of 6 (Q9CE92_LACLA)
+ Query sequence 'Q9CE92_LACLA'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ No BLAST hits above the threshold (E=5.00) found.
+\end{verbatim}
+
+The BLAST search was executed for each sequences in the 'cad' set
+in turn, creating six 'blast' objects: 
+
+\begin{verbatim}
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    cad            seq           
+    cad_1          blast         
+    cad_2          blast         
+    cad_3          blast         
+    cad_4          blast         
+    cad_5          blast         
+    cad_6          blast         
+\end{verbatim}
+
+These can be examined later with the command 'blast\_info':
+
+\begin{verbatim}
+yabby> blast_info cad_1
+
+ Query sequence 'Q45153_BACFI'
+ Database 'tmp/LmjFwholegenome_20050601_V5.2.pep'
+ Found 2 hits above the threshold (E=5.00)
+ The best hit: 'LmjF36.2210'
+ E-score = 1.93e+00
+\end{verbatim}
+
 \section{Stand-alone commands}
 
 A stand-alone commands do not interact with other commands. They
