@@ -9,7 +9,7 @@ use XML::DOM;
 $BLAST = "blast";
 $BLASTG = "blastg";
 
-$BLAST_THRESH = 0.01;
+$BLAST_DEFAULT_THRESH = 0.01;
 $BLASTALL = "/usr/local/bin/blastall";
 
 # -----------
