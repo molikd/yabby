@@ -21,5 +21,129 @@
 Yabby is released as open source, under the GNU Public License
 version 2.
 
-\section{The license}
+\section{Installation}
+
+\subsection{Checking Perl}
+
+\index{installation}
+\index{Perl}
+\index{system requirements}
+
+Yabby has been developed with Perl version 5.X, a freely available
+general purpose scripting language. Perl stands for "Practical
+Extraction and Report Language" and is particularly well suited for
+the manipulation of data stored in plain text files. This seems
+all too often to be required in bioinformatics applications.
+
+Before attempting the installation, it is highly recommended to
+check if the Perl interpreter is present your computer system.
+For example, on a Linux system,
+
+\begin{verbatim}
+$ perl -v
+
+This is perl, v5.8.5 built for i386-linux-thread-multi
+
+Copyright 1987-2004, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using `man perl' or `perldoc perl'.  If you have access to the
+Internet, point your browser at http://www.perl.com/, the Perl Home Page.
+\end{verbatim}
+
+Perl 5 and later is required for Yabby.  The next step is to find where
+exactly is the Perl interpreter located, as this information will be
+required for Yabby installation:
+
+\begin{verbatim}
+$ which perl
+/usr/local/bin/perl
+\end{verbatim}
+
+\subsection{Downloading Yabby}
+
+Yabby source code can be browsed from the Google Code servers, at
+the following URL: http://code.google.com/p/yabby/. Under the
+section "Source" one can find the instructions for downloading the
+source code. The same page provides the link under "This project's
+Subversion repository can be viewed in your web browser" which allows
+one to browse the source code on the server without actually
+downloading it.
+
+The Yabby source code can be downloaded from the Google Code directory.
+Google servers maintain the source code by the program called 'subversion'
+(an open-source version control system).  To download the source code
+one needs to use the subversion client program called 'svn'.  The 'svn'
+client exists for all mainstream operating systems\footnote{For example,
+on Linux CentOS 4 the RPM package 'subversion-1.3.2-1.rhel4.i386.rpm'
+provides the subversion client 'svn'.}, for more information see
+http://subversion.tigris.org/.  The book about subversion is freely
+available on-line at http://svnbook.red-bean.com/. Subversion has
+extensive functionality however only the very basic functionality
+is needed to download Yabby.  Assuming that the computer is connected
+to the internet, the following command will download the latest Yabby 
+source code in the current directory:
+
+\begin{verbatim}
+]$ svn checkout http://yabby.googlecode.com/svn/trunk/ yabby
+A    yabby/yabby.pl
+A    yabby/LICENSE
+A    yabby/lib
+A    yabby/lib/blast.pl
+A    yabby/lib/hmm_score2seq.pl
+A    yabby/lib/seq_strip.pl
+A    yabby/lib/seq_comment.pl
+A    yabby/lib/hmm_score.pl
+A    yabby/lib/blastg.pl
+A    yabby/lib/motif_cmp.pl
+A    yabby/lib/seq_unique.pl
+A    yabby/lib/yabby_seq.pm
+....further output deleted....
+\end{verbatim}
+
+\subsection{Installing Yabby}
+
+Yabby installation requires that the file 'yabby/lib/yabby.pl' is
+modified to to set the path to the Perl language interpreter,
+and to Yabby libraries.
+
+If Yabby code was downloaded in the directory /home/jake/ (and
+therefore the script 'yabby.pl' is in /home/jake/yabby/), to set
+the path to Yabby libraries the following two lines need to be
+set: 
+
+\begin{verbatim}
+use lib "/home/jake/yabby/lib";
+$LIB_DIR = "/home/jake/yabby/lib";
+\end{verbatim}
+
+The path to the Perl interpreter is set in the first line of the
+file 'yabby.pl':
+
+\begin{verbatim}
+#!/usr/bin/perl
+\end{verbatim}
+
+The script yabby.pl needs to have executable permissions:
+
+\begin{verbatim}
+$ chmod +x yabby.pl
+\end{verbatim}
+
+If this is all set, running the script 'yabby.pl' will start Yabby:
+
+\begin{verbatim}
+]$ yabby.pl
+
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 35 command(s) ready ]
+
+yabby>
+\end{verbatim}
+
+If is 
 
