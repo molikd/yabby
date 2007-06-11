@@ -4,27 +4,49 @@ use yabby_sys;
 use yabby_seq;
 use yabby_blast;
 
+use Getopt::Std;
+
 $USAGE = "
  Runs NCBI BLAST against a database and saves the best
  hit for each sequence. 
 
  Usage:
- 	blastg DBA_FILE OBJ_NAME
+ 	blastg [ options ] DBA_FILE OBJ_NAME
 
  Where DBA_FILE is the sequence database and OBJ_NAME
  is the name of the sequence object which contains
- sequences to be blasted. Each sequence is in turnx
- blasted against the database, and the top hit is stored
- as BLASG object. This object contains the list of:
+ sequences to be blasted. Each sequence is in turn
+ blasted against the database, and the top hit is 
+ stored as BLASG object. This object contains the
+ list of:
 
  SEQ_ID DBA_SEQ_ID E-VALUE
 
  Where SEQ_ID is the sequence ID, DBA_SEQ_ID is the
  best hits database sequence ID, and E-VALUE is the
  E-value of the match.
+
+ Options:
+
+ -E E_VALUE - Sets the expectation value for BLAST
+ (default=0.01)
+
+ Notes:
+
+ 1. This command is experimental. Originally it was used
+ to blast one genome against another, to obtain a quick
+ estimate of the similarity between two genome. 
 ";
 
 # options
+getopt('E');
+
+if ( defined($opt_E) ) {
+  $opt_E_value = $opt_E;
+} else {
+  $opt_E_value = $BLAST_DEFAULT_THRESH;
+}
+
 # initialization
 @argl = sys_init( @ARGV );
 
@@ -40,7 +62,6 @@ $xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
 $seq_hash = xml2seq( $xmldoc );
 
 # body
-
 $keys = get_seq_keys( $seq_hash );
 $nseq = $#{$keys}+1;
 
@@ -51,7 +72,7 @@ print " Now running BLAST ..\n";
 push @cmd, $BLASTALL;
 push @cmd, "-p blastp";
 push @cmd, "-d $dba_name";
-push @cmd, "-e 0.1"; # set the E-value threshold
+push @cmd, "-e $opt_E_value"; # set the E-value threshold
 push @cmd, "-m 7"; # set XML output
 
 $top_hits = [];

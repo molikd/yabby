@@ -4,16 +4,22 @@ use yabby_sys;
 use yabby_seq;
 use yabby_blast;
 
+use Getopt::Std;
+
 $USAGE = "
  Runs NCBI BLAST against a database.
 
  Usage:
- 	blast DBA_FILE OBJ_NAME
+ 	blast [ options ] DBA_FILE OBJ_NAME
 
  Where DBA_FILE is the sequence database and OBJ_NAME is the
  name of the sequence object which contains the query sequence.
  If OBJ_NAME contains more than one sequence, all will be used
  in turn as a query sequence.
+
+ Options:
+
+ -E E_VALUE - Sets the expectation value for BLAST (default=0.01)
 
  Notes:
 
@@ -22,6 +28,14 @@ $USAGE = "
 ";
 
 # options
+getopt('E');
+
+if ( defined($opt_E) ) {
+  $opt_E_value = $opt_E;
+} else {
+  $opt_E_value = $BLAST_DEFAULT_THRESH;
+}
+
 # initialization
 @argl = sys_init( @ARGV );
 
@@ -48,7 +62,7 @@ print " Now running BLAST ..\n";
 push @cmd, $BLASTALL;
 push @cmd, "-p blastp";
 push @cmd, "-d $dba_name";
-push @cmd, "-e $BLAST_THRESH"; # set the E-value threshold
+push @cmd, "-e $opt_E_value"; # set the E-value threshold
 push @cmd, "-m 7"; # set XML output
 
 for $key ( @$keys ) {
