@@ -18,6 +18,11 @@
 
 \section{What is Yabby}
 
+- Introduction
+- Motivation
+- Features
+- License
+
 Yabby is released as open source, under the GNU Public License
 version 2.
 
@@ -66,14 +71,13 @@ $ which perl
 \subsection{Downloading Yabby}
 
 Yabby source code can be browsed from the Google Code servers, at
-the following URL: http://code.google.com/p/yabby/. Under the
+the URL: http://code.google.com/p/yabby/. Under the
 section "Source" one can find the instructions for downloading the
 source code. The same page provides the link under "This project's
 Subversion repository can be viewed in your web browser" which allows
 one to browse the source code on the server without actually
 downloading it.
 
-The Yabby source code can be downloaded from the Google Code directory.
 Google servers maintain the source code by the program called 'subversion'
 (an open-source version control system).  To download the source code
 one needs to use the subversion client program called 'svn'.  The 'svn'
@@ -88,7 +92,7 @@ to the internet, the following command will download the latest Yabby
 source code in the current directory:
 
 \begin{verbatim}
-]$ svn checkout http://yabby.googlecode.com/svn/trunk/ yabby
+$ svn checkout http://yabby.googlecode.com/svn/trunk/ yabby
 A    yabby/yabby.pl
 A    yabby/LICENSE
 A    yabby/lib
@@ -136,7 +140,7 @@ $ chmod +x yabby.pl
 If this is all set, running the script 'yabby.pl' will start Yabby:
 
 \begin{verbatim}
-]$ yabby.pl
+$ yabby.pl
 
  - YABBY version 0.1 - 
    Copyright (c) 2004-7 Vladimir Likic
@@ -145,5 +149,147 @@ If this is all set, running the script 'yabby.pl' will start Yabby:
 yabby>
 \end{verbatim}
 
-If is 
+It is often useful to create a sumbolic link in a directory which
+is included the PATH variable, such as /usr/local/bin or ~/bin:
+
+\begin{verbatim}
+ln -s /home/jake/yabby/yabby.pl /home/jake/bin/yabby
+\end{verbatim}
+
+This would allow Yabby to be run from any directory, simply by
+typing 'yabby'.
+
+\section{Running Yabby}
+
+\subsection{Running interactive session}
+
+Yabby can be run interactively or from the command script. To
+start an Yabby interactive session one needs to start the Yabby
+interface from the Unix shell. Here is the simplest Yabby session:
+
+\begin{verbatim}
+$ yabby
+
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 35 command(s) ready ]
+
+yabby> quit
+
+ bye-bye
+\end{verbatim}
+
+\subsection{Yabby command scripts}
+
+In order to run Yabby from the command script, the command file
+needs to be prepared first. Such a file lists Yabby commands
+one per line, with optional blank lines (lines which start with
+the \% character are ignored). For example, the following input
+file, named test.yab,
+
+\begin{verbatim}
+% test.yab -- test input script
+
+seq_load cad3.seq cad3
+seq_info -l cad3
+\end{verbatim}
+
+could be run with the Unix shell input redirection:
+
+\begin{verbatim}
+$ yabby < test.yab
+
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 35 command(s) ready ]
+
+yabby> % test.yab -- test input script
+yabby> yabby> 
+ Reading the file 'cad3.seq' ..
+ 3 sequence(s) found.
+
+yabby> 
+ 'cad3' contains 3 sequence(s)
+  1 -> Q53650_STAAU, 192 residues
+  2 -> Q97PJ0_STRPN, 193 residues
+  3 -> P95773_STALU, 192 residues
+
+yabby> yabby> 
+ bye-bye
+\end{verbatim}
+
+When run from the command script the actual commands are not
+echoed back, only the command's screen output as well as the
+comments.
+
+\subsection{Executing Unix commands}
+
+\index{unix commands}
+
+Any command which is not recognized by Yabby is assumed to be
+an Unix command, and Yabby will attempt to execute it. Consider
+the following example:
+
+\begin{verbatim}
+yabby> ls
+1BT0.pdb  cox1.seq     LmjFmockup.pep  needle.out
+cad3.seq  dna.seq      m2.blocks       README
+cad.seq   hmmpfam.out  meme.out        test.yab
+yabby> l
+
+ [ UNIX command 'l' failed ]
+\end{verbatim}
+
+Because there is no Yabby command {\tt ls}, it was assumed to
+be a system command and executed.  The output was printed on
+the screen, listing the files and directories in the directory
+where Yabby was started.
+
+Subsequently, the command {\tt l} was given but failed because
+there is no such Yabby or Unix command. If {\tt l} was an alias
+to something (say {\tt ls -CF}) the command would fail regardless,
+because Yabby does not know about shell aliases.
+
+There are no inherent limitations to which Unix commands can be
+executed within Yabby. It is possible to run a text editor, such
+as "vi" (and then simply resume the Yabby session after exiting
+the editor), or even start programs with GUI such as "gnuplot",
+or a Unix terminal window.
+
+A subtle but important point is that in Yabby Unix commands are
+not executed through the Unix shell.  The consequence of this
+is that the (sometimes important) functions provided the the
+Unix shell, such as file globbing, are not available. For example:
+
+\begin{verbatim}
+yabby> ls *
+ls: *: No such file or directory
+
+ [ UNIX command 'ls *' failed ]
+\end{verbatim}
+
+A handy trick which allows one to go about Unix business is
+to temporarily suspend Yabby. This is actually a feature provided
+by some unix shells (in combination with the system's terminal driver),
+and has little to do with Yabby. In short, typing Ctrl-Z within
+Yabby will suspend the current Yabby session, and return user
+to the Unix shell. Issuing the command "fg" to the same shell
+will return the suspended Yabby session:
+
+\begin{verbatim}
+yabby> [Cntrl-Z]
+[1]+  Stopped                 yabby
+$ ls -CF
+1BT0.pdb  cox1.seq     LmjFmockup.pep  needle.out
+cad3.seq  dna.seq      m2.blocks       README
+cad.seq   hmmpfam.out  meme.out        test.yab
+$ fg
+
+yabby>
+\end{verbatim}
+
+Ctrl-Z was typed on the first line, which was not echoed back. Note
+that the second command prompt (starting with the {\tt \$} character)
+is the Unix shell prompt, and typing "fg" had returned user to
+the suspended Yabby session.
 
