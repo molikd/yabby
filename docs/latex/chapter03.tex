@@ -484,7 +484,7 @@ workspace.
 
 % ### NEW COMMAND ###
 
-\subsection[restor]{ \fbox{\tt restore} }
+\subsection[restore]{ \fbox{\tt restore} }
 
 \index{\tt restore}
 
@@ -619,7 +619,77 @@ yabby> what
 
 % ### END OF NEW COMMAND ####
 
+% ##############################################################
 \section{Sequence commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_comment]{ \fbox{\tt seq\_comment} }
+
+\index{\tt seq\_comment}
+
+% Concise explanation
+
+Modifies sequence comments to add a unique number.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_comment OBJ\_NAME}
+
+Where OBJ\_NAME is the internal Yabby name for the sequence(s).
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+{\em None}
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+{\em None}
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_comment tom20
+
+ Comments modified.
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
 
 % ### NEW COMMAND ###
 
@@ -658,7 +728,7 @@ object OBJ\_NAME
 
 \item{Notes:}
 \begin{enumerate}
-\item Only BLOCKS format as given by MEME output was tested.
+\item Only BLOCKS format written by MEME \cite{meme} was tested.
 \end{enumerate}
 
 % 4. Examples 
