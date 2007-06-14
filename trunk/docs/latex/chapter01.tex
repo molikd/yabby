@@ -108,7 +108,7 @@ A    yabby/lib/yabby_seq.pm
 ....further output deleted....
 \end{verbatim}
 
-\subsection{Installing Yabby}
+\subsection{Yabby installation}
 
 Yabby installation requires that the file 'yabby/lib/yabby.pl' is
 modified to to set the path to the Perl language interpreter,
@@ -161,7 +161,7 @@ typing 'yabby'.
 
 \section{Running Yabby}
 
-\subsection{Running interactive session}
+\subsection{An interactive session}
 
 Yabby can be run interactively or from the command script. To
 start an Yabby interactive session one needs to start the Yabby
@@ -292,4 +292,141 @@ Ctrl-Z was typed on the first line, which was not echoed back. Note
 that the second command prompt (starting with the {\tt \$} character)
 is the Unix shell prompt, and typing "fg" had returned user to
 the suspended Yabby session.
+
+\section{Understanding how Yabby works}
+
+To understand how Yabby works it is important to understand the
+relationhips between three directories: the working directory
+where the Yabby session has been started, the Yabby library (this
+is the lib/ subdirectory in the the Yabby installation directory),
+and the workspace directory.
+
+The workspace directory is created automatically in the working
+directory when the Yabby session is initialized. The workspace
+directory is called .yabby, and it contains all the yabby objects
+created within the session. Upon graceful exit from the Yabby
+shell, the workspace directory is destroyed together with its
+content.  The relationship between the working directory,
+workspace, and Yabby library is shown in Figure \ref{fig:session}.
+
+\begin{figure}
+\centering
+\includegraphics[height=6.0cm]{pics/yabby-session.eps}
+\caption{A schematic showing the relationship between the working
+directory, Yabby installation directory, and the workspace. In
+this example the Yabby session was started in the user's home
+directory (/home/jake), and this has created the workspace directory
+(/home/jake/.yabby). The execution of the command seq\_load from
+the Yabby shell has executed the script seq\_load.pl from the Yabby
+library, and has created the tom20.seq object. This object corresponds
+to the file tom20.seq which is created in the workspace directory.}
+\label{fig:session}
+\end{figure}
+
+Consider in more detail what happens when the sequences were read
+from the file 'tom20.txt' to create a sequence object in the
+workspace, as shown in Figure \ref{fig:session}:
+
+\begin{verbatim}
+1  $ yabby
+2 
+3   - YABBY version 0.1 -
+4     Copyright (c) 2004-7 Vladimir Likic
+5   [ 35 command(s) ready ]
+6 
+7  yabby> seq_load tom20.txt tom20
+8  
+9   Reading the file 'tom20.txt' ..
+10  3 sequence(s) found.
+11 
+12 yabby> what
+13 
+14     object(s)      type
+15   ------------------------------
+16     tom20          seq   
+17 
+18 yabby> print tom20.seq
+19
+20 >A.thaliana2 [ A.thaliana2 ]
+21 MEFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLND
+22 AISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGN
+23 DTYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFT
+24 YDVCGWIILACGIVAWVGMAKSLGPPPPAR
+25 >O.sativa [ O.sativa ]
+26 MDMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLE
+27 DAESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPA
+28 NDLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVV
+29 LGVGMVVWVGLAKSNAPPQAPR
+30 >L.esculentum [ L.esculentum ]
+31 MDMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDA
+32 ISKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENE
+33 LYQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVIL
+34 AVGLVAWIGFAKSNMPXPAHPLPR
+\end{verbatim}
+
+In line 1 the Yabby was started from the Unix shell command line.
+During the initalization process the workspace directory .yabby
+was silently created.
+
+The command shown on line 7:
+
+\begin{verbatim}
+seq_load tom20.txt tom20
+\end{verbatim}
+
+will read the sequence from the file 'tom20.txt', and save the sequences
+under the name 'tom20'. The command 'what' shown on line 12 allows one
+to inspect the content of the workspace. It shows that the workspace
+contains the object named 'tom20' of the type 'seq'. The command 'print'
+on the line 18 printed the object 'tom20' on the terminal screen.
+
+The command 'seq\_load' has executed the script 'seq\_load.pl'
+located in the Yabby library. This command reads the FASTA sequence
+file and converts it into a Yabby object of the type 'seq'. The
+command 'print' has executed the script 'print.pl' from the Yabby
+library. The scripts 'seq\_load.pl' and 'print.pl' are completely
+independent. How was the data (i.e. the newly created 'seq' object)
+transferred from the script 'seq\_load.pl' to the 'print' command?
+
+This was achieved by the use of the workspace directory. When Yabby
+was started (line 1) the workspace directory .yabby/ was silently
+created in the current working directory. The newly created object
+'tom20' (the result of the command 'seq\_load') was stored in the
+file in the workspace directory. On the line 18, the command 'print'
+was requested to print the object 'tom20' of the type 'seq'
+(abbreviated as 'tom20.seq'). The command 'print' has first attempted
+to find the object 'tom20.seq' in the workspace. This was successful,
+and the object was first loaded from the workspace directory, and
+then printed on the terminal screen.
+
+Consider printing a non-existent sequence object:
+
+\begin{verbatim}
+yabby> print tom99.seq
+
+ _print_seq:: missing requirement: 'tom99.seq'
+
+ print:: ERROR: system script '_print_seq' failed
+ [ error occurred in the subroutine call() ]
+ [ command 'print' failed ]
+\end{verbatim}
+
+The message above shows that 'tom99.seq' is not in the workspace.
+Printing of the sequence objects is handled by the script '\_print\_seq.pl',
+which is invoked by the command script 'print.pl'.
+
+Consider printing an object of a non-exiting type:
+
+\begin{verbatim}
+yabby> print tom20.ttt
+
+ print:: ERROR: printing the property 'ttt' not yet implemented
+ [ command 'print' failed ]
+\end{verbatim}
+
+This message comes from the command script 'print.pl'. Since this
+command script needs to decide which system script to call for
+printing, it first must determine if the printing of the requested
+object type has been implemented.
+
 
