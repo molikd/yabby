@@ -28,7 +28,7 @@ In Yabby sequences are represented as sequence objects. A sequence
 object may contain one or more sequences. 
 
 One way to create a sequence object is to load sequences from a
-file.  Consider the file 'cad3.seq' which contains three sequences
+file.  Consider the file 'cad3.fas' which contains three sequences
 from the Pfam CAD family in the FASTA format:
 
 \begin{verbatim}
@@ -54,9 +54,9 @@ IENDTIQTILGF
 To load this file in the workspace use the command 'seq\_load':
 
 \begin{verbatim}
-yabby> seq_load cad3.seq cad3
+yabby> seq_load cad3.fas cad3
 
- Reading the file 'cad3.seq' ..
+ Reading the file 'cad3.fas' ..
  3 sequence(s) found.
 \end{verbatim}
 
@@ -92,9 +92,9 @@ of the 'seq' type. It is possible to load the same sequences
 under a different name: 
 
 \begin{verbatim}
-yabby> seq_load cad3.seq cad3_second
+yabby> seq_load cad3.fas cad3_second
 
- Reading the file 'cad3.seq' ..
+ Reading the file 'cad3.fas' ..
  3 sequence(s) found.
 
 yabby> what
@@ -317,19 +317,19 @@ This command can calculate the union, intersection, symmetric
 difference.
 
 For example, consider the sets of sequences stored in files
-'cad.seq' and 'cad3.seq', where the first file contains six 
-CAD sequences, and cad3.seq contains three out of six sequences
-present in 'cad.seq'.
+'cad.fas' and 'cad3.fas', where the first file contains six 
+CAD sequences, and cad3.fas contains three out of six sequences
+present in 'cad.fas'.
 
 \begin{verbatim}
-yabby> seq_load cad.seq cad
+yabby> seq_load cad.fas cad
 
- Reading the file 'cad.seq' ..
+ Reading the file 'cad.fas' ..
  6 sequence(s) found.
 
-yabby> seq_load cad3.seq cad3
+yabby> seq_load cad3.fas cad3
 
- Reading the file 'cad3.seq' ..
+ Reading the file 'cad3.fas' ..
  3 sequence(s) found.
 
 yabby> seq_op -i cad cad3 cad_i
@@ -345,7 +345,7 @@ yabby> seq_op -i cad cad3 cad_i
 
 The last command has saved the intersection of objects 'cad.seq' and
 'cad3.seq' as a new sequence object, named 'cad\_i'. Since 'cad3.seq'
-is simply a subset of 'cad.seq' this intersection identical to
+is simply the subset of 'cad.seq' this intersection identical to
 'cad3.seq'. Options '-u' and '-d' save the union and difference.
 It should be noted that the command 'seq\_op' compares only
 sequence IDs, {\em it does not compare the sequences themselves}.
@@ -435,9 +435,9 @@ The command 'seq\_compl' calculates the reverse complement of
 a DNA sequence:
 
 \begin{verbatim}
-yabby> seq_load dna.seq dna
+yabby> seq_load dna.fas dna
 
- Reading the file 'dna.seq' ..
+ Reading the file 'dna.fas' ..
  1 sequence(s) found.
 
 yabby> print dna.seq
@@ -754,16 +754,16 @@ sequences. This can be achieved with the command
 'hmm\_score2seq'
 
 \begin{verbatim}
-yabby> hmm_score2seq LmjFmockup.pep hits.seq hits
+yabby> hmm_score2seq LmjFmockup.pep hits.fas hits
 
  found 3 sequences to extract
  Processing the database 'LmjFmockup.pep'
- Sequences written to 'hits.seq'
+ Sequences written to 'hits.fas'
 \end{verbatim}
 
 This command takes the name of the sequence database on
 which the search was executed (LmjFmockup.pep), the name
-of the output file where sequence are to be saved (hits.seq),
+of the output file where sequence are to be saved (hits.fas),
 and the name of the Yabby 'hmm\_score' object where the
 hits were extracted.
 
@@ -771,9 +771,9 @@ The output file contains sequence hits in the FASTA format,
 which can be loaded and manipulated with sequence commands: 
 
 \begin{verbatim}
-yabby> seq_load hits.seq  hits
+yabby> seq_load hits.fas  hits
 
- Reading the file 'hits.seq' ..
+ Reading the file 'hits.fas' ..
  3 sequence(s) found.
 
 yabby> print hits.seq
@@ -834,12 +834,12 @@ This would create several additional files in the same directory,
 such as 'LmjFwholegenome.pep.phr', 'LmjFwholegenome.pep.psq' etc.
 
 Yabby can execute BLAST search against multiple sequences. For
-example, to BLAST six sequences from the file 'cad.seq':
+example, to BLAST six sequences from the file 'cad.fas':
 
 \begin{verbatim}
-yabby> seq_load cad.seq cad
+yabby> seq_load cad.fas cad
 
- Reading the file 'cad.seq' ..
+ Reading the file 'cad.fas' ..
  6 sequence(s) found.
 
 yabby> blast -E 5.0 tmp/LmjFwholegenome_20050601_V5.2.pep cad

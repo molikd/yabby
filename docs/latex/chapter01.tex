@@ -324,7 +324,7 @@ to the file tom20.seq which is created in the workspace directory.}
 \end{figure}
 
 Consider in more detail what happens when the sequences were read
-from the file 'tom20.txt' to create a sequence object in the
+from the file 'tom20.fas' to create a sequence object in the
 workspace, as shown in Figure \ref{fig:session}:
 
 \begin{verbatim}
@@ -334,9 +334,9 @@ workspace, as shown in Figure \ref{fig:session}:
 4     Copyright (c) 2004-7 Vladimir Likic
 5   [ 35 command(s) ready ]
 6 
-7  yabby> seq_load tom20.txt tom20
+7  yabby> seq_load tom20.fas tom20
 8  
-9   Reading the file 'tom20.txt' ..
+9   Reading the file 'tom20.fas' ..
 10  3 sequence(s) found.
 11 
 12 yabby> what
@@ -371,10 +371,10 @@ was silently created.
 The command shown on line 7:
 
 \begin{verbatim}
-seq_load tom20.txt tom20
+seq_load tom20.fas tom20
 \end{verbatim}
 
-will read the sequence from the file 'tom20.txt', and save the sequences
+will read the sequence from the file 'tom20.fas', and save the sequences
 under the name 'tom20'. The command 'what' shown on line 12 allows one
 to inspect the content of the workspace. It shows that the workspace
 contains the object named 'tom20' of the type 'seq'. The command 'print'
