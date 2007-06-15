@@ -14,9 +14,9 @@
 
 \setcounter{section}{0}
 
-\chapter{Introduction}
+\chapter{Yabby}
 
-\section{What is Yabby}
+\section{Introduction}
 
 - Introduction
 - Motivation
@@ -296,36 +296,22 @@ the suspended Yabby session.
 \section{Understanding how Yabby works}
 
 To understand how Yabby works it is important to understand the
-relationhips between three directories: the working directory
-where the Yabby session has been started, the Yabby library (this
+relationship between three directories: the working directory
+(where the Yabby session has been started), the Yabby library (this
 is the lib/ subdirectory in the the Yabby installation directory),
 and the workspace directory.
 
-The workspace directory is created automatically in the working
-directory when the Yabby session is initialized. The workspace
-directory is called .yabby, and it contains all the yabby objects
-created within the session. Upon graceful exit from the Yabby
-shell, the workspace directory is destroyed together with its
-content.  The relationship between the working directory,
-workspace, and Yabby library is shown in Figure \ref{fig:session}.
+The workspace directory is created automatically when the Yabby
+session is initialized. By default, the workspace directory is
+called .yabby, and it is created in the working directory. The
+workspace directory contains all the yabby objects created within
+the session. Upon graceful exit from the Yabby shell, the workspace
+directory is destroyed together with its content.
 
-\begin{figure}
-\centering
-\includegraphics[height=6.0cm]{pics/yabby-session.eps}
-\caption{A schematic showing the relationship between the working
-directory, Yabby installation directory, and the workspace. In
-this example the Yabby session was started in the user's home
-directory (/home/jake), and this has created the workspace directory
-(/home/jake/.yabby). The execution of the command seq\_load from
-the Yabby shell has executed the script seq\_load.pl from the Yabby
-library, and has created the tom20.seq object. This object corresponds
-to the file tom20.seq which is created in the workspace directory.}
-\label{fig:session}
-\end{figure}
+\subsection{The exchange of data between command scripts}
 
-Consider in more detail what happens when the sequences were read
-from the file 'tom20.fas' to create a sequence object in the
-workspace, as shown in Figure \ref{fig:session}:
+Consider what happens when the sequences were read from the file
+'tom20.fas' to create a sequence object in the workspace:
 
 \begin{verbatim}
 1  $ yabby
@@ -366,38 +352,38 @@ workspace, as shown in Figure \ref{fig:session}:
 
 In line 1 the Yabby was started from the Unix shell command line.
 During the initalization process the workspace directory .yabby
-was silently created.
-
-The command shown on line 7:
+was silently created. The command shown on line 7:
 
 \begin{verbatim}
 seq_load tom20.fas tom20
 \end{verbatim}
 
 will read the sequence from the file 'tom20.fas', and save the sequences
-under the name 'tom20'. The command 'what' shown on line 12 allows one
-to inspect the content of the workspace. It shows that the workspace
-contains the object named 'tom20' of the type 'seq'. The command 'print'
-on the line 18 printed the object 'tom20' on the terminal screen.
+under the name 'tom20'. The command 'what' shown on the line 12 allows
+one to inspect the content of the workspace. It shows that the workspace
+contains one object, named 'tom20', and this object is of the type 'seq'
+(it is a sequence object).  The command 'print' on the line 18 has
+printed the object 'tom20' on the terminal screen.
 
 The command 'seq\_load' has executed the script 'seq\_load.pl'
 located in the Yabby library. This command reads the FASTA sequence
-file and converts it into a Yabby object of the type 'seq'. The
+file and converts it into an Yabby object of the type 'seq'. The
 command 'print' has executed the script 'print.pl' from the Yabby
 library. The scripts 'seq\_load.pl' and 'print.pl' are completely
-independent. How was the data (i.e. the newly created 'seq' object)
-transferred from the script 'seq\_load.pl' to the 'print' command?
+independent. How was the script 'print.pl' aware of the data object
+'tom20.seq'?  How was the data transferred between the script
+'seq\_load.pl' to the script 'print.pl' for printing?
 
 This was achieved by the use of the workspace directory. When Yabby
 was started (line 1) the workspace directory .yabby/ was silently
 created in the current working directory. The newly created object
 'tom20' (the result of the command 'seq\_load') was stored in the
-file in the workspace directory. On the line 18, the command 'print'
-was requested to print the object 'tom20' of the type 'seq'
-(abbreviated as 'tom20.seq'). The command 'print' has first attempted
-to find the object 'tom20.seq' in the workspace. This was successful,
-and the object was first loaded from the workspace directory, and
-then printed on the terminal screen.
+file 'tom20.seq' in the workspace directory. On the line 18, the
+command 'print' was requested to print the object 'tom20' of the
+type 'seq'. The command 'print' first attempted to find the object
+'tom20.seq' in the workspace. This was successful, and the object
+was loaded from the workspace directory, and then printed on the
+terminal screen.
 
 Consider printing a non-existent sequence object:
 
@@ -411,11 +397,13 @@ yabby> print tom99.seq
  [ command 'print' failed ]
 \end{verbatim}
 
-The message above shows that 'tom99.seq' is not in the workspace.
-Printing of the sequence objects is handled by the script '\_print\_seq.pl',
-which is invoked by the command script 'print.pl'.
+The message above shows that 'tom99.seq' ('tom99' object of the 
+type 'seq') is not in the workspace. Furthermore, printing of the
+sequence objects is handled by the system script '\_print\_seq.pl',
+which is normally invoked by the command script 'print.pl'. Hence
+the error message comes from '\_print\_seq'.
 
-Consider printing an object of a non-exiting type:
+Consider printing of an object of a non-exiting type:
 
 \begin{verbatim}
 yabby> print tom20.ttt
@@ -424,9 +412,392 @@ yabby> print tom20.ttt
  [ command 'print' failed ]
 \end{verbatim}
 
-This message comes from the command script 'print.pl'. Since this
-command script needs to decide which system script to call for
-printing, it first must determine if the printing of the requested
-object type has been implemented.
+In this case the error message originated from the command script
+'print.pl'. This command script needs to decide which system script
+to call for printing. It first determines if the printing of the
+requested object type has been implemented, and bombs out if not.
 
+The relationship between the working directory, workspace, and Yabby
+library is shown in Figure \ref{fig:session}.
+
+\begin{figure}
+\centering
+\includegraphics[height=6.0cm]{pics/yabby-session.eps}
+\caption{The relationship between the working directory, Yabby
+library, and the workspace directory. In this example the Yabby
+session was started in the user's home directory (/home/jake).
+During the initialization, Yabby has created the workspace directory
+(/home/jake/.yabby). The execution of the command seq\_load from
+the Yabby shell has executed the script seq\_load.pl from the
+library, and has created the tom20.seq object. This object is
+stored in the file tom20.seq, created in the workspace directory.}
+\label{fig:session}
+\end{figure}
+
+\subsection{The workspace}
+
+The workspace is the area where persistent objects are held,
+normally an area of the computer memory. In Yabby, the workspace
+is an area of the local persistent storage (hard disk), and more
+specifically, the workspace directory (or folder). This directory
+is automatically created when Yabby is started, and is silently
+destroyed upon a graceful exit from Yabby. The consequence of
+this is that one can directly inspect what is in Yabby's workspace. 
+If the Yabby session has been started in /home/jake, and the
+following command is executed:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+\end{verbatim}
+
+This has created the object 'tom20.seq'.  One can inspect this object
+directly by using system tools:
+
+\begin{verbatim}
+$ cd /home/jake/.yabby
+$ ls
+tom20.seq
+$ cat tom20.seq
+<?xml version="1.0"?><seqroot><seqentry><seqid>A.thaliana2</
+seqid><comment>A.thaliana2</comment><sequence>MEFSTADFERFIMF
+EHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLNDAISKLEEALTINPG
+KHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGNDTYRKSLDSSLKAP
+ELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFTYDVCGWIILACGIV
+AWVGMAKSLGPPPPAR</sequence></seqentry><seqentry><seqid>O.sat
+iva</seqid><comment>O.sativa</comment><sequence>MDMGAMSDPERM
+FFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLEDAESKLEEALKI
+DPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPANDLYRKSLDLSS
+KAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVVLGVGMVVWVGLA
+KSNAPPQAPR</sequence></seqentry><seqentry><seqid>L.esculentu
+m</seqid><comment>L.esculentum</comment><sequence>MDMQSDFDRL
+LFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDAISKLEEALEV
+NPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENELYQKSFEVSS
+KTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVILAVGLVAWIGF
+AKSNMPXPAHPLPR</sequence></seqentry></seqroot>
+\end{verbatim}
+
+The object 'tom20.seq' is a plain text XML document which captures
+the data about sequences.
+
+The ability to access the workspace allows one to inspect the
+existing objects while they reside in Yabby's "memory", which
+often comes handy. For example, this may facilitate understanding
+of object's internal representation, and often greatly facilitates
+implementation and debugging of data models that need to be
+developed to capture new data types. 
+
+\subsection{The data formats}
+
+Currently Yabby implements two different data formats: two-dimensional
+list (table) and XML document. In many bioinformatics applications data
+can be effectively represented by two dimensional tables. Examples
+include the list of atoms in a molecule, the list of atom coordinates,
+the list of sequence IDs and their rankings, etc. For such data, two
+dimensional tables are ideal representation. Ocassionally, the objects
+which have more complex internal structure need to be handled. For
+example, a list of protein sequences where each sequence may need to
+be characterized with several attributes: sequence ID, organism name, 
+the sequence string consisting of amino acid residues and so on.
+
+As an example for a two-dimensional list data format, consider the
+property 'mol' (molecule).
+
+\begin{verbatim}
+yabby> mol_load 1BT0.pdb rub
+
+ 661 atoms found in the molecule 'rub'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    rub            mol           
+\end{verbatim}
+
+The command 'mol\_load' has created the object 'rub.mol'. This object
+is stored in the workspace as the file 'rub.mol':
+
+\begin{verbatim}
+$ cd .yabby
+/home/jack/data/.yabby
+$ ls
+rub.mol
+$ head rub.mol
+1 MET N 
+1 MET CA 
+1 MET C 
+1 MET O 
+1 MET CB 
+1 MET CG 
+1 MET SD 
+1 MET CE 
+2 LEU N 
+2 LEU CA 
+\end{verbatim}
+
+This is an example where the two-dimensional list fits perfectly
+the data type: a molecule is a list of atoms, and each atom is
+characterized by residue number, residue name, and atom name.
+This information can be naturally arranged into a two-dimensional
+table, with one atom per table row. 
+
+On the other hand, the protein or DNA sequence is not naturally
+amenable to the two-dimensional list representation. A sequence
+may be characterized by several attributes (sequence ID, organism
+name, database specific IDs, and so on) in addition to the sequence
+itself, which may contain a few to many thousands of letters. The
+matter is further complicated if the data model needs to handle
+transparently one or more sequences. Yabby uses XML to represent
+such data which requires more capable representations.
+
+Consider the content of the file 'tom20.seq' which contains
+the information about three tom20 sequences given previously.
+If arranged in a more readable format, this sequence object
+looks as given below:
+
+\begin{verbatim}
+<?xml version="1.0"?>
+<seqroot>
+  <seqentry>
+    <seqid>A.thaliana2</seqid>
+    <comment>A.thaliana2</comment>
+    <sequence>MEFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQF
+      QPIPEAKLMLNDAISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFD
+      KATEYFQRAENEDPGNDTYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGG
+      MASSNVSQSSKKKKRNTEFTYDVCGWIILACGIVAWVGMAKSLGPPPPAR
+    </sequence>
+  </seqentry>
+  <seqentry>
+    <seqid>O.sativa</seqid>
+    <comment>O.sativa</comment>
+    <sequence>MDMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQM
+      RNGPESLKCLEDAESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEK
+      ATQCFQKAVDVEPANDLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSR
+      KKKKDSDFWYDVFGWVVLGVGMVVWVGLAKSNAPPQAPR</sequence>
+  </seqentry>
+  <seqentry>
+  <seqid>L.esculentum</seqid>
+    <comment>L.esculentum</comment>
+    <sequence>MDMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQS
+    VSESKKMISDAISKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQC
+    FQQAVDADPENELYQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKS
+    SDLKYDVFGWVILAVGLVAWIGFAKSNMPXPAHPLPR</sequence>
+  </seqentry>
+</seqroot>
+\end{verbatim}
+
+It is apparent that each sequence is enclosed by the XML tags
+$<$seqentry$>$ and $<$/seqentry$>$. Furthermore, the individual
+attributes for each sequence are enclosed in tags such as
+$<$seqid$>$ and $<$/seqid$>$, $<$comment$>$ and $<$/comment$>$
+and so on. This allows a great flexibility in the representation
+of data with complex internal structure. This flexibility comes
+at a price, as it requires more effort to design and then implement
+an XML based format compared to a two-dimensional list. 
+
+\subsection{Extending Yabby}
+
+The design goal of Yabby was to allow easy modification of existing
+functionality and writing of new commands. As a result, extending
+Yabby's functionality is very easy. The one-to-one correspondence
+between Yabby commands and Yabby command scripts makes it very clear
+from where the particular funcionality comes from. It also encapsulates
+a functionality within a particular script file, and small size of
+individual script files makes it easy to understand, modify, and
+maintain them.  The other important feature is the decoupling between
+the program scripts. For example, the command 'print' prints the
+sequence object created by the command 'seq\_load'. This is possible
+because 'seq\_load' saves the sequence object so that 'print' can
+find it, and all happnes via the intermediate file stored in the
+workspace directory. The complete decoupling between command scripts
+ensures that it is very hard to break existing commands when adding
+new commands or functionality!
+
+Any functional Perl script placed in the Yabby library directory
+will become available for execution as Yabby command.  Consider
+the file 'hello.pl' with the following content:
+
+\begin{verbatim}
+print "Hello World!\n";
+\end{verbatim}
+
+If placed in the the Yabby library directory, it becomes immediately
+available as the command 'hello':
+
+\begin{verbatim}
+$ yabby
+
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 36 command(s) ready ]
+
+yabby> hello
+
+Hello World!
+
+yabby>
+\end{verbatim}
+
+If previously running, Yabby needs to be restarted before the command
+'hello' becomes available.
+
+\subsection{How to create a new Yabby command}
+
+Although a simple perl script would work if just dropped in the Yabby
+library, to a true Yabby command requires some additional effort. To
+demonstrate this, consider developing a command which prints the first
+letter of the first sequence stored in the sequence object. We will
+call this command 'seq\_firstl'.
+
+We start by creating the file 'seq\_firstl.pl' in the Yabby library:
+
+\begin{verbatim}
+# seq_firstl.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+\end{verbatim}
+
+All Yabby commands rely on modules 'yabby\_sys'. The module 'yabby\_seq'
+contains functions for the manipulation of sequences. The Perl module
+'Getopt::Std' is required to enable processing of single-character
+command switches.
+
+The next step is to add the usage string:
+
+\begin{verbatim}
+$USAGE = "
+ Prints the first letter from the first sequence of a sequence
+ object. 
+
+ Usage:
+        seq_firstl OBJ_NAME
+
+ Notes:
+
+ 1. This merely an example script used to demonstrate how new
+ Yabby commands can be developed.
+";
+\end{verbatim}
+
+The usage script will be printed when 'help seq\_firstl' or
+'seq\_firstl help' is issued.
+
+Follows the options and initialization commands:
+
+\begin{verbatim}
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+\end{verbatim}
+
+In this case there are no options. The function 'sys\_init' is used
+to process arguments to all Yabby commands in a standard way. The
+function 'check\_call' is used to check the number of arguments.
+In this case, exactly one argument must be given, the name of the
+sequence object.  Finally, in the last line the name of sequence
+object is associated to the variable 'obj\_name'. In the next step
+the sequence object is loaded in the memory:
+ 
+\begin{verbatim}
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+\end{verbatim}
+
+The function 'requirements()' checks whether the sequence object
+named 'obj\_name' exists. If not it will terminate the script
+with an appropriate error message. If this step is passed, the
+function 'load\_ip\_xml()' loads the sequence object from the
+workspace in the memory. Finally, we fetch the first sequence
+and print its first letter:
+
+\begin{verbatim}
+$seq_hash = xml2seq( $xmldoc );
+$seq_item = $seq_hash->{1};
+printf " The first letter of the first sequence is: '%s'\n",
+  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+\end{verbatim}
+
+The complete listing of the command script 'seq\_firstl' is given
+below: 
+
+\begin{verbatim}
+# seq_firstl.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Prints the first letter from the first sequence of a sequence
+ object. 
+
+ Usage:
+        seq_firstl OBJ_NAME
+
+ Notes:
+
+ 1. This merely an example script used to demonstrate how new
+ Yabby commands can be developed.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$seq_item = $seq_hash->{1};
+printf " The first letter of the first sequence is: '%s'\n",
+  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+\end{verbatim}
+
+When executed, give the following output:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> seq_firstl tom20
+
+ The first letter of the first sequence is: 'M'
+\end{verbatim}
+
+Consider what happens when no argument is given:
+
+\begin{verbatim}
+yabby> seq_firstl 
+
+ seq_firstl:: ERROR: exactly 1 argument(s) required [ 0 supplied ]
+ [ command 'seq_firstl' failed ]
+\end{verbatim}
+
+This error was raised by the function 'check\_call'. If the sequence
+object does not exist:
+
+\begin{verbatim}
+yabby> seq_firstl ttt
+
+ seq_firstl:: missing requirement: 'ttt.seq'
+
+ [ command 'seq_firstl' failed ]
+\end{verbatim}
+
+The last error was raised by the function 'requirements()'.
 
