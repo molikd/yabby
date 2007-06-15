@@ -693,6 +693,269 @@ yabby> seq_comment tom20
 
 % ### NEW COMMAND ###
 
+\subsection[seq\_compl]{ \fbox{\tt seq\_compl} }
+
+\index{\tt seq\_compl}
+
+% Concise explanation
+
+Calculates DNA sequence complement.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_compl [ options ] OBJ\_NAME OBJ\_NAME\_NEW}
+
+Where OBJ\_NAME is the name of an existing DNA sequence object,
+the complement sequence will be saved under the name OBJ\_NAME\_NEW.
+
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -r -- reverse complement
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_compl dna dna_compl
+
+ 'dna' contains 2 sequence(s)
+ Working on 'chr01'
+ Working on 'chr02'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} another seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_fetch]{ \fbox{\tt seq\_fetch} }
+
+\index{\tt seq\_fetch}
+
+% Concise explanation
+
+Fetch a sequence from GenBank.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_fetch ACC\_NUM OBJ\_NAME}
+
+Fetch a sequence from GenBank using sequence accession number,
+and save the sequence under the name OBJ\_NAME. This command
+is mainly a demonstration of how to use BioPerl library within
+Yabby.
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command requires Bioperl's Bio::DB module.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_fetch J00522 mig
+
+ Saving 'J00522' as 'mig'
+
+yabby> print mig.seq
+
+>gi|195052|gb|J00522.1|MUSIGHBA1 [ Mouse Ig active H-chain V-region from MOPC21, subgroup VH-II, mRNA ]
+AGGCTCAATTTAGTTTTCCTTGTCCTTATTTTAAAAGGTGTCCAGTGTGATGTGCAGCTG
+GTGGAGTCTGGGGGAGGCTTAGTGCAGCCTGGAGGGTCCCGGAAACTCTCCTGTGCAGCC
+TCTGGATTCACTTTCAGTAGCTTTGGAATGCACTGGGTTCGTCAGGCTCCAGAGAAGGGG
+CTGGAGTGGGTCGCATACATTAGTAGTGGCAGTAGTACCCTCCACTATGCAGACACAGTG
+AAGGGCCGATTCACCATCTCAAGAGACAATCCCAAGAACACCCTGTTCCTGCAAATGACC
+AGTCTAAGGTCTGAGGACACGGCCATGTATTACTGTGCAAGATGGGGTAACTACCCTTAC
+TATGCTATGGACTACTGGGGTCAAGGAACCTCAGTCACCGTCTCCTCA
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_info]{ \fbox{\tt seq\_info} }
+
+\index{\tt seq\_info}
+
+% Concise explanation
+
+Prints information about the sequence object.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_info [ options ] OBJ\_NAME}
+
+Where OBJ\_NAME is the name of an existing sequence object.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -l -- long output.  When multiple sequences are present,
+            print the number of residues for each sequence.
+            By default, only a short summary is printed.
+\item -n -- print only the number of residues in each sequence
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_info Tim10
+
+ 'Tim10' contains 13 sequence(s)
+   min number of residues: 75 (sequence 'Plasmodium')
+   max number of residues: 115 (sequence 'Ciona')
+mouse
+Schistosoma
+Dictyostelium
+Schizosaccharomyces
+Saccharomyces
+Neurospora
+Ciona
+Xenopus
+Danio
+Anopheles
+Caenorhabditis
+Plasmodium
+Arabidopsis
+
+yabby> seq_info -l Tim10
+
+ 'Tim10' contains 13 sequence(s)
+  1 -> mouse, 90 residues
+  2 -> Schistosoma, 88 residues
+  3 -> Dictyostelium, 88 residues
+  4 -> Schizosaccharomyces, 89 residues
+  5 -> Saccharomyces, 93 residues
+  6 -> Neurospora, 90 residues
+  7 -> Ciona, 115 residues
+  8 -> Xenopus, 93 residues
+  9 -> Danio, 88 residues
+ 10 -> Anopheles, 92 residues
+ 11 -> Caenorhabditis, 86 residues
+ 12 -> Plasmodium, 75 residues
+ 13 -> Arabidopsis, 83 residues
+
+yabby> seq_info -n Tim10
+
+ 'Tim10' contains 13 sequence(s)
+90
+88
+88
+89
+93
+90
+115
+93
+88
+92
+86
+75
+83
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ### NEW COMMAND ###
+
 \subsection[seq\_load]{ \fbox{\tt seq\_load} }
 
 \index{\tt seq\_load}
@@ -742,6 +1005,335 @@ yabby> seq_load tom20.fas tom20
 
  Reading the file 'tom20.fas' ..
  7 sequence(s) found.
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_op]{ \fbox{\tt seq\_op} }
+
+\index{\tt seq\_op}
+
+% Concise explanation
+
+Calculates union/intersection/difference of two sequence objects
+by using the sequence IDs.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_op [ options ] SEQ1\_OBJ SEQ2\_OBJ RES\_OBJ}
+
+Calculates union/intersection/difference of two sequence objects
+SEQ1\_OBJ and SEQ2\_OBJ, and stores the result as the sequence
+object RES\_OBJ.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -u -- calculate the union (default)
+\item -i -- calculate the intersection
+\item -d -- calculate the difference
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item The calculation will fail if there are duplicate sequences in
+      one set. For example, if two sets of sequences have no sequence
+      in common, but one set of sequences contains two copies of the
+      sequence 'F36.5845', the intersection of the two sets will contain
+      this sequence.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_op -i Tim10 Tim10-5 Tim10int
+
+ Found 13 sequence(s) in 'Tim10'
+ Found 8 sequence(s) in 'Tim10-5'
+  INTERSECTION contains 8 sequence(s)
+  DIFFERENCE contains 5 sequence(s)
+  UNION contains 13 sequence(s)
+ [ Saving INTERSECTION as 'Tim10int' ]
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_pattern]{ \fbox{\tt seq\_pattern} }
+
+\index{\tt seq\_pattern}
+
+% Concise explanation
+
+Searches for pattern in a sequence object.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_pattern [ options ] PATTERN OBJ\_NAME}
+
+Searches for pattern PATTERN in sequences OBJ\_NAME.
+Where OBJ\_NAME is the name of an existing sequence object.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -c -- match the comment not the sequence
+\item -s NAME -- save the matching sequences under the name NAME 
+                 should this read another OBJ\_NAME e.g. OBJ\_NAME\_NEW
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+bug here 
+yabby> seq_pattern -c habditis Tim10
+
+1 1
+ 'habditis' matches in 'Caenorhabditis'
+ 13 sequences examined, 1 matches found
+
+yabby> seq_pattern NSTVVELLG Tim10
+
+Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line 42
+0
+ 'NSTVVELLG' matches in 'Plasmodium'
+ 13 sequences examined, 1 matches found
+
+seq_pattern -s seqinTim10 NSTVVELLG Tim10
+Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line 42
+0
+ 'NSTVVELLG' matches in 'Plasmodium'
+ 13 sequences examined, 1 matches found
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} with option s, creates another seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_pick]{ \fbox{\tt seq\_pick} }
+
+\index{\tt seq\_pick}
+
+% Concise explanation
+
+Extracts a subset of sequences from the sequence object.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_pick [ options ] OBJ\_NAME\_NEW OBJ\_NAME}
+
+Where OBJ\_NAME is the name of an existing sequence object
+and OBJ\_NAME\_NEW is the name of the sequence object to be created.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -n RANGE -- extract the sequence by number range.
+                  The range parameter RANGE can be a single integer, in which
+                  the sequence with this sequence number will be extracted.
+                  Alternatively, RANGE can contain two integers separated
+                  by a colon such as N:M.  In this case the range of sequences
+                  between N and M will be extracted (inclusive).
+\item -q SEQID -- pick a sequence with the sequence ID SEQID
+\item -l MIN:MAX -- pick sequences whose length is between MIN and MAX
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_pick -q Arabidopsis Tim10Arabidopsis Tim10
+
+ Fetching the sequence 'Arabidopsis'
+ Saving the extracted sequence as 'Tim10Arabidopsis
+
+yabby> seq_pick -n 1:2 Tim10-12 Tim10
+
+ Saving the extracted sequence as 'Tim10-12'
+
+yabby> seq_pick -l 115:130 Tim10l Tim10
+
+ 1 sequences matched
+ Saving the extracted sequence as 'Tim10l'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_strip]{ \fbox{\tt seq\_strip} }
+
+\index{\tt seq\_strip}
+
+% Concise explanation
+
+Strips a portion of a sequence.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_strip begin:end OBJ\_NAME OBJ\_NAME\_NEW}
+
+Where OBJ\_NAME is the name of an existing sequence object, and
+begin:end are the first and last residue to strip (inclusive).
+The resulting object will be saved under the name OBJ\_NAME\_NEW.
+
+If more than one sequence is present in the sequence object,
+all will be stripped and saved under the new name.
+
+In stripped sequences, IDs are set to ORIGINALID\_begin:end.
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_strip 2:10 Tim10 Tim10stripped
+
+ 'Tim10' contains 13 sequence(s)
+ stripping 'mouse'
+ stripping 'Schistosoma'
+ stripping 'Dictyostelium'
+ stripping 'Schizosaccharomyces'
+ stripping 'Saccharomyces'
+ stripping 'Neurospora'
+ stripping 'Ciona'
+ stripping 'Xenopus'
+ stripping 'Danio'
+ stripping 'Anopheles'
+ stripping 'Caenorhabditis'
+ stripping 'Plasmodium'
+ stripping 'Arabidopsis'
+
 \end{verbatim}
 
 \end{enumerate}
