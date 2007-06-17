@@ -644,18 +644,18 @@ yabby>
 If previously running, Yabby needs to be restarted before the command
 'hello' becomes available.
 
-\subsection{Creating a new Yabby command: seq\_firstl}
+\subsection{Creating a new Yabby command: seq\_letter}
 
 Although a simple perl script would work if just dropped in the Yabby
 library, to create a Yabby command would require some additional effort.
 Consider creating a very simple command which operates on the sequence
 object, and prints the first letter of the first sequence stored in
-the sequence object. The command will be named 'seq\_firstl'.
+the sequence object. The command will be named 'seq\_letter'.
 
-We start by creating the file 'seq\_firstl.pl' in the Yabby library:
+We start by creating the file 'seq\_letter.pl' in the Yabby library:
 
 \begin{verbatim}
-# seq_firstl.pl
+# seq_letter.pl
 
 use yabby_sys;
 use yabby_seq;
@@ -676,7 +676,7 @@ $USAGE = "
  object. 
 
  Usage:
-        seq_firstl OBJ_NAME
+        seq_letter OBJ_NAME
 
  where OBJ_NAME is the name of an existing sequence object.
 
@@ -687,8 +687,8 @@ $USAGE = "
 ";
 \end{verbatim}
 
-The usage string will be printed when 'help seq\_firstl' or
-'seq\_firstl help' is issued.
+The usage string will be printed when 'help seq\_letter' or
+'seq\_letter help' is issued.
 
 We add the initialization commands:
 
@@ -728,11 +728,11 @@ printf " The first letter of the first sequence is: '%s'\n",
   substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
 \end{verbatim}
 
-The complete listing of the modified command script 'seq\_firstl'
+The complete listing of the modified command script 'seq\_letter'
 is given below: 
 
 \begin{verbatim}
-# seq_firstl.pl
+# seq_letter.pl
 
 use yabby_sys;
 use yabby_seq;
@@ -744,7 +744,7 @@ $USAGE = "
  object. 
 
  Usage:
-        seq_firstl OBJ_NAME
+        seq_letter OBJ_NAME
 
  where OBJ_NAME is the name of an existing sequence object.
 
@@ -779,7 +779,7 @@ yabby> seq_load tom20.fas tom20
  Reading the file 'tom20.fas' ..
  3 sequence(s) found.
 
-yabby> seq_firstl tom20
+yabby> seq_letter tom20
 
  The first letter of the first sequence is: 'M'
 \end{verbatim}
@@ -787,28 +787,28 @@ yabby> seq_firstl tom20
 Consider what happens when no arguments are given:
 
 \begin{verbatim}
-yabby> seq_firstl 
+yabby> seq_letter 
 
- seq_firstl:: ERROR: exactly 1 argument(s) required [ 0 supplied ]
- [ command 'seq_firstl' failed ]
+ seq_letter:: ERROR: exactly 1 argument(s) required [ 0 supplied ]
+ [ command 'seq_letter' failed ]
 \end{verbatim}
 
 This error was raised by the function 'check\_call'. If the sequence
 object does not exist:
 
 \begin{verbatim}
-yabby> seq_firstl ttt
+yabby> seq_letter ttt
 
- seq_firstl:: missing requirement: 'ttt.seq'
+ seq_letter:: missing requirement: 'ttt.seq'
 
- [ command 'seq_firstl' failed ]
+ [ command 'seq_letter' failed ]
 \end{verbatim}
 
 The last error was raised by the function 'requirements()'.
 
-\subsection{Extending seq\_firstl to work on all sequences}
+\subsection{Extending seq\_letter to work on all sequences}
 
-It would be easy to extend the command seq\_firstl to print the
+It would be easy to extend the command seq\_letter to print the
 first letter of all sequences from the sequence object. This would
 require modifying the body of the command:
 
@@ -825,10 +825,10 @@ for $key ( @$keys ) {
 }
 \end{verbatim}
 
-The output of 'seq\_firstl' is:
+The output of 'seq\_letter' is:
 
 \begin{verbatim}
-yabby> seq_firstl tom20
+yabby> seq_letter tom20
 
  'tom20' contains 3 sequence(s)
  Sequence 'A.thaliana2', the first letter: 'M'
@@ -877,17 +877,17 @@ for $key ( @$keys ) {
 }
 \end{verbatim}
 
-The possible use of the modified 'seq\_firstl':
+The possible use of the modified 'seq\_letter':
 
 \begin{verbatim}
-yabby> seq_firstl tom20
+yabby> seq_letter tom20
 
  'tom20' contains 3 sequence(s)
  Sequence 'A.thaliana2', the letter is 'M'
  Sequence 'O.sativa', the letter is 'M'
  Sequence 'L.esculentum', the letter is 'M'
 
-yabby> seq_firstl -t tom20
+yabby> seq_letter -t tom20
 
  'tom20' contains 3 sequence(s)
  Sequence 'A.thaliana2', the letter is 'R'
@@ -895,10 +895,10 @@ yabby> seq_firstl -t tom20
  Sequence 'L.esculentum', the letter is 'R'
 \end{verbatim}
 
-The full listing of the command 'seq\_firstl' is:
+The full listing of the command 'seq\_letter' is:
 
 \begin{verbatim}
-# seq_firstl.pl
+# seq_letter.pl
 
 use yabby_sys;
 use yabby_seq;
@@ -909,7 +909,7 @@ $USAGE = "
  Prints the first sequence letter from the sequence object. 
 
  Usage:
-        seq_firstl [ options ] OBJ_NAME
+        seq_letter [ options ] OBJ_NAME
 
  where OBJ_NAME is the name of an existing sequence object.
 
@@ -963,7 +963,7 @@ for $key ( @$keys ) {
 }
 \end{verbatim}
 
-\subsection{Extending seq\_firstl to save the sequence}
+\subsection{Extending seq\_letter to save the sequence}
 
-Consider extending the command 'seq\_firstl' further, 
+Consider extending the command 'seq\_letter' further, 
 
