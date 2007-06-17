@@ -598,7 +598,7 @@ of data with complex internal structure. This flexibility comes
 at a price, as it requires more effort to design and then implement
 an XML based format compared to a two-dimensional list. 
 
-\subsection{Extending Yabby}
+\section{Extending Yabby}
 
 The design goal of Yabby was to allow easy modification of existing
 functionality and writing of new commands. As a result, extending
@@ -644,13 +644,13 @@ yabby>
 If previously running, Yabby needs to be restarted before the command
 'hello' becomes available.
 
-\subsection{How to create a new Yabby command}
+\subsection{Creating a new Yabby command: seq\_firstl}
 
 Although a simple perl script would work if just dropped in the Yabby
-library, to a true Yabby command requires some additional effort. To
-demonstrate this, consider developing a command which prints the first
-letter of the first sequence stored in the sequence object. We will
-call this command 'seq\_firstl'.
+library, to create a Yabby command would require some additional effort.
+Consider creating a very simple command which operates on the sequence
+object, and prints the first letter of the first sequence stored in
+the sequence object. The command will be named 'seq\_firstl'.
 
 We start by creating the file 'seq\_firstl.pl' in the Yabby library:
 
@@ -663,12 +663,12 @@ use yabby_seq;
 use Getopt::Std;
 \end{verbatim}
 
-All Yabby commands rely on modules 'yabby\_sys'. The module 'yabby\_seq'
+All Yabby commands rely on the module 'yabby\_sys'. The module 'yabby\_seq'
 contains functions for the manipulation of sequences. The Perl module
 'Getopt::Std' is required to enable processing of single-character
 command switches.
 
-The next step is to add the usage string:
+The next step is to create the usage string:
 
 \begin{verbatim}
 $USAGE = "
@@ -678,17 +678,19 @@ $USAGE = "
  Usage:
         seq_firstl OBJ_NAME
 
+ where OBJ_NAME is the name of an existing sequence object.
+
  Notes:
 
- 1. This merely an example script used to demonstrate how new
+ 1. This command is merely an example to demonstrate how new
  Yabby commands can be developed.
 ";
 \end{verbatim}
 
-The usage script will be printed when 'help seq\_firstl' or
+The usage string will be printed when 'help seq\_firstl' or
 'seq\_firstl help' is issued.
 
-Follows the options and initialization commands:
+We add the initialization commands:
 
 \begin{verbatim}
 # options
@@ -698,13 +700,14 @@ check_call( @argl, [ 1 ] );
 $obj_name = $argl[0];
 \end{verbatim}
 
-In this case there are no options. The function 'sys\_init' is used
-to process arguments to all Yabby commands in a standard way. The
-function 'check\_call' is used to check the number of arguments.
-In this case, exactly one argument must be given, the name of the
-sequence object.  Finally, in the last line the name of sequence
-object is associated to the variable 'obj\_name'. In the next step
-the sequence object is loaded in the memory:
+In the case of this command there are no options. The function
+'sys\_init' is used to process arguments to all Yabby commands
+in a standard way. The function 'check\_call' is used to check
+the number of arguments.  In this case, exactly one argument
+must be given, the name of an existing sequence object.  Finally,
+in the last line the name of sequence object is associated to
+the variable 'obj\_name'. In the next step the sequence object
+is loaded in the memory:
  
 \begin{verbatim}
 requirements( $obj_name, $SEQUENCE );
@@ -715,8 +718,8 @@ The function 'requirements()' checks whether the sequence object
 named 'obj\_name' exists. If not it will terminate the script
 with an appropriate error message. If this step is passed, the
 function 'load\_ip\_xml()' loads the sequence object from the
-workspace in the memory. Finally, we fetch the first sequence
-and print its first letter:
+workspace. Finally, we fetch the first sequence and print its
+first letter:
 
 \begin{verbatim}
 $seq_hash = xml2seq( $xmldoc );
@@ -725,8 +728,8 @@ printf " The first letter of the first sequence is: '%s'\n",
   substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
 \end{verbatim}
 
-The complete listing of the command script 'seq\_firstl' is given
-below: 
+The complete listing of the modified command script 'seq\_firstl'
+is given below: 
 
 \begin{verbatim}
 # seq_firstl.pl
@@ -743,9 +746,11 @@ $USAGE = "
  Usage:
         seq_firstl OBJ_NAME
 
+ where OBJ_NAME is the name of an existing sequence object.
+
  Notes:
 
- 1. This merely an example script used to demonstrate how new
+ 1. This command is merely an example to demonstrate how new
  Yabby commands can be developed.
 ";
 
@@ -766,7 +771,7 @@ printf " The first letter of the first sequence is: '%s'\n",
   substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
 \end{verbatim}
 
-When executed, give the following output:
+When executed, the command gives the following output:
 
 \begin{verbatim}
 yabby> seq_load tom20.fas tom20
@@ -779,7 +784,7 @@ yabby> seq_firstl tom20
  The first letter of the first sequence is: 'M'
 \end{verbatim}
 
-Consider what happens when no argument is given:
+Consider what happens when no arguments are given:
 
 \begin{verbatim}
 yabby> seq_firstl 
@@ -800,4 +805,95 @@ yabby> seq_firstl ttt
 \end{verbatim}
 
 The last error was raised by the function 'requirements()'.
+
+\subsection{Extending seq\_firstl to work on all sequences}
+
+It would be easy to extend the command seq\_firstl to print the
+first letter of all sequences from the sequence object. This would
+require modifying the body of the command:
+
+\begin{verbatim}
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+for $key ( @$keys ) {
+  $seq_item = $seq_hash->{$key};
+  printf " Sequence '%s', the first letter is '%s'\n",
+  $seq_item->{$DBA_SEQID}, substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+}
+\end{verbatim}
+
+The output of 'seq\_firstl' is:
+
+\begin{verbatim}
+yabby> seq_firstl tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the first letter: 'M'
+ Sequence 'O.sativa', the first letter: 'M'
+ Sequence 'L.esculentum', the first letter: 'M'
+\end{verbatim}
+
+\subsection{Adding the option to print the last letter}
+
+Consider how one could add an optional switch to print the last
+letter of each sequence, instead of the first letter.
+
+To add the switch '-t':
+
+\begin{verbatim}
+# options
+getopts('t');
+
+if ( defined( $opt_t ) ) {
+  $opt_t_flag = 1;
+} else {
+  $opt_t_flag = 0;
+}
+\end{verbatim}
+
+To extend the command body to take into account possible '-t'
+switch: 
+
+\begin{verbatim}
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+for $key ( @$keys ) {
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+  $sequence = $seq_item->{$DBA_SEQUENCE};
+
+  if ( $opt_t_flag ) {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, -1, 1 );
+  } else {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+  }
+
+  printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
+}
+\end{verbatim}
+
+The possible use of the modified 'seq\_firstl':
+
+\begin{verbatim}
+yabby> seq_firstl tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the letter is 'M'
+ Sequence 'O.sativa', the letter is 'M'
+ Sequence 'L.esculentum', the letter is 'M'
+
+yabby> seq_firstl -t tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the letter is 'R'
+ Sequence 'O.sativa', the letter is 'R'
+ Sequence 'L.esculentum', the letter is 'R'
+\end{verbatim}
+
+
 
