@@ -969,7 +969,133 @@ The command 'seq\_letter' is very simple in that it merely prints
 something on the output screen; it does not modify an existing
 object nor it creates any new Yabby objects. Consider a command
 that actually creates a sequence object. An example for this may
-be a command that chops the first letter from each sequence, and
-saves the chopped sequences under a new name. 
+be a command that chops the first letter from each sequence in
+the sequence object, and saves the result as a new sequence object.
+This requires two names to be given on the input, the name of
+an existing sequence object, and the name of the sequence object
+that will be created:
+
+\begin{verbatim}
+seq_letterc OBJ_NAME OBJ_NAME_NEW
+\end{verbatim}
+
+where we named the new command 'seq\_letterc' to distinguish from
+the previous 'seq\_letter'.
+
+To build the command 'seq\_letterc' we create the file 'seq\_letterc.pl'
+in the Yabby library:
+
+\begin{verbatim}
+# seq_letters.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Chops the first sequence letter from the sequence object, and
+ saves the result as a new sequence object.
+
+ Usage:
+        seq_letters OBJ_NAME OBJ_NAME_NEW
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how new
+ Yabby commands can be developed.
+";
+\end{verbatim}
+
+Two arguments are now required:
+
+\begin{verbatim}
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 2 ] );
+$obj_name = $argl[0];
+$obj_name2 = $argl[1];
+\end{verbatim}
+
+We can use the same construct to check for requirements and fetch the
+sequence object:
+
+\begin{verbatim}
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+\end{verbatim}
+
+The new command requires a new sequence object to be created, and
+populated with sequences from the existing sequence object (minus
+the first letter). We first initialize a new sequence object:
+
+\begin{verbatim}
+$seq_hash2 = {};
+\end{verbatim}
+
+The same construct as in 'seq\_letter' could be used to loop through
+the sequences. Now, we also create a new sequence for each existing
+sequence, chop the first letter, and joing the result to the new
+sequence object:
+
+\begin{verbatim}
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+
+  $seq_item_new = {};
+  $seq_item_new->{$DBA_SEQID} = $seq_item->{$DBA_SEQID};
+  $seq_item_new->{$DBA_COMMENT} = $seq_item->{$DBA_COMMENT};
+  $seq_item_new->{$DBA_SEQUENCE} = $seq_item->{$DBA_SEQUENCE};
+
+  # chop the first letter from the sequence
+  substr( $seq_item_new->{$DBA_SEQUENCE}, 0, 1 ) = "";
+
+  $seq_hash2->{$key} = $seq_item_new;
+}
+\end{verbatim}
+
+We need to save the newly created sequence hash 'seq\_hash2' as the
+new sequence object. In the first step, we convert the sequence hash
+object into an XML document:
+
+\begin{verbatim}
+$xmldoc = seq2xml( $seq_hash2 );
+\end{verbatim}
+
+This is the reverse of the above command 'xml2seq()', which converts
+an XML document representing a sequence object into a sequence hash.
+The functions'xml2seq()' and 'seq2xml()' are specific for sequence
+objects, and are defined in the package 'yabby\_seq.pm'.  Finally,
+we store the XML sequence object in the workspace:
+
+\begin{verbatim}
+printf " Saving chopped sequences as '%s'\n", $obj_name2;
+save_ip_xml( $xmldoc, $obj_name2, $SEQUENCE, $WARN_OVERW );
+\end{verbatim}
+
+The function 'save\_ip\_xml()' sends the XML representation of an
+object to the workspace. This function is the reverse analog of
+the previously used function 'load\_ip\_xml()', which fetches the
+XML representation of an object from the workspace. These two
+functions are defined in the package 'yabby\_sys.pm'.
+
+The arguments to the function 'save\_ip\_xml()' are are follows:
+the XML representation of an object ('xmldoc'), the name of the
+object to be created ('obj\_name2'), the type of the object to be
+created ('SEQUENCE' in this case), and the flag which determines
+whether the warning will be issued is the object with the same
+name and the same type already exists in the workspace and will
+be overwritten ('WARN\_OVERW').
 
 
