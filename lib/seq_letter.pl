@@ -62,5 +62,3 @@ for $key ( @$keys ) {
   printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
 }
 
-
-
