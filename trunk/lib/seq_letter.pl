@@ -1,4 +1,4 @@
-# seq_firstl.pl
+# seq_letter.pl
 
 use yabby_sys;
 use yabby_seq;
@@ -9,7 +9,7 @@ $USAGE = "
  Prints the first sequence letter from the sequence object. 
 
  Usage:
-        seq_firstl [ options ] OBJ_NAME
+        seq_letter [ options ] OBJ_NAME
 
  where OBJ_NAME is the name of an existing sequence object.
 
@@ -44,6 +44,7 @@ $xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
 # body
 $seq_hash = xml2seq( $xmldoc );
 $keys = get_seq_keys( $seq_hash );
+
 printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
 
 for $key ( @$keys ) {
