@@ -1098,4 +1098,84 @@ whether the warning will be issued is the object with the same
 name and the same type already exists in the workspace and will
 be overwritten ('WARN\_OVERW').
 
+The command 'seq\_letterc' could be used as follows:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> what      
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+
+yabby> seq_letterc tom20 tom20_chop
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20_chop'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+    tom20_chop     seq           
+
+yabby> print tom20.seq
+
+>A.thaliana2 [ A.thaliana2 ]
+MEFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLND
+AISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGN
+DTYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFT
+YDVCGWIILACGIVAWVGMAKSLGPPPPAR
+>O.sativa [ O.sativa ]
+MDMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLE
+DAESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPA
+NDLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVV
+LGVGMVVWVGLAKSNAPPQAPR
+>L.esculentum [ L.esculentum ]
+MDMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDA
+ISKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENE
+LYQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVIL
+AVGLVAWIGFAKSNMPXPAHPLPR
+
+yabby> print tom20_chop.seq
+
+>A.thaliana2 [ A.thaliana2 ]
+EFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLNDA
+ISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGND
+TYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFTY
+DVCGWIILACGIVAWVGMAKSLGPPPPAR
+>O.sativa [ O.sativa ]
+DMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLED
+AESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPAN
+DLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVVL
+GVGMVVWVGLAKSNAPPQAPR
+>L.esculentum [ L.esculentum ]
+DMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDAI
+SKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENEL
+YQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVILA
+VGLVAWIGFAKSNMPXPAHPLPR
+\end{verbatim}
+
+Since we did not put any safeguards against overwriting an
+existing sequence objects, the command 'seq\_letterc' could
+be used to recursively chop sequences from the N-terminus:
+
+\begin{verbatim}
+yabby> seq_letterc tom20 tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20'
+ [ seq_letterc: 'tom20.seq' exists, overwritten ]
+
+yabby> seq_letterc tom20 tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20'
+ [ seq_letterc: 'tom20.seq' exists, overwritten ]
+\end{verbatim}
 
