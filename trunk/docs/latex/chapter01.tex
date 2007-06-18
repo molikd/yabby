@@ -1208,11 +1208,217 @@ XML object is saved in the workspace with the function 'save\_ip\_xml()'.
 
 The functions 'load\_ip\_xml()' and 'save\_ip\_xml()' can be used
 to load/store the XML representation of any object in the workspace.
-The functions 'xml2seq()' and 'seq2xml()' are specific for sequence
-objects.
+The analogous functions for objects represented as a two-dimensional
+lists are 'load\_ip()' and 'save\_ip()'.
 
-As an example we will create a new object type, "seqid", which will
-represent a list of sequence IDs.
+As an example we will create a new object type named "seqid" to
+represent the list of sequence IDs. To demonstrate use of this
+object we will also create the command 'seq2id' which creates the
+"seqid" object from an existing sequence object.
 
+The first step is to create the script 'seq2id.pl' in the Yabby
+library, and we start as previously:
+
+\begin{verbatim}
+# seq2id.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Converts a sequence object into seqid object.
+
+ Usage:
+        seq2id OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how a
+ new object type can be implemented.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+\end{verbatim}
+
+With this we have the sequence hash in memory. In 'yabby\_seq.pm' we
+add the name of the "seqid" object:
+
+\begin{verbatim}
+$SEQUENCE = "seq";
+$MOTIF = "motif";
+$SEQID = "seqid";
+\end{verbatim}
+
+The new object will be represented as a one-dimensional list, where
+each sequence ID string will be one element of this list. This is
+equivalent to a two-dimensional table, where there is only one
+column in the table. Next we create the variable 'seqid\_obj' to
+hold the 'seqid' object, fill this object with the values from
+the sequence hash, and store the object in the workspace by using
+the standard function:
+
+\begin{verbatim}
+$seqid_obj = [];
+
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+
+  push @$seqid_obj, [ $seq_id ];
+}
+
+print " Saving '$obj_name.$SEQID'\n";
+save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
+\end{verbatim}
+
+On a technical note, all objects that are represents with two dimensional
+tables are initialized as annonymous arrays:
+
+\begin{verbatim}
+$seqid_obj = [];
+\end{verbatim}
+
+When filled with values, each element of this array is a reference
+to anonymous array. In this case containing only one element 'seq\_id':
+
+\begin{verbatim}
+push @$seqid_obj, [ $seq_id ];
+\end{verbatim}
+
+This format is very flexible.  If the data table needs to contain more
+than one element per row, these would be simply added to the anonymous
+reference representing a table row:
+
+\begin{verbatim}
+push @$seqid_obj, [ $seq_id, $colum2_elem, $colum3_elem, ... ];
+\end{verbatim}
+
+Consider how the object 'mol', which is represented with a two-dimensional
+table is build (example in 'yabby\_mol.pm'):
+
+\begin{verbatim}
+push @$mol, [ $resi_num, $resi_name, $atom_name, $segmentID ];
+\end{verbatim}
+
+The function save\_ip() expects the reference to an anonymous array,
+where each element to this array is a reference to anonymous array.
+The latter may contain one or more elements.
+
+The complete listing for the command script 'seq2id' is:
+
+\begin{verbatim}
+# seq2id.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Converts a sequence object into seqid object.
+
+ Usage:
+        seq2id OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how a
+ new object type can be implemented.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+$seqid_obj = [];
+
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+
+  push @$seqid_obj, [ $seq_id ];
+}
+
+print " Saving '$obj_name.$SEQID'\n";
+save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
+\end{verbatim}
+
+And below is the output when the command is executed on an example
+sequence object:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> seq2id tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving 'tom20.seqid'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+                   seqid         
+\end{verbatim}
+
+Of course, at this point nothing can be done with the 'seqid' object.
+It cannot be even printed on the screen:
+
+\begin{verbatim}
+yabby> print tom20.seqid
+
+ print:: ERROR: printing the property 'seqid' not yet implemented
+ [ command 'print' failed ]
+\end{verbatim}
+
+This is because the printing of each particular object type has to
+be enabled in the 'print' command. However, one can view the 'seqid'
+object directly from the filesystem:
+
+\begin{verbatim}
+yabby> cat .yabby/tom20.seqid
+A.thaliana2
+O.sativa
+L.esculentum
+\end{verbatim}
+
+Since 'tom20.seqid' is just a simple text file, containing sequence
+IDs listed one per row.
 
 

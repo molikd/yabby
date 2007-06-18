@@ -4,6 +4,7 @@ use XML::DOM;
 
 $SEQUENCE = "seq";
 $MOTIF = "motif";
+$SEQID = "seqid";
 
 # amino acid single letter alphabet
 $AA_ALPHABET = "AVLIPFWMGSTCYNQDEKRH";
