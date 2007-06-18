@@ -836,7 +836,7 @@ yabby> seq_letter tom20
  Sequence 'L.esculentum', the first letter: 'M'
 \end{verbatim}
 
-\subsection{Adding the option to print the last letter}
+\subsection{Adding a command switch}
 
 Consider how one could add an optional switch to print the last
 letter of each sequence, instead of the first letter.
@@ -1074,10 +1074,11 @@ $xmldoc = seq2xml( $seq_hash2 );
 \end{verbatim}
 
 This is the reverse of the above command 'xml2seq()', which converts
-an XML document representing a sequence object into a sequence hash.
-The functions'xml2seq()' and 'seq2xml()' are specific for sequence
-objects, and are defined in the package 'yabby\_seq.pm'.  Finally,
-we store the XML sequence object in the workspace:
+an XML document representing a sequence object into a sequence hash,
+the form all commands employ to represent the sequence object in
+memory.  The functions'xml2seq()' and 'seq2xml()' are specific for
+sequence objects, and are defined in the package 'yabby\_seq.pm'.
+Finally, we store the XML sequence object in the workspace:
 
 \begin{verbatim}
 printf " Saving chopped sequences as '%s'\n", $obj_name2;
@@ -1161,9 +1162,9 @@ YQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVILA
 VGLVAWIGFAKSNMPXPAHPLPR
 \end{verbatim}
 
-Since we did not put any safeguards against overwriting an
-existing sequence objects, the command 'seq\_letterc' could
-be used to recursively chop sequences from the N-terminus:
+Since no safeguards were put against overwriting an existing
+sequence object, the command 'seq\_letterc' could be used to
+chop sequences from the N-terminus in place,
 
 \begin{verbatim}
 yabby> seq_letterc tom20 tom20
@@ -1178,4 +1179,40 @@ yabby> seq_letterc tom20 tom20
  Saving chopped sequences as 'tom20'
  [ seq_letterc: 'tom20.seq' exists, overwritten ]
 \end{verbatim}
+
+\subsection{Creating a new object type}
+
+Yabby supports two internal representations of data in the workspace:
+simple lists and XML objects. To create a new object type one must
+first decide whether the data in question can be effectively
+represented with a two-dimensional table. Two-dimensional tables
+can be effectively represented with two-dimensional lists, where
+each item in the list corresponds to the table row. Lists are simple
+and efficient in Perl, and if suitable this is the preferred
+representation of data. However, XML format is much more powerful
+and flexible, and is the preferred solution when the data has
+a complex inhernal structure.
+
+A sequence object is an example for objects which use XML to store 
+data into the workspace. A Yabby commands store sequence objects
+in memory in the form of a hash (sequence hash).  All sequence
+commands the standard function 'load\_ip\_xml()' to fetch the XML
+representation of a sequence object from the workspace. Subsequently
+the object is converted into a more efficient structure, a
+sequence hash, with the function 'xml2seq()'. After the sequences
+are manipulated, or a new sequence object is created, they result
+may be stored in the workspace. If this is required, the reverse
+transformation process takes place.  The sequence hash is convereted
+into an XML object with the function 'seq2xml()', and the resulting
+XML object is saved in the workspace with the function 'save\_ip\_xml()'.
+
+The functions 'load\_ip\_xml()' and 'save\_ip\_xml()' can be used
+to load/store the XML representation of any object in the workspace.
+The functions 'xml2seq()' and 'seq2xml()' are specific for sequence
+objects.
+
+As an example we will create a new object type, "seqid", which will
+represent a list of sequence IDs.
+
+
 
