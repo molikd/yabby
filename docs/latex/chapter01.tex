@@ -1386,7 +1386,7 @@ O.sativa
 L.esculentum
 \end{verbatim}
 
-\subsection{Some additional explanations}
+\subsection{Some additional explanations and programming conventions}
 
 All objects that are represents with two dimensional tables are
 initialized as annonymous arrays:
@@ -1410,16 +1410,16 @@ reference representing a table row:
 push @$seqid_obj, [ $seq_id, $colum2_elem, $colum3_elem, ... ];
 \end{verbatim}
 
-Consider how the object 'mol', which is represented with a two-dimensional
-table is build (example in 'yabby\_mol.pm'):
+Consider how the object 'mol' is built, which is internally represented
+with a two-dimensional table:
 
 \begin{verbatim}
 push @$mol, [ $resi_num, $resi_name, $atom_name, $segmentID ];
 \end{verbatim}
 
 The function 'save\_ip()' expects the reference to an anonymous array,
-where each element to this array is a reference to anonymous array.
-The latter may contain one or more elements. This is true for any
+where each element of this array is a reference to another anonymous
+array which may contain one or more elements. This holds for any
 object represented by a list, and functions 'save\_ip()' and
 'load\_ip()' are used to store/fetch the object from the workspace.
 For objects represented in XML a special converter function needs
