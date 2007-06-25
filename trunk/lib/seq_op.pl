@@ -8,14 +8,14 @@ use Getopt::Std;
 
 $USAGE = "
  Calculates union/intersection/difference of two sequence objects
- by usind sequence IDs.
+ by using sequence IDs.
 
  Usage:
- 	seq_op [ options ] SEQ1_OBJ SEQ2_OBJ RES_OBJ
+ 	seq_op [ options ] SEQ1_OBJ SEQ2_OBJ OBJ_NAME
 
  Calculates union/intersection/difference of two sequence objects
  SEQ1_OBJ and SEQ2_OBJ, and stores the result as the sequence
- object RES_OBJ.
+ object RES_NAME.
 
  Options:
 
