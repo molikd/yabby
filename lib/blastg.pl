@@ -37,7 +37,7 @@ $USAGE = "
  to blast one genome against another, to obtain a quick
  estimate of the similarity between two genome. 
 
- 2. See 'blast.pl'
+ 2. See 'blast'
 ";
 
 # options

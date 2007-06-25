@@ -16,6 +16,10 @@ $USAGE = "
 
  Reads the output file MEME_OUTPUT, extracts motif number
  MOTIF_NUMBER and saves motif as OBJ_NAME.
+
+ Notes:
+
+ 1. See 'motif_load'.
 ";
 
 # options

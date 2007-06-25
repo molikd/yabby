@@ -10,10 +10,10 @@ $USAGE = "
  Loads a molecule from the PDB file.
 
  Usage:
- 	load_pdb [ options ] PDB_FILE OBJ_NAME
+ 	mol_load [ options ] PDB_FILE OBJ_NAME
 
- Loads the molecule from the PDB_FILE and saves it under
- the name OBJ_NAME. 
+ Loads the molecule from the PDB_FILE and saves it under the
+ name OBJ_NAME. 
 
  Options:
 

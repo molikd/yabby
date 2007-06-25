@@ -9,6 +9,8 @@ $USAGE = "
 
  Usage:
 	mol2seq OBJ_NAME
+
+ where OBJ_NAME is the name of an existing 'mol' object.
 ";
 
 # options
