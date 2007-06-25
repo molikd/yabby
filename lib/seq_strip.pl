@@ -13,7 +13,7 @@ $USAGE = "
  	seq_strip begin:end OBJ_NAME OBJ_NAME_NEW
 
  Where OBJ_NAME is the name of an existing sequence object, and
- begin:end and the first and last residue to strip (inclusive).
+ begin:end are the first and last residue to strip (inclusive).
  The resulting object will be saved under the name OBJ_NAME_NEW.
 
  If more than one sequence is present in the sequence object,

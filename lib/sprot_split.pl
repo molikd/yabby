@@ -16,6 +16,10 @@ $USAGE = "
  the SWISS-PROT format. The output files are named DBA_FILE.1,
  DBA_FILE.2, etc.
 
+ This command is useful when a large SWISS-PROT database needs
+ to be reformatted with an external program, such as 'sreformat',
+ which currently can work only on files < 2Gb.
+
  Options:
 
  -n NLINES -- split the database into files approx NLINES

@@ -12,7 +12,8 @@ $USAGE = "
  Usage:
  	seq_pattern [ options ] PATTERN OBJ_NAME
 
- Searches for pattern PATTERN in sequences OBJ_NAME.
+ Searches for pattern PATTERN in sequences OBJ_NAME, where
+ OBJ_NAME is the name of an existing sequence object.
 
  Options:
 
