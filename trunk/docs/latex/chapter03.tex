@@ -2096,7 +2096,7 @@ Creates the amino acid sequence from a molecule.
 
 {\tt mol2seq OBJ\_NAME}
 
-% where OBJ\_NAME is ...
+where OBJ\_NAME is the name of an existing 'mol' object.
 
 % 2. Options
 
@@ -2300,8 +2300,35 @@ multiple XPLOR PDB files
 \item{Examples:}
 \begin{enumerate}
 
-\item
+\item The file 1C3T.pdb contain 20 structures of ubiquitin, available
+from the RCSB Protein Data Bank.
 \begin{verbatim}
+yabby> pdb_model 1C3T.pdb ubq_
+
+ working on model  1 (creating 'ubq_1.pdb')
+ working on model  2 (creating 'ubq_2.pdb')
+ working on model  3 (creating 'ubq_3.pdb')
+ working on model  4 (creating 'ubq_4.pdb')
+ working on model  5 (creating 'ubq_5.pdb')
+ working on model  6 (creating 'ubq_6.pdb')
+ working on model  7 (creating 'ubq_7.pdb')
+ working on model  8 (creating 'ubq_8.pdb')
+ working on model  9 (creating 'ubq_9.pdb')
+ working on model 10 (creating 'ubq_10.pdb')
+ working on model 11 (creating 'ubq_11.pdb')
+ working on model 12 (creating 'ubq_12.pdb')
+ working on model 13 (creating 'ubq_13.pdb')
+ working on model 14 (creating 'ubq_14.pdb')
+ working on model 15 (creating 'ubq_15.pdb')
+ working on model 16 (creating 'ubq_16.pdb')
+ working on model 17 (creating 'ubq_17.pdb')
+ working on model 18 (creating 'ubq_18.pdb')
+ working on model 19 (creating 'ubq_19.pdb')
+ working on model 20 (creating 'ubq_20.pdb')
+
+ 20 models found
+
+yabby>
 \end{verbatim}
 
 \end{enumerate}

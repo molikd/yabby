@@ -247,7 +247,7 @@ while ( <$file_i> ) {
     }
 
     if ( $opt_r_flag ) {
-       print " [ using '$resi_offset' for the residue offset,"
+       print " [ using '$resi_offset' for the residue offset,";
        print " starting from residue $resi_begin ]\n";
     }
 

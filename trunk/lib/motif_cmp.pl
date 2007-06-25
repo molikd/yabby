@@ -15,6 +15,10 @@ $USAGE = "
  Compares two motifs.  Two motifs are identical if they have
  the same number of sequences, the sequences have the same
  ID, and the sequences themselves are identical as strings.
+
+ Notes:
+
+ 1. See 'motif_load'.
 ";
 
 # options
