@@ -22,7 +22,6 @@ General commands are related to the basic Yabby functions, such as
 control of the workspace, and are not related to any specific area
 of application. 
 
-
 % ### NEW COMMAND ###
 
 \subsection[delete]{ \fbox{\tt delete} }
@@ -627,7 +626,9 @@ yabby> what
 
 \subsection[seq\_comment]{ \fbox{\tt seq\_comment} }
 
-\index{\tt seq\_comment}
+%%was \index{\tt seq\_comment}
+\index{seq\_comment@\textit{seq\_comment}}
+%% this probably not ok either(?)
 
 % Concise explanation
 
@@ -643,21 +644,21 @@ Modifies sequence comments to add a unique number.
 
 {\tt seq\_comment OBJ\_NAME}
 
-Where OBJ\_NAME is the internal Yabby name for the sequence(s).
+where OBJ\_NAME is the name of an existing sequence object.
+
+ The sequence object with modified comments overwrites OBJ\_NAME.
+ The comment for each sequence is modified to prepend N- where
+ N is the order of the sequence.  For example, if the sequence
+ comment was Q9JXN6, and was first in the sequence object, its
+ comment will be modified to 1-Q9JXN6.
 
 % 2. Options
 
-\item{Options:}
-\begin{description}
-{\em None}
-\end{description}
+\item{Options:} {\em None}
 
 % 3. Notes
 
-\item{Notes:}
-\begin{enumerate}
-{\em None}
-\end{enumerate}
+\item{Notes:} {\em None}
 
 % 4. Examples 
 
@@ -666,17 +667,16 @@ Where OBJ\_NAME is the internal Yabby name for the sequence(s).
 
 \item
 \begin{verbatim}
-yabby> seq_comment tom20
+yabby> seq_comment cad3
 
- Comments modified.
-
+ Comments modified in 3 sequence(s).
 \end{verbatim}
 
 \end{enumerate}
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A loaded (via seq\_load) seq object.
 
 % 6. Objects 
 
@@ -690,7 +690,6 @@ yabby> seq_comment tom20
 
 % ### END OF NEW COMMAND ####
 
-
 % ### NEW COMMAND ###
 
 \subsection[seq\_compl]{ \fbox{\tt seq\_compl} }
@@ -699,7 +698,7 @@ yabby> seq_comment tom20
 
 % Concise explanation
 
-Calculates DNA sequence complement.
+Calculates sequence complement (for DNA sequences).
 
 % Command description
 
@@ -711,15 +710,15 @@ Calculates DNA sequence complement.
 
 {\tt seq\_compl [ options ] OBJ\_NAME OBJ\_NAME\_NEW}
 
-Where OBJ\_NAME is the name of an existing DNA sequence object,
-the complement sequence will be saved under the name OBJ\_NAME\_NEW.
-
+ Where OBJ\_NAME is the name of an existing sequence object,
+ the complement sequence will be saved under the name
+ OBJ\_NAME\_NEW. The sequence OBJ\_NAME must be a DNA sequence.
 
 % 2. Options
 
 \item{Options:}
 \begin{description}
-\item -r -- reverse complement
+\item -r -- Calculate the reverse complement.
 \end{description}
 
 % 3. Notes
@@ -733,11 +732,10 @@ the complement sequence will be saved under the name OBJ\_NAME\_NEW.
 
 \item
 \begin{verbatim}
-yabby> seq_compl dna dna_compl
+yabby> seq_compl dna dna_c
 
- 'dna' contains 2 sequence(s)
+ 'dna' contains 1 sequence(s)
  Working on 'chr01'
- Working on 'chr02'
 
 \end{verbatim}
 
@@ -745,11 +743,12 @@ yabby> seq_compl dna dna_compl
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A loaded (via seq\_load) seq object comprising 
+                     only DNA sequence(s).
 
 % 6. Objects 
 
-\item{Creates objects:} another seq
+\item{Creates objects:} seq
 
 % 7. System scripts
 
@@ -758,7 +757,6 @@ yabby> seq_compl dna dna_compl
 \end{description}
 
 % ### END OF NEW COMMAND ####
-
 
 % ### NEW COMMAND ###
 
@@ -780,10 +778,8 @@ Fetch a sequence from GenBank.
 
 {\tt seq\_fetch ACC\_NUM OBJ\_NAME}
 
-Fetch a sequence from GenBank using sequence accession number,
-and save the sequence under the name OBJ\_NAME. This command
-is mainly a demonstration of how to use BioPerl library within
-Yabby.
+ Fetch a sequence from GenBank using sequence accession number,
+ and save the sequence under the name OBJ\_NAME.
 
 % 2. Options
 
@@ -807,16 +803,6 @@ yabby> seq_fetch J00522 mig
 
  Saving 'J00522' as 'mig'
 
-yabby> print mig.seq
-
->gi|195052|gb|J00522.1|MUSIGHBA1 [ Mouse Ig active H-chain V-region from MOPC21, subgroup VH-II, mRNA ]
-AGGCTCAATTTAGTTTTCCTTGTCCTTATTTTAAAAGGTGTCCAGTGTGATGTGCAGCTG
-GTGGAGTCTGGGGGAGGCTTAGTGCAGCCTGGAGGGTCCCGGAAACTCTCCTGTGCAGCC
-TCTGGATTCACTTTCAGTAGCTTTGGAATGCACTGGGTTCGTCAGGCTCCAGAGAAGGGG
-CTGGAGTGGGTCGCATACATTAGTAGTGGCAGTAGTACCCTCCACTATGCAGACACAGTG
-AAGGGCCGATTCACCATCTCAAGAGACAATCCCAAGAACACCCTGTTCCTGCAAATGACC
-AGTCTAAGGTCTGAGGACACGGCCATGTATTACTGTGCAAGATGGGGTAACTACCCTTAC
-TATGCTATGGACTACTGGGGTCAAGGAACCTCAGTCACCGTCTCCTCA
 \end{verbatim}
 
 \end{enumerate}
@@ -836,7 +822,6 @@ TATGCTATGGACTACTGGGGTCAAGGAACCTCAGTCACCGTCTCCTCA
 \end{description}
 
 % ### END OF NEW COMMAND ####
-
 
 % ### NEW COMMAND ###
 
@@ -881,65 +866,41 @@ Where OBJ\_NAME is the name of an existing sequence object.
 
 \item
 \begin{verbatim}
-yabby> seq_info Tim10
+yabby> seq_info cad3
 
- 'Tim10' contains 13 sequence(s)
-   min number of residues: 75 (sequence 'Plasmodium')
-   max number of residues: 115 (sequence 'Ciona')
-mouse
-Schistosoma
-Dictyostelium
-Schizosaccharomyces
-Saccharomyces
-Neurospora
-Ciona
-Xenopus
-Danio
-Anopheles
-Caenorhabditis
-Plasmodium
-Arabidopsis
+ 'cad3' contains 3 sequence(s)
+   min number of residues: 192 (sequence 'Q53650_STAAU')
+   max number of residues: 193 (sequence 'Q97PJ0_STRPN')
 
-yabby> seq_info -l Tim10
+\end{verbatim}
 
- 'Tim10' contains 13 sequence(s)
-  1 -> mouse, 90 residues
-  2 -> Schistosoma, 88 residues
-  3 -> Dictyostelium, 88 residues
-  4 -> Schizosaccharomyces, 89 residues
-  5 -> Saccharomyces, 93 residues
-  6 -> Neurospora, 90 residues
-  7 -> Ciona, 115 residues
-  8 -> Xenopus, 93 residues
-  9 -> Danio, 88 residues
- 10 -> Anopheles, 92 residues
- 11 -> Caenorhabditis, 86 residues
- 12 -> Plasmodium, 75 residues
- 13 -> Arabidopsis, 83 residues
+\item
+\begin{verbatim}
+yabby> seq_info -l cad3
 
-yabby> seq_info -n Tim10
+ 'cad3' contains 3 sequence(s)
+  1 -> Q53650_STAAU, 192 residues
+  2 -> Q97PJ0_STRPN, 193 residues
+  3 -> P95773_STALU, 192 residues
 
- 'Tim10' contains 13 sequence(s)
-90
-88
-88
-89
-93
-90
-115
-93
-88
-92
-86
-75
-83
+\end{verbatim}
+
+\item
+\begin{verbatim}
+yabby> seq_info -n cad3
+
+ 'cad3' contains 3 sequence(s)
+192
+193
+192
+
 \end{verbatim}
 
 \end{enumerate}
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A loaded (via seq\_load) seq object.
 
 % 6. Objects 
 
@@ -952,7 +913,6 @@ yabby> seq_info -n Tim10
 \end{description}
 
 % ### END OF NEW COMMAND ####
-
 
 % ### NEW COMMAND ###
 
@@ -991,7 +951,7 @@ object OBJ\_NAME
 
 \item{Notes:}
 \begin{enumerate}
-\item Only BLOCKS format written by MEME \cite{meme} was tested.
+\item Only BLOCKS format written by MEME \cite{meme} output was tested.
 \end{enumerate}
 
 % 4. Examples 
@@ -1001,17 +961,17 @@ object OBJ\_NAME
 
 \item
 \begin{verbatim}
-yabby> seq_load tom20.fas tom20
+yabby> seq_load cad3.fas cad3
 
- Reading the file 'tom20.fas' ..
- 7 sequence(s) found.
+ Reading the file 'cad3.fas' ..
+ 3 sequence(s) found.
 \end{verbatim}
 
 \end{enumerate}
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A sequence file.
 
 % 6. Objects 
 
@@ -1044,11 +1004,11 @@ by using the sequence IDs.
 
 \item{Usage:}
 
-{\tt seq\_op [ options ] SEQ1\_OBJ SEQ2\_OBJ RES\_OBJ}
+{\tt seq\_op [ options ] SEQ1\_OBJ SEQ2\_OBJ OBJ\_NAME}
 
 Calculates union/intersection/difference of two sequence objects
 SEQ1\_OBJ and SEQ2\_OBJ, and stores the result as the sequence
-object RES\_OBJ.
+object OBJ\_NAME.
 
 % 2. Options
 
@@ -1077,14 +1037,14 @@ object RES\_OBJ.
 
 \item
 \begin{verbatim}
-yabby> seq_op -i Tim10 Tim10-5 Tim10int
+yabby> seq_op -i cad cad3 cadi
 
- Found 13 sequence(s) in 'Tim10'
- Found 8 sequence(s) in 'Tim10-5'
-  INTERSECTION contains 8 sequence(s)
-  DIFFERENCE contains 5 sequence(s)
-  UNION contains 13 sequence(s)
- [ Saving INTERSECTION as 'Tim10int' ]
+ Found 6 sequence(s) in 'cad'
+ Found 3 sequence(s) in 'cad3'
+  INTERSECTION contains 3 sequence(s)
+  DIFFERENCE contains 3 sequence(s)
+  UNION contains 6 sequence(s)
+ [ Saving INTERSECTION as 'cadi' ]
 
 \end{verbatim}
 
@@ -1092,7 +1052,7 @@ yabby> seq_op -i Tim10 Tim10-5 Tim10int
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} Two loaded (via seq\_load) seq objects.
 
 % 6. Objects 
 
@@ -1106,7 +1066,6 @@ yabby> seq_op -i Tim10 Tim10-5 Tim10int
 
 % ### END OF NEW COMMAND ####
 
-
 % ### NEW COMMAND ###
 
 \subsection[seq\_pattern]{ \fbox{\tt seq\_pattern} }
@@ -1115,7 +1074,7 @@ yabby> seq_op -i Tim10 Tim10-5 Tim10int
 
 % Concise explanation
 
-Searches for pattern in a sequence object.
+Searches for letter pattern in a sequence object.
 
 % Command description
 
@@ -1134,9 +1093,11 @@ Where OBJ\_NAME is the name of an existing sequence object.
 
 \item{Options:}
 \begin{description}
-\item -c -- match the comment not the sequence
-\item -s NAME -- save the matching sequences under the name NAME 
-                 should this read another OBJ\_NAME e.g. OBJ\_NAME\_NEW
+\item -c -- Match the comment not the sequence.
+\item -s NAME -- xtract the matching sequences and save under
+    the name NAME.
+\item -n -- Print the matching sequences and the residue position
+    where the pattern matches.
 \end{description}
 
 % 3. Notes
@@ -1150,25 +1111,31 @@ Where OBJ\_NAME is the name of an existing sequence object.
 
 \item
 \begin{verbatim}
-bug here 
-yabby> seq_pattern -c habditis Tim10
+yabby> seq_pattern IDY cad3
 
-1 1
- 'habditis' matches in 'Caenorhabditis'
- 13 sequences examined, 1 matches found
+ 'IDY' matches in 'Q53650_STAAU'
+ 'IDY' matches in 'Q97PJ0_STRPN'
+ 3 sequences examined, 2 match(es) found
 
-yabby> seq_pattern NSTVVELLG Tim10
+\end{verbatim}
 
-Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line 42
-0
- 'NSTVVELLG' matches in 'Plasmodium'
- 13 sequences examined, 1 matches found
+\item
+\begin{verbatim}
+yabby> seq_pattern -c STAA cad3
 
-seq_pattern -s seqinTim10 NSTVVELLG Tim10
-Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line 42
-0
- 'NSTVVELLG' matches in 'Plasmodium'
- 13 sequences examined, 1 matches found
+ 'STAA' matches in 'Q53650_STAAU'
+ 3 sequences examined, 1 match(es) found
+
+\end{verbatim}
+
+\item
+\begin{verbatim}
+yabby> seq_pattern -s IDY_matches IDY cad3
+
+ 'IDY' matches in 'Q53650_STAAU'
+ 'IDY' matches in 'Q97PJ0_STRPN'
+ 3 sequences examined, 2 match(es) found
+ Saving matches as 'IDY_matches'
 
 \end{verbatim}
 
@@ -1176,11 +1143,11 @@ Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A loaded (via seq\_load) seq object.
 
 % 6. Objects 
 
-\item{Creates objects:} with option s, creates another seq
+\item{Creates objects:} (with option -s) seq
 
 % 7. System scripts
 
@@ -1189,7 +1156,6 @@ Use of uninitialized value in concatenation (.) or string at seq_pattern.pl line
 \end{description}
 
 % ### END OF NEW COMMAND ####
-
 
 % ### NEW COMMAND ###
 
@@ -1209,21 +1175,23 @@ Extracts a subset of sequences from the sequence object.
 
 \item{Usage:}
 
-{\tt seq\_pick [ options ] OBJ\_NAME\_NEW OBJ\_NAME}
+{\tt seq\_pick [ options ] OBJ\_NAME OBJ\_NAME\_NEW}
 
-Where OBJ\_NAME is the name of an existing sequence object
-and OBJ\_NAME\_NEW is the name of the sequence object to be created.
+ where OBJ\_NAME is the name of an existing sequence object,
+ and OBJ\_NAME\_NEW is the name of the sequence object to
+ be created.
 
 % 2. Options
 
 \item{Options:}
 \begin{description}
-\item -n RANGE -- extract the sequence by number range.
-                  The range parameter RANGE can be a single integer, in which
-                  the sequence with this sequence number will be extracted.
-                  Alternatively, RANGE can contain two integers separated
-                  by a colon such as N:M.  In this case the range of sequences
-                  between N and M will be extracted (inclusive).
+\item -n RANGE -- extract the sequence by sequence number. The
+ parameter RANGE can be a single integer, in which the
+ sequence with this sequence number will be extracted.
+ Alternatively, RANGE can contain two integers separated
+ by a colon such as N:M. In this case the sequences which
+ have the sequence number between N and M will be extracted
+ (inclusive).
 \item -q SEQID -- pick a sequence with the sequence ID SEQID
 \item -l MIN:MAX -- pick sequences whose length is between MIN and MAX
 \end{description}
@@ -1239,19 +1207,19 @@ and OBJ\_NAME\_NEW is the name of the sequence object to be created.
 
 \item
 \begin{verbatim}
-yabby> seq_pick -q Arabidopsis Tim10Arabidopsis Tim10
+yabby> seq_pick -q Q53650_STAAU cad3 s1
 
- Fetching the sequence 'Arabidopsis'
- Saving the extracted sequence as 'Tim10Arabidopsis
+ Fetching the sequence 'Q53650_STAAU'
+ Saving the extracted sequence as 's1'
 
-yabby> seq_pick -n 1:2 Tim10-12 Tim10
+\end{verbatim}
 
- Saving the extracted sequence as 'Tim10-12'
+\item
+\begin{verbatim}
+yabby> seq_pick -n 2 cad3 s2
 
-yabby> seq_pick -l 115:130 Tim10l Tim10
-
- 1 sequences matched
- Saving the extracted sequence as 'Tim10l'
+ Fetching the sequence 2 ('Q97PJ0_STRPN')
+ Saving the extracted sequence as 's2'
 
 \end{verbatim}
 
@@ -1259,7 +1227,7 @@ yabby> seq_pick -l 115:130 Tim10l Tim10
 
 % 5. Requirements 
 
-\item{Requirements:} {\em None}
+\item{Requirements:} A loaded (via seq\_load) seq object.
 
 % 6. Objects 
 
@@ -1294,7 +1262,7 @@ Strips a portion of a sequence.
 {\tt seq\_strip begin:end OBJ\_NAME OBJ\_NAME\_NEW}
 
 Where OBJ\_NAME is the name of an existing sequence object, and
-begin:end are the first and last residue to strip (inclusive).
+begin:end are the first and last residue positions to strip (inclusive).
 The resulting object will be saved under the name OBJ\_NAME\_NEW.
 
 If more than one sequence is present in the sequence object,
@@ -1317,22 +1285,162 @@ In stripped sequences, IDs are set to ORIGINALID\_begin:end.
 
 \item
 \begin{verbatim}
-yabby> seq_strip 2:10 Tim10 Tim10stripped
+yabby> seq_strip 21:40 cad3 cad3portion
 
- 'Tim10' contains 13 sequence(s)
- stripping 'mouse'
- stripping 'Schistosoma'
- stripping 'Dictyostelium'
- stripping 'Schizosaccharomyces'
- stripping 'Saccharomyces'
- stripping 'Neurospora'
- stripping 'Ciona'
- stripping 'Xenopus'
- stripping 'Danio'
- stripping 'Anopheles'
- stripping 'Caenorhabditis'
- stripping 'Plasmodium'
- stripping 'Arabidopsis'
+ 'cad3' contains 3 sequence(s)
+ stripping 'Q53650_STAAU'
+ stripping 'Q97PJ0_STRPN'
+ stripping 'P95773_STALU'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A loaded (via seq\_load) seq object.
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_unique]{ \fbox{\tt seq\_unique} }
+
+\index{\tt seq\_unique}
+
+% Concise explanation
+
+Finds unique sequences in one sequence object relative to another
+by comparing sequence strings.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_unique SEQ1\_OBJ SEQ2\_OBJ OBJ\_NAME}
+
+This command will find the unique sequences in SEQ1\_OBJ compared
+to SEQ2\_OBJ, and store these unique sequences as OBJ\_NAME.
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item Sequences present in the first sequence object and not present
+ in the second second object are calculated. Therefore the order
+ of sequence objects given in the argument matters.
+\item This command compares sequence letters as opposed to seq\_op
+ which compares sequence IDs. Two sequences are identical if they
+ are an exact letter-by-letter match.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_unique cad cad3 caduniqincad
+
+ 3 unique sequences found.
+ Saving sequences as 'caduniqincad'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} Two loaded (via seq\_load) seq objects.
+
+% 6. Objects 
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ##############################################################
+\section{HMMER commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[hmm\_score]{ \fbox{\tt hmm\_score} }
+
+\index{\tt hmm\_score}
+
+% Concise explanation
+
+Fetches hits from the HMMER (HMMPFAM) search output file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt hmm\_score [ options ] HMMPFAM\_OUT}
+
+Where HMMPFAM\_OUT is the HMMPFAM output file.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -E CUTOFF -- Define cutoff for acceptable E values (default: 0.01)
+\item -s HMM\_ITEM -- Save the scores under the name HMM\_ITEM
+\item -d -- Turn debuggin on. 
+            This will create the file hmm\_scores.opt\_d\_flag with raw scores.
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> hmm_score -E 0.01 -s hits hmmpfam.out
+
+ Processing HMMPFAM search output file
+
+  No     Sequence                            E-score
+ -----------------------------------------------------
+ (   1)  LmjF05.1190@All                     2.70e-03
+ (   2)  LmjF05.1190@GlycogenStarch          4.20e-03
+ (   3)  LmjF05.0920@All                     7.50e-03
 
 \end{verbatim}
 
@@ -1344,7 +1452,1082 @@ yabby> seq_strip 2:10 Tim10 Tim10stripped
 
 % 6. Objects 
 
+\item{Creates objects:} (with option -s) hmm\_score
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[hmm\_score2seq]{ \fbox{\tt hmm\_score2seq} }
+
+\index{\tt hmm\_score2seq}
+
+% Concise explanation
+
+Fetches and saves sequences whose ID's are given in the HMM scores
+objects created by the command 'hmm\_score'.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt hmm\_score2seq [ options ] DBA\_FILE OUT\_FILE OBJ\_NAME}
+
+Where DBA\_FILE is the sequence database, OUT\_FILE is the output file
+with sequences (to be created), and OBJ\_NAME is the name under which
+the scores were saved with 'hmm\_score'.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -w WIDTH -- Set the width of the sequence string per line written
+to the OUT\_FILE (default: width=60)
+\item -m MODEL -- Extract only sequences that matched a particular HMM
+model. If this option is not activated all matches are written to
+the output file and sequence IDs are written as SEQID\@PFAM\_MODEL.
+If this option is activated the sequence IDs are written only as
+SEQID.
+\item -c -- Do NOT embed the matching model and maching score into sequence
+comment.
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item Sequence database file DBA\_FILE must be in FASTA format.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> hmm_score2seq LmjFmockup.pep hits.fas hits
+
+ found 3 sequences to extract
+ Processing the database 'LmjFmockup.pep'
+ Sequences written to 'hits.fas'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} hmm\_score
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ##############################################################
+\section{Sequence motifs commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[motif\_load]{ \fbox{\tt motif\_load} }
+
+\index{\tt motif\_load}
+
+% Concise explanation
+
+Loads sequence motif.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt motif\_load [ options ] DBA\_FILE OBJ\_NAME}
+
+ Where DBA\_FILE is the name of the database file. OBJ\_NAME is
+ the internal YABBY name for this motif.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -f -- the file format is FASTA (default)
+\item -b -- the file format is BLOCKS
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item A 'motif' object is internally identical to the 'sequence' object.
+\item Only BLOCKS format as given by MEME output was tested.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> motif_load -b m2.blocks m2
+
+ Reading the file 'm2.blocks' ..
+ 11 sequence(s) found in the motif 'm2'.
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A sequence motif file in BLOCKS format.
+
+% 6. Objects 
+
+\item{Creates objects:} motif
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[motif\_cmp]{ \fbox{\tt motif\_cmp} }
+
+\index{\tt motif\_cmp}
+
+% Concise explanation
+
+Compares two sequence motifs.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt motif\_cmp MOTIF1\_OBJ MOTIF2\_OBJ}
+
+ Compares two motifs.  Two motifs are identical if they have
+ the same number of sequences, the sequences have the same
+ ID, and the sequences themselves are identical as strings.
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> motif_cmp m2 m2_second
+
+ Motifs 'm2' and 'm2_second' contain the same sequence IDs.
+ Comparing the sequences...
+ Motifs 'm2' and 'm2_second' are identical.
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} Two loaded (with motif\_load) sequence motif files 
+                     in BLOCKS format.
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[motif\_meme]{ \fbox{\tt motif\_meme} }
+
+\index{\tt motif\_meme}
+
+% Concise explanation
+
+Extracts motifs from MEME text output files.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt motif\_meme MEME\_OUTPUT MOTIF\_NUMBER OBJ\_NAME}
+
+ Reads the output file MEME\_OUTPUT, extracts motif number
+ MOTIF\_NUMBER and saves motif as OBJ\_NAME.
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> motif_meme meme.out 1 m1
+
+ Reading MEME output 'meme.out' ..
+ Motif 1 saved as 'm1'.
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} An output file from the motif detection program MEME.
+
+% 6. Objects 
+
+\item{Creates objects:} motif
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ##############################################################
+\section{BLAST commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[blast]{ \fbox{\tt blast} }
+
+\index{\tt blast}
+
+% Concise explanation
+
+Runs NCBI BLAST against a database.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt blast [ options ] DBA\_FILE OBJ\_NAME}
+
+ Where DBA\_FILE is the sequence database and OBJ\_NAME is the
+ name of the sequence object which contains the query sequence.
+ If OBJ\_NAME contains more than one sequence, all will be used
+ in turn as a query sequence.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -E E\_VALUE -- Sets the expectation value for BLAST (default=0.01)
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command runs NCBI program `blastall'
+\item The full PATH to `blastall' is defined in yabby\_blast.pm
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> blast -E 5.0 LmjFmockup.pep cad3
+
+ 3 sequence(s) found in the object 'cad3'
+
+ Now running BLAST ..
+ BLASTing sequence 1 of 3 (Q53650_STAAU)
+ Query sequence 'Q53650_STAAU'
+ Database 'LmjFmockup.pep'
+ Found 3 hits above the threshold (E=5.00)
+ The best hit: 'LmjF05.1170'
+ E-score = 2.22e+00
+
+ BLASTing sequence 2 of 3 (Q97PJ0_STRPN)
+ Query sequence 'Q97PJ0_STRPN'
+ Database 'LmjFmockup.pep'
+ Found 1 hits above the threshold (E=5.00)
+ The best hit: 'LmjF05.0950'
+ E-score = 2.92e+00
+
+ BLASTing sequence 3 of 3 (P95773_STALU)
+ Query sequence 'P95773_STALU'
+ Database 'LmjFmockup.pep'
+ No BLAST hits above the threshold (E=5.00) found.
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A genome sequence file that has been subjected to
+                     the program `formatdb,' which is provided in the
+                     NCBI BLAST package (for indexing purposes), and 
+                     a loaded (seq\_load) sequence file. 
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[blast\_info]{ \fbox{\tt blast\_info} }
+
+\index{\tt blast\_info}
+
+% Concise explanation
+
+Prints the information about the BLAST search previously
+generated by the `blast' command.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt blast\_info OBJ\_NAME}
+
+% define OBJ\_NAME
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> blast_info cad3_1
+
+ Query sequence 'Q53650_STAAU'
+ Database 'LmjFmockup.pep'
+ Found 3 hits above the threshold (E=5.00)
+ The best hit: 'LmjF05.1170'
+ E-score = 2.22e+00
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A blast object from the blast yabby command.
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[blastg]{ \fbox{\tt blastg} }
+
+\index{\tt blastg}
+
+% Concise explanation
+
+Runs NCBI BLAST against a database and saves the best
+hit for each sequence.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt blastg [ options ] DBA\_FILE OBJ\_NAME}
+
+ Where DBA\_FILE is the sequence database and OBJ\_NAME
+ is the name of the sequence object which contains
+ sequences to be blasted. Each sequence is in turn
+ blasted against the database, and the top hit is
+ stored as BLASG object. This object contains the
+ list of:
+
+ SEQ\_ID DBA\_SEQ\_ID E-VALUE
+
+ Where SEQ\_ID is the sequence ID, DBA\_SEQ\_ID is the
+ best hits database sequence ID, and E-VALUE is the
+ E-value of the match.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -E E\_VALUE -- Sets the expectation value for BLAST (default=0.01)
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command is experimental. Originally it was used
+ to blast one genome against another, to obtain a quick
+ estimate of the similarity between two genome.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> blastg -E 5.0 LmjFmockup.pep cad3
+
+ 3 sequence(s) found in the object 'cad3'
+
+ Now running BLAST ..
+ BLASTing sequence 1 of 3 (Q53650_STAAU)
+  top hit LmjF05.1170, E-score = 2.22e+00
+ BLASTing sequence 2 of 3 (Q97PJ0_STRPN)
+  top hit LmjF05.0950, E-score = 2.92e+00
+ BLASTing sequence 3 of 3 (P95773_STALU)
+  top hit None, E-score = -1.00e+00
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A genome sequence file that has been subjected to
+                     the program `formatdb,' which is provided in the
+                     NCBI BLAST package (for indexing purposes), and
+                     a loaded (seq\_load) sequence file.
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ##############################################################
+\section{Protein three-dimensional structure commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[mol\_load]{ \fbox{\tt mol\_load} }
+
+\index{\tt mol\_load}
+
+% Concise explanation
+
+Loads a molecule from the PDB file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt mol\_load [ options ] PDB\_FILE OBJ\_NAME}
+
+Loads the molecule from the PDB\_FILE and saves it under
+the name OBJ\_NAME.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -u -- require strict Protein Data Bank format when reading
+ the PDB file. This amounts to requiring that residue names
+ have maximum of three characters (columns 18,19, and 20) of
+ an ATOM or HETATM record. By default this behavior is disabled,
+ and four letter residue names are expected (columns 18,19,20
+ and 21). This is safe in most cases as the extra column 21 is
+ actually not defined in the strict Protein Data Bank format.
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> mol_load 1BT0.pdb bto
+
+ 661 atoms found in the molecule 'bto'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A Protein Data Bank (PDB) file.
+
+% 6. Objects 
+
+\item{Creates objects:} mol
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[mol2seq]{ \fbox{\tt mol2seq} }
+
+\index{\tt mol2seq}
+
+% Concise explanation
+
+Creates the amino acid sequence from a molecule.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt mol2seq OBJ\_NAME}
+
+% where OBJ\_NAME is ...
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -f -- print to a file.
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item If no argument is given all will be printed.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> mol2seq bto
+
+ WARNING: a non-sequential residue:  201 ZN
+ WARNING: residue 'ZN' does not have one letter code
+...snip...
+ WARNING: residue 'HOH' does not have one letter code
+ 153 residues found in the molecule 'bto'
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A mol object loaded from mol\_load.
+
+% 6. Objects 
+
 \item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[pdb\_conv]{ \fbox{\tt pdb\_conv} }
+
+\index{\tt pdb\_conv}
+
+% Concise explanation
+
+Converts Protein Data Bank coordinate files into XPLOR/CHARMM
+ PDB format, with possible filtering
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt pdb\_conv [ options ] PDB\_INPUT PDB\_OUTPUT}
+
+This command reads Protein Data Bank file PDB\_INPUT and writes
+XPLOR/CHARMM PDB file PDB\_OUTPUT.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -u -- require strict Protein Data Bank format when reading
+ the PDB file. This amounts to requiring that residue names
+ have maximum of three characters (columns 18,19, and 20) of
+ an ATOM or HETATM record. By default this behavior is disabled,
+ and four letter residue names are expected (columns 18,19,20
+ and 21). This is safe in most cases as the extra column 21 is
+ actually not defined in the strict Protein Data Bank format
+\item -f FORMAT -- use the format FORMAT when writing the PDB
+ output file. Allowed formats are 'xplor' (default) or 'charmm'.
+ The difference between the two is subtle, and occurs only for
+ residues which have a residue number greater than 999
+\item -l ALT\_LOC -- write atoms with the alternative location
+ field equal to ALT\_LOC, together with those without ALT\_LOC
+ label. In some structures only a subset of atoms is found in
+ two alternative locations, and therefore only a subset of atoms
+ has ALT\_LOC fields set to distinguish the two positions
+\item -m CHAIN\_ID -- write only atoms with the chain ID equal
+ to CHAIN\_ID
+\item -i SEGID -- replace the segment name with SEGID
+\item -h -- discard hydrogens, i.e. all atoms whose names begin with
+ either the letter 'H' (case insensitive) or a number
+\item -e -- discard HEATM records (by default HEATM records are
+ included, and rewritten as ATOM records)
+\item -r RBEGIN:OFFSET -- Add offset OFFSET to reside numbers
+ starting with the residue number RBEGIN
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[pdb\_model]{ \fbox{\tt pdb\_model} }
+
+\index{\tt pdb\_model}
+
+% Concise explanation
+
+Splits Protein Data Bank file with multiple models into
+multiple XPLOR PDB files
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt pdb\_model [ options ] PDB\_INPUT MODEL\_ROOT}
+
+ PDB\_INPUT is the Protein Data Bank file which contains
+ multiple models (separated with MODEL/ENDMDL statements),
+ and MODEL\_ROOT is the root name for the CHARMM/XPLOR
+ PDB files to be created (one file per model). The final
+ file names will be MODEL\_ROOT\_1.pdb, MODEL\_ROOT\_2.pdb,
+ etc. until all models are exausted.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -u -- require strict Protein Data Bank format when reading
+ the PDB file. This amounts to requiring that residue names
+ have maximum of three characters (columns 18,19, and 20) of
+ an ATOM or HETATM record. By default this behavior is disabled,
+ and four letter residue names are expected (columns 18,19,20
+ and 21). This is safe in most cases as the extra column 21 is
+ actually not defined in the strict Protein Data Bank format
+\item -f FORMAT -- use the format FORMAT when writing the PDB
+ output file. Allowed formats are 'xplor' (default) or 'charmm'.
+ The difference between the two is subtle, and occurs only for
+ residues which have a residue number greater than 999
+\item -l ALT\_LOC -- write atoms with the alternative location
+ field equal to ALT\_LOC, together with those without ALT\_LOC
+ label. In some structures only a subset of atoms is found in
+ two alternative locations, and therefore only a subset of atoms
+ has ALT\_LOC fields set to distinguish the two positions
+\item -m CHAIN\_ID -- write only the molecule with the chain ID
+ equal to CHAIN\_ID
+\item -i SEGID -- replace the segment name with SEGID
+\item -h -- discard hydrogens, i.e. all atoms whose names begin with
+ either the letter 'H' (case insensitive) or a number
+\item -e -- discard HEATM records (by default HEATM records are
+ included, and rewritten as ATOM records)
+\item -r RBEGIN:OFFSET -- Add offset OFFSET to reside numbers
+ starting with the residue number RBEGIN
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+
+% ##############################################################
+\section{Miscellaneous commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[pfam\_fetch]{ \fbox{\tt pfam\_fetch} }
+
+\index{\tt pfam\_fetch}
+
+% Concise explanation
+
+Fetches an entry from the PFAM database file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt pfam\_fetch PFAM\_CODE PFAM\_DBA FILE\_NAME}
+
+ Where PFAM\_CODE is the PFAM accession code, PFAM\_DBA is
+ the PFAM database, and FILE\_NAME is the file to save
+ the entry. For example, to fetch the entry PF00293
+ from the PFAM database Pfam-A.seed, and save it as
+ PF00293.seed:
+
+ pfam\_fetch PF00293 Pfam-A.seed PF00293.full
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[emboss\_needle]{ \fbox{\tt emboss\_needle} }
+
+\index{\tt emboss\_needle}
+
+% Concise explanation
+
+Extracts sequences which have the highest similarity from
+he output of the EMBOSS program 'needle'.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt emboss\_needle NEEDLE\_OUTPUT NN}
+
+  Where NEEDLE\_OUTPUT is the output file of the program 'needle',
+  and NN is the number of highest alignments to report (as given
+  by the 'Similarity' line in the needle output).
+
+% 2. Options
+
+\item{Options:} {\em None}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> emboss_needle needle.out 3
+
+ Processing the file 'needle.out' ..
+
+ (1) Q45153_BACFI:LmjF05.1170, Similarity: 26.6
+ (2) Q45153_BACFI:LmjF05.1120, Similarity: 16.4
+ (3) Q45153_BACFI:LmjF05.1040, Similarity: 15.0
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} An output file from the EMBOSS program needle.
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[sprot\_split]{ \fbox{\tt sprot\_split} }
+
+\index{\tt sprot\_split}
+
+% Concise explanation
+
+Splits large sequence database written in SWISS-PROT format
+into smaller files.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt sprot\_split [ options ] DBA\_FILE}
+
+ Where DBA\_FILE is the name of the sequence database file in
+ the SWISS-PROT format. The output files are named DBA\_FILE.1,
+ DBA\_FILE.2, etc.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -n NLINES -- split the database into files approx NLINES
+ each (default: NLINES = 20000000).
+\end{description}
+
+% 3. Notes
+
+\item{Notes:} {\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> sprot_split uniprot_trembl.dat
+ Reading the database file 'uniprot_trembl.dat' ..
+ The number of lines in the database: 204071661
+ -> Creating 'uniprot_trembl.dat.1'
+ -> Creating 'uniprot_trembl.dat.2'
+ -> Creating 'uniprot_trembl.dat.3'
+ -> Creating 'uniprot_trembl.dat.4'
+ -> Creating 'uniprot_trembl.dat.5'
+ -> Creating 'uniprot_trembl.dat.6'
+ -> Creating 'uniprot_trembl.dat.7'
+ -> Creating 'uniprot_trembl.dat.8'
+ -> Creating 'uniprot_trembl.dat.9'
+ -> Creating 'uniprot_trembl.dat.10'
+ -> Creating 'uniprot_trembl.dat.11'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} A large sequence database file in the SWISS-PROT format.
+
+% 6. Objects 
+
+\item{Creates objects:} A number of smaller sequence database file.
 
 % 7. System scripts
 

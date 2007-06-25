@@ -23,7 +23,7 @@ $USAGE = "
  SEQ_ID DBA_SEQ_ID E-VALUE
 
  Where SEQ_ID is the sequence ID, DBA_SEQ_ID is the
- best hits database sequence ID, and E-VALUE is the
+ best hits database sequence ID, and E_VALUE is the
  E-value of the match.
 
  Options:
@@ -36,6 +36,8 @@ $USAGE = "
  1. This command is experimental. Originally it was used
  to blast one genome against another, to obtain a quick
  estimate of the similarity between two genome. 
+
+ 2. See 'blast.pl'
 ";
 
 # options
