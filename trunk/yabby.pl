@@ -23,6 +23,7 @@ die "\n You must have Perl 5 to run YABBY\n\n" if $] < 5.000;
 
 $version = 0.10;
 
+use Switch;
 use yabby_sys;
 use yabby_utils;
 
@@ -36,6 +37,20 @@ $SYS_DIR = ".yabby";
 $PROMPT  = "yabby>";
 $cmd_hash = load_cmd_hash();
 $n_cmd = keys %$cmd_hash;
+
+# determine the OS running Yabby
+my $OS_NAME = '';
+unless ($OS_NAME) {
+  unless ($OS_NAME = $^O) {
+    require Config;
+    $OS_NAME = $Config::Config{'osname'};
+  }
+}
+if ($OS_NAME=~/Win/i) { 
+  $OS_NAME = 'DOS'; 
+} else { 
+  $OS_NAME = 'UNIX'; 
+}
 
 print "\n - YABBY version $version - \n";
 print "   Copyright (c) 2004-7 Vladimir Likic\n";
@@ -56,14 +71,20 @@ if ( -d $SYS_DIR ) {
   } until ( ($c eq "1") || ($c eq "2") );
 
   if ( $c eq "2" ) {
-    $status = system("rm -rf $SYS_DIR");
-    if ( $status != 0 ) {
+    switch ($OS_NAME) {
+      case ("UNIX") {
+        $status = system("rm -rf $SYS_DIR");
+      }
+	case("DOS") {
+	  $status = system("rmdir /S /Q $SYS_DIR");
+      }
+    }
+    if ( $status != 0 ) { 
+      print "\n An error occurred while trying to remove\n";
+      print "  the directory '$SYS_DIR'\n Make sure that";
+      print " you have proper writing permissions\n\n";
 
-       print "\n An error occurred while trying to remove\n";
-       print "  the directory '$SYS_DIR'\n Make sure that";
-       print " you have proper writing permissions\n\n";
-
-       exit_error();
+      exit_error();
     }
     mksysdir();
   }
@@ -121,7 +142,7 @@ while ( <> ) {
         $status = system @cmdl;
 
         if ( $status != 0 ) {
-          print "\n [ UNIX command '@cmdl' failed ]\n\n";
+          print "\n [ $OS_NAME command '@cmdl' failed ]\n\n";
         }
       }
     }
@@ -137,7 +158,14 @@ exit_yabby();
 # subroutines
 
 sub exit_yabby {
-  $status = system("rm -rf $SYS_DIR");
+  switch ($OS_NAME) {
+    case ("UNIX") {
+      $status = system("rm -rf $SYS_DIR");
+    }
+    case("DOS") {
+      $status = system("rmdir /S /Q $SYS_DIR");
+    }
+  }
   if ( $status != 0 ) {
     print "ERROR: cannot remove '$SYS_DIR'\n";
   }
