@@ -1,6 +1,7 @@
 # yabby_mol.pm
 
 $MOLECULE = "mol";
+$COORDINATES = "crd";
 
 # split the PDB ATOM or HETATM record strictly as defined by
 # the Protain Data Bank-- residue name is maximum of three
@@ -187,10 +188,8 @@ sub out_pdb_charmm {
 # Loads molecule from the PDB file
 sub load_mol_pdb {
 
-  my ( $file_name, $strict_pdb_format ) = @_;
-
+  my ( $file_name, $strict_pdb_flag ) = @_;
   my ( $line, @fields, $pdb_fields );
-
   my ( $record_name, $atom_name, $resi_num, $resi_name,
     $x_coor, $y_coor, $z_coor, $occupancy, $temp_factor,
     $segmentID, $chain_id, $alt_loc );
@@ -204,18 +203,15 @@ sub load_mol_pdb {
   while ( <$file> ) {
 
     $cntr++;
-
     $line = $_; chomp( $line );
-
     @fields = split " ", $line;
 
     if ( defined($fields[0]) &&
 	( ($fields[0] eq "ATOM") || ($fields[0] eq "HETATM") ) ) {
 
-      if ( $strict_pdb_format ) {
+      if ( $strict_pdb_flag ) {
 
         $pdb_fields = split_pdb_strict( $line );
-
       } else {
 
         $pdb_fields = split_pdb_xplor( $line );
@@ -239,8 +235,117 @@ sub load_mol_pdb {
   }
 
   close_file( $file );
-
   return $mol;
+}
+
+sub read_crd_pdb {
+
+  my ( $mol, $pdb_file ) = @_;
+  my ( $mol2, $message, @p, $ii, $jj, $error_flag, $crd2, $crd );
+
+  # -- 1. check if the PDB file contains coordinates of all atoms --
+
+  # load the molecule in a temporary variable
+  $mol2 = load_mol_pdb( $pdb_file, 1 );
+
+  # coordinates may be in a different order
+  # Index $mol2 relative to $mol 
+  @p = ();
+  for $ii ( 0 .. $#{$mol} ) { push( @p, "-1" ); }
+
+  for $ii  ( 0 .. $#{$mol} ) {
+    for $jj  ( 0 .. $#{$mol2} ) {
+
+      if ( ( $mol->[$ii][0] == $mol2->[$jj][0] ) &&
+           ( $mol->[$ii][1] eq $mol2->[$jj][1] ) && 
+           ( $mol->[$ii][2] eq $mol2->[$jj][2] ) ) {
+
+        $p[$ii] = $jj;
+      }
+    }
+  }
+
+  $error_flag = 0;
+
+  for $ii ( 0 .. $#{$mol} ) {
+
+    if ( $p[$ii] < 0 ) {
+      if ( $error_flag == 0 ) {
+        print "\n\n problem with the PDB file '$pdb_file'\n";
+        print " missing coordinates of the following atom(s):\n";
+      }
+
+      printf "\t%4d %4s %4s\n", $mol->[$ii][0], $mol->[$ii][1],
+          $mol->[$ii][2];
+
+      $error_flag++;
+    }
+  }
+
+  if ( $error_flag > 0 ) {
+    error( "while reading coordinates" );
+  }
+
+  # -- passed, read coordinates --
+
+  $crd2 = read_pdb_crd( $pdb_file );
+
+  # re-order coordinates
+  $crd = [];
+
+  for $ii ( 0 .. $#{$mol} ) {
+    push @{ $crd->[$ii] }, @{ $crd2->[ $p[$ii] ] };
+  }
+
+  return $crd;
+}
+
+sub read_pdb_crd {
+
+  my ( $file_name, $strict_pdb_flag ) = @_;
+  my ( $line, @fields, $pdb_fields );
+  my ( $record_name, $atom_name, $resi_num, $resi_name,
+    $x_coor, $y_coor, $z_coor, $occupancy, $temp_factor,
+    $segmentID, $chain_id, $alt_loc );
+
+  my $crd = [];
+  my $file = open_for_reading( $file_name );
+  my $cntr = 0;
+
+  while ( <$file> ) {
+
+    $cntr++;
+    $line = $_; chomp( $line );
+    @fields = split " ", $line;
+
+    if ( defined($fields[0]) &&
+	( ($fields[0] eq "ATOM") || ($fields[0] eq "HETATM") ) ) {
+
+      if ( $strict_pdb_flag ) {
+        $pdb_fields = split_pdb_strict( $line );
+      } else {
+        $pdb_fields = split_pdb_xplor( $line );
+      }
+
+    $record_name = $pdb_fields->[0];
+    $atom_name   = $pdb_fields->[1];
+    $resi_num    = $pdb_fields->[2];
+    $resi_name   = $pdb_fields->[3];
+    $x_coor      = $pdb_fields->[4];
+    $y_coor      = $pdb_fields->[5];
+    $z_coor      = $pdb_fields->[6];
+    $occupancy   = $pdb_fields->[7];
+    $temp_factor = $pdb_fields->[8];
+    $segmentID   = $pdb_fields->[9];
+    $chain_id    = $pdb_fields->[10];
+    $alt_loc     = $pdb_fields->[11];
+
+    push @$crd, [ $x_coor, $y_coor, $z_coor ];
+    }
+  }
+
+  close_file( $file );
+  return $crd;
 }
 
 return 1;
