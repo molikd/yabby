@@ -41,7 +41,7 @@ the manipulation of data stored in plain text files. This seems
 all too often to be required in bioinformatics applications.
 
 Before attempting the installation, it is highly recommended to
-check if the Perl interpreter is present your computer system.
+check if the Perl interpreter is present on your computer system.
 For example, on a Linux system,
 
 \begin{verbatim}
@@ -110,9 +110,9 @@ A    yabby/lib/yabby_seq.pm
 
 \subsection{Yabby installation}
 
-Yabby installation requires that the file 'yabby/lib/yabby.pl' is
-modified to to set the path to the Perl language interpreter,
-and to Yabby libraries.
+The installation of Yabby requires that the file 'yabby/lib/yabby.pl' is
+modified in order to set the path to the Perl language interpreter,
+and to the Yabby libraries.
 
 If Yabby code was downloaded in the directory /home/jake/ (and
 therefore the script 'yabby.pl' is in /home/jake/yabby/), to set
@@ -157,7 +157,10 @@ ln -s /home/jake/yabby/yabby.pl /home/jake/bin/yabby
 \end{verbatim}
 
 This would allow Yabby to be run from any directory, simply by
-typing 'yabby'.
+typing 'yabby'. When a particular Yabby command relies on an 
+external program or library (such as NCBI BLAST), additional
+configuration may be needed to allow Yabby to find the appropriate
+files.
 
 \section{Running Yabby}
 
@@ -220,7 +223,7 @@ yabby> yabby>
 
 When run from the command script the actual commands are not
 echoed back, only the command's screen output as well as the
-comments.
+comments are seen.
 
 \subsection{Executing Unix commands}
 
@@ -256,10 +259,10 @@ as "vi" (and then simply resume the Yabby session after exiting
 the editor), or even start programs with GUI such as "gnuplot",
 or a Unix terminal window.
 
-A subtle but important point is that in Yabby Unix commands are
-not executed through the Unix shell.  The consequence of this
-is that the (sometimes important) functions provided the the
-Unix shell, such as file globing, are not available. For example:
+A subtle but important point is that Unix commands are not executed
+through the Unix shell.  The consequence of this is that the
+(sometimes important) functions provided by the Unix shell, such
+as file globing, are not available. For example:
 
 \begin{verbatim}
 yabby> ls *
@@ -305,8 +308,8 @@ The workspace directory is created automatically when the Yabby
 session is initialized. By default, the workspace directory is
 called .yabby, and it is created in the working directory. The
 workspace directory contains all the yabby objects created within
-the session. Upon graceful exit from the Yabby shell, the workspace
-directory is destroyed together with its content.
+the session. Upon a graceful exit from Yabby the workspace directory
+is destroyed together with its content.
 
 \subsection{The exchange of data between command scripts}
 
@@ -370,9 +373,11 @@ located in the Yabby library. This command reads the FASTA sequence
 file and converts it into an Yabby object of the type 'seq'. The
 command 'print' has executed the script 'print.pl' from the Yabby
 library. The scripts 'seq\_load.pl' and 'print.pl' are completely
-independent. How was the script 'print.pl' aware of the data object
-'tom20.seq'?  How was the data transferred between the script
-'seq\_load.pl' to the script 'print.pl' for printing?
+independent.
+
+How was the script 'print.pl' aware of the data object 'tom20.seq',
+and how was the data transferred between the script 'seq\_load.pl'
+to the script 'print.pl' for printing?
 
 This was achieved by the use of the workspace directory. When Yabby
 was started (line 1) the workspace directory .yabby/ was silently
@@ -380,7 +385,7 @@ created in the current working directory. The newly created object
 'tom20' (the result of the command 'seq\_load') was stored in the
 file 'tom20.seq' in the workspace directory. On the line 18, the
 command 'print' was requested to print the object 'tom20' of the
-type 'seq'. The command 'print' first attempted to find the object
+type 'seq'. The command 'print' has attempted to find the object
 'tom20.seq' in the workspace. This was successful, and the object
 was loaded from the workspace directory, and then printed on the
 terminal screen.
@@ -484,10 +489,10 @@ the data about sequences.
 
 The ability to access the workspace allows one to inspect the
 existing objects while they reside in Yabby's "memory", which
-often comes handy. For example, this may facilitate understanding
-of object's internal representation, and often greatly facilitates
-implementation and debugging of data models that need to be
-developed to capture new data types. 
+often comes handy. For example, this may facilitate the understanding
+of an object's internal representation, and helps the implementation
+(and debugging) of data models that need to be developed for new
+data types. 
 
 \subsection{The data formats}
 
@@ -496,7 +501,7 @@ list (table) and XML document. In many bioinformatics applications data
 can be effectively represented by two dimensional tables. Examples
 include the list of atoms in a molecule, the list of atom coordinates,
 the list of sequence IDs and their rankings, etc. For such data, two
-dimensional tables are ideal representation. Ocassionally, the objects
+dimensional tables are the ideal representation. Ocassionally, the objects
 which have more complex internal structure need to be handled. For
 example, a list of protein sequences where each sequence may need to
 be characterized with several attributes: sequence ID, organism name, 
@@ -600,21 +605,14 @@ an XML based format compared to a two-dimensional list.
 
 \section{Extending Yabby}
 
-The design goal of Yabby was to allow easy modification of existing
-functionality and writing of new commands. As a result, extending
-Yabby's functionality is very easy. The one-to-one correspondence
-between Yabby commands and Yabby command scripts makes it very clear
-from where the particular funcionality comes from. It also encapsulates
-a functionality within a particular script file, and small size of
-individual script files makes it easy to understand, modify, and
-maintain them.  The other important feature is the decoupling between
-the program scripts. For example, the command 'print' prints the
-sequence object created by the command 'seq\_load'. This is possible
-because 'seq\_load' saves the sequence object so that 'print' can
-find it, and all happnes via the intermediate file stored in the
-workspace directory. The complete decoupling between command scripts
-ensures that it is very hard to break existing commands when adding
-new commands or functionality!
+The one-to-one correspondence between Yabby commands and Yabby
+command scripts makes it very clear from where the particular
+funcionality comes from. This also encapsulates a functionality
+within a particular script file, and small size of individual
+script files makes it easy to understand, modify, and maintain
+such scripts.  The complete decoupling between command scripts
+ensures that it is hard to break existing commands when adding
+new commands.
 
 Any functional Perl script placed in the Yabby library directory
 will become available for execution as Yabby command.  Consider
@@ -641,7 +639,7 @@ Hello World!
 yabby>
 \end{verbatim}
 
-If previously running, Yabby needs to be restarted before the command
+If already running, Yabby will need to be restarted before the command
 'hello' becomes available.
 
 \subsection{Creating a new Yabby command: seq\_letter}
@@ -715,7 +713,7 @@ $xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
 \end{verbatim}
 
 The function 'requirements()' checks whether the sequence object
-named 'obj\_name' exists. If not it will terminate the script
+named 'obj\_name' exists. If not, it will terminate the script
 with an appropriate error message. If this step is passed, the
 function 'load\_ip\_xml()' loads the sequence object from the
 workspace. Finally, we fetch the first sequence and print its
@@ -967,7 +965,7 @@ for $key ( @$keys ) {
 
 The command 'seq\_letter' is very simple in that it merely prints
 something on the output screen; it does not modify an existing
-object nor it creates any new Yabby objects. Consider a command
+object nor does it creates any new Yabby objects. Consider a command
 that actually creates a sequence object. An example for this may
 be a command that chops the first letter from each sequence in
 the sequence object, and saves the result as a new sequence object.
@@ -979,7 +977,7 @@ that will be created:
 seq_letterc OBJ_NAME OBJ_NAME_NEW
 \end{verbatim}
 
-where we named the new command 'seq\_letterc' to distinguish from
+The new command is named 'seq\_letterc' to distinguish it from
 the previous 'seq\_letter'.
 
 To build the command 'seq\_letterc' we create the file 'seq\_letterc.pl'
@@ -1076,7 +1074,7 @@ $xmldoc = seq2xml( $seq_hash2 );
 This is the reverse of the above command 'xml2seq()', which converts
 an XML document representing a sequence object into a sequence hash,
 the form all commands employ to represent the sequence object in
-memory.  The functions'xml2seq()' and 'seq2xml()' are specific for
+memory.  The functions 'xml2seq()' and 'seq2xml()' are specific for
 sequence objects, and are defined in the package 'yabby\_seq.pm'.
 Finally, we store the XML sequence object in the workspace:
 
@@ -1163,8 +1161,8 @@ VGLVAWIGFAKSNMPXPAHPLPR
 \end{verbatim}
 
 Since no safeguards were put against overwriting an existing
-sequence object, the command 'seq\_letterc' could be used to
-chop sequences from the N-terminus in place,
+sequence object, the command 'seq\_letterc' could be used
+twice to chop sequences from the N-terminus in place,
 
 \begin{verbatim}
 yabby> seq_letterc tom20 tom20
@@ -1191,18 +1189,18 @@ each item in the list corresponds to the table row. Lists are simple
 and efficient in Perl, and if suitable this is the preferred
 representation of data. However, XML format is much more powerful
 and flexible, and is the preferred solution when the data has
-a complex inhernal structure.
+a complex internal structure.
 
-A sequence object is an example for objects which use XML to store 
-data into the workspace. A Yabby commands store sequence objects
+A sequence object uses XML to store data into the workspace.
+A Yabby commands store sequence objects
 in memory in the form of a hash (sequence hash).  All sequence
-commands the standard function 'load\_ip\_xml()' to fetch the XML
+commands use the standard function 'load\_ip\_xml()' to fetch the XML
 representation of a sequence object from the workspace. Subsequently
 the object is converted into a more efficient structure, a
 sequence hash, with the function 'xml2seq()'. After the sequences
-are manipulated, or a new sequence object is created, they result
-may be stored in the workspace. If this is required, the reverse
-transformation process takes place.  The sequence hash is convereted
+are manipulated, or a new sequence object is created, the result
+may be stored in the workspace. In this case, the reverse
+transformation process takes place:  the sequence hash is convereted
 into an XML object with the function 'seq2xml()', and the resulting
 XML object is saved in the workspace with the function 'save\_ip\_xml()'.
 
@@ -1212,7 +1210,7 @@ The analogous functions for objects represented as a two-dimensional
 lists are 'load\_ip()' and 'save\_ip()'.
 
 As an example we will create a new object type named "seqid" to
-represent the list of sequence IDs. To demonstrate use of this
+represent the list of sequence IDs. To demonstrate the use of this
 object we will also create the command 'seq2id' which creates the
 "seqid" object from an existing sequence object.
 
@@ -1422,6 +1420,6 @@ where each element of this array is a reference to another anonymous
 array which may contain one or more elements. This holds for any
 object represented by a list, and functions 'save\_ip()' and
 'load\_ip()' are used to store/fetch the object from the workspace.
-For objects represented in XML a special converter function needs
-to be written, akin to 'xml2seq()' and 'seq2xml()'.
+For objects represented in XML, a special converter function needs
+to be written akin to 'xml2seq()' and 'seq2xml()'.
 
