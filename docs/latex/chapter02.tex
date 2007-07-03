@@ -345,7 +345,7 @@ yabby> seq_op -i cad cad3 cad_i
 
 The last command has saved the intersection of objects 'cad.seq' and
 'cad3.seq' as a new sequence object, named 'cad\_i'. Since 'cad3.seq'
-is simply the subset of 'cad.seq' this intersection identical to
+is simply the subset of 'cad.seq' this intersection is identical to
 'cad3.seq'. Options '-u' and '-d' save the union and difference.
 It should be noted that the command 'seq\_op' compares only
 sequence IDs, {\em it does not compare the sequences themselves}.
@@ -499,19 +499,17 @@ yabby> what
     mig            seq           
 \end{verbatim}
 
-This command requires the module Bio::DB::GenBank from
-BioPerl \cite{bioperl}, and is an example of how easy is
-to leverage the capabilities of other bioinformatics packages
-within Yabby.
+This command requires the module Bio::DB::GenBank and illustrates
+how use the capabilities of BioPerl \cite{bioperl} within Yabby.
 
 \section{Housekeeping commands}
 
 \index{help}
 
 Several commands are dedicated to the general manipulation of
-Yabby objects. Those include 'what' and 'print', and also
-'help, 'dump', 'restore', 'delete', 'flush', 'license', 'exit'
-and 'quit'.
+Yabby objects. These include 'what' and 'print', and already
+seen 'help, 'dump', 'restore', 'delete', 'flush', 'license',
+'exit' and 'quit'.
 
 The 'help' command is probably the most useful. By itself it
 prints the list of currently available commands: 
@@ -710,12 +708,12 @@ HMMER is a powerful software for the profile hidden Markov model
 search of sequence databases \cite{hmmer,wwwhmmer}. The 'search 
 step' in HMMER search pipeline is performed by the program
 HMMPFAM which is a part of the HMMER software suite. Yabby's
-commands 'hmm\_score' and 'hmm\_score2seq' can aid in extraction
-of the search results from the HMMPFAM output files.
+commands 'hmm\_score' and 'hmm\_score2seq' can aid in the
+extraction of the search results from the HMMPFAM output files.
 
-Consider a mock-up example of some the HMMPFAM search performed
+As an example, consider the HMMPFAM search performed
 on the genome sequence 'LmjFmockup.pep'. The output of this search
-was redirected to the file 'hmmpfam.out'. To extract all the hits
+was redirected to the file 'hmmpfam.out'. To extract the hits
 with the E-value above 0.01, and store these hits under the name
 'hits':
 
@@ -778,7 +776,7 @@ yabby> seq_load hits.fas  hits
 
 yabby> print hits.seq
 
->LmjF05.1190@All [ LmjF05.1190@All [ (score: 2.70e-03, model: All) LmjF05.1190 LmjF05.1190 hypothetical protein, conserved 1912350:1918232 reverse MW:212991 ] ]
+>LmjF05.1190@All [ LmjF05.1190@All [ (score: 2.70e-03, model: All)
 MSNKKQTWANAHSQLWTSSVARSAGSRTQSEVSSIASTNRDRSLLDDGDGYHQPPSHVCA
 QELRHQAYQPNDKTLAQVSDILESYGAIACDADIPAVLLEVVKELERTKRDNNFKDLLLR
 EYSDTVQRRFGLYGEESPPSIAEVSARLRDGAPARPVAAPNPAWLEQPLNELWRTVCDGM
@@ -799,13 +797,13 @@ such implementations are in wide use: NCBI BLAST and WU-BLAST
 is often used to denote the Web interface for blast search,
 such as the one provided by NCBI \cite{wwwblast}.
 
-It is generally less known that NCBI blast executables can be
+It is generally less known that NCBI BLAST executables can be
 downloaded \cite{ftpblast} and run locally, which has some
 distinct advantages. The Yabby command 'blast' allows one to
-run NCBI blast search locally, through the Yabby interface. 
+run NCBI BLAST search locally, through the Yabby interface. 
 
-The command 'blast' depends on NCBI blast being installed locally.
-The location of the NCBI blast installation is set in the
+The command 'blast' depends on NCBI BLAST being installed locally.
+The location of the NCBI BLAST installation is set in the
 Yabby library 'yabby\_blast.pm':
 
 \begin{verbatim}
@@ -915,8 +913,8 @@ yabby> blast_info cad_1
 
 \section{Stand-alone commands}
 
-A stand-alone commands do not interact with other commands. They
-are in effect independent program scripts.  Nevertheless it is
+Stand-alone commands do not interact with other commands. They
+are, in effect, independent program scripts.  Nevertheless it is
 often useful to collect such independent scripts under Yabby
 to simplify their maintenance and ensure long-term retention.
 An example of such command is 'emboss\_needle'.
@@ -929,7 +927,7 @@ of the program 'needle' from the EMBOSS suite of programs
 \cite{emboss}. The input to the program 'needle' are two
 sequences, and the program calculates the global sequence
 alignment (Needleman-Wunsch algorithm). Typically two files
-are given on the input, each containing one sequence in FASTA  
+are provided as the input, each containing one sequence in FASTA  
 format. If the second file contains multiple sequences,
 the global sequence alignment will be calculate between
 the first sequence and each sequence in turn from the
@@ -955,7 +953,7 @@ to be printed out.
 
 Another example of a stand-alone command is 'pdb\_model', which 
 splits the Protein Data Bank (PDB) file with multiple models.
-The output is a series of PDB file, one per model:
+The output is a series of PDB files, one per model:
 
 \begin{verbatim}
 yabby> pdb_model 2C7H.pdb RBP_
