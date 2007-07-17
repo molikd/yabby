@@ -11,6 +11,8 @@
 #                                                     #
 #######################################################
 
+#use lib "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
+#$LIB_DIR = "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
 use lib "/home/current/proj/yabby/code/yabby/lib";
 $LIB_DIR = "/home/current/proj/yabby/code/yabby/lib";
 
@@ -23,6 +25,7 @@ die "\n You must have Perl 5 to run YABBY\n\n" if $] < 5.000;
 
 $version = 0.10;
 
+use File::Path;
 use Switch;
 use yabby_sys;
 use yabby_utils;
@@ -39,7 +42,7 @@ $cmd_hash = load_cmd_hash();
 $n_cmd = keys %$cmd_hash;
 
 # determine the OS running Yabby
-my $OS_NAME = '';
+$OS_NAME = '';
 unless ($OS_NAME) {
   unless ($OS_NAME = $^O) {
     require Config;
@@ -47,7 +50,7 @@ unless ($OS_NAME) {
   }
 }
 if ($OS_NAME=~/Win/i) { 
-  $OS_NAME = 'DOS'; 
+  $OS_NAME = 'DOS';
 } else { 
   $OS_NAME = 'UNIX'; 
 }
@@ -71,15 +74,8 @@ if ( -d $SYS_DIR ) {
   } until ( ($c eq "1") || ($c eq "2") );
 
   if ( $c eq "2" ) {
-    switch ($OS_NAME) {
-      case ("UNIX") {
-        $status = system("rm -rf $SYS_DIR");
-      }
-	case("DOS") {
-	  $status = system("rmdir /S /Q $SYS_DIR");
-      }
-    }
-    if ( $status != 0 ) { 
+    $status = rmtree( $SYS_DIR );
+    if ( $status == 0 ) { 
       print "\n An error occurred while trying to remove\n";
       print "  the directory '$SYS_DIR'\n Make sure that";
       print " you have proper writing permissions\n\n";
@@ -121,15 +117,35 @@ while ( <> ) {
           exit_yabby();
 
         } else { # execute a command
-          $cmd_script = $LIB_DIR . "/" . $cmd_root . ".pl";  
-          @cmd = ();
-          push @cmd, "-w";
-          push @cmd, $cmd_script;
-          push @cmd, @argl;
-          push @cmd, $LIB_DIR;
-          push @cmd, $SYS_DIR;
-          print "\n";
-          $status = system $PERL_CALL, $PERL_INCL, @cmd;
+
+          switch ( $OS_NAME ) {
+
+            case ( "UNIX" ) {
+              $cmd_script = $LIB_DIR . "/" . $cmd_root . ".pl";
+              @cmd = ();
+              push @cmd, "-w";
+              push @cmd, $cmd_script;
+              push @cmd, @argl;
+              push @cmd, $LIB_DIR;
+              push @cmd, $SYS_DIR;
+              print "\n";
+              $status = system $PERL_CALL, $PERL_INCL, @cmd;
+
+            } case ( "DOS" ) {
+              my $tmp_sys_str = "\"$SYS_DIR\"";
+              my $tmp_lib_str = "\"$LIB_DIR";
+              $cmd_script = $tmp_lib_str . "\\" . $cmd_root . ".pl\"";
+              $tmp_lib_str = "$tmp_lib_str\"";
+              @cmd = ();
+              push @cmd, "-w";
+              push @cmd, $cmd_script;
+              push @cmd, @argl;
+              push @cmd, "$tmp_lib_str";
+              push @cmd, "$tmp_sys_str";
+              print "perl @cmd";
+              $status = system "perl", $PERL_INCL, @cmd;
+            }
+          }
 
           if ( $status != 0 ) {
             print " [ command '$cmd_root' failed ]\n\n";
@@ -158,15 +174,8 @@ exit_yabby();
 # subroutines
 
 sub exit_yabby {
-  switch ($OS_NAME) {
-    case ("UNIX") {
-      $status = system("rm -rf $SYS_DIR");
-    }
-    case("DOS") {
-      $status = system("rmdir /S /Q $SYS_DIR");
-    }
-  }
-  if ( $status != 0 ) {
+  $status = rmtree( $SYS_DIR );
+  if ( $status == 0 ) {
     print "ERROR: cannot remove '$SYS_DIR'\n";
   }
   print "\n bye-bye\n\n";
@@ -175,7 +184,7 @@ sub exit_yabby {
 
 sub mksysdir {
   $status = system( "mkdir", $SYS_DIR );
-  if ( $status != 0 ) {
+  if ($status != 0) {
     print "\n an error occurred while trying to create\n";
     print "  directory $SYS_DIR\n Make sure that you\n";
     print "  have proper writing permissions\n\n";

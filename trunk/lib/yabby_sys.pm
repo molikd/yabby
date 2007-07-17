@@ -228,8 +228,10 @@ sub delete_ip {
   my ( $sys_file, $status );
   if ( exists_ip( $obj_name, $property ) ) { 
     $sys_file = sys_path( $obj_name, $property );
-    $status = system( "rm", $sys_file );
-    if ( $status != 0 ) {
+    #$status = system( "rm", $sys_file );
+    #if ( $status != 0 ) {
+    $status = rmtree( $sys_file );
+    if ( $status == 0 ) {
         error_trace( "failed to remove '$sys_file'" );
     }
   } else {

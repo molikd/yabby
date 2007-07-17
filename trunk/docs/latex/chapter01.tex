@@ -108,7 +108,7 @@ A    yabby/lib/yabby_seq.pm
 ....further output deleted....
 \end{verbatim}
 
-\subsection{Yabby installation}
+\subsection{Linux installation}
 
 The installation of Yabby requires that the file 'yabby/lib/yabby.pl' is
 modified in order to set the path to the Perl language interpreter,
@@ -161,6 +161,80 @@ typing 'yabby'. When a particular Yabby command relies on an
 external program or library (such as NCBI BLAST), additional
 configuration may be needed to allow Yabby to find the appropriate
 files.
+
+\section{Windows Installation}
+
+If Cygwin is installed, the UNIX instructions above should work. Both
+perl and subversion can be obtained through Cygwin's setup.exe. However 
+that Yabby was not tested on Cygwin, use at your own risk.
+
+\subsection{Installing Perl}
+
+The perl interpreter must be installed, we recommend to to install
+ActiveState's ActivePerl.
+
+\begin{verbatim}
+http://www.activestate.com/Products/activeperl/
+\end{verbatim}
+
+At this site one can obtain a free copy of the ActivePerl installer, which
+will then need to executed to install the interpreter.
+
+\subsection{Installing a subversion client}
+
+Google servers maintain the Yabby source code by the program called
+'subversion' (an open-source version control system).  A powerful and
+easy-to-use interface to subversion for Windows is TortoiseSVN. It is
+an extension of the shell, so it can be (and must be) used straight
+from Windows Explorer. It is available for free download here:
+
+\begin{verbatim}
+http://tortoisesvn.net/downloads
+\end{verbatim}
+
+Run the .msi executable, and it will install. This will also require
+a reboot.
+
+\subsection{Downloading Yabby}
+
+The following instructions refer specifically to TortoiseSVN. It is
+recommended, but not necessary, that a new directory be created anywhere in
+the filesystem where the Yabby source code is to be located. For example:
+
+C:{$\backslash$}
+\begin{description}
+  \item[1] create C:{$\backslash$}. Then open this directory.
+  
+  \item[2] Right-click the empty space and select SVN Checkout.
+  
+  \item[3] The URL is http://yabby.googlecode.com/svn/trunk/. Click OK.
+\end{description}
+
+\subsection{Yabby installation}
+
+Yabby installation requires that the file 'yabby/lib/yabby.pl' is modified to
+to set the path to Yabby libraries.
+
+If Yabby code was downloaded in the root directory C:$\backslash$, to set
+the path to Yabby libraries the following two lines need to be set (yabby.pl
+is stored in binary format, not text. So use Wordpad.exe, found in
+{\tt Start Menu->All Programs->Accessories}):
+\begin{verbatim}
+use lib "C:\\Yabby\\lib";
+$LIB_DIR = "C:\\Yabby\\lib";
+\end{verbatim}
+NOTE: `{$\backslash$}' is an escape character in Perl strings, which is
+also the character Windows uses to seperate directories. A double escape
+character escapes the escape. Hence the need for two.
+
+If you double-click yabby.pl now, it will start Yabby.
+\begin{verbatim}
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 38 command(s) ready ]
+
+yabby>
+\end{verbatim}
 
 \section{Running Yabby}
 
