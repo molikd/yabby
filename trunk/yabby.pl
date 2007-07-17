@@ -43,13 +43,13 @@ $n_cmd = keys %$cmd_hash;
 
 # determine the OS running Yabby
 $OS_NAME = '';
-unless ($OS_NAME) {
-  unless ($OS_NAME = $^O) {
+unless ( $OS_NAME ) {
+  unless ( $OS_NAME = $^O ) {
     require Config;
     $OS_NAME = $Config::Config{'osname'};
   }
 }
-if ($OS_NAME=~/Win/i) { 
+if ( $OS_NAME=~/Win/i ) { 
   $OS_NAME = 'DOS';
 } else { 
   $OS_NAME = 'UNIX'; 
