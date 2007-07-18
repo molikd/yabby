@@ -969,3 +969,822 @@ yabby> pdb_model 2C7H.pdb RBP_
 where '2C7H.pdb' is the original PDB file with multiple models,
 and 'RBP\_' is the prefix used for individual model files.
 
+\section{Extending Yabby}
+
+The one-to-one correspondence between Yabby commands and Yabby
+command scripts makes it very clear from where the particular
+funcionality comes from. This also encapsulates a functionality
+within a particular script file, and small size of individual
+script files makes it easy to understand, modify, and maintain
+such scripts.  The complete decoupling between command scripts
+ensures that it is hard to break existing commands when adding
+new commands.
+
+Any functional Perl script placed in the Yabby library directory
+will become available for execution as Yabby command.  Consider
+the file 'hello.pl' with the following content:
+
+\begin{verbatim}
+print "Hello World!\n";
+\end{verbatim}
+
+If placed in the the Yabby library directory, it becomes immediately
+available as the command 'hello':
+
+\begin{verbatim}
+$ yabby
+
+ - YABBY version 0.1 - 
+
+ [ 36 command(s) ready ]
+
+yabby> hello
+
+Hello World!
+
+yabby>
+\end{verbatim}
+
+If already running, Yabby will need to be restarted before the command
+'hello' becomes available.
+
+\subsection{Creating a new Yabby command: seq\_letter}
+
+Although a simple perl script would work if just dropped in the Yabby
+library, to create a Yabby command would require some additional effort.
+Consider creating a very simple command which operates on the sequence
+object, and prints the first letter of the first sequence stored in
+the sequence object. The command will be named 'seq\_letter'.
+
+We start by creating the file 'seq\_letter.pl' in the Yabby library:
+
+\begin{verbatim}
+# seq_letter.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+\end{verbatim}
+
+All Yabby commands rely on the module 'yabby\_sys'. The module 'yabby\_seq'
+contains functions for the manipulation of sequences. The Perl module
+'Getopt::Std' is required to enable processing of single-character
+command switches.
+
+The next step is to create the usage string:
+
+\begin{verbatim}
+$USAGE = "
+ Prints the first letter from the first sequence of a sequence
+ object. 
+
+ Usage:
+        seq_letter OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how new
+ Yabby commands can be developed.
+";
+\end{verbatim}
+
+The usage string will be printed when 'help seq\_letter' or
+'seq\_letter help' is issued.
+
+We add the initialization commands:
+
+\begin{verbatim}
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+\end{verbatim}
+
+In the case of this command there are no options. The function
+'sys\_init' is used to process arguments to all Yabby commands
+in a standard way. The function 'check\_call' is used to check
+the number of arguments.  In this case, exactly one argument
+must be given, the name of an existing sequence object.  Finally,
+in the last line the name of sequence object is associated to
+the variable 'obj\_name'. In the next step the sequence object
+is loaded in the memory:
+ 
+\begin{verbatim}
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+\end{verbatim}
+
+The function 'requirements()' checks whether the sequence object
+named 'obj\_name' exists. If not, it will terminate the script
+with an appropriate error message. If this step is passed, the
+function 'load\_ip\_xml()' loads the sequence object from the
+workspace. Finally, we fetch the first sequence and print its
+first letter:
+
+\begin{verbatim}
+$seq_hash = xml2seq( $xmldoc );
+$seq_item = $seq_hash->{1};
+printf " The first letter of the first sequence is: '%s'\n",
+  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+\end{verbatim}
+
+The complete listing of the modified command script 'seq\_letter'
+is given below: 
+
+\begin{verbatim}
+# seq_letter.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Prints the first letter from the first sequence of a sequence
+ object. 
+
+ Usage:
+        seq_letter OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how new
+ Yabby commands can be developed.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$seq_item = $seq_hash->{1};
+printf " The first letter of the first sequence is: '%s'\n",
+  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+\end{verbatim}
+
+When executed, the command gives the following output:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> seq_letter tom20
+
+ The first letter of the first sequence is: 'M'
+\end{verbatim}
+
+Consider what happens when no arguments are given:
+
+\begin{verbatim}
+yabby> seq_letter 
+
+ seq_letter:: ERROR: exactly 1 argument(s) required [ 0 supplied ]
+ [ command 'seq_letter' failed ]
+\end{verbatim}
+
+This error was raised by the function 'check\_call'. If the sequence
+object does not exist:
+
+\begin{verbatim}
+yabby> seq_letter ttt
+
+ seq_letter:: missing requirement: 'ttt.seq'
+
+ [ command 'seq_letter' failed ]
+\end{verbatim}
+
+The last error was raised by the function 'requirements()'.
+
+\subsection{Extending seq\_letter to work on all sequences}
+
+It would be easy to extend the command seq\_letter to print the
+first letter of all sequences from the sequence object. This would
+require modifying the body of the command:
+
+\begin{verbatim}
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+for $key ( @$keys ) {
+  $seq_item = $seq_hash->{$key};
+  printf " Sequence '%s', the first letter is '%s'\n",
+  $seq_item->{$DBA_SEQID}, substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+}
+\end{verbatim}
+
+The output of 'seq\_letter' is:
+
+\begin{verbatim}
+yabby> seq_letter tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the first letter: 'M'
+ Sequence 'O.sativa', the first letter: 'M'
+ Sequence 'L.esculentum', the first letter: 'M'
+\end{verbatim}
+
+\subsection{Adding a command switch}
+
+Consider how one could add an optional switch to print the last
+letter of each sequence, instead of the first letter.
+
+To add the switch '-t':
+
+\begin{verbatim}
+# options
+getopts('t');
+
+if ( defined( $opt_t ) ) {
+  $opt_t_flag = 1;
+} else {
+  $opt_t_flag = 0;
+}
+\end{verbatim}
+
+To extend the command body to take into account possible '-t'
+switch: 
+
+\begin{verbatim}
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+for $key ( @$keys ) {
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+  $sequence = $seq_item->{$DBA_SEQUENCE};
+
+  if ( $opt_t_flag ) {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, -1, 1 );
+  } else {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+  }
+
+  printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
+}
+\end{verbatim}
+
+The possible use of the modified 'seq\_letter':
+
+\begin{verbatim}
+yabby> seq_letter tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the letter is 'M'
+ Sequence 'O.sativa', the letter is 'M'
+ Sequence 'L.esculentum', the letter is 'M'
+
+yabby> seq_letter -t tom20
+
+ 'tom20' contains 3 sequence(s)
+ Sequence 'A.thaliana2', the letter is 'R'
+ Sequence 'O.sativa', the letter is 'R'
+ Sequence 'L.esculentum', the letter is 'R'
+\end{verbatim}
+
+The full listing of the command 'seq\_letter' is:
+
+\begin{verbatim}
+# seq_letter.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Prints the first sequence letter from the sequence object. 
+
+ Usage:
+        seq_letter [ options ] OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Options:
+
+ -t -- print the last letter instead of the first
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how new
+ Yabby commands can be developed.
+";
+
+# options
+getopts('t');
+
+if ( defined( $opt_t ) ) {
+  $opt_t_flag = 1;
+} else {
+  $opt_t_flag = 0;
+}
+
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+  $sequence = $seq_item->{$DBA_SEQUENCE};
+
+  if ( $opt_t_flag ) {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, -1, 1 );
+  } else {
+    $lett = substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+  }
+
+  printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
+}
+\end{verbatim}
+
+\subsection{A command that creates an object}
+
+The command 'seq\_letter' is very simple in that it merely prints
+something on the output screen; it does not modify an existing
+object nor does it creates any new Yabby objects. Consider a command
+that actually creates a sequence object. An example for this may
+be a command that chops the first letter from each sequence in
+the sequence object, and saves the result as a new sequence object.
+This requires two names to be given on the input, the name of
+an existing sequence object, and the name of the sequence object
+that will be created:
+
+\begin{verbatim}
+seq_letterc OBJ_NAME OBJ_NAME_NEW
+\end{verbatim}
+
+The new command is named 'seq\_letterc' to distinguish it from
+the previous 'seq\_letter'.
+
+To build the command 'seq\_letterc' we create the file 'seq\_letterc.pl'
+in the Yabby library:
+
+\begin{verbatim}
+# seq_letters.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Chops the first sequence letter from the sequence object, and
+ saves the result as a new sequence object.
+
+ Usage:
+        seq_letters OBJ_NAME OBJ_NAME_NEW
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how new
+ Yabby commands can be developed.
+";
+\end{verbatim}
+
+Two arguments are now required:
+
+\begin{verbatim}
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 2 ] );
+$obj_name = $argl[0];
+$obj_name2 = $argl[1];
+\end{verbatim}
+
+We can use the same construct to check for requirements and fetch the
+sequence object:
+
+\begin{verbatim}
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+\end{verbatim}
+
+The new command requires a new sequence object to be created, and
+populated with sequences from the existing sequence object (minus
+the first letter). We first initialize a new sequence object:
+
+\begin{verbatim}
+$seq_hash2 = {};
+\end{verbatim}
+
+The same construct as in 'seq\_letter' could be used to loop through
+the sequences. Now, we also create a new sequence for each existing
+sequence, chop the first letter, and joing the result to the new
+sequence object:
+
+\begin{verbatim}
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+
+  $seq_item_new = {};
+  $seq_item_new->{$DBA_SEQID} = $seq_item->{$DBA_SEQID};
+  $seq_item_new->{$DBA_COMMENT} = $seq_item->{$DBA_COMMENT};
+  $seq_item_new->{$DBA_SEQUENCE} = $seq_item->{$DBA_SEQUENCE};
+
+  # chop the first letter from the sequence
+  substr( $seq_item_new->{$DBA_SEQUENCE}, 0, 1 ) = "";
+
+  $seq_hash2->{$key} = $seq_item_new;
+}
+\end{verbatim}
+
+We need to save the newly created sequence hash 'seq\_hash2' as the
+new sequence object. In the first step, we convert the sequence hash
+object into an XML document:
+
+\begin{verbatim}
+$xmldoc = seq2xml( $seq_hash2 );
+\end{verbatim}
+
+This is the reverse of the above command 'xml2seq()', which converts
+an XML document representing a sequence object into a sequence hash,
+the form all commands employ to represent the sequence object in
+memory.  The functions 'xml2seq()' and 'seq2xml()' are specific for
+sequence objects, and are defined in the package 'yabby\_seq.pm'.
+Finally, we store the XML sequence object in the workspace:
+
+\begin{verbatim}
+printf " Saving chopped sequences as '%s'\n", $obj_name2;
+save_ip_xml( $xmldoc, $obj_name2, $SEQUENCE, $WARN_OVERW );
+\end{verbatim}
+
+The function 'save\_ip\_xml()' sends the XML representation of an
+object to the workspace. This function is the reverse analog of
+the previously used function 'load\_ip\_xml()', which fetches the
+XML representation of an object from the workspace. These two
+functions are defined in the package 'yabby\_sys.pm'.
+
+The arguments to the function 'save\_ip\_xml()' are are follows:
+the XML representation of an object ('xmldoc'), the name of the
+object to be created ('obj\_name2'), the type of the object to be
+created ('SEQUENCE' in this case), and the flag which determines
+whether the warning will be issued is the object with the same
+name and the same type already exists in the workspace and will
+be overwritten ('WARN\_OVERW').
+
+The command 'seq\_letterc' could be used as follows:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> what      
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+
+yabby> seq_letterc tom20 tom20_chop
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20_chop'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+    tom20_chop     seq           
+
+yabby> print tom20.seq
+
+>A.thaliana2 [ A.thaliana2 ]
+MEFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLND
+AISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGN
+DTYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFT
+YDVCGWIILACGIVAWVGMAKSLGPPPPAR
+>O.sativa [ O.sativa ]
+MDMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLE
+DAESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPA
+NDLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVV
+LGVGMVVWVGLAKSNAPPQAPR
+>L.esculentum [ L.esculentum ]
+MDMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDA
+ISKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENE
+LYQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVIL
+AVGLVAWIGFAKSNMPXPAHPLPR
+
+yabby> print tom20_chop.seq
+
+>A.thaliana2 [ A.thaliana2 ]
+EFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLNDA
+ISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGND
+TYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFTY
+DVCGWIILACGIVAWVGMAKSLGPPPPAR
+>O.sativa [ O.sativa ]
+DMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLED
+AESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPAN
+DLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVVL
+GVGMVVWVGLAKSNAPPQAPR
+>L.esculentum [ L.esculentum ]
+DMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDAI
+SKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENEL
+YQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVILA
+VGLVAWIGFAKSNMPXPAHPLPR
+\end{verbatim}
+
+Since no safeguards were put against overwriting an existing
+sequence object, the command 'seq\_letterc' could be used
+twice to chop sequences from the N-terminus in place,
+
+\begin{verbatim}
+yabby> seq_letterc tom20 tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20'
+ [ seq_letterc: 'tom20.seq' exists, overwritten ]
+
+yabby> seq_letterc tom20 tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving chopped sequences as 'tom20'
+ [ seq_letterc: 'tom20.seq' exists, overwritten ]
+\end{verbatim}
+
+\subsection{Creating a new object type}
+
+Yabby supports two internal representations of data in the workspace:
+simple lists and XML objects. To create a new object type one must
+first decide whether the data in question can be effectively
+represented with a two-dimensional table. Two-dimensional tables
+can be effectively represented with two-dimensional lists, where
+each item in the list corresponds to the table row. Lists are simple
+and efficient in Perl, and if suitable this is the preferred
+representation of data. However, XML format is much more powerful
+and flexible, and is the preferred solution when the data has
+a complex internal structure.
+
+A sequence object uses XML to store data into the workspace.
+A Yabby commands store sequence objects
+in memory in the form of a hash (sequence hash).  All sequence
+commands use the standard function 'load\_ip\_xml()' to fetch the XML
+representation of a sequence object from the workspace. Subsequently
+the object is converted into a more efficient structure, a
+sequence hash, with the function 'xml2seq()'. After the sequences
+are manipulated, or a new sequence object is created, the result
+may be stored in the workspace. In this case, the reverse
+transformation process takes place:  the sequence hash is convereted
+into an XML object with the function 'seq2xml()', and the resulting
+XML object is saved in the workspace with the function 'save\_ip\_xml()'.
+
+The functions 'load\_ip\_xml()' and 'save\_ip\_xml()' can be used
+to load/store the XML representation of any object in the workspace.
+The analogous functions for objects represented as a two-dimensional
+lists are 'load\_ip()' and 'save\_ip()'.
+
+As an example we will create a new object type named "seqid" to
+represent the list of sequence IDs. To demonstrate the use of this
+object we will also create the command 'seq2id' which creates the
+"seqid" object from an existing sequence object.
+
+The first step is to create the script 'seq2id.pl' in the Yabby
+library, and we start as previously:
+
+\begin{verbatim}
+# seq2id.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Converts a sequence object into seqid object.
+
+ Usage:
+        seq2id OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how a
+ new object type can be implemented.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+\end{verbatim}
+
+With this we have the sequence hash in memory. In 'yabby\_seq.pm' we
+add the name of the "seqid" object:
+
+\begin{verbatim}
+$SEQUENCE = "seq";
+$MOTIF = "motif";
+$SEQID = "seqid";
+\end{verbatim}
+
+The new object will be represented as a one-dimensional list, where
+each sequence ID string will be one element of this list. This is
+equivalent to a two-dimensional table, where there is only one
+column in the table. Next we create the variable 'seqid\_obj' to
+hold the 'seqid' object, fill this object with the values from
+the sequence hash, and store the object in the workspace by using
+the standard function:
+
+\begin{verbatim}
+$seqid_obj = [];
+
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+
+  push @$seqid_obj, [ $seq_id ];
+}
+
+print " Saving '$obj_name.$SEQID'\n";
+save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
+\end{verbatim}
+
+The complete listing for the command script 'seq2id':
+
+\begin{verbatim}
+# seq2id.pl
+
+use yabby_sys;
+use yabby_seq;
+
+use Getopt::Std;
+
+$USAGE = "
+ Converts a sequence object into seqid object.
+
+ Usage:
+        seq2id OBJ_NAME
+
+ where OBJ_NAME is the name of an existing sequence object.
+
+ Notes:
+
+ 1. This command is merely an example to demonstrate how a
+ new object type can be implemented.
+";
+
+# options
+# initialization
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
+
+# requirements
+requirements( $obj_name, $SEQUENCE );
+$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+
+# body
+$seq_hash = xml2seq( $xmldoc );
+$keys = get_seq_keys( $seq_hash );
+
+printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
+
+$seqid_obj = [];
+
+for $key ( @$keys ) {
+
+  $seq_item = $seq_hash->{$key};
+  $seq_id = $seq_item->{$DBA_SEQID};
+
+  push @$seqid_obj, [ $seq_id ];
+}
+
+print " Saving '$obj_name.$SEQID'\n";
+save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
+\end{verbatim}
+
+And below is the output when the command is executed on an example
+sequence object:
+
+\begin{verbatim}
+yabby> seq_load tom20.fas tom20
+
+ Reading the file 'tom20.fas' ..
+ 3 sequence(s) found.
+
+yabby> seq2id tom20
+
+ 'tom20' contains 3 sequence(s)
+ Saving 'tom20.seqid'
+
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    tom20          seq           
+                   seqid         
+\end{verbatim}
+
+Of course, at this point nothing can be done with the 'seqid' object.
+It cannot be even printed on the screen:
+
+\begin{verbatim}
+yabby> print tom20.seqid
+
+ print:: ERROR: printing the property 'seqid' not yet implemented
+ [ command 'print' failed ]
+\end{verbatim}
+
+This is because the printing of each particular object type has to
+be enabled in the 'print' command. However, one can view the 'seqid'
+object directly from the filesystem, since 'tom20.seqid' is just
+a simple text file, containing sequence IDs listed one per row:
+
+\begin{verbatim}
+yabby> cat .yabby/tom20.seqid
+A.thaliana2
+O.sativa
+L.esculentum
+\end{verbatim}
+
+\subsection{Some additional explanations and programming conventions}
+
+All objects that are represents with two dimensional tables are
+initialized as annonymous arrays:
+
+\begin{verbatim}
+$seqid_obj = [];
+\end{verbatim}
+
+When filled with values, each element of this array is a reference
+to anonymous array. In this case containing only one element 'seq\_id':
+
+\begin{verbatim}
+push @$seqid_obj, [ $seq_id ];
+\end{verbatim}
+
+This format is very flexible.  If the data table needs to contain more
+than one element per row, these would be simply added to the anonymous
+reference representing a table row:
+
+\begin{verbatim}
+push @$seqid_obj, [ $seq_id, $colum2_elem, $colum3_elem, ... ];
+\end{verbatim}
+
+Consider how the object 'mol' is built, which is internally represented
+with a two-dimensional table:
+
+\begin{verbatim}
+push @$mol, [ $resi_num, $resi_name, $atom_name, $segmentID ];
+\end{verbatim}
+
+The function 'save\_ip()' expects the reference to an anonymous array,
+where each element of this array is a reference to another anonymous
+array which may contain one or more elements. This holds for any
+object represented by a list, and functions 'save\_ip()' and
+'load\_ip()' are used to store/fetch the object from the workspace.
+For objects represented in XML, a special converter function needs
+to be written akin to 'xml2seq()' and 'seq2xml()'.

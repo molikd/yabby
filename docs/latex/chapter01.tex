@@ -18,223 +18,35 @@
 
 \section{Introduction}
 
-- Introduction
-- Motivation
-- Features
-- License
+Many bioinformatics tasks are solved by writing of specialised programs,
+typically using scripting languages which allow rapid development and are
+supported by well developed libraries. When the level of generality is
+required, or when such programs manipulate large data files, testing and
+debugging may involve considerable effort and time. In spite of their
+inherent value, such programs are typically scattered with project-specific
+data files, and are often lost after the completion of the project as a
+result of data, interest, or people migration.
+
+Yabby aims to support a long term retention of dissipate Perl program
+scripts developed for bioinformatics. Yabby is a framework that consists
+of an interactive shell and a library of program scripts that provide
+a specific functionality. The shell provides the command line interface
+to the user, and a mechanism to execute library program scripts. Program
+scripts can have either stand-alone functionality, or they can be a part
+of a larger processing pipeline. In the latter case, they exchange the
+data through the common data model. For this purpose two different data
+models are used, two-dimensional tables and XML.
+
+The main challenge in designing such a system is to achieve a level of
+generality that would warrant an overhead incurred by integration of
+dissipate program scripts.  In an ideal case, such a system would present
+no barrier for users to modify or extend existing components, as well
+as to add new components with additional functionality.  Yabby is modular
+and extensible, and allows users to modify existing functionality and
+to add new components and functionality easily.
 
 Yabby is released as open source, under the GNU Public License
 version 2.
-
-\section{Installation}
-
-\subsection{Checking Perl}
-
-\index{installation}
-\index{Perl}
-\index{system requirements}
-
-Yabby has been developed with Perl version 5.X, a freely available
-general purpose scripting language. Perl stands for "Practical
-Extraction and Report Language" and is particularly well suited for
-the manipulation of data stored in plain text files. This seems
-all too often to be required in bioinformatics applications.
-
-Before attempting the installation, it is highly recommended to
-check if the Perl interpreter is present on your computer system.
-For example, on a Linux system,
-
-\begin{verbatim}
-$ perl -v
-
-This is perl, v5.8.5 built for i386-linux-thread-multi
-
-Copyright 1987-2004, Larry Wall
-
-Perl may be copied only under the terms of either the Artistic License or the
-GNU General Public License, which may be found in the Perl 5 source kit.
-
-Complete documentation for Perl, including FAQ lists, should be found on
-this system using `man perl' or `perldoc perl'.  If you have access to the
-Internet, point your browser at http://www.perl.com/, the Perl Home Page.
-\end{verbatim}
-
-Perl 5 and later is required for Yabby.  The next step is to find where
-exactly is the Perl interpreter located, as this information will be
-required for Yabby installation:
-
-\begin{verbatim}
-$ which perl
-/usr/local/bin/perl
-\end{verbatim}
-
-\subsection{Downloading Yabby}
-
-Yabby source code can be browsed from the Google Code servers, at
-the URL: http://code.google.com/p/yabby/. Under the
-section "Source" one can find the instructions for downloading the
-source code. The same page provides the link under "This project's
-Subversion repository can be viewed in your web browser" which allows
-one to browse the source code on the server without actually
-downloading it.
-
-Google servers maintain the source code by the program called 'subversion'
-(an open-source version control system).  To download the source code
-one needs to use the subversion client program called 'svn'.  The 'svn'
-client exists for all mainstream operating systems\footnote{For example,
-on Linux CentOS 4 the RPM package 'subversion-1.3.2-1.rhel4.i386.rpm'
-provides the subversion client 'svn'.}, for more information see
-http://subversion.tigris.org/.  The book about subversion is freely
-available on-line at http://svnbook.red-bean.com/. Subversion has
-extensive functionality however only the very basic functionality
-is needed to download Yabby.  Assuming that the computer is connected
-to the internet, the following command will download the latest Yabby 
-source code in the current directory:
-
-\begin{verbatim}
-$ svn checkout http://yabby.googlecode.com/svn/trunk/ yabby
-A    yabby/yabby.pl
-A    yabby/LICENSE
-A    yabby/lib
-A    yabby/lib/blast.pl
-A    yabby/lib/hmm_score2seq.pl
-A    yabby/lib/seq_strip.pl
-A    yabby/lib/seq_comment.pl
-A    yabby/lib/hmm_score.pl
-A    yabby/lib/blastg.pl
-A    yabby/lib/motif_cmp.pl
-A    yabby/lib/seq_unique.pl
-A    yabby/lib/yabby_seq.pm
-....further output deleted....
-\end{verbatim}
-
-\subsection{Linux installation}
-
-The installation of Yabby requires that the file 'yabby/lib/yabby.pl' is
-modified in order to set the path to the Perl language interpreter,
-and to the Yabby libraries.
-
-If Yabby code was downloaded in the directory /home/jake/ (and
-therefore the script 'yabby.pl' is in /home/jake/yabby/), to set
-the path to Yabby libraries the following two lines need to be
-set: 
-
-\begin{verbatim}
-use lib "/home/jake/yabby/lib";
-$LIB_DIR = "/home/jake/yabby/lib";
-\end{verbatim}
-
-The path to the Perl interpreter is set in the first line of the
-file 'yabby.pl':
-
-\begin{verbatim}
-#!/usr/bin/perl
-\end{verbatim}
-
-The script yabby.pl needs to have executable permissions:
-
-\begin{verbatim}
-$ chmod +x yabby.pl
-\end{verbatim}
-
-If this is all set, running the script 'yabby.pl' will start Yabby:
-
-\begin{verbatim}
-$ yabby.pl
-
- - YABBY version 0.1 - 
-   Copyright (c) 2004-7 Vladimir Likic
- [ 35 command(s) ready ]
-
-yabby>
-\end{verbatim}
-
-It is often useful to create a symbolic link in a directory which
-is included the PATH variable, such as /usr/local/bin or ~/bin:
-
-\begin{verbatim}
-ln -s /home/jake/yabby/yabby.pl /home/jake/bin/yabby
-\end{verbatim}
-
-This would allow Yabby to be run from any directory, simply by
-typing 'yabby'. When a particular Yabby command relies on an 
-external program or library (such as NCBI BLAST), additional
-configuration may be needed to allow Yabby to find the appropriate
-files.
-
-\section{Windows Installation}
-
-If Cygwin is installed, the UNIX instructions above should work. Both
-perl and subversion can be obtained through Cygwin's setup.exe. However 
-that Yabby was not tested on Cygwin, use at your own risk.
-
-\subsection{Installing Perl}
-
-The perl interpreter must be installed, we recommend to to install
-ActiveState's ActivePerl.
-
-\begin{verbatim}
-http://www.activestate.com/Products/activeperl/
-\end{verbatim}
-
-At this site one can obtain a free copy of the ActivePerl installer, which
-will then need to executed to install the interpreter.
-
-\subsection{Installing a subversion client}
-
-Google servers maintain the Yabby source code by the program called
-'subversion' (an open-source version control system).  A powerful and
-easy-to-use interface to subversion for Windows is TortoiseSVN. It is
-an extension of the shell, so it can be (and must be) used straight
-from Windows Explorer. It is available for free download here:
-
-\begin{verbatim}
-http://tortoisesvn.net/downloads
-\end{verbatim}
-
-Run the .msi executable, and it will install. This will also require
-a reboot.
-
-\subsection{Downloading Yabby}
-
-The following instructions refer specifically to TortoiseSVN. It is
-recommended, but not necessary, that a new directory be created anywhere in
-the filesystem where the Yabby source code is to be located. For example:
-
-C:{$\backslash$}
-\begin{description}
-  \item[1] create C:{$\backslash$}. Then open this directory.
-  
-  \item[2] Right-click the empty space and select SVN Checkout.
-  
-  \item[3] The URL is http://yabby.googlecode.com/svn/trunk/. Click OK.
-\end{description}
-
-\subsection{Yabby installation}
-
-Yabby installation requires that the file 'yabby/lib/yabby.pl' is modified to
-to set the path to Yabby libraries.
-
-If Yabby code was downloaded in the root directory C:$\backslash$, to set
-the path to Yabby libraries the following two lines need to be set (yabby.pl
-is stored in binary format, not text. So use Wordpad.exe, found in
-{\tt Start Menu->All Programs->Accessories}):
-\begin{verbatim}
-use lib "C:\\Yabby\\lib";
-$LIB_DIR = "C:\\Yabby\\lib";
-\end{verbatim}
-NOTE: `{$\backslash$}' is an escape character in Perl strings, which is
-also the character Windows uses to seperate directories. A double escape
-character escapes the escape. Hence the need for two.
-
-If you double-click yabby.pl now, it will start Yabby.
-\begin{verbatim}
- - YABBY version 0.1 - 
-   Copyright (c) 2004-7 Vladimir Likic
- [ 38 command(s) ready ]
-
-yabby>
-\end{verbatim}
 
 \section{Running Yabby}
 
@@ -248,7 +60,7 @@ interface from the Unix shell. Here is the simplest Yabby session:
 $ yabby
 
  - YABBY version 0.1 - 
-   Copyright (c) 2004-7 Vladimir Likic
+
  [ 35 command(s) ready ]
 
 yabby> quit
@@ -277,7 +89,7 @@ could be run with the Unix shell input redirection:
 $ yabby < test.yab
 
  - YABBY version 0.1 - 
-   Copyright (c) 2004-7 Vladimir Likic
+
  [ 35 command(s) ready ]
 
 yabby> % test.yab -- test input script
@@ -394,7 +206,7 @@ Consider what happens when the sequences were read from the file
 1  $ yabby
 2 
 3   - YABBY version 0.1 -
-4     Copyright (c) 2004-7 Vladimir Likic
+
 5   [ 35 command(s) ready ]
 6 
 7  yabby> seq_load tom20.fas tom20
@@ -677,823 +489,213 @@ of data with complex internal structure. This flexibility comes
 at a price, as it requires more effort to design and then implement
 an XML based format compared to a two-dimensional list. 
 
-\section{Extending Yabby}
+\section{Installation}
 
-The one-to-one correspondence between Yabby commands and Yabby
-command scripts makes it very clear from where the particular
-funcionality comes from. This also encapsulates a functionality
-within a particular script file, and small size of individual
-script files makes it easy to understand, modify, and maintain
-such scripts.  The complete decoupling between command scripts
-ensures that it is hard to break existing commands when adding
-new commands.
+\subsection{Checking Perl}
 
-Any functional Perl script placed in the Yabby library directory
-will become available for execution as Yabby command.  Consider
-the file 'hello.pl' with the following content:
+\index{installation}
+\index{Perl}
+\index{system requirements}
+
+Yabby has been developed with Perl version 5.X, a freely available
+general purpose scripting language. Perl stands for "Practical
+Extraction and Report Language" and is particularly well suited for
+the manipulation of data stored in plain text files. This seems
+all too often to be required in bioinformatics applications.
+
+Before attempting the installation, it is highly recommended to
+check if the Perl interpreter is present on your computer system.
+For example, on a Linux system,
 
 \begin{verbatim}
-print "Hello World!\n";
+$ perl -v
+
+This is perl, v5.8.5 built for i386-linux-thread-multi
+
+Copyright 1987-2004, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using `man perl' or `perldoc perl'.  If you have access to the
+Internet, point your browser at http://www.perl.com/, the Perl Home Page.
 \end{verbatim}
 
-If placed in the the Yabby library directory, it becomes immediately
-available as the command 'hello':
+Perl 5 and later is required for Yabby.  The next step is to find where
+exactly is the Perl interpreter located, as this information will be
+required for Yabby installation:
 
 \begin{verbatim}
-$ yabby
+$ which perl
+/usr/local/bin/perl
+\end{verbatim}
+
+\subsection{Downloading Yabby}
+
+Yabby source code can be browsed from the Google Code servers, at
+the URL: http://code.google.com/p/yabby/. Under the
+section "Source" one can find the instructions for downloading the
+source code. The same page provides the link under "This project's
+Subversion repository can be viewed in your web browser" which allows
+one to browse the source code on the server without actually
+downloading it.
+
+Google servers maintain the source code by the program called 'subversion'
+(an open-source version control system).  To download the source code
+one needs to use the subversion client program called 'svn'.  The 'svn'
+client exists for all mainstream operating systems\footnote{For example,
+on Linux CentOS 4 the RPM package 'subversion-1.3.2-1.rhel4.i386.rpm'
+provides the subversion client 'svn'.}, for more information see
+http://subversion.tigris.org/.  The book about subversion is freely
+available on-line at http://svnbook.red-bean.com/. Subversion has
+extensive functionality however only the very basic functionality
+is needed to download Yabby.  Assuming that the computer is connected
+to the internet, the following command will download the latest Yabby 
+source code in the current directory:
+
+\begin{verbatim}
+$ svn checkout http://yabby.googlecode.com/svn/trunk/ yabby
+A    yabby/yabby.pl
+A    yabby/LICENSE
+A    yabby/lib
+A    yabby/lib/blast.pl
+A    yabby/lib/hmm_score2seq.pl
+A    yabby/lib/seq_strip.pl
+A    yabby/lib/seq_comment.pl
+A    yabby/lib/hmm_score.pl
+A    yabby/lib/blastg.pl
+A    yabby/lib/motif_cmp.pl
+A    yabby/lib/seq_unique.pl
+A    yabby/lib/yabby_seq.pm
+....further output deleted....
+\end{verbatim}
+
+\subsection{Linux installation}
+
+The installation of Yabby requires that the file 'yabby/lib/yabby.pl' is
+modified in order to set the path to the Perl language interpreter,
+and to the Yabby libraries.
+
+If Yabby code was downloaded in the directory /home/jake/ (and
+therefore the script 'yabby.pl' is in /home/jake/yabby/), to set
+the path to Yabby libraries the following two lines need to be
+set: 
+
+\begin{verbatim}
+use lib "/home/jake/yabby/lib";
+$LIB_DIR = "/home/jake/yabby/lib";
+\end{verbatim}
+
+The path to the Perl interpreter is set in the first line of the
+file 'yabby.pl':
+
+\begin{verbatim}
+#!/usr/bin/perl
+\end{verbatim}
+
+The script yabby.pl needs to have executable permissions:
+
+\begin{verbatim}
+$ chmod +x yabby.pl
+\end{verbatim}
+
+If this is all set, running the script 'yabby.pl' will start Yabby:
+
+\begin{verbatim}
+$ yabby.pl
 
  - YABBY version 0.1 - 
-   Copyright (c) 2004-7 Vladimir Likic
- [ 36 command(s) ready ]
 
-yabby> hello
-
-Hello World!
+ [ 35 command(s) ready ]
 
 yabby>
 \end{verbatim}
 
-If already running, Yabby will need to be restarted before the command
-'hello' becomes available.
-
-\subsection{Creating a new Yabby command: seq\_letter}
-
-Although a simple perl script would work if just dropped in the Yabby
-library, to create a Yabby command would require some additional effort.
-Consider creating a very simple command which operates on the sequence
-object, and prints the first letter of the first sequence stored in
-the sequence object. The command will be named 'seq\_letter'.
-
-We start by creating the file 'seq\_letter.pl' in the Yabby library:
+It is often useful to create a symbolic link in a directory which
+is included the PATH variable, such as /usr/local/bin or ~/bin:
 
 \begin{verbatim}
-# seq_letter.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
+ln -s /home/jake/yabby/yabby.pl /home/jake/bin/yabby
 \end{verbatim}
 
-All Yabby commands rely on the module 'yabby\_sys'. The module 'yabby\_seq'
-contains functions for the manipulation of sequences. The Perl module
-'Getopt::Std' is required to enable processing of single-character
-command switches.
+This would allow Yabby to be run from any directory, simply by
+typing 'yabby'. When a particular Yabby command relies on an 
+external program or library (such as NCBI BLAST), additional
+configuration may be needed to allow Yabby to find the appropriate
+files.
 
-The next step is to create the usage string:
+\section{Windows Installation}
+
+If Cygwin is installed, the UNIX instructions above should work. Both
+perl and subversion can be obtained through Cygwin's setup.exe. However 
+that Yabby was not tested on Cygwin, use at your own risk.
+
+\subsection{Installing Perl}
+
+The perl interpreter must be installed, we recommend to to install
+ActiveState's ActivePerl.
 
 \begin{verbatim}
-$USAGE = "
- Prints the first letter from the first sequence of a sequence
- object. 
-
- Usage:
-        seq_letter OBJ_NAME
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Notes:
-
- 1. This command is merely an example to demonstrate how new
- Yabby commands can be developed.
-";
+http://www.activestate.com/Products/activeperl/
 \end{verbatim}
 
-The usage string will be printed when 'help seq\_letter' or
-'seq\_letter help' is issued.
+At this site one can obtain a free copy of the ActivePerl installer, which
+will then need to executed to install the interpreter.
 
-We add the initialization commands:
+\subsection{Installing a subversion client}
+
+Google servers maintain the Yabby source code by the program called
+'subversion' (an open-source version control system).  A powerful and
+easy-to-use interface to subversion for Windows is TortoiseSVN. It is
+an extension of the shell, so it can be (and must be) used straight
+from Windows Explorer. It is available for free download here:
 
 \begin{verbatim}
-# options
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 1 ] );
-$obj_name = $argl[0];
+http://tortoisesvn.net/downloads
 \end{verbatim}
 
-In the case of this command there are no options. The function
-'sys\_init' is used to process arguments to all Yabby commands
-in a standard way. The function 'check\_call' is used to check
-the number of arguments.  In this case, exactly one argument
-must be given, the name of an existing sequence object.  Finally,
-in the last line the name of sequence object is associated to
-the variable 'obj\_name'. In the next step the sequence object
-is loaded in the memory:
- 
+Run the .msi executable, and it will install. This will also require
+a reboot.
+
+\subsection{Downloading Yabby}
+
+The following instructions refer specifically to TortoiseSVN. It is
+recommended, but not necessary, that a new directory be created anywhere in
+the filesystem where the Yabby source code is to be located. For example:
+
+C:{$\backslash$}
+\begin{description}
+  \item[1] create C:{$\backslash$}. Then open this directory.
+  
+  \item[2] Right-click the empty space and select SVN Checkout.
+  
+  \item[3] The URL is http://yabby.googlecode.com/svn/trunk/. Click OK.
+\end{description}
+
+\subsection{Yabby installation}
+
+Yabby installation requires that the file 'yabby/lib/yabby.pl' is modified to
+to set the path to Yabby libraries.
+
+If Yabby code was downloaded in the root directory C:$\backslash$, to set
+the path to Yabby libraries the following two lines need to be set (yabby.pl
+is stored in binary format, not text. So use Wordpad.exe, found in
+{\tt Start Menu->All Programs->Accessories}):
 \begin{verbatim}
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
+use lib "C:\\Yabby\\lib";
+$LIB_DIR = "C:\\Yabby\\lib";
 \end{verbatim}
+NOTE: `{$\backslash$}' is an escape character in Perl strings, which is
+also the character Windows uses to seperate directories. A double escape
+character escapes the escape. Hence the need for two.
 
-The function 'requirements()' checks whether the sequence object
-named 'obj\_name' exists. If not, it will terminate the script
-with an appropriate error message. If this step is passed, the
-function 'load\_ip\_xml()' loads the sequence object from the
-workspace. Finally, we fetch the first sequence and print its
-first letter:
-
+If you double-click yabby.pl now, it will start Yabby.
 \begin{verbatim}
-$seq_hash = xml2seq( $xmldoc );
-$seq_item = $seq_hash->{1};
-printf " The first letter of the first sequence is: '%s'\n",
-  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
+ - YABBY version 0.1 - 
+
+ [ 38 command(s) ready ]
+
+yabby>
 \end{verbatim}
-
-The complete listing of the modified command script 'seq\_letter'
-is given below: 
-
-\begin{verbatim}
-# seq_letter.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
-
-$USAGE = "
- Prints the first letter from the first sequence of a sequence
- object. 
-
- Usage:
-        seq_letter OBJ_NAME
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Notes:
-
- 1. This command is merely an example to demonstrate how new
- Yabby commands can be developed.
-";
-
-# options
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 1 ] );
-$obj_name = $argl[0];
-
-# requirements
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
-
-# body
-$seq_hash = xml2seq( $xmldoc );
-$seq_item = $seq_hash->{1};
-printf " The first letter of the first sequence is: '%s'\n",
-  substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
-\end{verbatim}
-
-When executed, the command gives the following output:
-
-\begin{verbatim}
-yabby> seq_load tom20.fas tom20
-
- Reading the file 'tom20.fas' ..
- 3 sequence(s) found.
-
-yabby> seq_letter tom20
-
- The first letter of the first sequence is: 'M'
-\end{verbatim}
-
-Consider what happens when no arguments are given:
-
-\begin{verbatim}
-yabby> seq_letter 
-
- seq_letter:: ERROR: exactly 1 argument(s) required [ 0 supplied ]
- [ command 'seq_letter' failed ]
-\end{verbatim}
-
-This error was raised by the function 'check\_call'. If the sequence
-object does not exist:
-
-\begin{verbatim}
-yabby> seq_letter ttt
-
- seq_letter:: missing requirement: 'ttt.seq'
-
- [ command 'seq_letter' failed ]
-\end{verbatim}
-
-The last error was raised by the function 'requirements()'.
-
-\subsection{Extending seq\_letter to work on all sequences}
-
-It would be easy to extend the command seq\_letter to print the
-first letter of all sequences from the sequence object. This would
-require modifying the body of the command:
-
-\begin{verbatim}
-# body
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
-
-for $key ( @$keys ) {
-  $seq_item = $seq_hash->{$key};
-  printf " Sequence '%s', the first letter is '%s'\n",
-  $seq_item->{$DBA_SEQID}, substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
-}
-\end{verbatim}
-
-The output of 'seq\_letter' is:
-
-\begin{verbatim}
-yabby> seq_letter tom20
-
- 'tom20' contains 3 sequence(s)
- Sequence 'A.thaliana2', the first letter: 'M'
- Sequence 'O.sativa', the first letter: 'M'
- Sequence 'L.esculentum', the first letter: 'M'
-\end{verbatim}
-
-\subsection{Adding a command switch}
-
-Consider how one could add an optional switch to print the last
-letter of each sequence, instead of the first letter.
-
-To add the switch '-t':
-
-\begin{verbatim}
-# options
-getopts('t');
-
-if ( defined( $opt_t ) ) {
-  $opt_t_flag = 1;
-} else {
-  $opt_t_flag = 0;
-}
-\end{verbatim}
-
-To extend the command body to take into account possible '-t'
-switch: 
-
-\begin{verbatim}
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
-
-for $key ( @$keys ) {
-  $seq_item = $seq_hash->{$key};
-  $seq_id = $seq_item->{$DBA_SEQID};
-  $sequence = $seq_item->{$DBA_SEQUENCE};
-
-  if ( $opt_t_flag ) {
-    $lett = substr( $seq_item->{$DBA_SEQUENCE}, -1, 1 );
-  } else {
-    $lett = substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
-  }
-
-  printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
-}
-\end{verbatim}
-
-The possible use of the modified 'seq\_letter':
-
-\begin{verbatim}
-yabby> seq_letter tom20
-
- 'tom20' contains 3 sequence(s)
- Sequence 'A.thaliana2', the letter is 'M'
- Sequence 'O.sativa', the letter is 'M'
- Sequence 'L.esculentum', the letter is 'M'
-
-yabby> seq_letter -t tom20
-
- 'tom20' contains 3 sequence(s)
- Sequence 'A.thaliana2', the letter is 'R'
- Sequence 'O.sativa', the letter is 'R'
- Sequence 'L.esculentum', the letter is 'R'
-\end{verbatim}
-
-The full listing of the command 'seq\_letter' is:
-
-\begin{verbatim}
-# seq_letter.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
-
-$USAGE = "
- Prints the first sequence letter from the sequence object. 
-
- Usage:
-        seq_letter [ options ] OBJ_NAME
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Options:
-
- -t -- print the last letter instead of the first
-
- Notes:
-
- 1. This command is merely an example to demonstrate how new
- Yabby commands can be developed.
-";
-
-# options
-getopts('t');
-
-if ( defined( $opt_t ) ) {
-  $opt_t_flag = 1;
-} else {
-  $opt_t_flag = 0;
-}
-
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 1 ] );
-$obj_name = $argl[0];
-
-# requirements
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
-
-# body
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-
-printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
-
-for $key ( @$keys ) {
-
-  $seq_item = $seq_hash->{$key};
-  $seq_id = $seq_item->{$DBA_SEQID};
-  $sequence = $seq_item->{$DBA_SEQUENCE};
-
-  if ( $opt_t_flag ) {
-    $lett = substr( $seq_item->{$DBA_SEQUENCE}, -1, 1 );
-  } else {
-    $lett = substr( $seq_item->{$DBA_SEQUENCE}, 0, 1 );
-  }
-
-  printf " Sequence '%s', the letter is '%s'\n", $seq_id, $lett;
-}
-\end{verbatim}
-
-\subsection{A command that creates an object}
-
-The command 'seq\_letter' is very simple in that it merely prints
-something on the output screen; it does not modify an existing
-object nor does it creates any new Yabby objects. Consider a command
-that actually creates a sequence object. An example for this may
-be a command that chops the first letter from each sequence in
-the sequence object, and saves the result as a new sequence object.
-This requires two names to be given on the input, the name of
-an existing sequence object, and the name of the sequence object
-that will be created:
-
-\begin{verbatim}
-seq_letterc OBJ_NAME OBJ_NAME_NEW
-\end{verbatim}
-
-The new command is named 'seq\_letterc' to distinguish it from
-the previous 'seq\_letter'.
-
-To build the command 'seq\_letterc' we create the file 'seq\_letterc.pl'
-in the Yabby library:
-
-\begin{verbatim}
-# seq_letters.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
-
-$USAGE = "
- Chops the first sequence letter from the sequence object, and
- saves the result as a new sequence object.
-
- Usage:
-        seq_letters OBJ_NAME OBJ_NAME_NEW
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Notes:
-
- 1. This command is merely an example to demonstrate how new
- Yabby commands can be developed.
-";
-\end{verbatim}
-
-Two arguments are now required:
-
-\begin{verbatim}
-# options
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 2 ] );
-$obj_name = $argl[0];
-$obj_name2 = $argl[1];
-\end{verbatim}
-
-We can use the same construct to check for requirements and fetch the
-sequence object:
-
-\begin{verbatim}
-# requirements
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
-
-# body
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-
-printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
-\end{verbatim}
-
-The new command requires a new sequence object to be created, and
-populated with sequences from the existing sequence object (minus
-the first letter). We first initialize a new sequence object:
-
-\begin{verbatim}
-$seq_hash2 = {};
-\end{verbatim}
-
-The same construct as in 'seq\_letter' could be used to loop through
-the sequences. Now, we also create a new sequence for each existing
-sequence, chop the first letter, and joing the result to the new
-sequence object:
-
-\begin{verbatim}
-for $key ( @$keys ) {
-
-  $seq_item = $seq_hash->{$key};
-
-  $seq_item_new = {};
-  $seq_item_new->{$DBA_SEQID} = $seq_item->{$DBA_SEQID};
-  $seq_item_new->{$DBA_COMMENT} = $seq_item->{$DBA_COMMENT};
-  $seq_item_new->{$DBA_SEQUENCE} = $seq_item->{$DBA_SEQUENCE};
-
-  # chop the first letter from the sequence
-  substr( $seq_item_new->{$DBA_SEQUENCE}, 0, 1 ) = "";
-
-  $seq_hash2->{$key} = $seq_item_new;
-}
-\end{verbatim}
-
-We need to save the newly created sequence hash 'seq\_hash2' as the
-new sequence object. In the first step, we convert the sequence hash
-object into an XML document:
-
-\begin{verbatim}
-$xmldoc = seq2xml( $seq_hash2 );
-\end{verbatim}
-
-This is the reverse of the above command 'xml2seq()', which converts
-an XML document representing a sequence object into a sequence hash,
-the form all commands employ to represent the sequence object in
-memory.  The functions 'xml2seq()' and 'seq2xml()' are specific for
-sequence objects, and are defined in the package 'yabby\_seq.pm'.
-Finally, we store the XML sequence object in the workspace:
-
-\begin{verbatim}
-printf " Saving chopped sequences as '%s'\n", $obj_name2;
-save_ip_xml( $xmldoc, $obj_name2, $SEQUENCE, $WARN_OVERW );
-\end{verbatim}
-
-The function 'save\_ip\_xml()' sends the XML representation of an
-object to the workspace. This function is the reverse analog of
-the previously used function 'load\_ip\_xml()', which fetches the
-XML representation of an object from the workspace. These two
-functions are defined in the package 'yabby\_sys.pm'.
-
-The arguments to the function 'save\_ip\_xml()' are are follows:
-the XML representation of an object ('xmldoc'), the name of the
-object to be created ('obj\_name2'), the type of the object to be
-created ('SEQUENCE' in this case), and the flag which determines
-whether the warning will be issued is the object with the same
-name and the same type already exists in the workspace and will
-be overwritten ('WARN\_OVERW').
-
-The command 'seq\_letterc' could be used as follows:
-
-\begin{verbatim}
-yabby> seq_load tom20.fas tom20
-
- Reading the file 'tom20.fas' ..
- 3 sequence(s) found.
-
-yabby> what      
-
-    object(s)      type
-  ------------------------------
-    tom20          seq           
-
-yabby> seq_letterc tom20 tom20_chop
-
- 'tom20' contains 3 sequence(s)
- Saving chopped sequences as 'tom20_chop'
-
-yabby> what
-
-    object(s)      type
-  ------------------------------
-    tom20          seq           
-    tom20_chop     seq           
-
-yabby> print tom20.seq
-
->A.thaliana2 [ A.thaliana2 ]
-MEFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLND
-AISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGN
-DTYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFT
-YDVCGWIILACGIVAWVGMAKSLGPPPPAR
->O.sativa [ O.sativa ]
-MDMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLE
-DAESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPA
-NDLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVV
-LGVGMVVWVGLAKSNAPPQAPR
->L.esculentum [ L.esculentum ]
-MDMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDA
-ISKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENE
-LYQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVIL
-AVGLVAWIGFAKSNMPXPAHPLPR
-
-yabby> print tom20_chop.seq
-
->A.thaliana2 [ A.thaliana2 ]
-EFSTADFERFIMFEHARKNSEAQYKNDPLDSENLLKWGGALLELSQFQPIPEAKLMLNDA
-ISKLEEALTINPGKHQALWCIANAYTAHAFYVHDPEEAKEHFDKATEYFQRAENEDPGND
-TYRKSLDSSLKAPELHMQFMNQGMGQQILGGGGGGGGGGMASSNVSQSSKKKKRNTEFTY
-DVCGWIILACGIVAWVGMAKSLGPPPPAR
->O.sativa [ O.sativa ]
-DMGAMSDPERMFFFDLACQNAKVTYEQNPHDADNLARWGGALLELSQMRNGPESLKCLED
-AESKLEEALKIDPMKADALWCLGNAQTSHGFFTSDTVKANEFFEKATQCFQKAVDVEPAN
-DLYRKSLDLSSKAPELHMEIHRQMASQASQAASSTSNTRQSRKKKKDSDFWYDVFGWVVL
-GVGMVVWVGLAKSNAPPQAPR
->L.esculentum [ L.esculentum ]
-DMQSDFDRLLFFEHARKTAETTYATDPLDAENLTRWAGALLELSQFQSVSESKKMISDAI
-SKLEEALEVNPQKHDAIWCLGNAYTSHGFLNPDEDEAKIFFDKAAQCFQQAVDADPENEL
-YQKSFEVSSKTSELHAQIHKQGPLQQAMGPGPSTTTSSTKGAKKKSSDLKYDVFGWVILA
-VGLVAWIGFAKSNMPXPAHPLPR
-\end{verbatim}
-
-Since no safeguards were put against overwriting an existing
-sequence object, the command 'seq\_letterc' could be used
-twice to chop sequences from the N-terminus in place,
-
-\begin{verbatim}
-yabby> seq_letterc tom20 tom20
-
- 'tom20' contains 3 sequence(s)
- Saving chopped sequences as 'tom20'
- [ seq_letterc: 'tom20.seq' exists, overwritten ]
-
-yabby> seq_letterc tom20 tom20
-
- 'tom20' contains 3 sequence(s)
- Saving chopped sequences as 'tom20'
- [ seq_letterc: 'tom20.seq' exists, overwritten ]
-\end{verbatim}
-
-\subsection{Creating a new object type}
-
-Yabby supports two internal representations of data in the workspace:
-simple lists and XML objects. To create a new object type one must
-first decide whether the data in question can be effectively
-represented with a two-dimensional table. Two-dimensional tables
-can be effectively represented with two-dimensional lists, where
-each item in the list corresponds to the table row. Lists are simple
-and efficient in Perl, and if suitable this is the preferred
-representation of data. However, XML format is much more powerful
-and flexible, and is the preferred solution when the data has
-a complex internal structure.
-
-A sequence object uses XML to store data into the workspace.
-A Yabby commands store sequence objects
-in memory in the form of a hash (sequence hash).  All sequence
-commands use the standard function 'load\_ip\_xml()' to fetch the XML
-representation of a sequence object from the workspace. Subsequently
-the object is converted into a more efficient structure, a
-sequence hash, with the function 'xml2seq()'. After the sequences
-are manipulated, or a new sequence object is created, the result
-may be stored in the workspace. In this case, the reverse
-transformation process takes place:  the sequence hash is convereted
-into an XML object with the function 'seq2xml()', and the resulting
-XML object is saved in the workspace with the function 'save\_ip\_xml()'.
-
-The functions 'load\_ip\_xml()' and 'save\_ip\_xml()' can be used
-to load/store the XML representation of any object in the workspace.
-The analogous functions for objects represented as a two-dimensional
-lists are 'load\_ip()' and 'save\_ip()'.
-
-As an example we will create a new object type named "seqid" to
-represent the list of sequence IDs. To demonstrate the use of this
-object we will also create the command 'seq2id' which creates the
-"seqid" object from an existing sequence object.
-
-The first step is to create the script 'seq2id.pl' in the Yabby
-library, and we start as previously:
-
-\begin{verbatim}
-# seq2id.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
-
-$USAGE = "
- Converts a sequence object into seqid object.
-
- Usage:
-        seq2id OBJ_NAME
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Notes:
-
- 1. This command is merely an example to demonstrate how a
- new object type can be implemented.
-";
-
-# options
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 1 ] );
-$obj_name = $argl[0];
-
-# requirements
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
-
-# body
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-\end{verbatim}
-
-With this we have the sequence hash in memory. In 'yabby\_seq.pm' we
-add the name of the "seqid" object:
-
-\begin{verbatim}
-$SEQUENCE = "seq";
-$MOTIF = "motif";
-$SEQID = "seqid";
-\end{verbatim}
-
-The new object will be represented as a one-dimensional list, where
-each sequence ID string will be one element of this list. This is
-equivalent to a two-dimensional table, where there is only one
-column in the table. Next we create the variable 'seqid\_obj' to
-hold the 'seqid' object, fill this object with the values from
-the sequence hash, and store the object in the workspace by using
-the standard function:
-
-\begin{verbatim}
-$seqid_obj = [];
-
-for $key ( @$keys ) {
-
-  $seq_item = $seq_hash->{$key};
-  $seq_id = $seq_item->{$DBA_SEQID};
-
-  push @$seqid_obj, [ $seq_id ];
-}
-
-print " Saving '$obj_name.$SEQID'\n";
-save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
-\end{verbatim}
-
-The complete listing for the command script 'seq2id':
-
-\begin{verbatim}
-# seq2id.pl
-
-use yabby_sys;
-use yabby_seq;
-
-use Getopt::Std;
-
-$USAGE = "
- Converts a sequence object into seqid object.
-
- Usage:
-        seq2id OBJ_NAME
-
- where OBJ_NAME is the name of an existing sequence object.
-
- Notes:
-
- 1. This command is merely an example to demonstrate how a
- new object type can be implemented.
-";
-
-# options
-# initialization
-@argl = sys_init( @ARGV );
-check_call( @argl, [ 1 ] );
-$obj_name = $argl[0];
-
-# requirements
-requirements( $obj_name, $SEQUENCE );
-$xmldoc = load_ip_xml( $obj_name, $SEQUENCE );
-
-# body
-$seq_hash = xml2seq( $xmldoc );
-$keys = get_seq_keys( $seq_hash );
-
-printf " '%s' contains %d sequence(s)\n", $obj_name, $#{$keys}+1;
-
-$seqid_obj = [];
-
-for $key ( @$keys ) {
-
-  $seq_item = $seq_hash->{$key};
-  $seq_id = $seq_item->{$DBA_SEQID};
-
-  push @$seqid_obj, [ $seq_id ];
-}
-
-print " Saving '$obj_name.$SEQID'\n";
-save_ip( $seqid_obj, $obj_name, $SEQID, $WARN_OVERW );
-\end{verbatim}
-
-And below is the output when the command is executed on an example
-sequence object:
-
-\begin{verbatim}
-yabby> seq_load tom20.fas tom20
-
- Reading the file 'tom20.fas' ..
- 3 sequence(s) found.
-
-yabby> seq2id tom20
-
- 'tom20' contains 3 sequence(s)
- Saving 'tom20.seqid'
-
-yabby> what
-
-    object(s)      type
-  ------------------------------
-    tom20          seq           
-                   seqid         
-\end{verbatim}
-
-Of course, at this point nothing can be done with the 'seqid' object.
-It cannot be even printed on the screen:
-
-\begin{verbatim}
-yabby> print tom20.seqid
-
- print:: ERROR: printing the property 'seqid' not yet implemented
- [ command 'print' failed ]
-\end{verbatim}
-
-This is because the printing of each particular object type has to
-be enabled in the 'print' command. However, one can view the 'seqid'
-object directly from the filesystem, since 'tom20.seqid' is just
-a simple text file, containing sequence IDs listed one per row:
-
-\begin{verbatim}
-yabby> cat .yabby/tom20.seqid
-A.thaliana2
-O.sativa
-L.esculentum
-\end{verbatim}
-
-\subsection{Some additional explanations and programming conventions}
-
-All objects that are represents with two dimensional tables are
-initialized as annonymous arrays:
-
-\begin{verbatim}
-$seqid_obj = [];
-\end{verbatim}
-
-When filled with values, each element of this array is a reference
-to anonymous array. In this case containing only one element 'seq\_id':
-
-\begin{verbatim}
-push @$seqid_obj, [ $seq_id ];
-\end{verbatim}
-
-This format is very flexible.  If the data table needs to contain more
-than one element per row, these would be simply added to the anonymous
-reference representing a table row:
-
-\begin{verbatim}
-push @$seqid_obj, [ $seq_id, $colum2_elem, $colum3_elem, ... ];
-\end{verbatim}
-
-Consider how the object 'mol' is built, which is internally represented
-with a two-dimensional table:
-
-\begin{verbatim}
-push @$mol, [ $resi_num, $resi_name, $atom_name, $segmentID ];
-\end{verbatim}
-
-The function 'save\_ip()' expects the reference to an anonymous array,
-where each element of this array is a reference to another anonymous
-array which may contain one or more elements. This holds for any
-object represented by a list, and functions 'save\_ip()' and
-'load\_ip()' are used to store/fetch the object from the workspace.
-For objects represented in XML, a special converter function needs
-to be written akin to 'xml2seq()' and 'seq2xml()'.
 
