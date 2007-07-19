@@ -1,6 +1,7 @@
 # restore.pl
 
 use yabby_sys;
+use Switch;
 
 $USAGE = "
  Restores Yabby session saved with the command 'dump'
@@ -24,21 +25,49 @@ check_call( @argl, [ 1 ] );
 $archive_name = $argl[0];
 
 # requirements
-# body
-
 $tar_archive = $archive_name . ".tar";
 $gzip_archive = $tar_archive . ".gz";
 
 if ( ! -e $gzip_archive ) { error( "$gzip_archive does not exist" ); }
 
-$status = system( "gzip", "-d", $gzip_archive );
-if ( $status != 0 ) { error( "gzip decompress failed", "\n" ); }
 
-$status = system( "tar", "-xf", $tar_archive );
-if ( $status != 0 ) { error( "tar failed" ); }
+# determine operating system
 
-$status = system( "gzip", $tar_archive );
-if ( $status != 0 ) { error( "final gzip compress failed" ); }
+$OS_NAME = '';
+unless ( $OS_NAME = $^O ) {
+  require Config;
+  $OS_NAME = $Config::Config{'osname'};
+}
+if ( $OS_NAME=~/Win/i ) { 
+  $OS_NAME = 'DOS';
+} else { 
+  $OS_NAME = 'UNIX'; 
+}
+
+
+# body
+
+switch ( $OS_NAME ) {
+
+  case ( "UNIX" ) {
+    $status = system( "gzip", "-d", $gzip_archive );
+    if ( $status != 0 ) { error( "gzip decompress failed", "\n" ); }
+    
+    $status = system( "tar", "-xf", $tar_archive );
+    if ( $status != 0 ) { error( "tar failed" ); }
+    
+    $status = system( "gzip", $tar_archive );
+    if ( $status != 0 ) { error( "final gzip compress failed" ); }
+  }
+
+  case ( "DOS" ) {    
+    $status = system( "COMPACT \\Q \\U \"$gzip_archive\"" );
+    if ( $status != 0 ) { error( "decompress failed", "\n" ); }
+    
+    $status = system( "RENAME \"$gzip_archive\" \"$archive_name\"" );
+    if ( $status != 0 ) { error( "decompress failed", "\n" ); }
+  }
+}
 
 print " Yabby session '$archive_name' restored\n";
 
