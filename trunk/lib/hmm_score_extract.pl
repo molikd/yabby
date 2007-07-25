@@ -1,4 +1,4 @@
-# hmm_score.pl
+# hmm_score_extract.pl
 
 use yabby_sys;
 use yabby_hmm;
@@ -9,7 +9,7 @@ $USAGE = "
  Fetches hits from the HMMER (HMMPFAM) search output file.
 
  Usage:
- 	hmm_score [options] HMMPFAM_OUT
+ 	hmm_score_extract [options] HMMPFAM_OUT
 
  Where HMMPFAM_OUT is the HMMPFAM output file.
 
