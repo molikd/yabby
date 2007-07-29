@@ -1388,9 +1388,9 @@ yabby> seq_unique cad cad3 caduniqincad
 
 % ### NEW COMMAND ###
 
-\subsection[hmm\_score]{ \fbox{\tt hmm\_score} }
+\subsection[hmm\_score\_extract]{ \fbox{\tt hmm\_score\_extract} }
 
-\index{hmm\_score}
+\index{hmm\_score\_extract}
 
 % Concise explanation
 
@@ -1404,7 +1404,7 @@ Fetches hits from the HMMER (HMMPFAM) search output file.
 
 \item{Usage:}
 
-{\tt hmm\_score [ options ] HMMPFAM\_OUT}
+{\tt hmm\_score\_extract [ options ] HMMPFAM\_OUT}
 
 Where HMMPFAM\_OUT is the HMMPFAM output file.
 
@@ -1429,7 +1429,7 @@ Where HMMPFAM\_OUT is the HMMPFAM output file.
 
 \item
 \begin{verbatim}
-yabby> hmm_score -E 0.01 -s hits hmmpfam.out
+yabby> hmm_score_extract -E 0.01 -s hits hmmpfam.out
 
  Processing HMMPFAM search output file
 
@@ -1468,7 +1468,7 @@ yabby> hmm_score -E 0.01 -s hits hmmpfam.out
 % Concise explanation
 
 Fetches and saves sequences whose ID's are given in the HMM scores
-objects created by the command 'hmm\_score'.
+objects created by the command 'hmm\_score\_extract'.
 
 % Command description
 
@@ -1482,7 +1482,7 @@ objects created by the command 'hmm\_score'.
 
 Where DBA\_FILE is the sequence database, OUT\_FILE is the output file
 with sequences (to be created), and OBJ\_NAME is the name under which
-the scores were saved with 'hmm\_score'.
+the scores were saved with 'hmm\_score\_extract'.
 
 % 2. Options
 

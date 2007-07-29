@@ -517,16 +517,18 @@ prints the list of currently available commands:
 \begin{verbatim}
 yabby> help
 
- 31 commands ready.
+ 39 commands ready.
 
- blast          blast_info     blastg         delete        
- dump           emboss_needle  exit           flush         
- help           hmm_score      hmm_score2seq  license       
- motif_cmp      motif_load     motif_meme     pfam_fetch    
- print          quit           restore        seq_comment   
- seq_compl      seq_fetch      seq_info       seq_load      
- seq_op         seq_pattern    seq_pick       seq_strip     
- seq_unique     sprot_split    what          
+ blast          blast_info     blastg         delete
+ dump           emboss_needle  exit           flush
+ help           hmm_score2seq  hmm_score_extract license
+ mol2seq        mol_crd        mol_load       motif_cmp
+ motif_load     motif_meme     pdb_conv       pdb_model
+ pfam_fetch     print          quit           restore
+ seq2id         seq_comment    seq_compl      seq_fetch
+ seq_info       seq_letter     seq_letterc    seq_load
+ seq_op         seq_pattern    seq_pick       seq_strip
+ seq_unique     sprot_split    what
 
  For info about a particular command try: 'help COMMAND'
 \end{verbatim}
@@ -701,14 +703,14 @@ the 'seq' type object.
 
 \index{HMMER}
 \index{HMMPFAM}
-\index{hmm\_score}
+\index{hmm\_score\_extract}
 \index{hmm\_score2seq}
 
 HMMER is a powerful software for the profile hidden Markov model
 search of sequence databases \cite{hmmer,wwwhmmer}. The 'search 
 step' in HMMER search pipeline is performed by the program
 HMMPFAM which is a part of the HMMER software suite. Yabby's
-commands 'hmm\_score' and 'hmm\_score2seq' can aid in the
+commands 'hmm\_score\_extract' and 'hmm\_score2seq' can aid in the
 extraction of the search results from the HMMPFAM output files.
 
 As an example, consider the HMMPFAM search performed
@@ -718,7 +720,7 @@ with the E-value above 0.01, and store these hits under the name
 'hits':
 
 \begin{verbatim}
-yabby> hmm_score -E 0.01 -s hits hmmpfam.out
+yabby> hmm_score_extract -E 0.01 -s hits hmmpfam.out
 
  Processing HMMPFAM search output file
 
@@ -734,7 +736,7 @@ yabby> what
     hits           hmm_score     
 \end{verbatim}
 
-The command 'hmm\_score' with the '-s hits' flag has created
+The command 'hmm\_score\_extract' with the '-s hits' flag has created
 the object of the type 'hmm\_score' in the workspace. This is
 merely a list containing the sequence name, the model the
 hit was recorded to, and the E-value:
