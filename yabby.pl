@@ -127,6 +127,7 @@ while ( <> ) {
               push @cmd, @argl;
               push @cmd, $LIB_DIR;
               push @cmd, $SYS_DIR;
+              push @cmd, $OS_NAME;
               print "\n";
               $status = system $PERL_CALL, $PERL_INCL, @cmd;
 
