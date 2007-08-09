@@ -17,6 +17,7 @@ sub perl_init {
 sub sys_init {
   my ( @args ) = @_;
   $| = 1; # disable output buffering
+  $OS_NAME = pop( @args );
   $SYS_DIR = pop( @args );
   $LIB_DIR = pop( @args );
   $PROG_NAME = set_prog_name();
