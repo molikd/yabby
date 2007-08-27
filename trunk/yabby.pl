@@ -142,7 +142,7 @@ while ( <> ) {
               push @cmd, @argl;
               push @cmd, "$tmp_lib_str";
               push @cmd, "$tmp_sys_str";
-              print "perl @cmd";
+              push @cmd, $OS_NAME;
               $status = system "perl", $PERL_INCL, @cmd;
             }
           }

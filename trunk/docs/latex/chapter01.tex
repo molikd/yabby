@@ -42,6 +42,106 @@ new functionality easily.
 Yabby is released as open source, under the GNU Public License
 version 2.
 
+\section{Windows Installation}
+
+If Cygwin is installed, the UNIX instructions above should be used. Both
+perl and subversion can be obtained through Cygwin's
+setup.exe, from any server.
+
+\subsection{Installing Perl}
+
+Yabby has been developed with Perl version 5.X, a freely available general
+purpose scripting language. Perl stands for "Practical Extraction and Report
+Language" and is particularly well suited for the manipulation of data stored
+in plain text files. This seems all too often to be required in bioinformatics
+applications.
+
+The perl interpreter must be installed. There are a couple of ways to do this
+but the most simple is to install ActiveState's ActivePerl.
+\begin{verbatim}
+http://www.activestate.com/Products/activeperl/
+\end{verbatim}
+At this site one can obtain a free copy of the ActivePerl installer, which
+will then need to executed to install the interpreter.
+
+\subsubsection{Installing required ActivePerl packages}
+
+Yabby makes use of Perl's XML libraries in some of its data storage. These can
+be acquired through ActivePerl's Package Manager:
+\begin{description}
+  \item[1] run start->programs->activeperl->perl package manager
+  \item[2] press CTRL+1 to view all avaliable packages
+  \item[3] scroll down to select XML-DOM and press '+' to mark for install.
+  \item[4] press CTRL+Enter to install the XML package.
+\end{description}
+
+The package manager might automatically install some other XML packages too. This is OK.
+
+
+\subsection{Installing a subversion client}
+
+Google servers maintain the Yabby source code by the program called
+'subversion' (an open-source version control system). To download the source
+code one needs to use a subversion client program. The book about subversion
+is freely available on-line at http://svnbook.red-bean.com/. Subversion has
+extensive functionality however only the very basic functionality is needed to
+download Yabby. A powerful and easy-to-use interface to subversion for Windows
+is TortoiseSVN. It is an extension of the shell, so it can be (and must be)
+used straight from Windows Explorer. It is available for free download here:
+
+\ http://tortoisesvn.net/downloads
+
+Run the .msi executable, and it will install. Unfortunately, {\underline{it
+will require a reboot.}}
+
+\subsection{Downloading Yabby}
+
+Yabby source code can be browsed from the Google Code servers, at the URL:
+http://code.google.com/p/yabby/. Under the section "Source" one can find the
+instructions for downloading the source code. The same page provides the link
+under "This project's Subversion repository can be viewed in your web browser"
+which allows one to browse the source code on the server without actually
+downloading it.
+
+The following instructions refer specifically to TortoiseSVN. It is
+recommended, but not necessary, that a new directory be created anywhere in
+the filesystem where the Yabby source code is to be located. For example:
+C:{\backslash}
+\begin{description}
+  \item[1] create C:{\backslash}. Then open this directory.
+  
+  \item[2] Right-click the empty space and select SVN Checkout.
+  
+  \item[3] The URL is http://yabby.googlecode.com/svn/trunk/. Click OK.
+\end{description}
+
+\subsection{Yabby installation}
+
+Yabby installation requires that the file 'yabby/lib/yabby.pl' is modified to
+to set the path to Yabby libraries.
+
+If Yabby code was downloaded in the directory C:{\backslash}, to set
+the path to Yabby libraries the following two lines need to be set (yabby.pl
+is stored in binary format, not text. So use Wordpad.exe, found in
+{\tmsamp{Start Menu->All Programs->Accessories}}):
+\begin{verbatim}
+use lib "C:\\Yabby\\lib";
+$LIB_DIR = "C:\\Yabby\\lib";
+\end{verbatim}
+NOTE: `{\backslash}' is an escape character in Perl strings, which is
+also the character Windows uses to seperate directories. A double escape
+character escapes the escape. Hence the need for two.
+
+If you double-click yabby.pl now, it will start Yabby.
+\begin{verbatim}
+ - YABBY version 0.1 - 
+   Copyright (c) 2004-7 Vladimir Likic
+ [ 38 command(s) ready ]
+
+yabby>
+\end{verbatim}
+
+
 \section{Running Yabby}
 
 \subsection{An interactive session}
