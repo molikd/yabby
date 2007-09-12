@@ -398,6 +398,7 @@ sub call {
   push @cmd, @argl;
   push @cmd, $LIB_DIR;
   push @cmd, $SYS_DIR;
+  push @cmd, $OS_NAME;
   $status = system "$PERL_CALL $PERL_INCL @cmd";
   if ( $status != 0 ) {
      error( "system script '$cmd_root' failed", $sub_name );
