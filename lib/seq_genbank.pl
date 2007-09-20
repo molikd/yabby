@@ -88,7 +88,7 @@ if ( ! defined($seqz)  ) {
 
 $seq_hash = bioperl2seq($seqz);
 
-$xmldoc = seq2xml( $seq_hash );
+$xmldoc = seq2xml($seq_hash);
 
 printf " Saving '%s' as '%s'\n", $identifier, $obj_name;
 
