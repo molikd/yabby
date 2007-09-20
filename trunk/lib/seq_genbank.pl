@@ -7,12 +7,6 @@ use Getopt::Std;
 
 use Bio::DB::GenBank;
 
-#Example:
-#seq_genbank -a J00522    miga 
-#seq_genbank -v J00522.1  migv
-#seq_genbank -g 195052    migg
-#seq_genbank -i MUSIGHBA1 migi
-
 $USAGE = "
  Fetch a sequence from GenBank.
 
@@ -25,17 +19,24 @@ $USAGE = "
 
  Options:
 
- -a accession_number (default)
+ -a ACCESSION_NUMBER (default) - fetch sequence by accession number
 
- -v version
+ -v VERSION -- fetch sequence by version number
 
- -g GI_number
+ -g GI_NUMBER -- fetch sequence by GI number
 
- -i unique_id
+ -i UNIQUE_ID -- fetch sequence by unique ID
 
  Notes:
 
  1. This command requires Bioperl's Bio::DB module.
+
+ Examples:
+
+ seq_genbank -a J00522    miga 
+ seq_genbank -v J00522.1  migv
+ seq_genbank -g 195052    migg
+ seq_genbank -i MUSIGHBA1 migi
 ";
 
 # options
@@ -88,13 +89,7 @@ if ( ! defined($seqz)  ) {
   error("error condition returned by BioPerl");
 }
 
-$seq_item = {};
-$seq_item->{$DBA_SEQID} = $seqz->{primary_seq}->{display_id};
-$seq_item->{$DBA_COMMENT} = $seqz->{primary_seq}->{desc};
-$seq_item->{$DBA_SEQUENCE} = $seqz->{primary_seq}->{seq};
-
-$seq_hash = {};
-$seq_hash->{1} = $seq_item;
+$seq_hash = bioperl2seq($seqz);
 
 $xmldoc = seq2xml( $seq_hash );
 

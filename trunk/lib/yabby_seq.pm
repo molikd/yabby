@@ -496,5 +496,23 @@ sub xml2seq {
   return $seq_hash;
 }
 
+# -------
+# BioPerl
+# -------
+
+sub bioperl2seq {
+  my ( $seqz ) = @_;
+  my ( $seq_item, $seq_hash );
+
+  $seq_item = {};
+  $seq_item->{$DBA_SEQID} = $seqz->{primary_seq}->{display_id};
+  $seq_item->{$DBA_COMMENT} = $seqz->{primary_seq}->{desc};
+  $seq_item->{$DBA_SEQUENCE} = $seqz->{primary_seq}->{seq};
+  $seq_hash = {};
+  $seq_hash->{1} = $seq_item;
+
+  return $seq_hash;
+}
+
 return 1;
 
