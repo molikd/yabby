@@ -82,10 +82,7 @@ if ( $opt_v_flag  ) {
   $seqz = $gb->get_Seq_by_acc($identifier);
 }
 
-# but if $seqz has "undef" then we have found nothing (or did not connect)
 if ( ! defined($seqz)  ) {
-  # this print is not right as ...
-  # we still get a message from GenBank to say $identifier does not exist
   error("error condition returned by BioPerl");
 }
 
