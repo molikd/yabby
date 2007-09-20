@@ -32,7 +32,7 @@ $seqid = $argl[0];
 $obj_name = $argl[1];
 
 # body
-$gb = new Bio::DB::GenBank(-retrievaltype => 'tempfile', -format => 'fasta');
+$gb = new Bio::DB::GenBank(-retrievaltype=>'tempfile', -format=>'Fasta');
 $seqz = $gb->get_Seq_by_acc($seqid);
 
 $seq_item = {};
