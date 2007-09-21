@@ -39,6 +39,7 @@ $fp = open_for_reading( $needle_file );
 
 $read_entry = 0;
 $entry_lines = [];
+$entry_no = -1;
 
 while ( <$fp> ) {
 
