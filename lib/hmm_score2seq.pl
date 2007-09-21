@@ -29,6 +29,8 @@ $USAGE = "
  If this option is activated the sequence IDs are written only as
  SEQID.
 
+ -n NUMBER -- Crop sequences extracted to at most NUMBER of sequences.
+
  -c -- Do NOT embed the matching model and maching score into sequence
  comment.
 
@@ -38,7 +40,7 @@ $USAGE = "
 ";
 
 # options
-getopt('wm');
+getopt('wmn');
 
 if ( defined($opt_w) ) {
   if ( ! unsig_int($opt_w) ) {
@@ -56,6 +58,18 @@ if ( defined($opt_m) ) {
 } else {
   $opt_m_flag = 0;
   $opt_m_value = undef;
+}
+
+if ( defined($opt_n) ) {
+  if ( ! unsig_int($opt_n) ) {
+    error("when specifying -n a positive integer must follow");
+  } else {
+    $opt_n_flag = 1;
+    $opt_n_value = $opt_n;
+  }
+} else {
+  $opt_n_flag = 0;
+  $opt_n_value = undef;
 }
 
 getopts('c');
@@ -104,6 +118,15 @@ for $item ( @$hmm_scores ) {
   }
 }
 
+# -n flag: strip until size is at most n
+if ( $opt_n_flag ) {
+  # ensure hmm_scores are sorted.
+  @hmm_scores2 = sort { $a->[1] <=> $b->[1]} @hmm_scores2;
+  
+  if ( $#{$hmm_scores2}+1 < $opt_n_value )
+    @hmmm_scores2 = @hmmm_scores2[0..$opt_n_value-1];
+}
+  
 if ( $#{$hmm_scores2} == - 1 ) {
   print " the HMM model '$opt_m_value' not found";
   print " in '$hmm_item.$HMM_SCORE'\n";
