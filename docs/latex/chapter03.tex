@@ -2477,6 +2477,88 @@ yabby> emboss_needle needle.out 3
 
 % ### END OF NEW COMMAND ####
 
+
+% ### NEW COMMAND ###
+
+\subsection[emboss\_needl2]{ \fbox{\tt emboss\_needl2} }
+
+\index{emboss\_needl2}
+
+% Concise explanation
+
+For each sequence in a set finds the best matching sequence
+from the database by running the EMBOSS program needle.
+Uses the information on sequence similarity reported by
+needle.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt emboss\_needl2 SEQ\_QUERY SEQ\_DBA OBJ\_NAME}
+
+Where SEQ\_QUERY is an existing yabby sequence object, SEQ\_DBA
+is the FASTA database file with sequences to be compared, and
+OBJ\_NAME is the name of the 'needl2' object to be created.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+{\em None} - Uncomment this and delete line below if no notes
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command requires the EMBOSS program 'needle'
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> emboss_needl2 ec057 Ecoli_lab.fas ec
+
+ 'ec057' contains 9 sequence(s)
+ Working on sp|P36546|OMPX_ECOLI
+Needleman-Wunsch global alignment.
+ Working on tr|Q8X8K6|Q8X8K6
+Needleman-Wunsch global alignment.
+ Working on sp|P39170|UP05_ECOLI
+Needleman-Wunsch global alignment.
+ Working on tr|Q8XDF1|Q8XDF1
+Needleman-Wunsch global alignment.
+ Working on sp|P58603|OMPT_ECO57
+[... further output deleted ...]
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} seq (for SEQ\_QUERY)
+
+% 6. Objects 
+
+\item{Creates objects:} needl2
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
 % ### NEW COMMAND ###
 
 \subsection[sprot\_split]{ \fbox{\tt sprot\_split} }
