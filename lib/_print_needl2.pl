@@ -49,6 +49,6 @@ for $item ( @$needl2 ) {
 
 if ( $opt_f_flag ) {
   close_file( $fp );
-  print " '$obj_name.$MOTIF' written to the file '$file_name'\n";
+  print " '$obj_name.$NEEDL2' written to the file '$file_name'\n";
 }
 

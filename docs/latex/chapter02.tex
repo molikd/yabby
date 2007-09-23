@@ -913,13 +913,7 @@ yabby> blast_info cad_1
  E-score = 1.93e+00
 \end{verbatim}
 
-\section{Stand-alone commands}
-
-Stand-alone commands do not interact with other commands. They
-are, in effect, independent program scripts.  Nevertheless it is
-often useful to collect such independent scripts under Yabby
-to simplify their maintenance and ensure long-term retention.
-An example of such command is 'emboss\_needle'.
+\section{EMBOSS 'needle' commands}
 
 \index{emboss}
 \index{emboss\_needle}
@@ -950,6 +944,136 @@ yabby> emboss_needle needle.out 3
 
 The second argument is the number of top-scoring sequences
 to be printed out.
+
+\index{emboss\_needl2}
+
+The purpose of the command 'emboss\_needl2' is to find out
+what is the similarity between the two sets of sequences.
+Consider the following problem: given two sets of sequences,
+set A and set B, we need to find out how similar are the
+sequences in the set B to the sequences in the set A.
+
+The command emboss\_needl2 will take one sequence at a time
+from the query set A, and run the EMBOSS program 'needle' to
+find the similarity after the best alignment between this
+sequence and each sequence in the set B. emboss\_needl2 will
+then extract the ID of the most similar sequence, as reported
+by 'needle', and it will move to the next query sequence from
+the query set A set until all query sequences are exausted.
+
+Consider the following example: the set A is 'Ecoli057.fas'
+and the set B is 'Ecoli\_lab.fas', both given as FASTA files.
+To find out the similarity of sequences in Ecoli057.fas
+to sequences in Ecoli\_lab.fas, we first load the query set
+in yabby:
+
+\begin{verbatim}
+yabby> seq_load Ecoli057.fas Ecoli057
+
+ Reading the file 'Ecoli057.fas' ..
+ 9 sequence(s) found.
+\end{verbatim}
+
+The second set 'Ecoli\_lab.fas' is required as FASTA file.
+Then:
+
+\begin{verbatim}
+yabby> emboss_needl2 Ecoli057 Ecoli_lab.fas sim_list
+
+ 'Ecoli057' contains 9 sequence(s)
+ Working on sp|P36546|OMPX_ECOLI
+Needleman-Wunsch global alignment.
+ Working on tr|Q8X8K6|Q8X8K6
+Needleman-Wunsch global alignment.
+ Working on sp|P39170|UP05_ECOLI
+Needleman-Wunsch global alignment.
+ Working on tr|Q8XDF1|Q8XDF1
+Needleman-Wunsch global alignment.
+ Working on sp|P58603|OMPT_ECO57
+Needleman-Wunsch global alignment.
+ Working on tr|Q8XAS0|Q8XAS0
+Needleman-Wunsch global alignment.
+ Working on tr|Q8X592|Q8X592
+Needleman-Wunsch global alignment.
+ Working on tr|Q8X7N5|Q8X7N5
+Needleman-Wunsch global alignment.
+ Working on tr|Q8X8F2|Q8X8F2
+Needleman-Wunsch global alignment.
+yabby>
+\end{verbatim}
+
+The argument to the command  'emboss\_needl2' are the query sequence
+object, the FASTA file of the database set, and the name of the
+object to be created which contains the information about similarities
+This is 'needl2' object:
+ 
+\begin{verbatim}
+yabby> what
+
+    object(s)      type
+  ------------------------------
+    Ecoli057       seq
+    sim_list       needl2
+\end{verbatim}
+
+One can print the 'needl2' object:
+
+\begin{verbatim}
+yabby> print sim_list.needl2
+
+OMPX_ECOLI OMPX_ECOLI 100.0
+Q8X8K6 OMPG_ECOLI 100.0
+UP05_ECOLI UP05_ECOLI 100.0
+Q8XDF1 OMPF_ECOLI 99.4
+OMPT_ECO57 OMPT_ECOLI 99.7
+Q8XAS0 NMPC_ECOLI 80.3
+Q8X592 MIPA_ECOLI 99.6
+Q8X7N5 PHOE_ECOLI 99.7
+Q8X8F2 YFEN_ECOLI 32.1
+\end{verbatim}
+
+Or sorted by percent similarity:
+
+\begin{verbatim}
+yabby> print -s sim_list.needl2
+
+Q8X8F2 YFEN_ECOLI 32.1
+Q8XAS0 NMPC_ECOLI 80.3
+Q8XDF1 OMPF_ECOLI 99.4
+Q8X592 MIPA_ECOLI 99.6
+OMPT_ECO57 OMPT_ECOLI 99.7
+Q8X7N5 PHOE_ECOLI 99.7
+OMPX_ECOLI OMPX_ECOLI 100.0
+Q8X8K6 OMPG_ECOLI 100.0
+UP05_ECOLI UP05_ECOLI 100.0
+\end{verbatim}
+
+The above table lists two sequence IDs (ID\_query and ID\_dba) and
+the percent similarity as reported by the program 'needle' after
+the best global alignment.  The above table contains nine rows,
+since the query set ('Ecoli057.fas') contains nine sequences.  Each
+line refers to one sequence from the 'Ecoli057.fas', and given are
+the best matching sequence from the second set ('Ecoli\_lab.fas'),
+and percent similarity. We see that the sequence 'Q8X8F2' from
+'Ecoli057.fas' has the least similarity to any sequence from the
+'Ecoli\_lab.fas' set.
+
+The table produced by 'emboss\_needl2' can be written to a file:
+
+\begin{verbatim}
+yabby> print -f needl2.out -s sim_list.needl2
+
+ 'sim_list.needl2' written to the file 'needl2.out'
+\end{verbatim}
+
+
+\section{Stand-alone commands}
+
+Stand-alone commands do not interact with other commands. They
+are, in effect, independent program scripts.  Nevertheless it is
+often useful to collect such independent scripts under Yabby
+to simplify their maintenance and ensure long-term retention.
+An example of such command is 'pdb\_model'.
 
 \index{pdb\_model.pl}
 
