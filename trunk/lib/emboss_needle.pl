@@ -31,6 +31,7 @@ if (! unsig_int($nn) ) {
 }
 
 # requirements
+
 # body
 print " Processing the file '$needle_file' ..\n\n";
 
@@ -39,7 +40,7 @@ $top_entries = proc_needle_output($needle_file, $nn);
 $ii = 0;
 for $par ( @$top_entries ) { 
   $ii++;
-  printf " (%d) %s:%s, Similarity: %.1f\n", $ii+1, $par->[0], $par->[1],
+  printf " (%2d) %s:%s, Similarity: %.1f\n", $ii+1, $par->[0], $par->[1],
     $par->[2];
 }
 
