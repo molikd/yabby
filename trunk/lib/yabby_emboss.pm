@@ -1,11 +1,16 @@
 # yabby_emboss.pm
 
-# globals
+# needl2 type object
+$NEEDL2 = "needl2";
+
+# globals for the EMBOSS program 'needle'
 $NEEDLE_PATH = "/usr/local/bin/needle";
 $TMP_FASTA_FILE = "/tmp/yabby.tmp";
 $NEEDLE_GAP_OPEN = 10.0;
 $NEEDLE_GAP_EXTEND = 0.5;
 
+# returns $nn entries ordered by percent similarity as reported
+# by 'needle'
 sub proc_needle_output {
 
   # $needle_file -- the needle file
@@ -100,7 +105,7 @@ sub extract_entry {
   $seq_name1 = $fields[2];
   @fields = split " ", $entry_lines->[2];
   $seq_name2 = $fields[2];
-  @fields = split " ", $entry_lines->[9];
+  @fields = split " ", $entry_lines->[9]; # the 'Similarity' report
 
   if ($#fields == 4) {
 
