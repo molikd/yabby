@@ -1,4 +1,4 @@
-# emboss_needle_cmp.pl
+# emboss_needl2.pl
 
 use yabby_sys;
 use yabby_emboss;
@@ -9,17 +9,19 @@ use Getopt::Std;
 
 $USAGE = "
   For each sequence in a set finds the best matching sequence
-  from another set. Uses EMBOSS program 'needle'.
+  from the database. This command relies on the EMBOSS program
+  'needle'.
 
   Usage:
-        emboss_needle_cmp SEQ_QUERY SEQ_DBA OBJ_NAME
+        emboss_needl2 SEQ_QUERY SEQ_DBA OBJ_NAME
 
   Where SEQ_QUERY is an existing yabby sequence object, SEQ_DBA
-  is the FAST file with sequences to be compared, and OBJ_NAME
-  is the name of the object to be created. 
+  is the FASTA database file with sequences to be compared, and
+  OBJ_NAME is the name of the 'needl2' object to be created. 
 ";
 
 # options
+
 # initialization
 @argl = sys_init(@ARGV);
 check_call( @argl, [ 3 ] );
@@ -31,7 +33,11 @@ $obj_name = $argl[2];
 requirements($seq_query, $SEQUENCE);
 $xmldoc = load_ip_xml($seq_query, $SEQUENCE);
 
-$tmp_needle_out = $TMP_FASTA_FILE . ".needle";
+# set the variable for the program 'needle'
+$needle_gap_extend = $NEEDLE_GAP_EXTEND;
+$needle_gap_open = $NEEDLE_GAP_OPEN;
+$tmp_fasta_file = $TMP_FASTA_FILE;
+$tmp_needle_out = $tmp_fasta_file . ".needle";
 
 # body
 $seq_hash = xml2seq($xmldoc);
@@ -44,20 +50,20 @@ for $key ( @$keys ) {
   $seq_item = $seq_hash->{$key};
   printf " Working on %s\n", $seq_item->{$DBA_SEQID};
 
-  $fp = open_for_writing($TMP_FASTA_FILE);
+  $fp = open_for_writing($tmp_fasta_file);
   print_seq_fasta($fp, $seq_item, $PRINT_WIDTH);
   close_file($fp);
 
   $command = $NEEDLE_PATH;
-  $command = $command . " -gapopen $NEEDLE_GAP_OPEN";
-  $command = $command . " -gapextend $NEEDLE_GAP_EXTEND";
+  $command = $command . " -gapopen $needle_gap_open";
+  $command = $command . " -gapextend $needle_gap_extend";
   $command = $command . " -outfile $tmp_needle_out";
-  $command = $command . " $TMP_FASTA_FILE";
+  $command = $command . " $tmp_fasta_file";
   $command = $command . " $seq_dba";
 
   $status = system $command;
 
-  if ( $status != 0 ) {
+  if ($status != 0) {
     error("the program 'needle' failed");
   }
 

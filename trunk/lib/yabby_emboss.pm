@@ -1,5 +1,6 @@
 # yabby_emboss.pm
 
+# globals
 $NEEDLE_PATH = "/usr/local/bin/needle";
 $TMP_FASTA_FILE = "/tmp/yabby.tmp";
 $NEEDLE_GAP_OPEN = 10.0;
@@ -8,7 +9,7 @@ $NEEDLE_GAP_EXTEND = 0.5;
 sub proc_needle_output {
 
   # $needle_file -- the needle file
-  # $nn -- the number of top entried to be returned
+  # $nn -- the number of top entries to be returned
   my ($needle_file, $nn) = @_;
 
   my ($needle_hash, $fp, $read_entry, $entry_lines, $entry_no, $record);
@@ -43,7 +44,7 @@ sub proc_needle_output {
         exit 0;
       }
       $read_entry = 0;
-      $entry_pars = extract_entry( $entry_lines );
+      $entry_pars = extract_entry($entry_lines);
       $entry_no++;
       $needle_hash{$entry_no} = $entry_pars;
     }
@@ -63,12 +64,11 @@ sub proc_needle_output {
   }
 
   # $nn cannot be greater than the number of sequences in the database
-  if ($nn > $#keyarray+1 ) {
-    $nn = $#keyarray+1;
-  }
+  if ($nn > $#keyarray+1 ) { $nn = $#keyarray+1; }
 
   # take the top $nn hits
   @top_keys = splice @keyarray, 0, $nn;
+
   $top_entries = [];
   for $key ( @top_keys ) {
     push @$top_entries, $needle_hash{$key};
@@ -80,6 +80,7 @@ sub proc_needle_output {
 sub extract_entry {
 
   my ($entry_lines) = @_;
+
   my (@fields, $seq_name1, $seq_name2, $similarity, $entry_pars);
 
   # --- $entry_lines is a chunk like this:
@@ -117,9 +118,11 @@ sub extract_entry {
   }
 
   $entry_pars = [];
+
   push @$entry_pars, $seq_name1;
   push @$entry_pars, $seq_name2;
   push @$entry_pars, $similarity;
+
   return $entry_pars;
 }
 
