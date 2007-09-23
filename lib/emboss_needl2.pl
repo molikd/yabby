@@ -45,15 +45,19 @@ $keys = get_seq_keys($seq_hash);
 
 printf " '%s' contains %d sequence(s)\n", $seq_query, $#{$keys}+1;
 
+$needl2 = [];
+
 for $key ( @$keys ) {
 
   $seq_item = $seq_hash->{$key};
   printf " Working on %s\n", $seq_item->{$DBA_SEQID};
 
+  # create a temporary FASTA file for 'needle' run
   $fp = open_for_writing($tmp_fasta_file);
   print_seq_fasta($fp, $seq_item, $PRINT_WIDTH);
   close_file($fp);
 
+  # run 'needle'
   $command = $NEEDLE_PATH;
   $command = $command . " -gapopen $needle_gap_open";
   $command = $command . " -gapextend $needle_gap_extend";
@@ -67,10 +71,14 @@ for $key ( @$keys ) {
     error("the program 'needle' failed");
   }
 
+  # delete temporary FASTA file
+  unlink($tmp_fasta_file) or die "Can't unlink '$tmp_fasta_file': $!";
+
+  # out of the needle run, get the entry with the highest similarity 
   $top_entries = proc_needle_output($tmp_needle_out,1);
- 
-  for $par ( @$top_entries ) { 
-    printf "%s %s %s\n", $par->[0], $par->[1], $par->[2]; 
-  }
+
+  push @$needl2, $top_entries->[0];
 }
+ 
+save_ip($needl2, $obj_name, $NEEDL2, $WARN_OVERW);
 
