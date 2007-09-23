@@ -19,10 +19,13 @@ meme.out -- An example output of the motif detection program MEME.
 LmjFmockup.pep -- A mockup genome sequence file.
 
 hmmpfam.out -- An example output file of the program HMMPFAM (a part
-  of HMMER software)
+  of HMMER software).
 
 needle.out -- An example output of the EMBOSS program needle.
 
 1BT0.pdb -- Example of Protein Data Bank file, structure of
-  ubiquitin-like protein 'rub1'
+  ubiquitin-like protein 'rub1'.
+
+Ecoli057.fas, Ecoli_lab.fas -- Two sets of protein sequences
+ used to demonstrate the command 'seq_needl2'.
 
