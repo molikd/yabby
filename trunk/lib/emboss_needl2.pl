@@ -9,8 +9,9 @@ use Getopt::Std;
 
 $USAGE = "
   For each sequence in a set finds the best matching sequence
-  from the database. This command relies on the EMBOSS program
-  'needle'.
+  from the database by running the EMBOSS program needle.
+  Uses the information on sequence similarity reported by
+  needle.
 
   Usage:
         emboss_needl2 SEQ_QUERY SEQ_DBA OBJ_NAME
