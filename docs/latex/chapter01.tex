@@ -106,9 +106,9 @@ downloading it.
 The following instructions refer specifically to TortoiseSVN. It is
 recommended, but not necessary, that a new directory be created anywhere in
 the filesystem where the Yabby source code is to be located. For example:
-C:{\backslash}
+C:{$\backslash$}
 \begin{description}
-  \item[1] create C:{\backslash}. Then open this directory.
+  \item[1] create C:{$\backslash$}. Then open this directory.
   
   \item[2] Right-click the empty space and select SVN Checkout.
   
@@ -120,15 +120,15 @@ C:{\backslash}
 Yabby installation requires that the file 'yabby/lib/yabby.pl' is modified to
 to set the path to Yabby libraries.
 
-If Yabby code was downloaded in the directory C:{\backslash}, to set
+If Yabby code was downloaded in the directory C:{$\backslash$}, to set
 the path to Yabby libraries the following two lines need to be set (yabby.pl
 is stored in binary format, not text. So use Wordpad.exe, found in
-{\tmsamp{Start Menu->All Programs->Accessories}}):
+{\bf{Start Menu->All Programs->Accessories}):
 \begin{verbatim}
 use lib "C:\\Yabby\\lib";
 $LIB_DIR = "C:\\Yabby\\lib";
 \end{verbatim}
-NOTE: `{\backslash}' is an escape character in Perl strings, which is
+NOTE: `{$\backslash$}' is an escape character in Perl strings, which is
 also the character Windows uses to seperate directories. A double escape
 character escapes the escape. Hence the need for two.
 
