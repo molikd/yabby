@@ -120,13 +120,16 @@ for $item ( @$hmm_scores ) {
 
 # -n flag: strip until size is at most n
 if ( $opt_n_flag ) {
+
   # ensure hmm_scores are sorted.
-  @hmm_scores2 = sort { $a->[1] <=> $b->[1]} @hmm_scores2;
-  
-  if ( $#{$hmm_scores2}+1 < $opt_n_value )
-    @hmmm_scores2 = @hmmm_scores2[0..$opt_n_value-1];
+  @$hmm_scores2 = sort { $a->[2] <=> $b->[2]} @$hmm_scores2;
+
+  # strip elements if there are more than n parameter
+  if ( $#{$hmm_scores2}+1 > $opt_n_value ) {
+    splice @$hmm_scores2, $opt_n_value;
+  }
 }
-  
+
 if ( $#{$hmm_scores2} == - 1 ) {
   print " the HMM model '$opt_m_value' not found";
   print " in '$hmm_item.$HMM_SCORE'\n";
