@@ -118,6 +118,14 @@ for $item ( @$hmm_scores ) {
   }
 }
 
+if ( $#{$hmm_scores2} == -1 ) {
+  print " the HMM model '$opt_m_value' not found";
+  print " in '$hmm_item.$HMM_SCORE'\n";
+  error( "no sequences to extract" );
+} else {
+  printf " Found a total of %d sequences\n", $#{$hmm_scores2} + 1;
+}
+
 # -n flag: strip until size is at most n
 if ( $opt_n_flag ) {
 
@@ -130,13 +138,7 @@ if ( $opt_n_flag ) {
   }
 }
 
-if ( $#{$hmm_scores2} == - 1 ) {
-  print " the HMM model '$opt_m_value' not found";
-  print " in '$hmm_item.$HMM_SCORE'\n";
-  error( "no sequences to extract" );
-} else {
-  printf " found %d sequences to extract\n", $#{$hmm_scores2} + 1;
-}
+printf " Extracting top %d sequences\n", $#{$hmm_scores2} + 1;
 
 $hits_list = [];
 printf " Processing the database '%s'\n", $dba_file;
