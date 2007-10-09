@@ -13,13 +13,13 @@ $USAGE = "
  Usage:
         seq_genbank [ options ] IDENTIFIER OBJ_NAME
 
- Fetch a sequence from GenBank using an identifier such as the
+ Fetches a sequence from GenBank using an identifier such as the
  sequence accession number (default), version, GI number or
  unique ID (locus) and save the sequence under the name OBJ_NAME.
 
  Options:
 
- -a ACCESSION_NUMBER (default) - fetch sequence by accession number
+ -a ACCESSION_NUMBER (default) -- fetch sequence by accession number
 
  -v VERSION -- fetch sequence by version number
 

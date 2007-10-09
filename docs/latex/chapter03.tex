@@ -757,9 +757,9 @@ yabby> seq_compl dna dna_c
 
 % ### NEW COMMAND ###
 
-\subsection[seq\_fetch]{ \fbox{\tt seq\_fetch} }
+\subsection[seq\_genbank]{ \fbox{\tt seq\_genbank} }
 
-\index{seq\_fetch}
+\index{seq\_genbank}
 
 % Concise explanation
 
@@ -773,14 +773,21 @@ Fetch a sequence from GenBank.
 
 \item{Usage:}
 
-{\tt seq\_fetch ACC\_NUM OBJ\_NAME}
+{\tt seq\_genbank [ options ] IDENTIFIER OBJ\_NAME}
 
- Fetch a sequence from GenBank using sequence accession number,
- and save the sequence under the name OBJ\_NAME.
+ Fetch a sequence from GenBank using an identifier such as the
+ sequence accession number (default), version, GI number or
+ unique ID (locus) and save the sequence under the name OBJ\_NAME.
 
 % 2. Options
 
-\item{Options:} {\em None}
+\item{Options:}
+\begin{description}
+\item -a ACCESSION\_NUMBER (default) -- fetch sequence by accession number
+\item -v VERSION -- fetch sequence by version number
+\item -g GI\_NUMBER -- fetch sequence by GI number
+\item -i UNIQUE\_ID -- fetch sequence by unique ID
+\end{description}
 
 % 3. Notes
 
@@ -796,7 +803,7 @@ Fetch a sequence from GenBank.
 
 \item
 \begin{verbatim}
-yabby> seq_fetch J00522 mig
+yabby> seq_fetch -a J00522 mig
 
  Saving 'J00522' as 'mig'
 
@@ -1311,6 +1318,78 @@ yabby> seq_strip 21:40 cad3 cad3portion
 
 % ### NEW COMMAND ###
 
+\subsection[seq\_uniprot]{ \fbox{\tt seq\_uniprot} }
+
+\index{seq\_uniprot}
+
+% Concise explanation
+
+Fetch a sequence from SwissProt.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_uniprot [ options ] LOCATION IDENTIFIER OBJ\_NAME}
+
+ Fetch a sequence from SwissProt using an identifier such as the
+ sequence accession number (default) or
+ unique ID and saves the sequence under the name OBJ\_NAME.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+\item -l LOCATION -- possible values (australia,canada,china,korea,switzerland,taiwan,us)
+\item -a ACCESSION\_NUMBER -- fetch sequence by accession number (default)
+\item -i UNIQUE\_ID -- fetch sequence by unique ID
+
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command requires Bioperl's Bio::DB module.
+\end{enumerate}
+
+% 4. Examples
+
+\item{Examples:}
+\begin{enumerate}
+
+\item
+\begin{verbatim}
+yabby> seq_uniprot -a P43780 -l australia miga
+
+ Saving 'P43780' as 'miga'
+
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements
+
+\item{Requirements:} {\em None}
+
+% 6. Objects
+
+\item{Creates objects:} seq
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
 \subsection[seq\_unique]{ \fbox{\tt seq\_unique} }
 
 \index{seq\_unique}
@@ -1495,6 +1574,7 @@ model. If this option is not activated all matches are written to
 the output file and sequence IDs are written as SEQID\@PFAM\_MODEL.
 If this option is activated the sequence IDs are written only as
 SEQID.
+\item -n NUMBER -- Crop sequences extracted to at most NUMBER of sequences.
 \item -c -- Do NOT embed the matching model and maching score into sequence
 comment.
 \end{description}
