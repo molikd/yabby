@@ -482,13 +482,13 @@ aggataactgagtacgggtgtccaagtatactgggggtacgggtgcttgtacgtgtacgc
 gtgtactggttagggttagggttagggttagggttagggtcagggttagggttagggtta
 \end{verbatim}
 
-\index{seq\_fetch}
+\index{seq\_genbank}
 
-The command 'seq\_fetch' fetches a sequence from GenBank
-by the sequence accession number:
+The command 'seq\_genbank' fetches a sequence from GenBank
+by default using the sequence accession number:
 
 \begin{verbatim}
-yabby> seq_fetch J00522 mig
+yabby> seq_genbank -a J00522 mig
 
  Saving 'J00522' as 'mig'
 
@@ -500,7 +500,7 @@ yabby> what
 \end{verbatim}
 
 This command requires the module Bio::DB::GenBank and illustrates
-how use the capabilities of BioPerl \cite{bioperl} within Yabby.
+how the capabilities of BioPerl \cite{bioperl} may be employed within Yabby.
 
 \section{Housekeeping commands}
 
@@ -525,7 +525,7 @@ yabby> help
  mol2seq        mol_crd        mol_load       motif_cmp
  motif_load     motif_meme     pdb_conv       pdb_model
  pfam_fetch     print          quit           restore
- seq2id         seq_comment    seq_compl      seq_fetch
+ seq2id         seq_comment    seq_compl      seq_genbank
  seq_info       seq_letter     seq_letterc    seq_load
  seq_op         seq_pattern    seq_pick       seq_strip
  seq_unique     sprot_split    what
