@@ -104,6 +104,7 @@ for $item ( @$hmm_scores ) {
 
   $match_id = $item->[0];
   $match_score = $item->[1];
+
   # get sequence ID and HMM model from $match_id
   @words = split /\@/, $match_id;
   $seq_id = $words[0];
@@ -130,7 +131,7 @@ if ( $#{$hmm_scores2} == -1 ) {
 if ( $opt_n_flag ) {
 
   # ensure hmm_scores are sorted.
-  @$hmm_scores2 = sort { $a->[2] <=> $b->[2]} @$hmm_scores2;
+  @$hmm_scores2 = sort { $a->[2] <=> $b->[2] } @$hmm_scores2;
 
   # strip elements if there are more than n parameter
   if ( $#{$hmm_scores2}+1 > $opt_n_value ) {
@@ -156,6 +157,7 @@ $seqstr = "";
 $db_entry_line = 1;
 
 $cntr = 1;
+
 while ( <$fp> ) {
 
   $cntr++;
@@ -182,6 +184,7 @@ while ( <$fp> ) {
     shift @fields;
     $comment = join "", @fields;
     $sequence = "";
+
   } else {
 
     $seqstr = join "", @fields;
@@ -196,6 +199,7 @@ close_file( $fp );
 
 # sort hits list by the score
 %index_hash = ();
+
 for $ii (0 .. $#{$hits_list}) {
   $index_hash{$ii} = $hits_list->[$ii]->[2];
 }
@@ -212,6 +216,7 @@ $seq_hash = {};
 $cntr = 0;
 
 for $ii ( @sorted_ix ) {
+
   $cntr++;
   $hits_list_entry = $hits_list->[$ii];
 
@@ -269,7 +274,7 @@ sub add_hits_list {
     if ( $item->[0] eq $dba_id ) {
       $match++;
       push @$hits_list, [ $item->[0], $item->[1], $item->[2],
-	$comment, $sequence ];
+          $comment, $sequence ];
     }
   }
 }
