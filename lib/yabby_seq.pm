@@ -41,7 +41,7 @@ $DBA_OS = "dba_os";
 $DBA_CNTR = "dba_cntr";
 
 # SPROT constants
-$SPROT_ID = "ID";
+$SPROT_ID = "ID ";
 $SPROT_OS = "OS";
 $SPROT_SEQ = "SQ";
 
@@ -158,6 +158,7 @@ sub read_blocks {
   
   # examine the first line
   $fp = open_for_reading( $blocks_file );
+
   do { $record = <$fp> } until $. == 1 || eof;
   chomp( $record );
 
@@ -169,6 +170,7 @@ sub read_blocks {
   @blocks_content = <$fp>;
   @seq_lines = ();
   $term_flag = 0;
+
   for $line ( @blocks_content ) {
     if ( substr($line, 0, 2) ne "//" ) {
       push @seq_lines, $line; 
@@ -184,6 +186,7 @@ sub read_blocks {
 
   $seq_hash = {};
   $dba_no = -1;
+
   for $line ( @seq_lines ) {
     $dba_no++;
     $seq_hash->{$dba_no} = {};
@@ -388,8 +391,9 @@ sub aa3to1 {
 sub fetch_sprot_seq {
 
   my ( $sprot_dba, $sprot_id ) = @_;
-  my ( $file, $sprot_entry, $seq_start, $cntr, $line, @fields, $slice );
-  my ( %sprot_hash, @fields2, $seqstr );
+
+  my ( $seq_item, $file, $sprot_entry, $seq_start, $cntr, $line, @fields );
+  my ( $slice, %sprot_hash, @fields2, $seqstr );
 
   $seq_item = {};
 
@@ -405,7 +409,7 @@ sub fetch_sprot_seq {
     chomp($line);
 
     @fields = split " ", $line;
-    $slice = substr( $line, 0, 2 );
+    $slice = substr( $line, 0, 3 );
 
     if ( $slice eq $SPROT_ID ) {
       $sprot_entry = 1;

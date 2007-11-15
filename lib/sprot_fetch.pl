@@ -36,12 +36,15 @@ $sprot_id  = $argl[1];
 $seq_item = fetch_sprot_seq($sprot_dba, $sprot_id);
 
 if (! defined($seq_item->{$DBA_SEQID}) ) {
+
   printf " Entry with ID '%s' not found.\n", $sprot_id;
   printf " A total of %d sequences processed\n", $seq_item->{$DBA_CNTR};
 } else {
+
   printf " Sequence ID: '%s'\n", $seq_item->{$DBA_SEQID};
   printf " Organism: '%s'\n", $seq_item->{$DBA_OS};
   print " Sequence:\n";
+
   print_seq( *STDOUT, $seq_item->{$DBA_SEQUENCE}, $PRINT_WIDTH );
 }
 
