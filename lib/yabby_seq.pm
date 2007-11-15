@@ -9,7 +9,7 @@ $SEQID = "seqid";
 # amino acid single letter alphabet
 $AA_ALPHABET = "AVLIPFWMGSTCYNQDEKRH";
 
-# hash for singl-to-three letter amino acid conversion
+# hash for single-to-three letter amino acid conversion
 %AA_HASH = (
 "G" => [ "GLY" ],
 "A" => [ "ALA" ],
