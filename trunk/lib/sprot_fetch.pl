@@ -39,6 +39,7 @@ if (! defined($seq_item->{$DBA_SEQID}) ) {
 
   printf " Entry with ID '%s' not found.\n", $sprot_id;
   printf " A total of %d sequences processed\n", $seq_item->{$DBA_CNTR};
+
 } else {
 
   printf " Sequence ID: '%s'\n", $seq_item->{$DBA_SEQID};
