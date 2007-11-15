@@ -36,6 +36,9 @@ $AA_ALPHABET = "AVLIPFWMGSTCYNQDEKRH";
 $DBA_COMMENT = "dba_comment";
 $DBA_SEQID = "dba_seqid";
 $DBA_SEQUENCE = "dba_sequence";
+# these used only in fetch_sprot_seq()
+$DBA_OS = "dba_os";
+$DBA_CNTR = "dba_cntr";
 
 # SPROT constants
 $SPROT_ID = "ID";
@@ -380,6 +383,98 @@ sub aa3to1 {
 
   return $aa_match;
 }
+
+# fetches a sequence from Swiss-Prot database by ID
+sub fetch_sprot_seq {
+
+  my ( $sprot_dba, $sprot_id ) = @_;
+  my ( $file, $sprot_entry, $seq_start, $cntr, $line, @fields );
+  my ( %sprot_hash, @fields2, $seqstr );
+
+  $seq_item = {};
+
+  $file = open_for_reading( $sprot_dba );
+
+  $sprot_entry = 0;
+  $seq_start = 0;
+  $cntr = 0;
+
+  while( <$file> ) {
+
+    $line = $_;
+    chomp($line);
+
+    @fields = split " ", $line;
+
+    if ( $fields[0] eq $SPROT_ID ) {
+      $sprot_entry = 1;
+    } 
+
+    if ( $fields[0] eq "//" ) {
+
+      $sprot_entry = 0;
+      $seq_start = 0;
+
+      if ( $sprot_hash{$SPROT_ID} eq $sprot_id ) {
+
+        $seq_item->{$DBA_SEQID} = $sprot_hash{$SPROT_ID};
+        $seq_item->{$DBA_OS} = $sprot_hash{$SPROT_OS};
+        $seq_item->{$DBA_SEQUENCE} = $sprot_hash{$SPROT_SEQ};
+        $seq_item->{$DBA_CNTR} = $cntr;
+
+        last;
+      }
+    }
+
+    if ( $sprot_entry ) {
+
+      # new entry, initialize the entry hash
+      if ( $sprot_entry == 1 ) {
+
+        %sprot_hash = ();
+        $sprot_hash{$SPROT_ID} = $fields[1];
+        $sprot_entry++; # increment entry line counter
+        $cntr++; # increments entries counter
+
+      } else { # fill in entries for the current sequence
+
+        # organism
+        if ( $fields[0] eq $SPROT_OS ) {
+
+          @fields2 = split " ", $line;
+          shift @fields2;
+          $sprot_hash{$SPROT_OS} = join " ", @fields2;
+        }
+
+        # start sequence
+        if ( $fields[0] eq $SPROT_SEQ ) { $seq_start++; }
+
+        if ( $seq_start ) {
+
+          # the first line; just initialize the sequence string
+          if ( $seq_start == 1 ) {
+            $sprot_hash{$SPROT_SEQ} = "";
+          } else {
+            @fields2 = split " ", $line;
+            $seqstr = join "", @fields2;
+            $sprot_hash{$SPROT_SEQ} = $sprot_hash{$SPROT_SEQ} . $seqstr;
+          }
+          $seq_start++;
+        }
+      }
+    }
+  }
+
+  close_file( $file );
+
+  # no match found
+  if (! defined($seq_item->{$DBA_SEQID}) ) {
+    $seq_item->{$DBA_CNTR} = $cntr;
+  }
+
+  return $seq_item;
+}
+
 
 # -----
 # motif
