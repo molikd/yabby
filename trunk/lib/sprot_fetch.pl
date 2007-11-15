@@ -28,8 +28,8 @@ $USAGE = "
 @argl = sys_init( @ARGV );
 
 check_call( @argl, [ 2 ] );
-$sprot_dba  = $argl[0];
-$sprot_id  = $argl[1];
+$sprot_dba = $argl[0];
+$sprot_id = $argl[1];
 
 # requirements
 # body
