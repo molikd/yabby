@@ -16,10 +16,10 @@ $USAGE = "
  Fetches a sequence from a SWISS-PROT database by its ID.
 
  Usage:
- 	sprot_fetch <DBA_FILE> <SPROT_ID>
+ 	sprot_fetch DBA_FILE SPROT_ID
 
- Where <DBA_FILE> is the database is the Swiss-Prot format,
- and <SPROT_ID> is the swiss-prot sequence ID. Prints the
+ Where DBA_FILE is the database is the Swiss-Prot format,
+ and SPROT_ID is the swiss-prot sequence ID. Prints the
  sequence ID, organism, and sequence letters.
 ";
 
