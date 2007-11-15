@@ -388,7 +388,7 @@ sub aa3to1 {
 sub fetch_sprot_seq {
 
   my ( $sprot_dba, $sprot_id ) = @_;
-  my ( $file, $sprot_entry, $seq_start, $cntr, $line, @fields );
+  my ( $file, $sprot_entry, $seq_start, $cntr, $line, @fields, $slice );
   my ( %sprot_hash, @fields2, $seqstr );
 
   $seq_item = {};
@@ -405,8 +405,9 @@ sub fetch_sprot_seq {
     chomp($line);
 
     @fields = split " ", $line;
+    $slice = substr( $line, 0, 2 );
 
-    if ( $fields[0] eq $SPROT_ID ) {
+    if ( $slice eq $SPROT_ID ) {
       $sprot_entry = 1;
     } 
 
