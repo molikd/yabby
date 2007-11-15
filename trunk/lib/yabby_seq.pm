@@ -393,7 +393,7 @@ sub fetch_sprot_seq {
   my ( $sprot_dba, $sprot_id ) = @_;
 
   my ( $seq_item, $file, $sprot_entry, $seq_start, $cntr, $line, @fields );
-  my ( $slice, %sprot_hash, @fields2, $seqstr );
+  my ( %sprot_hash, @fields2, $seqstr );
 
   $seq_item = {};
 
@@ -409,11 +409,6 @@ sub fetch_sprot_seq {
     chomp($line);
 
     @fields = split " ", $line;
-    $slice = substr( $line, 0, 3 );
-
-    if ( $slice eq $SPROT_ID ) {
-      $sprot_entry = 1;
-    } 
 
     if ( $fields[0] eq "//" ) {
 
@@ -430,6 +425,10 @@ sub fetch_sprot_seq {
         last;
       }
     }
+
+    if ( substr($line, 0, 3) eq $SPROT_ID ) {
+      $sprot_entry = 1;
+    } 
 
     if ( $sprot_entry ) {
 
@@ -472,7 +471,7 @@ sub fetch_sprot_seq {
 
   close_file( $file );
 
-  # no match found
+  # match not found
   if (! defined($seq_item->{$DBA_SEQID}) ) {
     $seq_item->{$DBA_CNTR} = $cntr;
   }
