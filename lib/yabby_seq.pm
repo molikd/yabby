@@ -41,9 +41,10 @@ $DBA_OS = "dba_os";
 $DBA_CNTR = "dba_cntr";
 
 # SPROT constants
-$SPROT_ID = "ID ";
-$SPROT_OS = "OS";
-$SPROT_SEQ = "SQ";
+$SPROT_ID = "ID   ";
+$SPROT_DE = "DE   ";
+$SPROT_OS = "OS   ";
+$SPROT_SEQ = "SQ   ";
 
 # the default number of characters when printing
 # the sequence
@@ -410,23 +411,25 @@ sub fetch_sprot_seq {
 
     @fields = split " ", $line;
 
-    if ( $fields[0] eq "//" ) {
+    if ( substr($line, 0, 2) eq "//" ) {
 
       $sprot_entry = 0;
       $seq_start = 0;
 
-      if ( $sprot_hash{$SPROT_ID} eq $sprot_id ) {
+      if ( $sprot_hash{$DBA_SEQID} eq $sprot_id ) {
 
-        $seq_item->{$DBA_SEQID} = $sprot_hash{$SPROT_ID};
-        $seq_item->{$DBA_OS} = $sprot_hash{$SPROT_OS};
-        $seq_item->{$DBA_SEQUENCE} = $sprot_hash{$SPROT_SEQ};
+        $seq_item->{$DBA_SEQID} = $sprot_hash{$DBA_SEQID};
+        $seq_item->{$DBA_OS} = $sprot_hash{$DBA_OS};
+        $seq_item->{$DBA_COMMENT} = $sprot_hash{$DBA_COMMENT} . " " .
+            $sprot_hash{$DBA_OS};
+        $seq_item->{$DBA_SEQUENCE} = $sprot_hash{$DBA_SEQUENCE};
         $seq_item->{$DBA_CNTR} = $cntr;
 
         last;
       }
     }
 
-    if ( substr($line, 0, 3) eq $SPROT_ID ) {
+    if ( substr($line, 0, 5) eq $SPROT_ID ) {
       $sprot_entry = 1;
     } 
 
@@ -436,33 +439,42 @@ sub fetch_sprot_seq {
       if ( $sprot_entry == 1 ) {
 
         %sprot_hash = ();
-        $sprot_hash{$SPROT_ID} = $fields[1];
+        $sprot_hash{$DBA_SEQID} = $fields[1];
         $sprot_entry++; # increment entry line counter
         $cntr++; # increments entries counter
 
       } else { # fill in entries for the current sequence
 
         # organism
-        if ( $fields[0] eq $SPROT_OS ) {
+        if ( substr($line, 0, 5) eq $SPROT_OS ) {
 
           @fields2 = split " ", $line;
           shift @fields2;
-          $sprot_hash{$SPROT_OS} = join " ", @fields2;
+          $sprot_hash{$DBA_OS} = join " ", @fields2;
+        }
+
+        # description
+        if ( substr($line, 0, 5) eq $SPROT_DE ) {
+
+          @fields2 = split " ", $line;
+          shift @fields2;
+          $sprot_hash{$DBA_COMMENT} = join " ", @fields2;
         }
 
         # start sequence
-        if ( $fields[0] eq $SPROT_SEQ ) { $seq_start++; }
+        if ( substr($line, 0, 5) eq $SPROT_SEQ ) { $seq_start++; }
 
         if ( $seq_start ) {
 
           # the first line; just initialize the sequence string
           if ( $seq_start == 1 ) {
-            $sprot_hash{$SPROT_SEQ} = "";
+            $sprot_hash{$DBA_SEQUENCE} = "";
           } else {
             @fields2 = split " ", $line;
             $seqstr = join "", @fields2;
-            $sprot_hash{$SPROT_SEQ} = $sprot_hash{$SPROT_SEQ} . $seqstr;
+            $sprot_hash{$DBA_SEQUENCE} = $sprot_hash{$DBA_SEQUENCE} . $seqstr;
           }
+
           $seq_start++;
         }
       }
