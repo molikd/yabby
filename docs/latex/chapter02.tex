@@ -508,7 +508,38 @@ Several commands exist for the manipulation of Swiss-prot data files.
 
 \index{sprot\_fetch}
 
-The command 'sprot\_fetch' 
+The command 'sprot\_fetch' fetches a single sequence from the
+Swiss-prot data file based on the sequence unique ID. For example,
+the Swiss-prot file 'sprot\_test.dat' contains 18 sequences,
+including the sequence with the ID '110KD\_PLAKN'. The command
+'sprot\_fetch' could be used to extract this sequence from the
+database file:
+
+\begin{verbatim}
+yabby> sprot_fetch sprot_test.dat 110KD_PLAKN plakn
+
+ Sequence '110KD_PLAKN' found.
+ [ Saving as 'plakn.seq' ]
+
+yabby> print plakn.seq
+
+>110KD_PLAKN [ 110 kDa antigen (PK110) (Fragment). Plasmodium knowlesi. ]
+FNSNMLRGSVCEEDVSLMTSIDNMIEEIDFYEKEIYKGSHSGGVIKGMDYDLEDDENDED
+EMTEQMVEEVADHITQDMIDEVAHHVLDNITHDMAHMEEIVHGLSGDVTQIKEIVQKVNV
+AVEKVKHIVETEETQKTVEPEQIEETQNTVEPEQTEETQKTVEPEQTEETQNTVEPEQIE
+ETQKTVEPEQTEEAQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTE
+ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
+\end{verbatim}
+
+\index{seq\_sprot\_os}
+
+The command 'seq\_sprot\_os' fetches the organism name from the
+Swiss-prot data file (Swiss-prot field "OS") for a set of sequences
+saved in the workspace. This is useful when the organism name is
+lost in the sequence manipulation pipeline (for example, when
+the Swiss-prot database is convereted into the FASTA format with
+the program "sreformat" from the Sean Eddy's SQUID toolkit, the
+organism names are lost).
 
 \section{Housekeeping commands}
 
