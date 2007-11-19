@@ -61,6 +61,7 @@ if ( $file_format eq "fasta" ) {
 }
 
 $keys = get_seq_keys( $seq_hash );
+
 printf " %d sequence(s) found.\n", $#{$keys}+1;
 
 if ( $opt_a_flag ) {
