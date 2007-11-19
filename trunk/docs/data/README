@@ -2,30 +2,39 @@
 This directory contains example data files used in examples 
 given in User Guide.
 
-cad.fas -- Pfam CAD family of protein sequences (6 sequences).
+cad.fas -- Pfam CAD family of protein sequences (6 sequences)
+  in FASTA format
 
-cad3.fas -- A subset of 3 sequences from cad.seq.
+cad3.fas -- A subset of 3 sequences from cad.fas in FASTA
+  format
 
-cox1.fas -- Pfam COX1 family of protein sequences (23 sequences).
+cox1.fas -- Pfam COX1 family of protein sequences (23 sequences)
+  in fasta format
 
-tom20.fas -- Three example sequences of tom20.
+tom20.fas -- Three example sequences of tom20 in FASTA format
 
-dna.fas -- An example DNA sequence.
+dna.fas -- An example DNA sequence in FASTA format
 
-m2.blocks -- An example sequence motif in BLOCKS format.
+m2.blocks -- An example sequence motif in BLOCKS format
 
-meme.out -- An example output of the motif detection program MEME.
+meme.out -- An example output of the motif detection program MEME
 
-LmjFmockup.pep -- A mockup genome sequence file.
+LmjFmockup.pep -- A mockup genome sequence file
 
-hmmpfam.out -- An example output file of the program HMMPFAM (a part
-  of HMMER software).
+hmmpfam.out -- An example output file of the program HMMPFAM
+  (HMMPFAM is a part of HMMER software)
 
-needle.out -- An example output of the EMBOSS program needle.
+needle.out -- An example output of the EMBOSS program needle
 
 1BT0.pdb -- Example of Protein Data Bank file, structure of
-  ubiquitin-like protein 'rub1'.
+  ubiquitin-like protein 'rub1'
 
 Ecoli057.fas, Ecoli_lab.fas -- Two sets of protein sequences
- used to demonstrate the command 'seq_needl2'.
+  in FASTA format used to demonstrate the command 'seq_needl2'
+
+sprot_test.dat -- An example Swiss-prot data file with 18
+  entries
+
+sprot_test.fas -- A subset of three sequences from the data
+  file 'sprot_test.dat' in FASTA format
 
