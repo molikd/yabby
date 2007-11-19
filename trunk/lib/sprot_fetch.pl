@@ -40,7 +40,8 @@ $seq_hash = {};
 $seq_hash->{1} = $seq_item;
 $xmldoc = seq2xml( $seq_hash );
 
-print " Sequence '$sprot_id' found. Saving as '$obj_name.$SEQUENCE'\n";
+print " Sequence '$sprot_id' found.\n";
+print " [ Saving as '$obj_name.$SEQUENCE' ]\n";
 
 save_ip_xml( $xmldoc, $obj_name, $SEQUENCE, $WARN_OVERW );
 
