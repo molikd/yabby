@@ -56,7 +56,6 @@ $seq_hash2 = {};
 $cntr = 0;
 
 printf " %d sequences to process.\n", $#{$keys}+1;
-print " Printing dot per processed sequence:\n";
 
 for $key ( @$keys ) {
 
