@@ -502,15 +502,138 @@ yabby> what
 This command requires the module Bio::DB::GenBank and illustrates how
 BioPerl \cite{bioperl} can be used within Yabby.
 
-\subsection{Swiss-prot related commands}
+\index{seq\_os}
 
-Several commands exist for the manipulation of Swiss-prot data files.
+The command 'seq\_os' inserts additional information into sequence
+comments, where additional information is read from an external
+file. For example, the file 'sprot\_test.dat.os' contains the
+list of sequences IDs and associated organism names, one line
+per sequence:
+
+\begin{verbatim}
+104K_THEAN Theileria annulata.
+104K_THEPA Theileria parva.
+108_SOLLC Solanum lycopersicum (Tomato) (Lycopersicon esculentum).
+10KD_VIGUN Vigna unguiculata (Cowpea).
+110KD_PLAKN Plasmodium knowlesi.
+11S2_SESIN Sesamum indicum (Oriental sesame) (Gingelly).
+11S3_HELAN Helianthus annuus (Common sunflower).
+11SB_CUCMA Cucurbita maxima (Pumpkin) (Winter squash).
+128UP_DROME Drosophila melanogaster (Fruit fly).
+12AH_CLOS4 Clostridium sp. (strain C 48-50).
+12KD_FRAAN Fragaria ananassa (Strawberry).
+12KD_MYCSM Mycobacterium smegmatis.
+12S1_ARATH Arabidopsis thaliana (Mouse-ear cress).
+12S2_ARATH Arabidopsis thaliana (Mouse-ear cress).
+12S_PROFR Propionibacterium freudenreichii subsp. shermanii.
+13KDA_SCYCA Scyliorhinus canicula (Spotted dogfish) (Spotted catshark).
+13KDA_TRISC Triakis scyllium (Leopard shark) (Triakis scyllia).
+13S1_FAGES Fagopyrum esculentum (Common buckwheat).
+\end{verbatim}
+
+The command 'seq\_os' could be used to insert the organism name
+in the sequence object comments by using the file listed above.
+To illustrate this, we first load the test set of sequences:
+
+\begin{verbatim}
+yabby> seq_load sprot_test.fas test
+
+ Reading the file 'sprot_test.fas' ..
+ 3 sequence(s) found.
+
+yabby> print test.seq
+
+>104K_THEPA [ 104K_THEPA 104 kDa microneme/rhoptry antigen precursor (p104) ]
+MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGPAFLTAVEMAGVKYL
+QVQHGSNVNIHRLVEGNVVIWENASTPLYTGAIVTNNDGPYMAYVEVLGDPNLQFFIKSG
+DAWVTLSEHEYLAKLQEIRQAVHIESVFSLNMAFQLENNKYEVETHAKNGANMVTFIPRN
+GHICKMVYHKNVRIYKATGNDTVTSVVGFFRGLRLLLINVFSIDDNGMMSNRYFQHVDDK
+YVPISQKNYETGIVKLKDYKHAYHPVDLDIKDIDYTMFHLADATYHEPCFKIIPNTGFCI
+TKLFDGDQVLYESFNPLIHCINEVHIYDRNNGSIICLHLNYSPPSYKAYLVLKDTGWEAT
+THPLLEEKIEELQDQRACELDVNFISDKDLYVAALTNADLNYTMVTPRPHRDVIRVSDGS
+EVLWYYEGLDNFLVCAWIYVSDGVASLVHLRIKDRIPANNDIYVLKGDLYWTRITKIQFT
+QEIKRLVKKSKKKLAPITEEDSDKHDEPPEGPGASGLPPKAPGDKEGSEGHKGPSKGSDS
+SKEGKKPGSGKKPGPAREHKPSKIPTLSKKPSGPKDPKHPRDPKEPRKSKSPRTASPTRR
+PSPKLPQLSKLPKSTSPRSPPPPTRPSSPERPEGTKIIKTSKPPSPKPPFDPSFKEKFYD
+DYSKAASRSKETKTTVVLDESFESILKETLPETPGTPFTTPRPVPPKRPRTPESPFEPPK
+DPDSPSTSPSEFFTPPESKRTRFHETPADTPLPDVTAELFKEPDVTAETKSPDEAMKRPR
+SPSEYEDTSPGDYPSLPMKRHRLERLRLTTTEMETDPGRMAKDASGKPVKLKRSKSFDDL
+TTVELAPEPKASRIVVDDEGTEADDEETHPPEERQKTEVRRRRPPKKPSKSPRPSKPKKP
+KKPDSAYIPSILAILVVSLIVGIL
+>110KD_PLAKN [ 110KD_PLAKN 110 kDa antigen (PK110) (Fragment) ]
+FNSNMLRGSVCEEDVSLMTSIDNMIEEIDFYEKEIYKGSHSGGVIKGMDYDLEDDENDED
+EMTEQMVEEVADHITQDMIDEVAHHVLDNITHDMAHMEEIVHGLSGDVTQIKEIVQKVNV
+AVEKVKHIVETEETQKTVEPEQIEETQNTVEPEQTEETQKTVEPEQTEETQNTVEPEQIE
+ETQKTVEPEQTEEAQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTE
+ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
+>12KD_FRAAN [ 12KD_FRAAN Auxin-repressed 12.5 kDa protein. ]
+MVLLDKLWDDIVAGPQPERGLGMLRKVPQPLNLKDEGESSKITMPTTPTTPVTPTTPISA
+RKDNVWRSVFHPGSNLSSKTMGNQVFDSPQPNSPTVYDWMYSGETRSKHHR
+\end{verbatim}
+
+The command 'seq\_os' takes two arguments, the file name with 
+sequence IDs and additional information (see above), and the
+sequence object name:
+
+\begin{verbatim}
+yabby> seq_os sprot_test.dat.os test
+
+ Reading the file 'sprot_test.dat.os' ...
+ 3 sequences to process.
+
+ All done.
+ [ seq_os: 'test.seq' exists, overwritten ]
+\end{verbatim}
+
+The original sequence object was overwritten, but the difference
+is only in that the comments are changed to contain the information
+provided in the file 'sprot\_test.dat.os':
+
+\begin{verbatim}
+
+yabby> print test.seq
+
+>104K_THEPA [ 104K_THEPA 104 kDa microneme/rhoptry antigen
+... precursor (p104) Theileria parva. ]
+MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGPAFLTAVEMAGVKYL
+QVQHGSNVNIHRLVEGNVVIWENASTPLYTGAIVTNNDGPYMAYVEVLGDPNLQFFIKSG
+DAWVTLSEHEYLAKLQEIRQAVHIESVFSLNMAFQLENNKYEVETHAKNGANMVTFIPRN
+GHICKMVYHKNVRIYKATGNDTVTSVVGFFRGLRLLLINVFSIDDNGMMSNRYFQHVDDK
+YVPISQKNYETGIVKLKDYKHAYHPVDLDIKDIDYTMFHLADATYHEPCFKIIPNTGFCI
+TKLFDGDQVLYESFNPLIHCINEVHIYDRNNGSIICLHLNYSPPSYKAYLVLKDTGWEAT
+THPLLEEKIEELQDQRACELDVNFISDKDLYVAALTNADLNYTMVTPRPHRDVIRVSDGS
+EVLWYYEGLDNFLVCAWIYVSDGVASLVHLRIKDRIPANNDIYVLKGDLYWTRITKIQFT
+QEIKRLVKKSKKKLAPITEEDSDKHDEPPEGPGASGLPPKAPGDKEGSEGHKGPSKGSDS
+SKEGKKPGSGKKPGPAREHKPSKIPTLSKKPSGPKDPKHPRDPKEPRKSKSPRTASPTRR
+PSPKLPQLSKLPKSTSPRSPPPPTRPSSPERPEGTKIIKTSKPPSPKPPFDPSFKEKFYD
+DYSKAASRSKETKTTVVLDESFESILKETLPETPGTPFTTPRPVPPKRPRTPESPFEPPK
+DPDSPSTSPSEFFTPPESKRTRFHETPADTPLPDVTAELFKEPDVTAETKSPDEAMKRPR
+SPSEYEDTSPGDYPSLPMKRHRLERLRLTTTEMETDPGRMAKDASGKPVKLKRSKSFDDL
+TTVELAPEPKASRIVVDDEGTEADDEETHPPEERQKTEVRRRRPPKKPSKSPRPSKPKKP
+KKPDSAYIPSILAILVVSLIVGIL
+>110KD_PLAKN [ 110KD_PLAKN 110 kDa antigen (PK110) (Fragment)
+... Plasmodium knowlesi. ]
+FNSNMLRGSVCEEDVSLMTSIDNMIEEIDFYEKEIYKGSHSGGVIKGMDYDLEDDENDED
+EMTEQMVEEVADHITQDMIDEVAHHVLDNITHDMAHMEEIVHGLSGDVTQIKEIVQKVNV
+AVEKVKHIVETEETQKTVEPEQIEETQNTVEPEQTEETQKTVEPEQTEETQNTVEPEQIE
+ETQKTVEPEQTEEAQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTE
+ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
+>12KD_FRAAN [ 12KD_FRAAN Auxin-repressed 12.5 kDa protein.
+... Fragaria ananassa (Strawberry). ]
+MVLLDKLWDDIVAGPQPERGLGMLRKVPQPLNLKDEGESSKITMPTTPTTPVTPTTPISA
+RKDNVWRSVFHPGSNLSSKTMGNQVFDSPQPNSPTVYDWMYSGETRSKHHRim}
+
+\end{verbatim}
+
+\subsection{Swiss-Prot related commands}
+
+Several commands exist for the manipulation of Swiss-Prot data files.
 
 \index{sprot\_fetch}
 
 The command 'sprot\_fetch' fetches a single sequence from the
-Swiss-prot data file based on the sequence unique ID. For example,
-the Swiss-prot file 'sprot\_test.dat' contains 18 sequences,
+Swiss-Prot data file based on the sequence unique ID. For example,
+the Swiss-Prot file 'sprot\_test.dat' contains 18 sequences,
 including the sequence with the ID '110KD\_PLAKN'. The command
 'sprot\_fetch' could be used to extract this sequence from the
 database file:
@@ -534,12 +657,193 @@ ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
 \index{seq\_sprot\_os}
 
 The command 'seq\_sprot\_os' fetches the organism name from the
-Swiss-prot data file (Swiss-prot field "OS") for a set of sequences
+Swiss-Prot data file (Swiss-Prot field "OS") for a set of sequences
 saved in the workspace. This is useful when the organism name is
-lost in the sequence manipulation pipeline (for example, when
-the Swiss-prot database is convereted into the FASTA format with
-the program "sreformat" from the Sean Eddy's SQUID toolkit, the
-organism names are lost).
+lost in the sequence manipulation pipeline. For example, when the
+Swiss-Prot database is convereted into the FASTA format with the
+program "sreformat" from the Sean Eddy's SQUID toolkit, the organism
+names are not copied to the FASTA file.
+
+The command 'seq\_sprot\_os' requires two arguments, the name of the
+Swiss-Prot database file and the name of an existing sequence object.
+To illustrate this, we first load the test set of sequences
+('sprot\_test.fas') in the workspace, under the name 'test':
+
+\begin{verbatim}
+yabby> seq_load sprot_test.fas test 
+
+ Reading the file 'sprot_test.fas' ..
+ 3 sequence(s) found.
+
+yabby> print test.seq
+
+>104K_THEPA [ 104K_THEPA 104 kDa microneme/rhoptry antigen precursor (p104) ]
+MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGPAFLTAVEMAGVKYL
+QVQHGSNVNIHRLVEGNVVIWENASTPLYTGAIVTNNDGPYMAYVEVLGDPNLQFFIKSG
+DAWVTLSEHEYLAKLQEIRQAVHIESVFSLNMAFQLENNKYEVETHAKNGANMVTFIPRN
+GHICKMVYHKNVRIYKATGNDTVTSVVGFFRGLRLLLINVFSIDDNGMMSNRYFQHVDDK
+YVPISQKNYETGIVKLKDYKHAYHPVDLDIKDIDYTMFHLADATYHEPCFKIIPNTGFCI
+TKLFDGDQVLYESFNPLIHCINEVHIYDRNNGSIICLHLNYSPPSYKAYLVLKDTGWEAT
+THPLLEEKIEELQDQRACELDVNFISDKDLYVAALTNADLNYTMVTPRPHRDVIRVSDGS
+EVLWYYEGLDNFLVCAWIYVSDGVASLVHLRIKDRIPANNDIYVLKGDLYWTRITKIQFT
+QEIKRLVKKSKKKLAPITEEDSDKHDEPPEGPGASGLPPKAPGDKEGSEGHKGPSKGSDS
+SKEGKKPGSGKKPGPAREHKPSKIPTLSKKPSGPKDPKHPRDPKEPRKSKSPRTASPTRR
+PSPKLPQLSKLPKSTSPRSPPPPTRPSSPERPEGTKIIKTSKPPSPKPPFDPSFKEKFYD
+DYSKAASRSKETKTTVVLDESFESILKETLPETPGTPFTTPRPVPPKRPRTPESPFEPPK
+DPDSPSTSPSEFFTPPESKRTRFHETPADTPLPDVTAELFKEPDVTAETKSPDEAMKRPR
+SPSEYEDTSPGDYPSLPMKRHRLERLRLTTTEMETDPGRMAKDASGKPVKLKRSKSFDDL
+TTVELAPEPKASRIVVDDEGTEADDEETHPPEERQKTEVRRRRPPKKPSKSPRPSKPKKP
+KKPDSAYIPSILAILVVSLIVGIL
+>110KD_PLAKN [ 110KD_PLAKN 110 kDa antigen (PK110) (Fragment) ]
+FNSNMLRGSVCEEDVSLMTSIDNMIEEIDFYEKEIYKGSHSGGVIKGMDYDLEDDENDED
+EMTEQMVEEVADHITQDMIDEVAHHVLDNITHDMAHMEEIVHGLSGDVTQIKEIVQKVNV
+AVEKVKHIVETEETQKTVEPEQIEETQNTVEPEQTEETQKTVEPEQTEETQNTVEPEQIE
+ETQKTVEPEQTEEAQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTE
+ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
+>12KD_FRAAN [ 12KD_FRAAN Auxin-repressed 12.5 kDa protein. ]
+MVLLDKLWDDIVAGPQPERGLGMLRKVPQPLNLKDEGESSKITMPTTPTTPVTPTTPISA
+RKDNVWRSVFHPGSNLSSKTMGNQVFDSPQPNSPTVYDWMYSGETRSKHHR
+\end{verbatim}
+
+The Swiss-Prot example file 'sprot\_test.dat' contains 18
+sequences which include the tree from the file 'sprot\_test.fas'.
+The command 'seq\_sprot\_os' could be used to fetch the OS
+field from the  Swiss-Prot file, and insert this in the
+sequence comment:
+
+\begin{verbatim}
+yabby> seq_sprot_os sprot_test.dat test
+
+ 3 sequences to process.
+ Printing dot per processed sequence:
+ ...
+ All done.
+ [ seq_sprot_os: 'test.seq' exists, overwritten ]
+\end{verbatim}
+
+This manipulation has happened in place, and the original
+sequence object was overwritten. the difference is of course
+only in the comment field:
+
+\begin{verbatim}
+yabby> print test.seq
+
+>104K_THEPA [ 104K_THEPA 104 kDa microneme/rhoptry antigen precursor
+... (p104) Theileria parva. ]
+MKFLILLFNILCLFPVLAADNHGVGPQGASGVDPITFDINSNQTGPAFLTAVEMAGVKYL
+QVQHGSNVNIHRLVEGNVVIWENASTPLYTGAIVTNNDGPYMAYVEVLGDPNLQFFIKSG
+DAWVTLSEHEYLAKLQEIRQAVHIESVFSLNMAFQLENNKYEVETHAKNGANMVTFIPRN
+GHICKMVYHKNVRIYKATGNDTVTSVVGFFRGLRLLLINVFSIDDNGMMSNRYFQHVDDK
+YVPISQKNYETGIVKLKDYKHAYHPVDLDIKDIDYTMFHLADATYHEPCFKIIPNTGFCI
+TKLFDGDQVLYESFNPLIHCINEVHIYDRNNGSIICLHLNYSPPSYKAYLVLKDTGWEAT
+THPLLEEKIEELQDQRACELDVNFISDKDLYVAALTNADLNYTMVTPRPHRDVIRVSDGS
+EVLWYYEGLDNFLVCAWIYVSDGVASLVHLRIKDRIPANNDIYVLKGDLYWTRITKIQFT
+QEIKRLVKKSKKKLAPITEEDSDKHDEPPEGPGASGLPPKAPGDKEGSEGHKGPSKGSDS
+SKEGKKPGSGKKPGPAREHKPSKIPTLSKKPSGPKDPKHPRDPKEPRKSKSPRTASPTRR
+PSPKLPQLSKLPKSTSPRSPPPPTRPSSPERPEGTKIIKTSKPPSPKPPFDPSFKEKFYD
+DYSKAASRSKETKTTVVLDESFESILKETLPETPGTPFTTPRPVPPKRPRTPESPFEPPK
+DPDSPSTSPSEFFTPPESKRTRFHETPADTPLPDVTAELFKEPDVTAETKSPDEAMKRPR
+SPSEYEDTSPGDYPSLPMKRHRLERLRLTTTEMETDPGRMAKDASGKPVKLKRSKSFDDL
+TTVELAPEPKASRIVVDDEGTEADDEETHPPEERQKTEVRRRRPPKKPSKSPRPSKPKKP
+KKPDSAYIPSILAILVVSLIVGIL
+>110KD_PLAKN [ 110KD_PLAKN 110 kDa antigen (PK110) (Fragment)
+... Plasmodium knowlesi. ]
+FNSNMLRGSVCEEDVSLMTSIDNMIEEIDFYEKEIYKGSHSGGVIKGMDYDLEDDENDED
+EMTEQMVEEVADHITQDMIDEVAHHVLDNITHDMAHMEEIVHGLSGDVTQIKEIVQKVNV
+AVEKVKHIVETEETQKTVEPEQIEETQNTVEPEQTEETQKTVEPEQTEETQNTVEPEQIE
+ETQKTVEPEQTEEAQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTE
+ETQKTVEPEQTEETQKTVEPEQTEETQKTVEPEQTEETQNTVEPEPTQETQNTVEP
+>12KD_FRAAN [ 12KD_FRAAN Auxin-repressed 12.5 kDa protein.
+... Fragaria ananassa (Strawberry). ]
+MVLLDKLWDDIVAGPQPERGLGMLRKVPQPLNLKDEGESSKITMPTTPTTPVTPTTPISA
+RKDNVWRSVFHPGSNLSSKTMGNQVFDSPQPNSPTVYDWMYSGETRSKHHR
+\end{verbatim}
+
+Note that all sequences from the sequence object must be
+present in the Swiss-Prot data file, or this command will
+fail (in the example above, all sequences from the 'test.seq'
+object must be present in the file 'sprot\_test.dat'). On
+the other hand, the Swiss-Prot file can contain additional
+sequences. The sequences are searched by the sequence ID. 
+
+The usability of commands 'sprot\_fetch' and 'seq\_sprot\_os'
+is limited if the Swiss-Prot file is large and/or the sequence
+object is large. For example, the UniProt release 12.4
+(23-Oct-2007) contains 5,275,429 sequences, and the combined
+Swiss-Prot file is approx 13 Gb in size (swiss-prot + TrEMBL).
+The command 'seq\_sprot\_os' cannot cope well with the file
+of this size.
+
+\index{sprot\_os}
+
+Consider for example a sequence object Omp85 with 1,000
+sequences, which was derived in some way from the UniProt
+database (for example, the list of hits from the hidden
+Markov model search of the combined UniProt data file).
+To associate organism names with the Omp85 sequences, one
+would need to search the entire UniProt for each of the
+1,000 sequences in the Omp85.  The command 'seq\_sprot\_os'
+is not optimized to cope with such a large computational 
+task. However, this task can be accomplished in two steps,
+by using the commands 'sprot\_os' and 'seq\_os'. First,
+the command 'sprot\_os' can be used to extract the organism
+names from the UniProt file:
+
+\begin{verbatim}
+yabby> sprot_os uniprot.dat uniprot.dat.os
+
+ Processing the database file 'uniprot.dat' ..
+ Printing a dot per 10000 processed sequences:
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ...............................................
+
+ All done.
+\end{verbatim}
+
+In the above example, 'uniprot.dat' is the combined UniProt
+data file (swiss-prot + TrEMBL) in the Swiss-Prot format.
+The organism names are saved in the file 'uniprot.dat.os'.
+This file lists sequence IDs and the first OS field as given
+in the Swiss-Prot file, one line per sequence:
+
+\begin{verbatim}
+A0AQI4_9ARCH uncultured archaeon.
+A0AQI5_9ARCH uncultured archaeon.
+A0AQI7_9ARCH uncultured archaeon.
+A0AQI8_9ARCH uncultured archaeon.
+A0B530_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+A0B531_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+A0B532_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+A0B533_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+A0B534_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+A0B535_METTP Methanosaeta thermophila (strain DSM 6194 / PT)
+...
+\end{verbatim}
+
+The command 'seq\_os' (explained above) can be used to insert
+the organism names in the sequence object, by using the
+intermendiate file created by the command 'sprot\_os':
+
+\begin{verbatim}
+yabby> seq_os uniprot.dat.os Omp85
+
+ Reading the file 'uniprot.dat.os' ...
+ 1000 sequences to process.
+
+ All done.
+ [ seq_os: 'Omp85.seq' exists, overwritten ]
+\end{verbatim}
+
+Similarly as with the command 'sprot\_test.dat', the insertion
+of comments was in place, and the sequence object 'Omp85.seq'
+was overwritten.  
 
 \section{Housekeeping commands}
 
