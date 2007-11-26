@@ -35,6 +35,12 @@ Ecoli057.fas, Ecoli_lab.fas -- Two sets of protein sequences
 sprot_test.dat -- An example Swiss-prot data file with 18
   entries
 
+sprot_test.dat.os -- The file containing the list of sequence
+  IDs and organism names from the file 'sprot_test.dat' (this
+  file was created from 'sprot_test.dat' with the command
+  'sprot_os')
+
 sprot_test.fas -- A subset of three sequences from the data
   file 'sprot_test.dat' in FASTA format
+
 
