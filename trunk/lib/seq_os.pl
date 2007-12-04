@@ -4,19 +4,19 @@ use yabby_sys;
 use yabby_seq;
 
 $USAGE = "
- Inserts organism names into sequence comments, where organism
- names are read from an external file.
+ Inserts additional information in sequence comments, where
+ additional information is read from an external file.
 
  Usage:
- 	seq_os ORG_FILE OBJ_NAME
+ 	seq_os FILE_NAME OBJ_NAME
 
- Where ORG_FILE is the file which contains pairs (sequence
- ID, organism name), and OBJ_NAME is the name of an existing
- sequence object. ORG_FILE must include all sequence IDs
- present in the OBJ_NAME.
+ Where FILE_NAME is the file which contains pairs (sequence
+ ID, additional information), and OBJ_NAME is the name of an
+ existing sequence object. FILE_NAME must include all sequence
+ IDs present in the object OBJ_NAME.
 
  The object OBJ_NAME will be overwritten with altered comments
- to include the organism name for each sequence.
+ to include the additional information for each sequence.
 ";
 
 # options

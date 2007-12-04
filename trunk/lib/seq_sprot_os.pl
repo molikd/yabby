@@ -4,16 +4,16 @@ use yabby_sys;
 use yabby_seq;
 
 $USAGE = "
- Inserts the organism name into sequence comments from
- the Swiss-Prot database.
+ Inserts the organism name into sequence comments by using
+ the local Swiss-Prot database file.
 
  Usage:
  	seq_sprot_os DBA_FILE OBJ_NAME
 
- Where DBA_FILE is the database is the Swiss-Prot format,
- OBJ_NAME is the name of an existing sequence object. The
- object OBJ_NAME will be overwritten with altered comments
- to include the organism name for each sequence.
+Where DBA_FILE is the local database file in the Swiss-Prot
+format, and OBJ_NAME is the name of an existing sequence
+object. The object OBJ_NAME will be overwritten with altered
+comments to include the organism name for each sequence.
 ";
 
 # options

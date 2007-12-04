@@ -1070,6 +1070,84 @@ yabby> seq_op -i cad cad3 cadi
 
 % ### END OF NEW COMMAND ####
 
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_os]{ \fbox{\tt seq\_os} }
+
+\index{seq\_os}
+
+% Concise explanation
+
+Inserts additional information in sequence comments, where
+additional information is read from an external file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_os FILE\_NAME OBJ\_NAME}
+
+Where FILE\_NAME is the file which contains pairs (sequence
+ID, additional information), and OBJ\_NAME is the name of an
+existing sequence object. FILE\_NAME must include all sequence
+IDs present in the OBJ\_NAME.
+
+% 2. Options
+
+\item{Options:}
+\begin{description}
+{\em None}
+\end{description}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+% {\em None} - Uncomment this and delete line below if no notes 
+\item The object OBJ\_NAME will be overwritten with altered comments
+to include the additional information for each sequence.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item Insert organism names in 21 sequences stored under the
+name 'cam.seq'.
+\begin{verbatim}
+yabby> seq_os sprot_test.dat.os cam
+
+ Reading the file 'sprot_test.dat.os' ...
+ 21 sequences to process.
+
+ All done.
+ [ seq_os: 'cam.seq' exists, overwritten ]
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em seq}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em seq} (overwrites the original seq object)
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
 % ### NEW COMMAND ###
 
 \subsection[seq\_pattern]{ \fbox{\tt seq\_pattern} }
@@ -1244,6 +1322,81 @@ yabby> seq_pick -n 2 cad3 s2
 \end{description}
 
 % ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[seq\_sprot\_os]{ \fbox{\tt seq\_sprot\_os} }
+
+\index{seq\_sprot\_os}
+
+% Concise explanation
+
+Inserts the organism name into sequence comments by using
+the local Swiss-Prot database file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt seq\_sprot\_os DBA\_FILE OBJ\_NAME}
+
+Where DBA\_FILE is the local database file in the Swiss-Prot
+format, and OBJ\_NAME is the name of an existing sequence
+object. The object OBJ\_NAME will be overwritten with altered
+comments to include the organism name for each sequence.
+
+% 2. Options
+
+\item{Options:}
+{\em None}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{description}
+\item This command overwrites the original sequence.
+\end{description}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item Fetch the organism name (OS) field from the Swiss-Prot file,
+'sprot\_test.dat', and insert this in the sequence comment of three
+sequences saved as 'aqr1':
+\begin{verbatim}
+yabby> seq_sprot_os sprot_test.dat aqr1 
+
+ 3 sequences to process.
+ Printing dot per processed sequence:
+ ...
+ All done.
+ [ seq_sprot_os: 'aqr1.seq' exists, overwritten ]
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em seq}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em seq} (overwrites the original seq object)
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
 
 % ### NEW COMMAND ###
 
@@ -1460,6 +1613,159 @@ yabby> seq_unique cad cad3 caduniqincad
 
 % ### END OF NEW COMMAND ####
 
+
+% ##############################################################
+\section{Swiss-Prot related commands}
+% ##############################################################
+
+% ### NEW COMMAND ###
+
+\subsection[sprot\_fetch]{ \fbox{\tt sprot\_fetch} }
+
+\index{sprot\_fetch}
+
+% Concise explanation
+
+Fetches a sequence from a Swiss-Prot local file database
+by its ID.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt sprot\_fetch DBA\_FILE SPROT\_ID OBJ\_NAME}
+
+Where DBA\_FILE is the database is the Swiss-Prot format,
+and SPROT\_ID is the Swiss-Prot sequence ID, and OBJ\_NAME
+is the name under which the sequence will be saved in the
+workspace.
+
+% 2. Options
+
+\item{Options:}
+{\em None}
+
+% 3. Notes
+
+\item{Notes:}
+{\em None}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item Fetch the sequence '110KD\_PLAKN' from the Swiss-Prot
+file 'sprot\_test.dat':
+\begin{verbatim}
+yabby> sprot_fetch sprot_test.dat 110KD_PLAKN plakn
+
+ Sequence '110KD_PLAKN' found.
+ [ Saving as 'plakn.seq' ]
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em seq}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
+
+% ### NEW COMMAND ###
+
+\subsection[sprot\_os]{ \fbox{\tt sprot\_os} }
+
+\index{sprot\_os}
+
+% Concise explanation
+
+Extracts sequence ID and organism name from the Swiss-Prot
+sequence database file.
+
+% Command description
+
+\begin{description}
+
+% 1. Usage
+
+\item{Usage:}
+
+{\tt sprot\_os DBA\_FILE OUT\_FILE}
+
+Where DBA\_FILE is the name of the sequence database file
+in the Swiss-Prot format, and OUT\_FILE is the name of the
+output file to be created, containing pairs (sequence ID,
+organism name).
+
+% 2. Options
+
+\item{Options:}
+{\em None}
+
+% 3. Notes
+
+\item{Notes:}
+\begin{enumerate}
+\item This command is designed to work with the command 'seq\_os'.
+\end{enumerate}
+
+% 4. Examples 
+
+\item{Examples:}
+\begin{enumerate}
+
+\item Extract the organism names (Swiss-Prot OS field) from the
+file 'uniprot.dat', and save as the file 'uniprot.dat.os':
+\begin{verbatim}
+yabby> sprot_os uniprot.dat uniprot.dat.os
+
+ Processing the database file 'uniprot.dat' ..
+ Printing a dot per 10000 processed sequences:
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ............................................................
+ ...............................................
+
+ All done.
+\end{verbatim}
+
+\end{enumerate}
+
+% 5. Requirements 
+
+\item{Requirements:} {\em None}
+
+% 6. Objects 
+
+\item{Creates objects:} {\em None}
+
+% 7. System scripts
+
+\item{System scripts:} {\em None}
+
+\end{description}
+
+% ### END OF NEW COMMAND ####
 
 % ##############################################################
 \section{HMMER commands}
