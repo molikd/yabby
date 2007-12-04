@@ -8,14 +8,14 @@ use yabby_seq;
 use Getopt::Std;
 
 $USAGE = "
- Extracts sequence ID and organism name from the SWISS-PROT
+ Extracts sequence ID and organism name from the Swiss-Prot
  sequence database file.
 
  Usage:
  	sprot_os DBA_FILE OUT_FILE
 
  Where DBA_FILE is the name of the sequence database file
- in the SWISS-PROT format, and OUT_FILE is the name of the
+ in the Swiss-Prot format, and OUT_FILE is the name of the
  output file to be created, containing pairs (sequence ID,
  organism name).
 ";
