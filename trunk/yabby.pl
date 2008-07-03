@@ -55,7 +55,7 @@ if ( $OS_NAME=~/Win/i ) {
 }
 
 print "\n - YABBY version $version - \n";
-print "   Copyright (c) 2004-7 Vladimir Likic\n";
+print "   Copyright (c) 2004-8 Vladimir Likic\n";
 printf " [ %d command(s) ready ]\n\n", $n_cmd;
 
 if ( -d $SYS_DIR ) {
