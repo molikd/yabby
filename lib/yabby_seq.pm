@@ -114,6 +114,7 @@ sub read_fasta {
     }
 
     $db_entry_line++;
+
     if ( $db_entry_line == 1 ) {
       shift @fields;
       $comment = join "", @fields;
@@ -344,19 +345,20 @@ sub print_seq_fasta {
   # if $comment_as_is is defined, comment is printed as saved in 'seq_item'
   my ( $fp, $seq_item, $print_width, $comment_as_is ) = @_;
   my ( @seq_char, $ii );
-  if (defined($comment_as_is)) {
+
+  if ( defined($comment_as_is) ) {
     printf $fp ">%s\n", $seq_item->{$DBA_COMMENT};
   } else {
-    printf $fp ">%s [ %s ]\n", $seq_item->{$DBA_SEQID},
-      $seq_item->{$DBA_COMMENT};
+    $seq_comment = $seq_item->{$DBA_COMMENT};
+    chomp( $seq_comment );
+    printf $fp ">%s [ %s ]\n", $seq_item->{$DBA_SEQID}, $seq_comment;
   }
+
   @seq_char = split //, $seq_item->{$DBA_SEQUENCE};
+
   for my $ii ( 0 .. $#seq_char ) {
     printf $fp "%s", $seq_char[$ii];
-    if ( ( (($ii+1) % $print_width) == 0 ) &&
-                         ($ii != $#seq_char ) ) {
-      print $fp "\n";
-    }
+    #if ( ( (($ii+1) % $print_width) == 0 ) && ($ii != $#seq_char ) ) { print $fp "\n"; }
   }
   print $fp "\n";
 }
