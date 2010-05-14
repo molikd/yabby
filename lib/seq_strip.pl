@@ -27,8 +27,8 @@ $USAGE = "
 @argl = sys_init( @ARGV );
 check_call( @argl, [ 3 ] );
 $strip_range = $argl[0];
-$obj_name   = $argl[1];
-$obj_name2  = $argl[2];
+$obj_name = $argl[1];
+$obj_name2 = $argl[2];
 
 # requirements
 requirements( $obj_name, $SEQUENCE );
