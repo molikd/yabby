@@ -7,7 +7,7 @@ use yabby_utils;
 use Getopt::Std;
 
 $USAGE = "
- Strips a sequence to last N residues.
+ Crops a sequence to last N residues.
 
  Usage:
  	seq_strip N OBJ_NAME OBJ_NAME_NEW
@@ -54,7 +54,7 @@ for $key ( @$keys ) {
   $seq_item = $seq_hash->{$key};
   $seq_slice = substr( $seq_item->{$DBA_SEQUENCE}, -$crop_numres );
 
-  print " stripping '$seq_item->{$DBA_SEQID}'\n";
+  print " cropping '$seq_item->{$DBA_SEQID}'\n";
 
   $seq_item_new = {};
   $seq_item_new->{$DBA_SEQID} = $seq_item->{$DBA_SEQID} .  "_cropped_$crop_numres";
