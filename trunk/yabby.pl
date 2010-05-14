@@ -13,8 +13,8 @@
 
 #use lib "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
 #$LIB_DIR = "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
-use lib "/home/current/proj/yabby/code/yabby/lib";
-$LIB_DIR = "/home/current/proj/yabby/code/yabby/lib";
+use lib "/x/projects/yabby/code/yabby/lib";
+$LIB_DIR = "/x/projects/yabby/code/yabby/lib";
 
 #######################################################
 # End of installation section. Statements below this  #
@@ -23,7 +23,7 @@ $LIB_DIR = "/home/current/proj/yabby/code/yabby/lib";
 
 die "\n You must have Perl 5 to run YABBY\n\n" if $] < 5.000;
 
-$version = 0.10;
+$version = 0.90;
 
 use File::Path;
 use Switch;
@@ -55,7 +55,7 @@ if ( $OS_NAME=~/Win/i ) {
 }
 
 print "\n - YABBY version $version - \n";
-print "   Copyright (c) 2004-8 Vladimir Likic\n";
+print "   Copyright (c) 2004-2010 Vladimir Likic\n";
 printf " [ %d command(s) ready ]\n\n", $n_cmd;
 
 if ( -d $SYS_DIR ) {
