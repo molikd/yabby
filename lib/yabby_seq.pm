@@ -126,9 +126,10 @@ sub read_fasta {
     }
   }
 
+  close_file( $fp );
+
   # add the last sequence to $seq_hash
   add_fasta_entry( $seq_hash, $comment, $sequence );
-  close_file( $fp );
   return $seq_hash;
 }
 
