@@ -7,7 +7,7 @@ use yabby_utils;
 use Getopt::Std;
 
 $USAGE = "
- Strips a portion of a sequence.
+ Strips specified sequence portion of a sequence object.
 
  Usage:
  	seq_strip begin:end OBJ_NAME OBJ_NAME_NEW
