@@ -1,7 +1,8 @@
 # yabby_emboss.pm
 
-# needl2 type object
+# needlX type objects
 $NEEDL2 = "needl2";
+$NEEDL3 = "needl3";
 
 # globals for the EMBOSS program 'needle'
 $NEEDLE_PATH = "/usr/local/bin/needle";
