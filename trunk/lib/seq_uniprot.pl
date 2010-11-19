@@ -84,7 +84,9 @@ if ( substr($seqz->{primary_seq}->{desc},0,16) eq "WARNING:  ======" ) {
   error("error condition returned by BioPerl");
 }
 
-$seq_hash = bioperl2seq($seqz);
+# initialise sequence object
+$seq_hash = {};
+add_bioperl_seq($seq_hash, $seqz);
 
 $xmldoc = seq2xml($seq_hash);
 
