@@ -33,7 +33,7 @@ if ( $#argl == -1 ) {
 
     $cntr = 0;
     foreach ( @cmd_list ) {
-      $cntr++; printf " %-14s", $_;
+      $cntr++; printf " %-18s", $_;
       if ( ( $cntr % $CMDS_PER_LINE ) == 0  ) { print "\n" }
     }
     if ( ( ($#cmd_list+1) % $CMDS_PER_LINE ) != 0  ) { print "\n" }
