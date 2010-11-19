@@ -55,18 +55,14 @@ if ( defined($opt_a) ) {
   $opt_i_flag = 1;
   $identifier = $opt_i;
 }
+else {
+  error("no identifier specified");
+}
 
 # initialization
-if ( ! $identifier ) {
-  @argl = sys_init( @ARGV );
-  check_call( @argl, [ 2 ] );
-  $identifier = $argl[0];
-  $obj_name = $argl[1];
-} else {
-  @argl = sys_init( @ARGV );
-  check_call( @argl, [ 1 ] );
-  $obj_name = $argl[0];
-}
+@argl = sys_init( @ARGV );
+check_call( @argl, [ 1 ] );
+$obj_name = $argl[0];
 
 # body
 
