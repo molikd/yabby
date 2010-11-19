@@ -135,8 +135,10 @@ sub read_fasta {
 }
 
 sub add_fasta_entry {
+
   my ( $seq_hash, $comment, $sequence ) = @_;
   my ( $dba_no, $seq_item, @fields );
+
   $dba_no = keys %$seq_hash;
   $dba_no++;
   $seq_hash->{$dba_no} = {};
@@ -614,18 +616,20 @@ sub xml2seq {
 # BioPerl
 # -------
 
-sub bioperl2seq {
-  my ( $seqz ) = @_;
-  my ( $seq_item, $seq_hash );
+sub add_bioperl_seq {
 
-  $seq_item = {};
+  my ( $seq_hash, $seqz ) = @_;
+  my ( $dba_no, $seq_item );
+
+  $dba_no = keys %$seq_hash;
+  $dba_no++;
+
+  $seq_hash->{$dba_no} = {};
+
+  $seq_item = $seq_hash->{$dba_no};
   $seq_item->{$DBA_SEQID} = $seqz->{primary_seq}->{display_id};
   $seq_item->{$DBA_COMMENT} = $seqz->{primary_seq}->{desc};
   $seq_item->{$DBA_SEQUENCE} = $seqz->{primary_seq}->{seq};
-  $seq_hash = {};
-  $seq_hash->{1} = $seq_item;
-
-  return $seq_hash;
 }
 
 return 1;

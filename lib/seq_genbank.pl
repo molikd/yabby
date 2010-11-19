@@ -82,8 +82,11 @@ if ( ! defined($seqz)  ) {
   error("error condition returned by BioPerl");
 }
 
-$seq_hash = bioperl2seq($seqz);
+# convert the bioperl sequence to yabby sequence object
+$seq_hash = {};
+add_bioperl_seq($seqz);
 
+# convert sequence object to XML
 $xmldoc = seq2xml($seq_hash);
 
 printf " Saving '%s' as '%s'\n", $identifier, $obj_name;
