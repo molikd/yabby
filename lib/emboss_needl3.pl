@@ -1,4 +1,4 @@
-# emboss_needl2.pl
+# emboss_needl3.pl
 
 use yabby_sys;
 use yabby_emboss;
@@ -18,7 +18,7 @@ $USAGE = "
         emboss_needl3 SEQ_QUERY OBJ_NAME
 
   Where SEQ_QUERY is an existing yabby sequence object,
-  and OBJ_NAME is the name of the 'needl2' object to
+  and OBJ_NAME is the name of the 'needl3' object to
   be created. 
 ";
 
