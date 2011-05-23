@@ -13,8 +13,8 @@
 
 #use lib "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
 #$LIB_DIR = "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
-use lib "/x/projects/yabby/code/yabby/lib";
-$LIB_DIR = "/x/projects/yabby/code/yabby/lib";
+use lib "/x/yabby/yabby/lib";
+$LIB_DIR = "/x/yabby/yabby/lib";
 
 #######################################################
 # End of installation section. Statements below this  #
@@ -55,7 +55,7 @@ if ( $OS_NAME=~/Win/i ) {
 }
 
 print "\n - YABBY version $version - \n";
-print "   Copyright (c) 2004-2010 Vladimir Likic\n";
+print "   Copyright (c) 2004-2011 Vladimir Likic\n";
 printf " [ %d command(s) ready ]\n\n", $n_cmd;
 
 if ( -d $SYS_DIR ) {
