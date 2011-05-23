@@ -8,14 +8,14 @@ use yabby_utils;
 use Getopt::Std;
 
 $USAGE = "
-  Extracts sequences which have the highest similarity from
+  Extracts sequences with the highest similarity score from
   the output of the EMBOSS program 'needle'.
 
   Usage:
-        emboss_needle NEEDLE_OUTPUT NN
+        emboss_needle NEEDLE_OUTPUT N
 
   Where NEEDLE_OUTPUT is the output file of the program 'needle',
-  and NN is the number of highest alignments to report (as given
+  and N is the number of highest alignments to report (as given
   by the 'Similarity' line in the needle output).
 ";
 
