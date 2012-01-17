@@ -48,7 +48,7 @@ $SPROT_SEQ = "SQ   ";
 
 # the default number of characters when printing
 # the sequence
-$PRINT_WIDTH = 60;
+$PRINT_WIDTH = 70;
 $PRINT_WIDTH3 = 12;
 
 #----------------
@@ -147,6 +147,132 @@ sub add_fasta_entry {
   $seq_item->{$DBA_SEQID} = $fields[0];
   $seq_item->{$DBA_COMMENT} = $comment;
   $seq_item->{$DBA_SEQUENCE} = $sequence;
+}
+
+#
+# read_fasta__rand( $dba_file, $rand_dba_file )
+#
+# Randomizes sequences in a database file $dba_file, writes out
+# FASTA file with randomized sequences $rand_dba_file.
+#
+sub read_fasta__rand {
+
+  my ( $dba_file, $rand_dba_file ) = @_;
+  my ( $fp, $record, $seq_hash, @fields, $comment, $sequence );
+  my ( $seqstr, $db_entry_line, $cntr, @fields2, $seq_cntr );
+
+  # The function output_rand_seq() appends to output sequence
+  # file. If the output file already exists, remove it first
+  if (-e $rand_dba_file) {
+    unlink($rand_dba_file); 
+    print " [ existing file '$rand_dba_file' deleted ]\n";
+  }
+  print " Writing output to '$rand_dba_file' ...\n";
+
+  # sequence hash does not accumulate
+  $seq_hash = {};
+
+  # check the first line of the FASTA file
+  $fp = open_for_reading( $dba_file );
+  do { $record = <$fp> } until $. == 1 || eof;
+  chomp( $record );
+
+  @fields = split //, $record;
+  if ( $fields[0] ne ">" ) {
+    error( "FASTA file does not start with '>'" );
+  }
+
+  # OK, read the fasta file
+  shift @fields;
+  $comment = join "", @fields;
+  $sequence = "";
+  $seqstr = "";
+  $db_entry_line = 1;
+  $cntr = 1;
+  @fields2 = ();
+  $seq_cntr = 0;
+
+  # loop over all lines, output sequences on the fly
+  while ( <$fp> ) {
+
+    $cntr++;
+
+    $record = $_;
+    chomp( $record );
+
+    @fields = split //, $record;
+
+    if ( defined($fields[0]) && ($fields[0] eq ">") ) {
+      if ( $db_entry_line == 1 ) {
+        error( "improper FASTA file: comment without sequence (line $cntr)");
+      }
+      $db_entry_line = 0;
+      if ( $cntr > 1 ) {
+        $seq_cntr++;
+        output_rand_seq( $rand_dba_file, $seq_hash, $comment, $sequence );
+      }
+    }
+
+    $db_entry_line++;
+
+    if ( $db_entry_line == 1 ) {
+      shift @fields;
+      $comment = join "", @fields;
+      $sequence = "";
+    } else {
+      $seqstr = join "", @fields;
+      @fields2 = split / /, $seqstr;
+      $seqstr = join "", @fields2;
+      $sequence = $sequence . $seqstr;
+    }
+  }
+
+  # done with the file
+  close_file( $fp );
+
+  # add the last sequence to $seq_hash
+  $seq_cntr++;
+  output_rand_seq( $rand_dba_file, $seq_hash, $comment, $sequence );
+
+  # return the number of sequences processed
+  return $seq_cntr;
+}
+
+# 
+# sub output_rand_seq ( $rand_dba_file, $seq_hash, $comment, $sequence )
+#
+# Creates $seq_item, permutes the sequence, and prints the sequence
+# in FASTA format. The variable $seq_hash does not extpand, allowing
+# reading of large sequence files without consuming the memory,
+# effectively reading/output the sequences on the fly without holding
+# them in memory.
+#
+
+sub output_rand_seq {
+
+  my ( $rand_dba_file, $seq_hash, $comment, $sequence ) = @_;
+  my ( $dba_no, $seq_item, @fields, @seq_array, @seq_array_rand, $sequence_rand );
+
+  $dba_no = 1; # do not expand $seq_hash
+
+  $seq_hash->{$dba_no} = {};
+  $seq_item = $seq_hash->{$dba_no};
+  @fields = split " ", $comment;
+
+  $seq_item->{$DBA_SEQID} = $fields[0];
+  $seq_item->{$DBA_COMMENT} = $comment;
+
+  # randmly permute sequence letters
+  @seq_array = split(//, $sequence);
+  @seq_array_rand = shuffle(@seq_array); 
+  $sequence_rand = join "", @seq_array_rand;
+  $seq_item->{$DBA_SEQUENCE} = $sequence_rand;
+
+  # output the sequence item with letters randomly permuted
+  $fp = open_for_adding($rand_dba_file);
+  #$fp = *STDOUT;
+  print_seq_fasta($fp, $seq_item, $PRINT_WIDTH);
+  close_file( $fp );
 }
 
 # $seq_hash = read_blocks( $blocks_file )
@@ -360,8 +486,11 @@ sub print_seq_fasta {
 
   for my $ii ( 0 .. $#seq_char ) {
     printf $fp "%s", $seq_char[$ii];
-    #if ( ( (($ii+1) % $print_width) == 0 ) && ($ii != $#seq_char ) ) { print $fp "\n"; }
+    if ( ( (($ii+1) % $print_width) == 0 ) && ($ii != $#seq_char ) ) {
+      print $fp "\n";
+    }
   }
+
   print $fp "\n";
 }
 

@@ -125,6 +125,17 @@ sub open_for_writing {
   return *FILE;
 }
 
+sub open_for_adding {
+  my ( $file_name ) = @_;
+  my ( $status );
+  local( *FILE );
+  $status = open( FILE, ">>$file_name" );
+  if ( ! defined( $status ) ) {
+    error( "can't open file '$file_name' for writing" );
+  }
+  return *FILE;
+}
+
 sub close_file {
   local ( *FILE ) = @_;
   close FILE;
