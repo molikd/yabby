@@ -6,9 +6,11 @@ $NEEDL3 = "needl3";
 
 # globals for the EMBOSS program 'needle'
 $NEEDLE_PATH = "/usr/local/bin/needle";
+$WATER_PATH = "/usr/local/bin/water";
+
 $TMP_FASTA_FILE = "/tmp/yabby.tmp";
-$NEEDLE_GAP_OPEN = 10.0;
-$NEEDLE_GAP_EXTEND = 0.5;
+$DEFAULT_GAP_OPEN = 10.0;
+$DEFAULT_GAP_EXTEND = 0.5;
 
 # returns $nn entries ordered by percent similarity as reported
 # by the EMBOSS program 'water'

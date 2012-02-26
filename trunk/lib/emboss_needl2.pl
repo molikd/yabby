@@ -35,8 +35,8 @@ requirements($seq_query, $SEQUENCE);
 $xmldoc = load_ip_xml($seq_query, $SEQUENCE);
 
 # set the variable for the program 'needle'
-$needle_gap_extend = $NEEDLE_GAP_EXTEND;
-$needle_gap_open = $NEEDLE_GAP_OPEN;
+$needle_gap_extend = $DEFAULT_GAP_EXTEND;
+$needle_gap_open = $DEFAULT_GAP_OPEN;
 $tmp_fasta_file = $TMP_FASTA_FILE;
 $tmp_needle_out = $tmp_fasta_file . ".needle";
 
