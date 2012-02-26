@@ -13,8 +13,8 @@
 
 #use lib "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
 #$LIB_DIR = "C:\\Documents and Settings\\cr12\\My Documents\\yabby\\lib";
-use lib "/x/yabby/yabby/lib";
-$LIB_DIR = "/x/yabby/yabby/lib";
+use lib "/home/x/yabby/yabby/lib";
+$LIB_DIR = "/home/x/yabby/yabby/lib";
 
 #######################################################
 # End of installation section. Statements below this  #
