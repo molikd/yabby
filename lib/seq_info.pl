@@ -6,6 +6,8 @@ use yabby_utils;
 
 use Getopt::Std;
 
+no warnings 'once';
+
 $USAGE = "
  Prints information about the sequence object.
 
