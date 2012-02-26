@@ -1,4 +1,4 @@
-# emboss_needle.pl
+# emboss_needle_extract.pl
 
 use yabby_sys;
 use yabby_seq;
@@ -12,7 +12,7 @@ $USAGE = "
   the output of the EMBOSS program 'needle'.
 
   Usage:
-        emboss_needle NEEDLE_OUTPUT N
+        emboss_needle_extract NEEDLE_OUTPUT N
 
   Where NEEDLE_OUTPUT is the output file of the program 'needle',
   and N is the number of highest alignments to report (as given
