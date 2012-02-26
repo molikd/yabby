@@ -5,6 +5,8 @@ use yabby_seq;
 
 use Getopt::Std;
 
+no warnings 'once';
+
 $USAGE = "
  Loads sequence(s) from the database file.
 
