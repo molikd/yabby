@@ -12,9 +12,9 @@ $USAGE = "
   the output of the EMBOSS program 'water'.
 
   Usage:
-        emboss_water NEEDLE_OUTPUT N
+        emboss_water WATER_OUTPUT N
 
-  Where NEEDLE_OUTPUT is the output file of the program 'needle',
+  Where WATER_OUTPUT is the output file of the program 'water',
   and N is the number of highest alignments to report (as given
   by the 'Similarity' line in the water output).
 ";
